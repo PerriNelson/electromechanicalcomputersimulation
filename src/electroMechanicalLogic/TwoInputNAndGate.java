@@ -1,3 +1,10 @@
+/*
+  ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
+  Attribution-ShareAlike 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send
+  a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
+  USA.
+ */
 package electroMechanicalLogic;
 
 public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
@@ -7,7 +14,7 @@ public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
 		super(new Inverter(), new Inverter());
 	}
 
-	public synchronized boolean getOutput() {
+	public boolean getOutput() {
 		return relayA.getOutput() || relayB.getOutput();
 	}
 
@@ -15,7 +22,7 @@ public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
 		return relayA.getPower();
 	}
 
-	public synchronized void setPower(boolean value) {
+	public void setPower(boolean value) {
 		relayA.setPower(value);
 		relayB.setPower(value);
 	}
