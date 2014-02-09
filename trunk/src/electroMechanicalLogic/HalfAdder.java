@@ -7,50 +7,48 @@
  */
 package electroMechanicalLogic;
 
-public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
+public final class HalfAdder {
 
-	private ITwoInputSingleOutputGate nAnd = new TwoInputNAndGate();
-	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
+	private ITwoInputSingleOutputGate xor = new TwoInputXOrGate();
 	private ITwoInputSingleOutputGate and = new TwoInputAndGate();
-
+	
 	public boolean getA() {
-		return nAnd.getA();
+		return xor.getA();
 	}
-
+	
 	public boolean getB() {
-		return nAnd.getB();
+		return xor.getB();
 	}
-
-	public boolean getOutput() {
+	
+	public boolean getCO() {
 		return and.getOutput();
 	}
-
-	public boolean getPower() {
-		return nAnd.getPower();
+	
+	public boolean getS() {
+		return xor.getOutput();
 	}
-
+	
+	public boolean getPower() {
+		return xor.getPower();
+	}
+	
 	public void setA(boolean value) {
-		nAnd.setA(value);
-		or.setA(value);
+		xor.setA(value);
+		and.setA(value);
 	}
 
 	public void setB(boolean value) {
-		nAnd.setB(value);
-		or.setB(value);
+		xor.setB(value);
+		and.setB(value);
 	}
-
+	
 	public void setPower(boolean value) {
-		nAnd.setPower(value);
-		or.setPower(value);
+		xor.setPower(value);
 		and.setPower(value);
 	}
-
+	
 	public void step() {
-		nAnd.step();
-		or.step();
-		and.setA(nAnd.getOutput());
-		and.setB(or.getOutput());
+		xor.step();
 		and.step();
 	}
-
 }
