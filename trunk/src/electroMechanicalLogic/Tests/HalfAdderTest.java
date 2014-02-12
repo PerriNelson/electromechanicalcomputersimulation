@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class HalfAdderTest {
 
-	private electroMechanicalLogic.HalfAdder systemUnderTest;
+	private electroMechanicalLogic.Interfaces.IHalfAdder systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {
@@ -178,13 +178,6 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_SetA_WithoutStep_DoesNotAffectRetrievableState() {
-		boolean originalValue = systemUnderTest.getA();
-		systemUnderTest.setA(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getA());
-	}
-
-	@Test
 	public final void test_SetA_WithoutStep_DoesNotAffectSum() {
 		systemUnderTest.setPower(true);
 		boolean originalValue = systemUnderTest.getS();
@@ -205,14 +198,6 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_SetB_WithoutStep_DoesNotAffectRetrievableState() {
-		systemUnderTest.setPower(true);
-		boolean originalValue = systemUnderTest.getB();
-		systemUnderTest.setB(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getB());
-	}
-
-	@Test
 	public final void test_SetB_WithoutStep_DoesNotAffectSum() {
 		systemUnderTest.setPower(true);
 		boolean originalValue = systemUnderTest.getS();
@@ -220,21 +205,6 @@ public class HalfAdderTest {
 		assertEquals(originalValue, systemUnderTest.getS());
 		systemUnderTest.setB(false);
 		assertEquals(originalValue, systemUnderTest.getS());
-	}
-
-	@Test
-	public final void test_SetPower_WithoutStep_DoesNotAffectRetrievableState() {
-		boolean originalValue = systemUnderTest.getPower();
-		systemUnderTest.setPower(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getPower());
-	}
-
-	@Test
-	public final void test_SetPower_WithStep_ChangesRetrievableState() {
-		boolean originalValue = systemUnderTest.getPower();
-		systemUnderTest.setPower(!originalValue);
-		systemUnderTest.step();
-		assertEquals(!originalValue, systemUnderTest.getPower());
 	}
 
 }

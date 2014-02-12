@@ -11,8 +11,6 @@ public interface IEightBitAdder {
 
 	public abstract boolean getCO();
 
-	public abstract boolean getPower();
-
 	public abstract boolean getS0();
 
 	public abstract boolean getS1();

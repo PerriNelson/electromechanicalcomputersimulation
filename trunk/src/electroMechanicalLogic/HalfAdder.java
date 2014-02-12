@@ -7,27 +7,17 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.IHalfAdder;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class HalfAdder {
+public final class HalfAdder implements IHalfAdder {
 
 	private ITwoInputSingleOutputGate xor = new TwoInputXOrGate();
 	private ITwoInputSingleOutputGate and = new TwoInputAndGate();
 
-	public boolean getA() {
-		return xor.getA();
-	}
-
-	public boolean getB() {
-		return xor.getB();
-	}
 
 	public boolean getCO() {
 		return and.getOutput();
-	}
-
-	public boolean getPower() {
-		return xor.getPower();
 	}
 
 	public boolean getS() {

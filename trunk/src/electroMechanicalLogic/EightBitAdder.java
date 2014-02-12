@@ -9,16 +9,17 @@
 package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Interfaces.IFullAdder;
 
 public final class EightBitAdder implements IEightBitAdder {
 	private final FullAdder adder0;
-	private final FullAdder adder1;
-	private final FullAdder adder2;
-	private final FullAdder adder3;
-	private final FullAdder adder4;
-	private final FullAdder adder5;
-	private final FullAdder adder6;
-	private final FullAdder adder7;
+	private final IFullAdder adder1;
+	private final IFullAdder adder2;
+	private final IFullAdder adder3;
+	private final IFullAdder adder4;
+	private final IFullAdder adder5;
+	private final IFullAdder adder6;
+	private final IFullAdder adder7;
 
 	public EightBitAdder() {
 		adder0 = new FullAdder();
@@ -34,11 +35,6 @@ public final class EightBitAdder implements IEightBitAdder {
 	@Override
 	public boolean getCO() {
 		return adder7.getCO();
-	}
-
-	@Override
-	public boolean getPower() {
-		return adder0.getPower();
 	}
 
 	@Override

@@ -13,9 +13,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import electroMechanicalLogic.Interfaces.IFullAdder;
+
 public class FullAdderTest {
 
-	private electroMechanicalLogic.FullAdder systemUnderTest;
+	private IFullAdder systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {
