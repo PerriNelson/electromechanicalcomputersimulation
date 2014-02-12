@@ -5,21 +5,17 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-package electroMechanicalLogic;
+package electroMechanicalLogic.Interfaces;
 
-public interface ITwoInputSingleOutputGate {
+public interface IRelay {
 
-	public abstract boolean getA();
-
-	public abstract boolean getB();
+	public abstract boolean getInput();
 
 	public abstract boolean getOutput();
 
 	public abstract boolean getPower();
 
-	public abstract void setA(boolean value);
-
-	public abstract void setB(boolean value);
+	public abstract void setInput(boolean value);
 
 	public abstract void setPower(boolean value);
 

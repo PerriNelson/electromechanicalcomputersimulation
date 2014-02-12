@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.IEightBitAdder;
+import electroMechanicalLogic.Interfaces.IEightBitAdder;
 
 public class EightBitAdderTest {
 	private static final int bit0 = 0x01;

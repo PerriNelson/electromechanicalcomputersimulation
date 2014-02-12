@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.IRelay;
+import electroMechanicalLogic.Interfaces.IRelay;
 
 public class InverterTest {
 

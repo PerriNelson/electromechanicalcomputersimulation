@@ -5,16 +5,16 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-package electroMechanicalLogic;
+package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IRelay;
+public interface ITwoLineToOneLineSelector {
+	public abstract void setA(boolean value);
 
-public final class Inverter extends RelayBase implements IRelay {
+	public abstract void setB(boolean value);
 
-	@Override
-	public boolean getOutput() {
-		return (state & PowerMaskOut) == PowerMaskOut
-				&& (state & InputMaskOut) == 0;
-	}
+	public abstract void setSelect(boolean value);
 
+	public abstract void setPower(boolean value);
+
+	public abstract boolean getQ();
 }
