@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IFullAdder;
 
 public final class EightBitAdder implements IEightBitAdder {
-	private final FullAdder adder0;
+	private final IFullAdder adder0;
 	private final IFullAdder adder1;
 	private final IFullAdder adder2;
 	private final IFullAdder adder3;

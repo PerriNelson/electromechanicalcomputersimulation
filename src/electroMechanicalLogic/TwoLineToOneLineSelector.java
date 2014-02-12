@@ -21,18 +21,22 @@ public final class TwoLineToOneLineSelector implements
 	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
 	
 
+    @Override
 	public boolean getQ() {
 		return or.getOutput();
 	}
 
+    @Override
 	public void setA(boolean value) {
 		andA.setA(value);
 	}
 
+    @Override
 	public void setB(boolean value) {
 		andB.setB(value);
 	}
 
+    @Override
 	public void setPower(boolean value) {
 		selectInverter.setPower(value);
 		andA.setPower(value);
@@ -40,11 +44,13 @@ public final class TwoLineToOneLineSelector implements
 		or.setPower(value);
 	}
 
+    @Override
 	public void setSelect(boolean value) {
 		andB.setA(value);
 		selectInverter.setInput(value);
 	}
 
+    @Override
 	public void step() {
 		selectInverter.step();
 		andA.setB(selectInverter.getOutput());
