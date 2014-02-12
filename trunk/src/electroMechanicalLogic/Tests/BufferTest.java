@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.Buffer;
-import electroMechanicalLogic.IRelay;
+import electroMechanicalLogic.Interfaces.IRelay;
 
 public class BufferTest {
 

@@ -8,6 +8,8 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.IEightBitAdder;
+
 public final class EightBitAdder implements IEightBitAdder {
 	private final FullAdder adder0;
 	private final FullAdder adder1;

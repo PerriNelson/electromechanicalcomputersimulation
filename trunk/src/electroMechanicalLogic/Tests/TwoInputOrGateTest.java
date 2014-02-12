@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.TwoInputOrGate;
+import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class TwoInputOrGateTest {
 

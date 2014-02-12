@@ -7,6 +7,8 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.IRelay;
+
 abstract class TwoRelaySingleOutputGate {
 	final IRelay relayA;
 	final IRelay relayB;

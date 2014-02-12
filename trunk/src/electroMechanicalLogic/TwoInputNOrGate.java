@@ -7,6 +7,8 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+
 public final class TwoInputNOrGate extends TwoRelaySingleOutputGate implements
 		ITwoInputSingleOutputGate {
 

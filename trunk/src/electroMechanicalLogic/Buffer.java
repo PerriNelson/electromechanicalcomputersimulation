@@ -7,6 +7,8 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.IRelay;
+
 public final class Buffer extends RelayBase implements IRelay {
 
 	@Override

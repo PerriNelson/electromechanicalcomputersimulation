@@ -7,6 +7,8 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+
 public final class FullAdder {
 
 	private HalfAdder bottomHalf = new HalfAdder();

@@ -7,6 +7,9 @@
  */
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Interfaces.IEightInputSingleOutputOrGate;
+import electroMechanicalLogic.Interfaces.IRelay;
+
 public final class EightInputSIngleOutputOrGate implements
 		IEightInputSingleOutputOrGate {
 

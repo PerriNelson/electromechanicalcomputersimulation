@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.EightInputSIngleOutputOrGate;
-import electroMechanicalLogic.IEightInputSingleOutputOrGate;
+import electroMechanicalLogic.Interfaces.IEightInputSingleOutputOrGate;
 
 public class EightInputSingleOutputOrGateTest {
 	private IEightInputSingleOutputOrGate systemUnderTest;
