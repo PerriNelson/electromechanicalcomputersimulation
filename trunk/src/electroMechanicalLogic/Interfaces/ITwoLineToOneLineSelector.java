@@ -8,13 +8,15 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface ITwoLineToOneLineSelector {
+	public abstract boolean getQ();
+
 	public abstract void setA(boolean value);
 
 	public abstract void setB(boolean value);
 
-	public abstract void setSelect(boolean value);
-
 	public abstract void setPower(boolean value);
 
-	public abstract boolean getQ();
+	public abstract void setSelect(boolean value);
+
+	public abstract void step();
 }
