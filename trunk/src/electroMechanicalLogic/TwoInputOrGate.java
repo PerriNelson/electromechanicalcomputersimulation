@@ -14,19 +14,23 @@ public final class TwoInputOrGate extends TwoRelaySingleOutputGate implements
 		super(new Buffer(), new Buffer());
 	}
 
+	@Override
 	public boolean getOutput() {
 		return relayA.getOutput() || relayB.getOutput();
 	}
 
+	@Override
 	public boolean getPower() {
 		return relayA.getPower();
 	}
 
+	@Override
 	public void setPower(boolean value) {
 		relayA.setPower(value);
 		relayB.setPower(value);
 	}
 
+	@Override
 	public void step() {
 		relayA.step();
 		relayB.step();

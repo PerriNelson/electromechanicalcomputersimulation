@@ -7,7 +7,9 @@
  */
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,19 +33,37 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetCO_WhenPowerIsOnAndAIsOffAndBIsOff_ReturnsOff() {
-		systemUnderTest.setPower(true);
+	public final void test_GetCO_WhenPowerIsOffAndAIsOffAndBIsOn_ReturnsOff() {
+		systemUnderTest.setPower(false);
 		systemUnderTest.setA(false);
+		systemUnderTest.setB(true);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getCO());
+	}
+
+	@Test
+	public final void test_GetCO_WhenPowerIsOffAndAIsOnAndBIsOff_ReturnsOff() {
+		systemUnderTest.setPower(false);
+		systemUnderTest.setA(true);
 		systemUnderTest.setB(false);
 		systemUnderTest.step();
 		assertFalse(systemUnderTest.getCO());
 	}
 
 	@Test
-	public final void test_GetCO_WhenPowerIsOffAndAIsOffAndBIsOn_ReturnsOff() {
+	public final void test_GetCO_WhenPowerIsOffAndAIsOnAndBIsOn_ReturnsOff() {
 		systemUnderTest.setPower(false);
-		systemUnderTest.setA(false);
+		systemUnderTest.setA(true);
 		systemUnderTest.setB(true);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getCO());
+	}
+
+	@Test
+	public final void test_GetCO_WhenPowerIsOnAndAIsOffAndBIsOff_ReturnsOff() {
+		systemUnderTest.setPower(true);
+		systemUnderTest.setA(false);
+		systemUnderTest.setB(false);
 		systemUnderTest.step();
 		assertFalse(systemUnderTest.getCO());
 	}
@@ -67,15 +87,6 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetCO_WhenPowerIsOffAndAIsOnAndBIsOff_ReturnsOff() {
-		systemUnderTest.setPower(false);
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.step();
-		assertFalse(systemUnderTest.getCO());
-	}
-
-	@Test
 	public final void test_GetCO_WhenPowerIsOnAndAIsOnAndBIsOn_ReturnsOn() {
 		systemUnderTest.setPower(true);
 		systemUnderTest.setA(true);
@@ -85,17 +96,8 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetCO_WhenPowerIsOffAndAIsOnAndBIsOn_ReturnsOff() {
+	public final void test_GetS_WhenPowerIsOffAndAIsOffAndBIsOff_ReturnsOff() {
 		systemUnderTest.setPower(false);
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.step();
-		assertFalse(systemUnderTest.getCO());
-	}
-
-	@Test
-	public final void test_GetS_WhenPowerIsOnAndAIsOffAndBIsOff_ReturnsOff() {
-		systemUnderTest.setPower(true);
 		systemUnderTest.setA(false);
 		systemUnderTest.setB(false);
 		systemUnderTest.step();
@@ -103,8 +105,35 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetS_WhenPowerIsOffAndAIsOffAndBIsOff_ReturnsOff() {
+	public final void test_GetS_WhenPowerIsOffAndAIsOffAndBIsOn_ReturnsOff() {
 		systemUnderTest.setPower(false);
+		systemUnderTest.setA(false);
+		systemUnderTest.setB(true);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getS());
+	}
+
+	@Test
+	public final void test_GetS_WhenPowerIsOffAndAIsOnAndBIsOff_ReturnsOff() {
+		systemUnderTest.setPower(false);
+		systemUnderTest.setA(true);
+		systemUnderTest.setB(false);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getS());
+	}
+
+	@Test
+	public final void test_GetS_WhenPowerIsOffAndAIsOnAndBIsOn_ReturnsOff() {
+		systemUnderTest.setPower(false);
+		systemUnderTest.setA(true);
+		systemUnderTest.setB(true);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getS());
+	}
+
+	@Test
+	public final void test_GetS_WhenPowerIsOnAndAIsOffAndBIsOff_ReturnsOff() {
+		systemUnderTest.setPower(true);
 		systemUnderTest.setA(false);
 		systemUnderTest.setB(false);
 		systemUnderTest.step();
@@ -121,15 +150,6 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetS_WhenPowerIsOffAndAIsOffAndBIsOn_ReturnsOff() {
-		systemUnderTest.setPower(false);
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(true);
-		systemUnderTest.step();
-		assertFalse(systemUnderTest.getS());
-	}
-
-	@Test
 	public final void test_GetS_WhenPowerIsOnAndAIsOnAndBIsOff_ReturnsOn() {
 		systemUnderTest.setPower(true);
 		systemUnderTest.setA(true);
@@ -139,26 +159,8 @@ public class HalfAdderTest {
 	}
 
 	@Test
-	public final void test_GetS_WhenPowerIsOffAndAIsOnAndBIsOff_ReturnsOff() {
-		systemUnderTest.setPower(false);
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.step();
-		assertFalse(systemUnderTest.getS());
-	}
-
-	@Test
 	public final void test_GetS_WhenPowerIsOnAndAIsOnAndBIsOn_ReturnsOff() {
 		systemUnderTest.setPower(true);
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.step();
-		assertFalse(systemUnderTest.getS());
-	}
-
-	@Test
-	public final void test_GetS_WhenPowerIsOffAndAIsOnAndBIsOn_ReturnsOff() {
-		systemUnderTest.setPower(false);
 		systemUnderTest.setA(true);
 		systemUnderTest.setB(true);
 		systemUnderTest.step();

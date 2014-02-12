@@ -47,7 +47,7 @@ public class EightBitAdderTest {
 		if (systemUnderTest.getS7())
 			sum = sum | bit7;
 		if (systemUnderTest.getCO())
-			sum = sum | 0x0100;
+			sum = sum | bit8;
 		return sum;
 	}
 

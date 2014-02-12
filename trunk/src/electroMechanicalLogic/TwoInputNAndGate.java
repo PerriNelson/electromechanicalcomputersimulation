@@ -14,19 +14,23 @@ public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
 		super(new Inverter(), new Inverter());
 	}
 
+	@Override
 	public boolean getOutput() {
 		return relayA.getOutput() || relayB.getOutput();
 	}
 
+	@Override
 	public boolean getPower() {
 		return relayA.getPower();
 	}
 
+	@Override
 	public void setPower(boolean value) {
 		relayA.setPower(value);
 		relayB.setPower(value);
 	}
 
+	@Override
 	public void step() {
 		relayA.step();
 		relayB.step();
