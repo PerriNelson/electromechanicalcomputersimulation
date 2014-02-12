@@ -12,27 +12,27 @@ public final class FullAdder {
 	private HalfAdder bottomHalf = new HalfAdder();
 	private HalfAdder topHalf = new HalfAdder();
 	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
-	
+
 	public boolean getA() {
 		return topHalf.getA();
 	}
-	
+
 	public boolean getB() {
 		return topHalf.getB();
 	}
-	
+
 	public boolean getCO() {
 		return or.getOutput();
 	}
-	
-	public boolean getS() {
-		return bottomHalf.getS();
-	}
-	
+
 	public boolean getPower() {
 		return bottomHalf.getPower();
 	}
-	
+
+	public boolean getS() {
+		return bottomHalf.getS();
+	}
+
 	public void setA(boolean value) {
 		topHalf.setA(value);
 	}
@@ -40,17 +40,17 @@ public final class FullAdder {
 	public void setB(boolean value) {
 		topHalf.setB(value);
 	}
-	
+
 	public void setCI(boolean value) {
 		bottomHalf.setA(value);
 	}
-	
+
 	public void setPower(boolean value) {
 		bottomHalf.setPower(value);
 		topHalf.setPower(value);
 		or.setPower(value);
 	}
-	
+
 	public void step() {
 		topHalf.step();
 		bottomHalf.setB(topHalf.getS());
