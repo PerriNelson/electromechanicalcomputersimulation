@@ -9,36 +9,65 @@
 package electroMechanicalLogic;
 
 public final class EightBitAdder implements IEightBitAdder {
-	private FullAdder adder0 = new FullAdder();
-	private FullAdder adder1 = new FullAdder();
-	private FullAdder adder2 = new FullAdder();
-	private FullAdder adder3 = new FullAdder();
-	private FullAdder adder4 = new FullAdder();
-	private FullAdder adder5 = new FullAdder();
-	private FullAdder adder6 = new FullAdder();
-	private FullAdder adder7 = new FullAdder();
+	private final FullAdder adder0;
+	private final FullAdder adder1;
+	private final FullAdder adder2;
+	private final FullAdder adder3;
+	private final FullAdder adder4;
+	private final FullAdder adder5;
+	private final FullAdder adder6;
+	private final FullAdder adder7;
 
-	public void setPower(boolean value) {
-		adder0.setPower(value);
-		adder1.setPower(value);
-		adder2.setPower(value);
-		adder3.setPower(value);
-		adder4.setPower(value);
-		adder5.setPower(value);
-		adder6.setPower(value);
-		adder7.setPower(value);
+	public EightBitAdder()
+	{
+		adder0 = new FullAdder();
+		adder1 = new FullAdder();
+		adder2 = new FullAdder();
+		adder3 = new FullAdder();
+		adder4 = new FullAdder();
+		adder5 = new FullAdder();
+		adder6 = new FullAdder();
+		adder7 = new FullAdder();
+	}
+	
+	public boolean getCO() {
+		return adder7.getCO();
 	}
 
 	public boolean getPower() {
 		return adder0.getPower();
 	}
 
-	public void setCI(boolean value) {
-		adder0.setCI(value);
+	public boolean getS0() {
+		return adder0.getS();
 	}
 
-	public boolean getCO() {
-		return adder7.getCO();
+	public boolean getS1() {
+		return adder1.getS();
+	}
+
+	public boolean getS2() {
+		return adder2.getS();
+	}
+
+	public boolean getS3() {
+		return adder3.getS();
+	}
+
+	public boolean getS4() {
+		return adder4.getS();
+	}
+
+	public boolean getS5() {
+		return adder5.getS();
+	}
+
+	public boolean getS6() {
+		return adder6.getS();
+	}
+
+	public boolean getS7() {
+		return adder7.getS();
 	}
 
 	public void setA0(boolean value) {
@@ -105,53 +134,36 @@ public final class EightBitAdder implements IEightBitAdder {
 		adder7.setB(value);
 	}
 
-	public boolean getS0() {
-		return adder0.getS();
+	public void setCI(boolean value) {
+		adder0.setCI(value);
 	}
 
-	public boolean getS1() {
-		return adder1.getS();
-	}
-
-	public boolean getS2() {
-		return adder2.getS();
-	}
-
-	public boolean getS3() {
-		return adder3.getS();
-	}
-
-	public boolean getS4() {
-		return adder4.getS();
-	}
-
-	public boolean getS5() {
-		return adder5.getS();
-	}
-
-	public boolean getS6() {
-		return adder6.getS();
-	}
-
-	public boolean getS7() {
-		return adder7.getS();
+	public void setPower(boolean value) {
+		adder0.setPower(value);
+		adder1.setPower(value);
+		adder2.setPower(value);
+		adder3.setPower(value);
+		adder4.setPower(value);
+		adder5.setPower(value);
+		adder6.setPower(value);
+		adder7.setPower(value);
 	}
 
 	public void step() {
-	    adder0.step();
-	    adder1.setCI(adder0.getCO());
-	    adder1.step();
-	    adder2.setCI(adder1.getCO());
-	    adder2.step();
-	    adder3.setCI(adder2.getCO());
-	    adder3.step();
-	    adder4.setCI(adder3.getCO());
-	    adder4.step();
-	    adder5.setCI(adder4.getCO());
-	    adder5.step();
-	    adder6.setCI(adder5.getCO());
-	    adder6.step();
-	    adder7.setCI(adder6.getCO());
-	    adder7.step();
+		adder0.step();
+		adder1.setCI(adder0.getCO());
+		adder1.step();
+		adder2.setCI(adder1.getCO());
+		adder2.step();
+		adder3.setCI(adder2.getCO());
+		adder3.step();
+		adder4.setCI(adder3.getCO());
+		adder4.step();
+		adder5.setCI(adder4.getCO());
+		adder5.step();
+		adder6.setCI(adder5.getCO());
+		adder6.step();
+		adder7.setCI(adder6.getCO());
+		adder7.step();
 	}
 }
