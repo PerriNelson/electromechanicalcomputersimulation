@@ -17,39 +17,39 @@ public final class FullAdder implements IFullAdder {
 	private IHalfAdder topHalf = new HalfAdder();
 	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
 
-    @Override
+	@Override
 	public boolean getCO() {
 		return or.getOutput();
 	}
 
-    @Override
+	@Override
 	public boolean getS() {
 		return bottomHalf.getS();
 	}
 
-    @Override
+	@Override
 	public void setA(boolean value) {
 		topHalf.setA(value);
 	}
 
-    @Override
+	@Override
 	public void setB(boolean value) {
 		topHalf.setB(value);
 	}
 
-    @Override
+	@Override
 	public void setCI(boolean value) {
 		bottomHalf.setA(value);
 	}
 
-    @Override
+	@Override
 	public void setPower(boolean value) {
 		bottomHalf.setPower(value);
 		topHalf.setPower(value);
 		or.setPower(value);
 	}
 
-    @Override
+	@Override
 	public void step() {
 		topHalf.step();
 		bottomHalf.setB(topHalf.getS());
