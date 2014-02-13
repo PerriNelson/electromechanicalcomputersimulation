@@ -14,10 +14,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.EightInputSIngleOutputOrGate;
-import electroMechanicalLogic.Interfaces.IEightInputSingleOutputOrGate;
+import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 
 public class EightInputSingleOutputOrGateTest {
-	private IEightInputSingleOutputOrGate systemUnderTest;
+	private IEightInputSingleOutputGate systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {

@@ -7,11 +7,11 @@
  */
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IEightInputSingleOutputOrGate;
+import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class EightInputSIngleOutputOrGate implements
-		IEightInputSingleOutputOrGate {
+		IEightInputSingleOutputGate {
 
 	private IRelay bit0 = new Buffer();
 	private IRelay bit1 = new Buffer();
