@@ -7,28 +7,19 @@
  */
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightInputSingleOutputOrGate {
+public interface IFourInputSingleOutputGate {
 
 	public abstract boolean getOutput();
 
-	public abstract void setI0(boolean value);
+	public abstract void setA(boolean value);
 
-	public abstract void setI1(boolean value);
+	public abstract void setB(boolean value);
 
-	public abstract void setI2(boolean value);
+	public abstract void setC(boolean value);
 
-	public abstract void setI3(boolean value);
-
-	public abstract void setI4(boolean value);
-
-	public abstract void setI5(boolean value);
-
-	public abstract void setI6(boolean value);
-
-	public abstract void setI7(boolean value);
+	public abstract void setD(boolean value);
 
 	public abstract void setPower(boolean value);
 
-	public abstract void step();
-
+	public void step();
 }
