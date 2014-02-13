@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightInputSIngleOutputOrGate;
+import electroMechanicalLogic.EightInputSingleOutputOrGate;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 
 public class EightInputSingleOutputOrGateTest {
@@ -21,7 +21,7 @@ public class EightInputSingleOutputOrGateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new EightInputSIngleOutputOrGate();
+		systemUnderTest = new EightInputSingleOutputOrGate();
 		systemUnderTest.setPower(true);
 		systemUnderTest.setI0(false);
 		systemUnderTest.setI1(false);

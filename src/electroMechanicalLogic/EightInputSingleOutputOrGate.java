@@ -10,7 +10,7 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public final class EightInputSIngleOutputOrGate implements
+public final class EightInputSingleOutputOrGate implements
 		IEightInputSingleOutputGate {
 
 	private IRelay bit0 = new Buffer();

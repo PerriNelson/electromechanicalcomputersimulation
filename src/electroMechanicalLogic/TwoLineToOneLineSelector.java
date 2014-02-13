@@ -14,29 +14,28 @@ import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public final class TwoLineToOneLineSelector implements
 		ITwoLineToOneLineSelector {
-	
+
 	private IRelay selectInverter = new Inverter();
 	private ITwoInputSingleOutputGate andA = new TwoInputAndGate();
 	private ITwoInputSingleOutputGate andB = new TwoInputAndGate();
 	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
-	
 
-    @Override
+	@Override
 	public boolean getQ() {
 		return or.getOutput();
 	}
 
-    @Override
+	@Override
 	public void setA(boolean value) {
 		andA.setA(value);
 	}
 
-    @Override
+	@Override
 	public void setB(boolean value) {
 		andB.setB(value);
 	}
 
-    @Override
+	@Override
 	public void setPower(boolean value) {
 		selectInverter.setPower(value);
 		andA.setPower(value);
@@ -44,13 +43,13 @@ public final class TwoLineToOneLineSelector implements
 		or.setPower(value);
 	}
 
-    @Override
+	@Override
 	public void setSelect(boolean value) {
 		andB.setA(value);
 		selectInverter.setInput(value);
 	}
 
-    @Override
+	@Override
 	public void step() {
 		selectInverter.step();
 		andA.setB(selectInverter.getOutput());

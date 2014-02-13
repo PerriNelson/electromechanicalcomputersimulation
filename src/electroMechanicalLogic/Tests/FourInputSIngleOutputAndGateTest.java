@@ -7,7 +7,9 @@
  */
 
 package electroMechanicalLogic.Tests;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,9 +32,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -42,9 +44,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -54,9 +56,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -66,9 +68,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -78,9 +80,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -90,9 +92,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -102,9 +104,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -114,9 +116,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -126,9 +128,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -138,9 +140,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -150,9 +152,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -162,9 +164,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(false);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -174,9 +176,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -186,9 +188,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(false);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -198,9 +200,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getOutput());
 	}
 
@@ -210,9 +212,9 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest.setB(true);
 		systemUnderTest.setC(true);
 		systemUnderTest.setD(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertTrue(systemUnderTest.getOutput());
 	}
 

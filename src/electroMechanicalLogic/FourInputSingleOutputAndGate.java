@@ -8,17 +8,16 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
+import electroMechanicalLogic.Interfaces.IRelay;
 
-public class FourInputSingleOutputAndGate implements
-		IFourInputSingleOutputGate {
+public class FourInputSingleOutputAndGate implements IFourInputSingleOutputGate {
 
 	private IRelay relayA = new Buffer();
 	private IRelay relayB = new Buffer();
 	private IRelay relayC = new Buffer();
 	private IRelay relayD = new Buffer();
-	
+
 	@Override
 	public boolean getOutput() {
 		return relayD.getOutput();
