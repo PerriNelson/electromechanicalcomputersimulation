@@ -1,0 +1,123 @@
+/*
+  ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
+  Attribution-ShareAlike 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send
+  a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
+  USA.
+ */
+
+package electroMechanicalLogic.Tests;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import electroMechanicalLogic.LevelTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
+
+public class LevelTriggeredDTypeFlipFlopTest {
+	private IDTypeFlipFlop systemUnderTest;
+	
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new LevelTriggeredDTypeFlipFlop();
+		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public final void test_GetQ_WhenUnitialized_ReturnsOn() {
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsOnAndDataIsOff_ReturnsOff() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsOnAndDataIsOff_ReturnsOn() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsOnAndDataIsOn_ReturnsOff() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsOnAndDataIsOn_ReturnsOn() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsToggledAndDataIsOff_ReturnsOff() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsToggledAndDataIsOff_ReturnsOn() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsToggledAndDataIsOn_ReturnsOff() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsToggledAndDataIsOn_ReturnsOn() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenUnitialized_ReturnsOn() {
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQBar());
+	}
+
+}
