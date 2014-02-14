@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 
 public class LevelTriggeredDTypeFlipFlopTest {
 	private IDTypeFlipFlop systemUnderTest;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new LevelTriggeredDTypeFlipFlop();
@@ -27,16 +27,51 @@ public class LevelTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQ_WhenUnitialized_ReturnsOn() {
+	public final void test_GetQ_WhenClockIsOnAndDataIsOff_ReturnsOff() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQ_WhenClockIsOnAndDataIsOn_ReturnsOn() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
 		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getQ());
 	}
 
 	@Test
-	public final void test_GetQBar_WhenClockIsOnAndDataIsOff_ReturnsOff() {
+	public final void test_GetQ_WhenClockIsOnAndDataIsToggled_Toggles() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+
+		systemUnderTest.setD(false);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQ_WhenClockIsToggledAndDataIsOff_ReturnsOff() {
 		systemUnderTest.setD(false);
 		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		assertFalse(systemUnderTest.getQ());
+	}
+
+	@Test
+	public final void test_GetQ_WhenUnitialized_Returnsff() {
 		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getQ());
@@ -61,23 +96,18 @@ public class LevelTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQBar_WhenClockIsOnAndDataIsOn_ReturnsOn() {
+	public final void test_GetQBar_WhenClockIsOnAndDataIsToggled_Toggles() {
 		systemUnderTest.setD(true);
 		systemUnderTest.setClk(true);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
-	}
+		assertFalse(systemUnderTest.getQBar());
 
-	@Test
-	public final void test_GetQBar_WhenClockIsToggledAndDataIsOff_ReturnsOff() {
 		systemUnderTest.setD(false);
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-		systemUnderTest.setClk(false);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getQ());
+		assertTrue(systemUnderTest.getQBar());
+
 	}
 
 	@Test
@@ -85,6 +115,7 @@ public class LevelTriggeredDTypeFlipFlopTest {
 		systemUnderTest.setD(false);
 		systemUnderTest.setClk(true);
 		systemUnderTest.step();
+
 		systemUnderTest.setClk(false);
 		systemUnderTest.step();
 
@@ -114,10 +145,10 @@ public class LevelTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQBar_WhenUnitialized_ReturnsOn() {
+	public final void test_GetQBar_WhenUnitialized_ReturnsOff() {
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQBar());
+		assertFalse(systemUnderTest.getQBar());
 	}
 
 }

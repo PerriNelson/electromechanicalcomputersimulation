@@ -48,5 +48,11 @@ public class RSFlipFlop implements IRSFlipFlop {
 		norS.setB(norR.getOutput());
 		norR.step();
 		norS.step();
+
+		// For the feedback to work, we've got to do this twice.
+		norR.setA(norS.getOutput());
+		norS.setB(norR.getOutput());
+		norR.step();
+		norS.step();
 	}
 }

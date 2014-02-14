@@ -73,10 +73,10 @@ public class RSFlipFlopTest {
 	}
 
 	@Test
-	public void test_GetQ_WhenUninitialized_ReturnsOn() {
+	public void test_GetQ_WhenUninitialized_ReturnsOff() {
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
+		assertFalse(systemUnderTest.getQ());
 	}
 
 	@Test
@@ -125,10 +125,22 @@ public class RSFlipFlopTest {
 	}
 
 	@Test
-	public void test_GetQBar_WhenUninitialized_ReturnsOn() {
+	public void test_GetQBar_WhenUninitialized_ReturnsOff() {
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQBar());
+		assertFalse(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public void test_WhenSetOrReset_QIsNotEqualToQBar() {
+		systemUnderTest.setR(false);
+		systemUnderTest.setS(true);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getQ() == systemUnderTest.getQBar());
+		systemUnderTest.setR(true);
+		systemUnderTest.setS(false);
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getQ() == systemUnderTest.getQBar());
 	}
 
 }
