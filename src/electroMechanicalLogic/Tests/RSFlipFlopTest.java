@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.RSFlipFlop;
+import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 
 public class RSFlipFlopTest {
 
