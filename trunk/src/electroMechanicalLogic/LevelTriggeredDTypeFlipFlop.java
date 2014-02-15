@@ -15,10 +15,10 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 
-	private IRSFlipFlop flipFlop = new RSFlipFlop();
-	private ITwoInputSingleOutputGate sAnd = new TwoInputAndGate();
-	private ITwoInputSingleOutputGate rAnd = new TwoInputAndGate();
-	private IRelay dBar = new Inverter();
+	protected IRSFlipFlop flipFlop = new RSFlipFlop();
+	protected ITwoInputSingleOutputGate sAnd = new TwoInputAndGate();
+	protected ITwoInputSingleOutputGate rAnd = new TwoInputAndGate();
+	protected IRelay dBar = new Inverter();
 
 	@Override
 	public boolean getQ() {
