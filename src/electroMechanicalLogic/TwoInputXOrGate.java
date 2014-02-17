@@ -47,5 +47,4 @@ public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
 		and.setB(or.getOutput());
 		and.step();
 	}
-
 }

@@ -13,7 +13,7 @@ import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public class EightToOneSelector implements IEightToOneSelector {
+public final class EightToOneSelector implements IEightToOneSelector {
 
 	private IEightInputSingleOutputGate or = new EightInputSingleOutputOrGate();
 	private IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();

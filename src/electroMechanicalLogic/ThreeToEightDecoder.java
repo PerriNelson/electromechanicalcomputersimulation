@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
-public class ThreeToEightDecoder implements IThreeToEightDecoder {
+public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 
 	private IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
 	private IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
@@ -158,5 +158,4 @@ public class ThreeToEightDecoder implements IThreeToEightDecoder {
 		and6.step();
 		and7.step();
 	}
-
 }

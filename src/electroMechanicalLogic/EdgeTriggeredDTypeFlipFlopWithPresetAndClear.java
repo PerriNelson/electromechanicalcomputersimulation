@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
-public class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
+public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 		IDTypeFlipFlopWithPresetAndClear {
 
 	private IRelay clkBar = new Inverter();

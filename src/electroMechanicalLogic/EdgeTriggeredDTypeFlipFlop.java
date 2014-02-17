@@ -13,7 +13,7 @@ import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
+public final class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	private IRSFlipFlop stage1 = new RSFlipFlop();
 	private IRSFlipFlop stage2 = new RSFlipFlop();
 	private ITwoInputSingleOutputGate sAnd1 = new TwoInputAndGate();
@@ -62,21 +62,28 @@ public class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	public void step() {
 		clkBar.step();
 		dBar.step();
+		
 		sAnd1.setA(dBar.getOutput());
 		sAnd1.setB(clkBar.getOutput());
+		
 		rAnd1.setA(clkBar.getOutput());
+		
 		sAnd1.step();
 		rAnd1.step();
+		
 		stage1.setS(sAnd1.getOutput());
 		stage1.setR(rAnd1.getOutput());
 		stage1.step();
-		sAnd2.setA(stage1.getQBar());
+		
+		sAnd2.setA(stage1.getQBar(
+				));
 		rAnd2.setB(stage1.getQ());
+		
 		sAnd2.step();
 		rAnd2.step();
+		
 		stage2.setS(sAnd2.getOutput());
 		stage2.setR(rAnd2.getOutput());
 		stage2.step();
 	}
-
 }

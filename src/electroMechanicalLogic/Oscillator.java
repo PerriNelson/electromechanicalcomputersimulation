@@ -11,7 +11,7 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IOscillator;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public class Oscillator implements IOscillator {
+public final class Oscillator implements IOscillator {
 	private IRelay inverter = new Inverter();
 
 	@Override
