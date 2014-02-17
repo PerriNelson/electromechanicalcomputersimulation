@@ -7,7 +7,7 @@
  */
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightBitAdder {
+public interface IEightBitAdder extends ISimulatedCircuit {
 
 	public abstract boolean getCO();
 
@@ -60,9 +60,4 @@ public interface IEightBitAdder {
 	public abstract void setB7(boolean value);
 
 	public abstract void setCI(boolean value);
-
-	public abstract void setPower(boolean value);
-
-	public abstract void step();
-
 }

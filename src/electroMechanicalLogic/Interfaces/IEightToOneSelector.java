@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightToOneSelector {
+public interface IEightToOneSelector extends ISimulatedCircuit {
 
 	public abstract boolean getOutput();
 
@@ -28,13 +28,9 @@ public interface IEightToOneSelector {
 
 	public abstract void setD7(boolean value);
 
-	public abstract void setPower(boolean value);
-
 	public abstract void setS0(boolean value);
 
 	public abstract void setS1(boolean value);
 
 	public abstract void setS2(boolean value);
-
-	public abstract void step();
 }

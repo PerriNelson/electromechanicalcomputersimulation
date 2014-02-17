@@ -8,16 +8,12 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IRSFlipFlop {
+public interface IRSFlipFlop extends ISimulatedCircuit {
 	public abstract boolean getQ();
 
 	public abstract boolean getQBar();
 
-	public abstract void setPower(boolean value);
-
 	public abstract void setR(boolean value);
 
 	public abstract void setS(boolean value);
-
-	public abstract void step();
 }

@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IDTypeFlipFlop {
+public interface IDTypeFlipFlop extends ISimulatedCircuit {
 
 	public abstract boolean getQ();
 
@@ -17,8 +17,4 @@ public interface IDTypeFlipFlop {
 	public abstract void setClk(boolean value);
 
 	public abstract void setD(boolean value);
-
-	public abstract void setPower(boolean value);
-
-	public abstract void step();
 }

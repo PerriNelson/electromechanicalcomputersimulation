@@ -5,14 +5,11 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
+
 package electroMechanicalLogic.Interfaces;
 
-public interface ITwoLineToOneLineSelector extends ISimulatedCircuit {
-	public abstract boolean getQ();
+public interface ISimulatedCircuit {
+	public abstract void setPower(boolean value);
 
-	public abstract void setA(boolean value);
-
-	public abstract void setB(boolean value);
-
-	public abstract void setSelect(boolean value);
+	public abstract void step();
 }

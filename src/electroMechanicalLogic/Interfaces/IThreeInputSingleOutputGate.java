@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IThreeInputSingleOutputGate {
+public interface IThreeInputSingleOutputGate extends ISimulatedCircuit {
 
 	public abstract boolean getOutput();
 
@@ -17,8 +17,4 @@ public interface IThreeInputSingleOutputGate {
 	public abstract void setB(boolean value);
 
 	public abstract void setC(boolean value);
-
-	public abstract void setPower(boolean value);
-	
-	public abstract void step();
 }

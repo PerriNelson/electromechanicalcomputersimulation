@@ -7,8 +7,7 @@
  */
 package electroMechanicalLogic.Interfaces;
 
-public interface IFourInputSingleOutputGate {
-
+public interface IFourInputSingleOutputGate extends ISimulatedCircuit {
 	public abstract boolean getOutput();
 
 	public abstract void setA(boolean value);
@@ -18,8 +17,4 @@ public interface IFourInputSingleOutputGate {
 	public abstract void setC(boolean value);
 
 	public abstract void setD(boolean value);
-
-	public abstract void setPower(boolean value);
-
-	public void step();
 }
