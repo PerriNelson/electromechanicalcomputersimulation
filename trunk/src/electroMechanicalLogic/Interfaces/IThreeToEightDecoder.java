@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IThreeToEightDecoder {
+public interface IThreeToEightDecoder extends ISimulatedCircuit {
 
 	public abstract boolean getO0();
 
@@ -28,14 +28,9 @@ public interface IThreeToEightDecoder {
 
 	public abstract void setData(boolean value);
 
-	public abstract void setPower(boolean value);
-
 	public abstract void setS0(boolean value);
 
 	public abstract void setS1(boolean value);
 
 	public abstract void setS2(boolean value);
-
-	public abstract void step();
-
 }

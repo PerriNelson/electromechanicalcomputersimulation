@@ -8,18 +8,19 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.EdgeTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 
 public class EdgeTriggeredDTypeFlipFlopTest {
 
 	IDTypeFlipFlop systemUnderTest;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EdgeTriggeredDTypeFlipFlop();
@@ -28,46 +29,11 @@ public class EdgeTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQ_WhenClockIsOnAndDataIsOff_ReturnsOff() {
-		systemUnderTest.setD(false);
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-
-		assertFalse(systemUnderTest.getQ());
-	}
-
-	@Test
-	public final void test_GetQ_WhenDataIsOnAndClockTransitionsToOn_ReturnsOn() {
-		systemUnderTest.setD(true);
-		systemUnderTest.setClk(false);
-		systemUnderTest.step();
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getQ());
-	}
-
-	@Test
-	public final void test_GetQ_WhenClockIsOnAndDataIsToggled_DoesNotChange() {
-		systemUnderTest.setD(true);
-		systemUnderTest.step();
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getQ());
-
-		systemUnderTest.setD(false);
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getQ());
-	}
-
-	@Test
 	public final void test_GetQ_WhenClockAndDataBothTransistionToTrue_ReturnsFalse() {
 		systemUnderTest.setD(false);
 		systemUnderTest.setClk(false);
 		systemUnderTest.step();
-		
+
 		systemUnderTest.setD(true);
 		systemUnderTest.setClk(true);
 		systemUnderTest.step();
@@ -75,10 +41,56 @@ public class EdgeTriggeredDTypeFlipFlopTest {
 		assertFalse(systemUnderTest.getQ());
 	}
 
+	@Test
+	public void test_GetQ_WhenClockIsOnAndDataIsOff_ReturnsOff() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
 
+		assertFalse(systemUnderTest.getQ());
+	}
 
 	@Test
-	public final void test_GetQBar_WhenClockIsOnAndDataIsOff_ReturnsOn() {
+	public void test_GetQ_WhenClockIsOnAndDataIsToggled_DoesNotChange() {
+		systemUnderTest.setD(true);
+		systemUnderTest.step();
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+
+		systemUnderTest.setD(false);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+	}
+
+	@Test
+	public void test_GetQ_WhenDataIsOnAndClockTransitionsToOn_ReturnsOn() {
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQ());
+	}
+
+	@Test
+	public void test_GetQBar_WhenClockAndDataBothTransistionToTrue_ReturnsTrue() {
+		systemUnderTest.setD(false);
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		systemUnderTest.setD(true);
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getQBar());
+	}
+
+	@Test
+	public void test_GetQBar_WhenClockIsOnAndDataIsOff_ReturnsOn() {
 		systemUnderTest.setD(false);
 		systemUnderTest.setClk(true);
 		systemUnderTest.step();
@@ -87,18 +99,7 @@ public class EdgeTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQBar_WhenDataIsOnAndClockTransitionsToOn_ReturnsOff() {
-		systemUnderTest.setD(true);
-		systemUnderTest.setClk(false);
-		systemUnderTest.step();
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-
-		assertFalse(systemUnderTest.getQBar());
-	}
-
-	@Test
-	public final void test_GetQBar_WhenClockIsOnAndDataIsToggled_DoesNotChange() {
+	public void test_GetQBar_WhenClockIsOnAndDataIsToggled_DoesNotChange() {
 		systemUnderTest.setD(true);
 		systemUnderTest.step();
 		systemUnderTest.setClk(true);
@@ -113,16 +114,14 @@ public class EdgeTriggeredDTypeFlipFlopTest {
 	}
 
 	@Test
-	public final void test_GetQBar_WhenClockAndDataBothTransistionToTrue_ReturnsTrue() {
-		systemUnderTest.setD(false);
+	public void test_GetQBar_WhenDataIsOnAndClockTransitionsToOn_ReturnsOff() {
+		systemUnderTest.setD(true);
 		systemUnderTest.setClk(false);
 		systemUnderTest.step();
-		
-		systemUnderTest.setD(true);
 		systemUnderTest.setClk(true);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQBar());
+		assertFalse(systemUnderTest.getQBar());
 	}
 
 }

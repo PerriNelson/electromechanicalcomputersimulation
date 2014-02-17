@@ -1,6 +1,6 @@
 package electroMechanicalLogic.Interfaces;
 
-public interface IFullAdder {
+public interface IFullAdder extends ISimulatedCircuit {
 
 	public abstract boolean getCO();
 
@@ -11,9 +11,4 @@ public interface IFullAdder {
 	public abstract void setB(boolean value);
 
 	public abstract void setCI(boolean value);
-
-	public abstract void setPower(boolean value);
-
-	public abstract void step();
-
 }

@@ -8,10 +8,6 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IOscillator {
+public interface IOscillator extends ISimulatedCircuit {
 	public abstract boolean getOutput();
-
-	public abstract void setPower(boolean value);
-
-	public abstract void step();
 }

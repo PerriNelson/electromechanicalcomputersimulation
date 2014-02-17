@@ -1,6 +1,6 @@
 package electroMechanicalLogic.Interfaces;
 
-public interface IHalfAdder {
+public interface IHalfAdder extends ISimulatedCircuit {
 
 	public abstract boolean getCO();
 
@@ -9,9 +9,4 @@ public interface IHalfAdder {
 	public abstract void setA(boolean value);
 
 	public abstract void setB(boolean value);
-
-	public abstract void setPower(boolean value);
-
-	public abstract void step();
-
 }
