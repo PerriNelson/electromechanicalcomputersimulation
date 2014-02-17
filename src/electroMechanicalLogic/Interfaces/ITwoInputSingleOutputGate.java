@@ -8,14 +8,7 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface ITwoInputSingleOutputGate extends ISimulatedCircuit {
-
-	public abstract boolean getA();
-
-	public abstract boolean getB();
-
 	public abstract boolean getOutput();
-
-	public abstract boolean getPower();
 
 	public abstract void setA(boolean value);
 

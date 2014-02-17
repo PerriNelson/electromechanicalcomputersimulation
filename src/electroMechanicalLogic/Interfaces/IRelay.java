@@ -8,11 +8,7 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface IRelay extends ISimulatedCircuit {
-	public abstract boolean getInput();
-
 	public abstract boolean getOutput();
-
-	public abstract boolean getPower();
 
 	public abstract void setInput(boolean value);
 }

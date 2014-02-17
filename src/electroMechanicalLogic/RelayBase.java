@@ -23,18 +23,9 @@ abstract class RelayBase {
 		super();
 	}
 
-	public final boolean getInput() {
-		return (state & InputMaskOut) == InputMaskOut;
-	}
-
-	public final boolean getPower() {
-		return (state & PowerMaskOut) == PowerMaskOut;
-	}
-
 	public final void setInput(boolean value) {
 		state = value ? (byte) (state | InputMaskIn)
 				: (byte) (state & ~InputMaskIn);
-
 	}
 
 	public final void setPower(boolean value) {

@@ -16,23 +16,8 @@ public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
 	private ITwoInputSingleOutputGate and = new TwoInputAndGate();
 
 	@Override
-	public boolean getA() {
-		return nAnd.getA();
-	}
-
-	@Override
-	public boolean getB() {
-		return nAnd.getB();
-	}
-
-	@Override
 	public boolean getOutput() {
 		return and.getOutput();
-	}
-
-	@Override
-	public boolean getPower() {
-		return nAnd.getPower();
 	}
 
 	@Override
