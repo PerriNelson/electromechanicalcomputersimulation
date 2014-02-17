@@ -52,9 +52,12 @@ public final class TwoLineToOneLineSelector implements
 	@Override
 	public void step() {
 		selectInverter.step();
+		
 		andA.setB(selectInverter.getOutput());
 		andA.step();
+		
 		andB.step();
+		
 		or.setA(andA.getOutput());
 		or.setB(andB.getOutput());
 		or.step();

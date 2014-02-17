@@ -10,8 +10,8 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 abstract class TwoRelaySingleOutputGate {
-	final IRelay relayA;
-	final IRelay relayB;
+	protected final IRelay relayA;
+	protected final IRelay relayB;
 
 	TwoRelaySingleOutputGate(IRelay relayA, IRelay relayB) {
 		this.relayA = relayA;

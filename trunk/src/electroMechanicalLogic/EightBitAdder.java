@@ -12,25 +12,14 @@ import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IFullAdder;
 
 public final class EightBitAdder implements IEightBitAdder {
-	private final IFullAdder adder0;
-	private final IFullAdder adder1;
-	private final IFullAdder adder2;
-	private final IFullAdder adder3;
-	private final IFullAdder adder4;
-	private final IFullAdder adder5;
-	private final IFullAdder adder6;
-	private final IFullAdder adder7;
-
-	public EightBitAdder() {
-		adder0 = new FullAdder();
-		adder1 = new FullAdder();
-		adder2 = new FullAdder();
-		adder3 = new FullAdder();
-		adder4 = new FullAdder();
-		adder5 = new FullAdder();
-		adder6 = new FullAdder();
-		adder7 = new FullAdder();
-	}
+	private IFullAdder adder0 = new FullAdder();
+	private IFullAdder adder1 = new FullAdder();
+	private IFullAdder adder2 = new FullAdder();
+	private IFullAdder adder3 = new FullAdder();
+	private IFullAdder adder4 = new FullAdder();
+	private IFullAdder adder5 = new FullAdder();
+	private IFullAdder adder6 = new FullAdder();
+	private IFullAdder adder7 = new FullAdder();
 
 	@Override
 	public boolean getCO() {
@@ -177,18 +166,25 @@ public final class EightBitAdder implements IEightBitAdder {
 	@Override
 	public void step() {
 		adder0.step();
+		
 		adder1.setCI(adder0.getCO());
 		adder1.step();
+		
 		adder2.setCI(adder1.getCO());
 		adder2.step();
+		
 		adder3.setCI(adder2.getCO());
 		adder3.step();
+		
 		adder4.setCI(adder3.getCO());
 		adder4.step();
+		
 		adder5.setCI(adder4.getCO());
 		adder5.step();
+		
 		adder6.setCI(adder5.getCO());
 		adder6.step();
+		
 		adder7.setCI(adder6.getCO());
 		adder7.step();
 	}

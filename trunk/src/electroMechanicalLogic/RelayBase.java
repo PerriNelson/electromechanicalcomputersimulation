@@ -19,10 +19,6 @@ abstract class RelayBase {
 
 	protected byte state;
 
-	public RelayBase() {
-		super();
-	}
-
 	public final void setInput(boolean value) {
 		state = value ? (byte) (state | InputMaskIn)
 				: (byte) (state & ~InputMaskIn);

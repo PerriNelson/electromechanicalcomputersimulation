@@ -32,5 +32,4 @@ public final class TwoInputNOrGate extends TwoRelaySingleOutputGate implements
 		relayB.setPower(relayA.getOutput());
 		relayB.step();
 	}
-
 }

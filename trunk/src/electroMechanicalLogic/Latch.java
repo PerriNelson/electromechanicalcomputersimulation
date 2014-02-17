@@ -5,31 +5,37 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
+
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.Interfaces.ILatch;
 
-public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
-		ITwoInputSingleOutputGate {
+public final class Latch implements ILatch {
+	private IDTypeFlipFlop flipFlop = new LevelTriggeredDTypeFlipFlop();
 
-	public TwoInputNAndGate() {
-		super(new Inverter(), new Inverter());
+	@Override
+	public boolean getDO() {
+		return flipFlop.getQ();
 	}
 
 	@Override
-	public boolean getOutput() {
-		return relayA.getOutput() || relayB.getOutput();
+	public void setDI(boolean value) {
+		flipFlop.setD(value);
 	}
 
 	@Override
 	public void setPower(boolean value) {
-		relayA.setPower(value);
-		relayB.setPower(value);
+		flipFlop.setPower(value);
+	}
+
+	@Override
+	public void setW(boolean value) {
+		flipFlop.setClk(value);
 	}
 
 	@Override
 	public void step() {
-		relayA.step();
-		relayB.step();
+		flipFlop.step();
 	}
 }

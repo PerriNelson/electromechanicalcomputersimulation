@@ -11,7 +11,7 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public class RSFlipFlop implements IRSFlipFlop {
+public final class RSFlipFlop implements IRSFlipFlop {
 
 	public ITwoInputSingleOutputGate norR = new TwoInputNOrGate();
 	public ITwoInputSingleOutputGate norS = new TwoInputNOrGate();
@@ -44,14 +44,15 @@ public class RSFlipFlop implements IRSFlipFlop {
 
 	@Override
 	public void step() {
+		halfStep();
+		halfStep();
+	}
+	
+	private void halfStep()
+	{
 		norR.setA(norS.getOutput());
 		norS.setB(norR.getOutput());
-		norR.step();
-		norS.step();
-
-		// For the feedback to work, we've got to do this twice.
-		norR.setA(norS.getOutput());
-		norS.setB(norR.getOutput());
+		
 		norR.step();
 		norS.step();
 	}
