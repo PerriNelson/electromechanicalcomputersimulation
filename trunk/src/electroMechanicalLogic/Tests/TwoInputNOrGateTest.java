@@ -83,39 +83,9 @@ public class TwoInputNOrGateTest {
 	}
 
 	@Test
-	public final void test_SetA_WithoutStep_DoesNotAffectRetrievableState() {
-		boolean originalValue = systemUnderTest.getA();
-		systemUnderTest.setA(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getA());
-	}
-
-	@Test
 	public final void test_SetB_WithoutStep_DoesNotAffectOutput() {
 		boolean originalValue = systemUnderTest.getOutput();
 		systemUnderTest.setB(!originalValue);
 		assertEquals(originalValue, systemUnderTest.getOutput());
 	}
-
-	@Test
-	public final void test_SetB_WithoutStep_DoesNotAffectRetrievableState() {
-		boolean originalValue = systemUnderTest.getB();
-		systemUnderTest.setB(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getB());
-	}
-
-	@Test
-	public final void test_SetPower_WithoutStep_DoesNotAffectRetrievableState() {
-		boolean originalValue = systemUnderTest.getPower();
-		systemUnderTest.setPower(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getPower());
-	}
-
-	@Test
-	public final void test_SetPower_WithStep_ChangesRetrievableState() {
-		boolean originalValue = systemUnderTest.getPower();
-		systemUnderTest.setPower(!originalValue);
-		systemUnderTest.step();
-		assertEquals(!originalValue, systemUnderTest.getPower());
-	}
-
 }

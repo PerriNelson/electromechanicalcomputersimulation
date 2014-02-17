@@ -22,15 +22,10 @@ public final class TwoInputNOrGate extends TwoRelaySingleOutputGate implements
 	}
 
 	@Override
-	public boolean getPower() {
-		return relayA.getPower();
-	}
-
-	@Override
 	public void setPower(boolean value) {
 		relayA.setPower(value);
 	}
-
+	
 	@Override
 	public void step() {
 		relayA.step();
