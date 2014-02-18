@@ -19,7 +19,7 @@ public class EightBitCounter implements IEightBitCounter {
 	private IDTypeFlipFlop bit4 = new EdgeTriggeredDTypeFlipFlop();
 	private IDTypeFlipFlop bit5 = new EdgeTriggeredDTypeFlipFlop();
 	private IDTypeFlipFlop bit6 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit7 = new EdgeTriggeredDTypeFlipFlop();
+	protected final IDTypeFlipFlop bit7 = new EdgeTriggeredDTypeFlipFlop();
 
 	@Override
 	public boolean getQ0() {
