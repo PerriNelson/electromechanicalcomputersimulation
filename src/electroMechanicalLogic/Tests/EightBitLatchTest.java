@@ -26,9 +26,9 @@ public class EightBitLatchTest {
 	private static final int bit6 = 0x40;
 	private static final int bit7 = 0x80;
 
-	private IEightBitLatch systemUnderTest;
+	protected IEightBitLatch systemUnderTest;
 
-	private int getDO() {
+	protected int getDO() {
 		int result = 0;
 
 		if (systemUnderTest.getDO0())
@@ -51,7 +51,7 @@ public class EightBitLatchTest {
 		return result;
 	}
 
-	private void setDI(int value) {
+	protected void setDI(int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);
