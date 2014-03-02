@@ -8,12 +8,9 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightByOneByteRandomAccessMemory extends IEightBitLatch {
-
-	public abstract void setA0(boolean value);
-
-	public abstract void setA1(boolean value);
-
-	public abstract void setA2(boolean value);
-
+public interface IFiveHundredTwelveByteRAM extends
+		ISixtyFourByOneByteRandomAccessMemory {
+	public abstract void setA6(boolean value);
+	public abstract void setA7(boolean value);
+	public abstract void setA8(boolean value);
 }
