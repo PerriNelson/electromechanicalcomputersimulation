@@ -8,16 +8,17 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.FiveHundredTwelveByteRAM;
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+import electroMechanicalLogic.OneKilobyteRAM;
+import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
 
-public class FiveHundredTwelveByteRAMTest {
-	private IFiveHundredTwelveByteRAM systemUnderTest;
+public class OneKilobyteRAMTest {
+
+	private IOneKilobyteRAM systemUnderTest;
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
@@ -27,6 +28,7 @@ public class FiveHundredTwelveByteRAMTest {
 	private static final int bit6 = 0x40;
 	private static final int bit7 = 0x80;
 	private static final int bit8 = 0x100;
+	private static final int bit9 = 0x200;
 
 	private int getDO() {
 		int result = 0;
@@ -53,6 +55,7 @@ public class FiveHundredTwelveByteRAMTest {
 		systemUnderTest.setA6((value & bit6) == bit6);
 		systemUnderTest.setA7((value & bit7) == bit7);
 		systemUnderTest.setA8((value & bit8) == bit8);
+		systemUnderTest.setA9((value & bit9) == bit9);
 	}
 
 	private void setDI(int value) {
@@ -68,13 +71,13 @@ public class FiveHundredTwelveByteRAMTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new FiveHundredTwelveByteRAM();
+		systemUnderTest = new OneKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
 
 	@Test
 	public final void test() {
-		for (int a = 0; a < 512; a++) {
+		for (int a = 0; a < 1024; a++) {
 			setA(a);
 			setDI(a % 256);
 			systemUnderTest.setW(true);
@@ -83,7 +86,7 @@ public class FiveHundredTwelveByteRAMTest {
 			systemUnderTest.step();
 		}
 
-		for (int a = 0; a < 512; a++) {
+		for (int a = 0; a < 1024; a++) {
 			setA(a);
 			systemUnderTest.step();
 			assertEquals(getDO(), a % 256);
