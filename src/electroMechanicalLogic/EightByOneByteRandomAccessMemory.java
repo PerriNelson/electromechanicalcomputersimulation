@@ -16,23 +16,23 @@ import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 public class EightByOneByteRandomAccessMemory implements
 		IEightByOneByteRandomAccessMemory {
 
-	private IThreeToEightDecoder w = new ThreeToEightDecoder();
-	private IEightBitLatch byte0 = new EightBitLatch();
-	private IEightBitLatch byte1 = new EightBitLatch();
-	private IEightBitLatch byte2 = new EightBitLatch();
-	private IEightBitLatch byte3 = new EightBitLatch();
-	private IEightBitLatch byte4 = new EightBitLatch();
-	private IEightBitLatch byte5 = new EightBitLatch();
-	private IEightBitLatch byte6 = new EightBitLatch();
-	private IEightBitLatch byte7 = new EightBitLatch();
-	private IEightToOneSelector dO0 = new EightToOneSelector();
-	private IEightToOneSelector dO1 = new EightToOneSelector();
-	private IEightToOneSelector dO2 = new EightToOneSelector();
-	private IEightToOneSelector dO3 = new EightToOneSelector();
-	private IEightToOneSelector dO4 = new EightToOneSelector();
-	private IEightToOneSelector dO5 = new EightToOneSelector();
-	private IEightToOneSelector dO6 = new EightToOneSelector();
-	private IEightToOneSelector dO7 = new EightToOneSelector();
+	protected IThreeToEightDecoder w = new ThreeToEightDecoder();
+	protected IEightBitLatch bank0 = new EightBitLatch();
+	protected IEightBitLatch bank1 = new EightBitLatch();
+	protected IEightBitLatch bank2 = new EightBitLatch();
+	protected IEightBitLatch bank3 = new EightBitLatch();
+	protected IEightBitLatch bank4 = new EightBitLatch();
+	protected IEightBitLatch bank5 = new EightBitLatch();
+	protected IEightBitLatch bank6 = new EightBitLatch();
+	protected IEightBitLatch bank7 = new EightBitLatch();
+	protected IEightToOneSelector dO0 = new EightToOneSelector();
+	protected IEightToOneSelector dO1 = new EightToOneSelector();
+	protected IEightToOneSelector dO2 = new EightToOneSelector();
+	protected IEightToOneSelector dO3 = new EightToOneSelector();
+	protected IEightToOneSelector dO4 = new EightToOneSelector();
+	protected IEightToOneSelector dO5 = new EightToOneSelector();
+	protected IEightToOneSelector dO6 = new EightToOneSelector();
+	protected IEightToOneSelector dO7 = new EightToOneSelector();
 
 	@Override
 	public boolean getDO0() {
@@ -116,111 +116,111 @@ public class EightByOneByteRandomAccessMemory implements
 
 	@Override
 	public void setDI0(boolean value) {
-		byte0.setDI0(value);
-		byte1.setDI0(value);
-		byte2.setDI0(value);
-		byte3.setDI0(value);
-		byte4.setDI0(value);
-		byte5.setDI0(value);
-		byte6.setDI0(value);
-		byte7.setDI0(value);
+		bank0.setDI0(value);
+		bank1.setDI0(value);
+		bank2.setDI0(value);
+		bank3.setDI0(value);
+		bank4.setDI0(value);
+		bank5.setDI0(value);
+		bank6.setDI0(value);
+		bank7.setDI0(value);
 	}
 
 	@Override
 	public void setDI1(boolean value) {
-		byte0.setDI1(value);
-		byte1.setDI1(value);
-		byte2.setDI1(value);
-		byte3.setDI1(value);
-		byte4.setDI1(value);
-		byte5.setDI1(value);
-		byte6.setDI1(value);
-		byte7.setDI1(value);
+		bank0.setDI1(value);
+		bank1.setDI1(value);
+		bank2.setDI1(value);
+		bank3.setDI1(value);
+		bank4.setDI1(value);
+		bank5.setDI1(value);
+		bank6.setDI1(value);
+		bank7.setDI1(value);
 	}
 
 	@Override
 	public void setDI2(boolean value) {
-		byte0.setDI2(value);
-		byte1.setDI2(value);
-		byte2.setDI2(value);
-		byte3.setDI2(value);
-		byte4.setDI2(value);
-		byte5.setDI2(value);
-		byte6.setDI2(value);
-		byte7.setDI2(value);
+		bank0.setDI2(value);
+		bank1.setDI2(value);
+		bank2.setDI2(value);
+		bank3.setDI2(value);
+		bank4.setDI2(value);
+		bank5.setDI2(value);
+		bank6.setDI2(value);
+		bank7.setDI2(value);
 	}
 
 	@Override
 	public void setDI3(boolean value) {
-		byte0.setDI3(value);
-		byte1.setDI3(value);
-		byte2.setDI3(value);
-		byte3.setDI3(value);
-		byte4.setDI3(value);
-		byte5.setDI3(value);
-		byte6.setDI3(value);
-		byte7.setDI3(value);
+		bank0.setDI3(value);
+		bank1.setDI3(value);
+		bank2.setDI3(value);
+		bank3.setDI3(value);
+		bank4.setDI3(value);
+		bank5.setDI3(value);
+		bank6.setDI3(value);
+		bank7.setDI3(value);
 	}
 
 	@Override
 	public void setDI4(boolean value) {
-		byte0.setDI4(value);
-		byte1.setDI4(value);
-		byte2.setDI4(value);
-		byte3.setDI4(value);
-		byte4.setDI4(value);
-		byte5.setDI4(value);
-		byte6.setDI4(value);
-		byte7.setDI4(value);
+		bank0.setDI4(value);
+		bank1.setDI4(value);
+		bank2.setDI4(value);
+		bank3.setDI4(value);
+		bank4.setDI4(value);
+		bank5.setDI4(value);
+		bank6.setDI4(value);
+		bank7.setDI4(value);
 	}
 
 	@Override
 	public void setDI5(boolean value) {
-		byte0.setDI5(value);
-		byte1.setDI5(value);
-		byte2.setDI5(value);
-		byte3.setDI5(value);
-		byte4.setDI5(value);
-		byte5.setDI5(value);
-		byte6.setDI5(value);
-		byte7.setDI5(value);
+		bank0.setDI5(value);
+		bank1.setDI5(value);
+		bank2.setDI5(value);
+		bank3.setDI5(value);
+		bank4.setDI5(value);
+		bank5.setDI5(value);
+		bank6.setDI5(value);
+		bank7.setDI5(value);
 	}
 
 	@Override
 	public void setDI6(boolean value) {
-		byte0.setDI6(value);
-		byte1.setDI6(value);
-		byte2.setDI6(value);
-		byte3.setDI6(value);
-		byte4.setDI6(value);
-		byte5.setDI6(value);
-		byte6.setDI6(value);
-		byte7.setDI6(value);
+		bank0.setDI6(value);
+		bank1.setDI6(value);
+		bank2.setDI6(value);
+		bank3.setDI6(value);
+		bank4.setDI6(value);
+		bank5.setDI6(value);
+		bank6.setDI6(value);
+		bank7.setDI6(value);
 	}
 
 	@Override
 	public void setDI7(boolean value) {
-		byte0.setDI7(value);
-		byte1.setDI7(value);
-		byte2.setDI7(value);
-		byte3.setDI7(value);
-		byte4.setDI7(value);
-		byte5.setDI7(value);
-		byte6.setDI7(value);
-		byte7.setDI7(value);
+		bank0.setDI7(value);
+		bank1.setDI7(value);
+		bank2.setDI7(value);
+		bank3.setDI7(value);
+		bank4.setDI7(value);
+		bank5.setDI7(value);
+		bank6.setDI7(value);
+		bank7.setDI7(value);
 	}
 
 	@Override
 	public void setPower(boolean value) {
 		w.setPower(value);
-		byte0.setPower(value);
-		byte1.setPower(value);
-		byte2.setPower(value);
-		byte3.setPower(value);
-		byte4.setPower(value);
-		byte5.setPower(value);
-		byte6.setPower(value);
-		byte7.setPower(value);
+		bank0.setPower(value);
+		bank1.setPower(value);
+		bank2.setPower(value);
+		bank3.setPower(value);
+		bank4.setPower(value);
+		bank5.setPower(value);
+		bank6.setPower(value);
+		bank7.setPower(value);
 		dO0.setPower(value);
 		dO1.setPower(value);
 		dO2.setPower(value);
@@ -240,108 +240,108 @@ public class EightByOneByteRandomAccessMemory implements
 	public void step() {
 		w.step();
 
-		byte0.setW(w.getO0());
-		byte0.step();
+		bank0.setW(w.getO0());
+		bank0.step();
 
-		byte1.setW(w.getO1());
-		byte1.step();
+		bank1.setW(w.getO1());
+		bank1.step();
 
-		byte2.setW(w.getO2());
-		byte2.step();
+		bank2.setW(w.getO2());
+		bank2.step();
 
-		byte3.setW(w.getO3());
-		byte3.step();
+		bank3.setW(w.getO3());
+		bank3.step();
 
-		byte4.setW(w.getO4());
-		byte4.step();
+		bank4.setW(w.getO4());
+		bank4.step();
 
-		byte5.setW(w.getO5());
-		byte5.step();
+		bank5.setW(w.getO5());
+		bank5.step();
 
-		byte6.setW(w.getO6());
-		byte6.step();
+		bank6.setW(w.getO6());
+		bank6.step();
 
-		byte7.setW(w.getO7());
-		byte7.step();
+		bank7.setW(w.getO7());
+		bank7.step();
 
-		dO0.setD0(byte0.getDO0());
-		dO0.setD1(byte1.getDO0());
-		dO0.setD2(byte2.getDO0());
-		dO0.setD3(byte3.getDO0());
-		dO0.setD4(byte4.getDO0());
-		dO0.setD5(byte5.getDO0());
-		dO0.setD6(byte6.getDO0());
-		dO0.setD7(byte7.getDO0());
+		dO0.setD0(bank0.getDO0());
+		dO0.setD1(bank1.getDO0());
+		dO0.setD2(bank2.getDO0());
+		dO0.setD3(bank3.getDO0());
+		dO0.setD4(bank4.getDO0());
+		dO0.setD5(bank5.getDO0());
+		dO0.setD6(bank6.getDO0());
+		dO0.setD7(bank7.getDO0());
 		dO0.step();
 
-		dO1.setD0(byte0.getDO1());
-		dO1.setD1(byte1.getDO1());
-		dO1.setD2(byte2.getDO1());
-		dO1.setD3(byte3.getDO1());
-		dO1.setD4(byte4.getDO1());
-		dO1.setD5(byte5.getDO1());
-		dO1.setD6(byte6.getDO1());
-		dO1.setD7(byte7.getDO1());
+		dO1.setD0(bank0.getDO1());
+		dO1.setD1(bank1.getDO1());
+		dO1.setD2(bank2.getDO1());
+		dO1.setD3(bank3.getDO1());
+		dO1.setD4(bank4.getDO1());
+		dO1.setD5(bank5.getDO1());
+		dO1.setD6(bank6.getDO1());
+		dO1.setD7(bank7.getDO1());
 		dO1.step();
 
-		dO2.setD0(byte0.getDO2());
-		dO2.setD1(byte1.getDO2());
-		dO2.setD2(byte2.getDO2());
-		dO2.setD3(byte3.getDO2());
-		dO2.setD4(byte4.getDO2());
-		dO2.setD5(byte5.getDO2());
-		dO2.setD6(byte6.getDO2());
-		dO2.setD7(byte7.getDO2());
+		dO2.setD0(bank0.getDO2());
+		dO2.setD1(bank1.getDO2());
+		dO2.setD2(bank2.getDO2());
+		dO2.setD3(bank3.getDO2());
+		dO2.setD4(bank4.getDO2());
+		dO2.setD5(bank5.getDO2());
+		dO2.setD6(bank6.getDO2());
+		dO2.setD7(bank7.getDO2());
 		dO2.step();
 
-		dO3.setD0(byte0.getDO3());
-		dO3.setD1(byte1.getDO3());
-		dO3.setD2(byte2.getDO3());
-		dO3.setD3(byte3.getDO3());
-		dO3.setD4(byte4.getDO3());
-		dO3.setD5(byte5.getDO3());
-		dO3.setD6(byte6.getDO3());
-		dO3.setD7(byte7.getDO3());
+		dO3.setD0(bank0.getDO3());
+		dO3.setD1(bank1.getDO3());
+		dO3.setD2(bank2.getDO3());
+		dO3.setD3(bank3.getDO3());
+		dO3.setD4(bank4.getDO3());
+		dO3.setD5(bank5.getDO3());
+		dO3.setD6(bank6.getDO3());
+		dO3.setD7(bank7.getDO3());
 		dO3.step();
 
-		dO4.setD0(byte0.getDO4());
-		dO4.setD1(byte1.getDO4());
-		dO4.setD2(byte2.getDO4());
-		dO4.setD3(byte3.getDO4());
-		dO4.setD4(byte4.getDO4());
-		dO4.setD5(byte5.getDO4());
-		dO4.setD6(byte6.getDO4());
-		dO4.setD7(byte7.getDO4());
+		dO4.setD0(bank0.getDO4());
+		dO4.setD1(bank1.getDO4());
+		dO4.setD2(bank2.getDO4());
+		dO4.setD3(bank3.getDO4());
+		dO4.setD4(bank4.getDO4());
+		dO4.setD5(bank5.getDO4());
+		dO4.setD6(bank6.getDO4());
+		dO4.setD7(bank7.getDO4());
 		dO4.step();
 
-		dO5.setD0(byte0.getDO5());
-		dO5.setD1(byte1.getDO5());
-		dO5.setD2(byte2.getDO5());
-		dO5.setD3(byte3.getDO5());
-		dO5.setD4(byte4.getDO5());
-		dO5.setD5(byte5.getDO5());
-		dO5.setD6(byte6.getDO5());
-		dO5.setD7(byte7.getDO5());
+		dO5.setD0(bank0.getDO5());
+		dO5.setD1(bank1.getDO5());
+		dO5.setD2(bank2.getDO5());
+		dO5.setD3(bank3.getDO5());
+		dO5.setD4(bank4.getDO5());
+		dO5.setD5(bank5.getDO5());
+		dO5.setD6(bank6.getDO5());
+		dO5.setD7(bank7.getDO5());
 		dO5.step();
 
-		dO6.setD0(byte0.getDO6());
-		dO6.setD1(byte1.getDO6());
-		dO6.setD2(byte2.getDO6());
-		dO6.setD3(byte3.getDO6());
-		dO6.setD4(byte4.getDO6());
-		dO6.setD5(byte5.getDO6());
-		dO6.setD6(byte6.getDO6());
-		dO6.setD7(byte7.getDO6());
+		dO6.setD0(bank0.getDO6());
+		dO6.setD1(bank1.getDO6());
+		dO6.setD2(bank2.getDO6());
+		dO6.setD3(bank3.getDO6());
+		dO6.setD4(bank4.getDO6());
+		dO6.setD5(bank5.getDO6());
+		dO6.setD6(bank6.getDO6());
+		dO6.setD7(bank7.getDO6());
 		dO6.step();
 
-		dO7.setD0(byte0.getDO7());
-		dO7.setD1(byte1.getDO7());
-		dO7.setD2(byte2.getDO7());
-		dO7.setD3(byte3.getDO7());
-		dO7.setD4(byte4.getDO7());
-		dO7.setD5(byte5.getDO7());
-		dO7.setD6(byte6.getDO7());
-		dO7.setD7(byte7.getDO7());
+		dO7.setD0(bank0.getDO7());
+		dO7.setD1(bank1.getDO7());
+		dO7.setD2(bank2.getDO7());
+		dO7.setD3(bank3.getDO7());
+		dO7.setD4(bank4.getDO7());
+		dO7.setD5(bank5.getDO7());
+		dO7.setD6(bank6.getDO7());
+		dO7.setD7(bank7.getDO7());
 		dO7.step();
 	}
 
