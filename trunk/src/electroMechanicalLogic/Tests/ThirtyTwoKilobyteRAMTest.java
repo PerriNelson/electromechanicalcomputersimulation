@@ -8,17 +8,16 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.FourKilobyteRAM;
-import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
+import electroMechanicalLogic.ThirtyTwoKilobyteRAM;
+import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
-public class FourKilobyteRAMTest {
-
-	private IFourKilobyteRAM systemUnderTest;
+public class ThirtyTwoKilobyteRAMTest {
+	private IThirtyTwoKilobyteRAM systemUnderTest;
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
@@ -31,6 +30,9 @@ public class FourKilobyteRAMTest {
 	private static final int bit9 = 0x200;
 	private static final int bitA = 0x400;
 	private static final int bitB = 0x800;
+	private static final int bitC = 0x1000;
+	private static final int bitD = 0x2000;
+	private static final int bitE = 0x4000;
 
 	private int getDO() {
 		int result = 0;
@@ -66,6 +68,9 @@ public class FourKilobyteRAMTest {
 		systemUnderTest.setA9((value & bit9) == bit9);
 		systemUnderTest.setAA((value & bitA) == bitA);
 		systemUnderTest.setAB((value & bitB) == bitB);
+		systemUnderTest.setAC((value & bitC) == bitC);
+		systemUnderTest.setAD((value & bitD) == bitD);
+		systemUnderTest.setAE((value & bitE) == bitE);
 	}
 
 	private void setDI(int value) {
@@ -81,7 +86,7 @@ public class FourKilobyteRAMTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new FourKilobyteRAM();
+		systemUnderTest = new ThirtyTwoKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
 
@@ -97,15 +102,15 @@ public class FourKilobyteRAMTest {
 	@Test
 	public final void test() {
 		int[] addressesToTest = new int[] {
-				0, bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8
+				0, bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8, bit9, bitA, bitB
 		};
 		
 		for (int i = 0; i < 8; i++) {
 			for (int address : addressesToTest) {
-				setupTest((i << 9) | address);
+				setupTest((i << 12) | address);
 			}
 			for (int address : addressesToTest) {
-				performTest((i << 9) | address);
+				performTest((i << 12) | address);
 			}
 		}
 	}
