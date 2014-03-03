@@ -8,10 +8,10 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
+import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
+import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public class OneKilobyteRAM implements IOneKilobyteRAM {
 
@@ -203,45 +203,45 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	public void setW(boolean value) {
 		w.setInput(value);
 	}
-	
+
 	@Override
 	public void step() {
 		w.step();
-		
+
 		bank0.setW(w.getO0());
 		bank0.step();
-		
+
 		bank1.setW(w.getO1());
 		bank1.step();
-		
+
 		dO0.setA(bank0.getDO0());
 		dO0.setB(bank1.getDO0());
 		dO0.step();
-		
+
 		dO1.setA(bank0.getDO1());
 		dO1.setB(bank1.getDO1());
 		dO1.step();
-		
+
 		dO2.setA(bank0.getDO2());
 		dO2.setB(bank1.getDO2());
 		dO2.step();
-		
+
 		dO3.setA(bank0.getDO3());
 		dO3.setB(bank1.getDO3());
 		dO3.step();
-		
+
 		dO4.setA(bank0.getDO4());
 		dO4.setB(bank1.getDO4());
 		dO4.step();
-		
+
 		dO5.setA(bank0.getDO5());
 		dO5.setB(bank1.getDO5());
 		dO5.step();
-		
+
 		dO6.setA(bank0.getDO6());
 		dO6.setB(bank1.getDO6());
 		dO6.step();
-		
+
 		dO7.setA(bank0.getDO7());
 		dO7.setB(bank1.getDO7());
 		dO7.step();

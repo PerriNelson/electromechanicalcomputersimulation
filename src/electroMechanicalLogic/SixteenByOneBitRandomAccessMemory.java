@@ -15,7 +15,7 @@ import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public class SixteenByOneBitRandomAccessMemory implements
 		ISixteenByOneBitRandomAccessMemory {
-	
+
 	private IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
 	private ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
 	private IEightByOneBitRandomAccessMemory bank0 = new EightByOneBitRandomAccessMemory();
@@ -45,14 +45,15 @@ public class SixteenByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI(boolean value) {
-		bank0.setDI(value);
-		bank1.setDI(value);
+	public void setA3(boolean value) {
+		decoder.setSelect(value);
+		selector.setSelect(value);
 	}
 
 	@Override
-	public void setW(boolean value) {
-		decoder.setInput(value);
+	public void setDI(boolean value) {
+		bank0.setDI(value);
+		bank1.setDI(value);
 	}
 
 	@Override
@@ -64,24 +65,23 @@ public class SixteenByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void step() {
-		decoder.step();
-		
-		bank0.setW(decoder.getO0());
-		bank0.step();
-		
-		bank1.setW(decoder.getO1());
-		bank1.step();
-		
-		selector.setA(bank0.getDO());
-		selector.setB(bank1.getDO());
-		selector.step();
+	public void setW(boolean value) {
+		decoder.setInput(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
-		decoder.setSelect(value);
-		selector.setSelect(value);
+	public void step() {
+		decoder.step();
+
+		bank0.setW(decoder.getO0());
+		bank0.step();
+
+		bank1.setW(decoder.getO1());
+		bank1.step();
+
+		selector.setA(bank0.getDO());
+		selector.setB(bank1.getDO());
+		selector.step();
 	}
 
 }

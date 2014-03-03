@@ -45,10 +45,10 @@ public class ThreeInputNOrGate implements IThreeInputSingleOutputGate {
 	@Override
 	public void step() {
 		relayA.step();
-		
+
 		relayB.setPower(relayA.getOutput());
 		relayB.step();
-		
+
 		relayC.setPower(relayB.getOutput());
 		relayC.step();
 	}

@@ -29,38 +29,38 @@ public class FiveHundredTwelveByteRAM extends
 
 	@Override
 	public void setA3(boolean value) {
-		((ISixtyFourByOneByteRandomAccessMemory)bank0).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank1).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank2).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank3).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank4).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank5).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank6).setA3(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank7).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank3).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank4).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank5).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank6).setA3(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank7).setA3(value);
 	}
 
 	@Override
 	public void setA4(boolean value) {
-		((ISixtyFourByOneByteRandomAccessMemory)bank0).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank1).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank2).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank3).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank4).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank5).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank6).setA4(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank7).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank3).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank4).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank5).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank6).setA4(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank7).setA4(value);
 	}
 
 	@Override
 	public void setA5(boolean value) {
-		((ISixtyFourByOneByteRandomAccessMemory)bank0).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank1).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank2).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank3).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank4).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank5).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank6).setA5(value);
-		((ISixtyFourByOneByteRandomAccessMemory)bank7).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank3).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank4).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank5).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank6).setA5(value);
+		((ISixtyFourByOneByteRandomAccessMemory) bank7).setA5(value);
 	}
 
 	@Override

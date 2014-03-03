@@ -13,11 +13,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.FiveHundredTwelveByteRAM;
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+import electroMechanicalLogic.FourKilobyteRAM;
+import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
 
-public class FiveHundredTwelveByteRAMTest {
-	private IFiveHundredTwelveByteRAM systemUnderTest;
+public class FourKilobyteRAMTest {
+
+	private IFourKilobyteRAM systemUnderTest;
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
@@ -27,6 +28,9 @@ public class FiveHundredTwelveByteRAMTest {
 	private static final int bit6 = 0x40;
 	private static final int bit7 = 0x80;
 	private static final int bit8 = 0x100;
+	private static final int bit9 = 0x200;
+	private static final int bitA = 0x400;
+	private static final int bitB = 0x800;
 
 	private int getDO() {
 		int result = 0;
@@ -43,6 +47,16 @@ public class FiveHundredTwelveByteRAMTest {
 		return result;
 	}
 
+	private int getNextIncrement(int increment) {
+		return ((increment + 1) % 8) + 1;
+	}
+
+	private void performTest(int address) {
+		setA(address);
+		systemUnderTest.step();
+		assertEquals(getDO(), address % 256);
+	}
+
 	private void setA(int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
@@ -53,6 +67,9 @@ public class FiveHundredTwelveByteRAMTest {
 		systemUnderTest.setA6((value & bit6) == bit6);
 		systemUnderTest.setA7((value & bit7) == bit7);
 		systemUnderTest.setA8((value & bit8) == bit8);
+		systemUnderTest.setA9((value & bit9) == bit9);
+		systemUnderTest.setAA((value & bitA) == bitA);
+		systemUnderTest.setAB((value & bitB) == bitB);
 	}
 
 	private void setDI(int value) {
@@ -68,25 +85,31 @@ public class FiveHundredTwelveByteRAMTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new FiveHundredTwelveByteRAM();
+		systemUnderTest = new FourKilobyteRAM();
 		systemUnderTest.setPower(true);
+	}
+
+	private void setupTest(int address) {
+		setA(address);
+		setDI(address % 256);
+		systemUnderTest.setW(true);
+		systemUnderTest.step();
+		systemUnderTest.setW(false);
+		systemUnderTest.step();
 	}
 
 	@Test
 	public final void test() {
-		for (int a = 0; a < 512; a++) {
-			setA(a);
-			setDI(a % 256);
-			systemUnderTest.setW(true);
-			systemUnderTest.step();
-			systemUnderTest.setW(false);
-			systemUnderTest.step();
+		int i = 1;
+		for (int a = 0; a < 4096; a += i) {
+			setupTest(a);
+			i = getNextIncrement(i);
 		}
 
-		for (int a = 0; a < 512; a++) {
-			setA(a);
-			systemUnderTest.step();
-			assertEquals(getDO(), a % 256);
+		i = 1;
+		for (int a = 0; a < 4096; a += i) {
+			performTest(a);
+			i = getNextIncrement(i);
 		}
 	}
 }

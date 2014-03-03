@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +22,12 @@ public class EightByOneBitRandomAccessMemoryTest {
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
 
+	private void setA(int value) {
+		systemUnderTest.setA0((value & bit0) == bit0);
+		systemUnderTest.setA1((value & bit1) == bit1);
+		systemUnderTest.setA2((value & bit2) == bit2);
+	}
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EightByOneBitRandomAccessMemory();
@@ -30,7 +36,7 @@ public class EightByOneBitRandomAccessMemoryTest {
 
 	@Test
 	public final void test_GetDO_ForAllAddresses_ReturnsStoredValue() {
-		for (int i = 0; i < 8; i++){
+		for (int i = 0; i < 8; i++) {
 			for (int a = 0; a < 8; a++) {
 				setA(a);
 				systemUnderTest.setDI(a == i);
@@ -39,18 +45,12 @@ public class EightByOneBitRandomAccessMemoryTest {
 				systemUnderTest.setW(false);
 				systemUnderTest.step();
 			}
-			
+
 			for (int a = 0; a < 8; a++) {
 				setA(a);
 				systemUnderTest.step();
 				assertEquals(systemUnderTest.getDO(), a == i);
 			}
 		}
-	}
-	
-	private void setA(int value) {
-		systemUnderTest.setA0((value & bit0) == bit0);
-		systemUnderTest.setA1((value & bit1) == bit1);
-		systemUnderTest.setA2((value & bit2) == bit2);
 	}
 }

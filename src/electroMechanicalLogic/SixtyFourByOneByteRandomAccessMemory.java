@@ -9,19 +9,17 @@
 package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 /**
  * @author perri
- *
+ * 
  */
-public class SixtyFourByOneByteRandomAccessMemory extends EightByOneByteRandomAccessMemory implements
+public class SixtyFourByOneByteRandomAccessMemory extends
+		EightByOneByteRandomAccessMemory implements
 		ISixtyFourByOneByteRandomAccessMemory {
-	
-	public SixtyFourByOneByteRandomAccessMemory()
-	{
+
+	public SixtyFourByOneByteRandomAccessMemory() {
 		super();
 		bank0 = new EightByOneByteRandomAccessMemory();
 		bank1 = new EightByOneByteRandomAccessMemory();
@@ -32,42 +30,41 @@ public class SixtyFourByOneByteRandomAccessMemory extends EightByOneByteRandomAc
 		bank6 = new EightByOneByteRandomAccessMemory();
 		bank7 = new EightByOneByteRandomAccessMemory();
 	}
-	
 
 	@Override
 	public void setA0(boolean value) {
-		((IEightByOneByteRandomAccessMemory)bank0).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank1).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank2).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank3).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank4).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank5).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank6).setA0(value);
-		((IEightByOneByteRandomAccessMemory)bank7).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank0).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank1).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank2).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank3).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank4).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank5).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank6).setA0(value);
+		((IEightByOneByteRandomAccessMemory) bank7).setA0(value);
 	}
 
 	@Override
 	public void setA1(boolean value) {
-		((IEightByOneByteRandomAccessMemory)bank0).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank1).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank2).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank3).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank4).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank5).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank6).setA1(value);
-		((IEightByOneByteRandomAccessMemory)bank7).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank0).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank1).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank2).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank3).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank4).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank5).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank6).setA1(value);
+		((IEightByOneByteRandomAccessMemory) bank7).setA1(value);
 	}
 
 	@Override
 	public void setA2(boolean value) {
-		((IEightByOneByteRandomAccessMemory)bank0).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank1).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank2).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank3).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank4).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank5).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank6).setA2(value);
-		((IEightByOneByteRandomAccessMemory)bank7).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank0).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank1).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank2).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank3).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank4).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank5).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank6).setA2(value);
+		((IEightByOneByteRandomAccessMemory) bank7).setA2(value);
 	}
 
 	@Override
@@ -110,4 +107,3 @@ public class SixtyFourByOneByteRandomAccessMemory extends EightByOneByteRandomAc
 	}
 
 }
-

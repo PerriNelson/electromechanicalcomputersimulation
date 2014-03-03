@@ -11,7 +11,8 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public final class FourInputSingleOutputAndGate implements IFourInputSingleOutputGate {
+public final class FourInputSingleOutputAndGate implements
+		IFourInputSingleOutputGate {
 
 	private IRelay relayA = new Buffer();
 	private IRelay relayB = new Buffer();
@@ -51,13 +52,13 @@ public final class FourInputSingleOutputAndGate implements IFourInputSingleOutpu
 	@Override
 	public void step() {
 		relayA.step();
-		
+
 		relayB.setPower(relayA.getOutput());
 		relayB.step();
-		
+
 		relayC.setPower(relayB.getOutput());
 		relayC.step();
-		
+
 		relayD.setPower(relayC.getOutput());
 		relayD.step();
 	}
