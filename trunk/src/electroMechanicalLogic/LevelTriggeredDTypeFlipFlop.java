@@ -53,12 +53,12 @@ public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	@Override
 	public void step() {
 		dBar.step();
-		
+
 		rAnd.setB(dBar.getOutput());
 		rAnd.step();
 
 		sAnd.step();
-		
+
 		flipFlop.setS(sAnd.getOutput());
 		flipFlop.setR(rAnd.getOutput());
 		flipFlop.step();

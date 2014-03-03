@@ -8,11 +8,10 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IFiveHundredTwelveByteRAM extends
-		ISixtyFourByOneByteRandomAccessMemory {
-	public abstract void setA6(boolean value);
+public interface IFourKilobyteRAM extends IFiveHundredTwelveByteRAM {
+	public abstract void setA9(boolean value);
 
-	public abstract void setA7(boolean value);
+	public abstract void setAA(boolean value);
 
-	public abstract void setA8(boolean value);
+	public abstract void setAB(boolean value);
 }

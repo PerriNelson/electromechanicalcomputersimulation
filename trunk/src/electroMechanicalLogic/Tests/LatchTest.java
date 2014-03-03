@@ -8,13 +8,14 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Latch;
+import electroMechanicalLogic.Interfaces.ILatch;
 
 public class LatchTest {
 	protected ILatch systemUnderTest;
@@ -26,32 +27,12 @@ public class LatchTest {
 	}
 
 	@Test
-	public final void test_GetDO_WhenDIIsOnAndWIsOn_ReturnsOn() {
-		systemUnderTest.setDI(true);
-		systemUnderTest.setW(true);
-		systemUnderTest.step();
-		
-		assertTrue(systemUnderTest.getDO());
-	}
-
-	@Test
 	public final void test_GetDO_WhenDIIsOffAndWIsOn_ReturnsOff() {
 		systemUnderTest.setDI(false);
 		systemUnderTest.setW(true);
 		systemUnderTest.step();
-		
-		assertFalse(systemUnderTest.getDO());
-	}
 
-	@Test
-	public final void test_GetDO_WhenDIIsOnAndWIsOnThenWIsOff_ReturnsOn() {
-		systemUnderTest.setDI(true);
-		systemUnderTest.setW(true);
-		systemUnderTest.step();
-		systemUnderTest.setW(false);
-		systemUnderTest.step();
-		
-		assertTrue(systemUnderTest.getDO());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -61,8 +42,28 @@ public class LatchTest {
 		systemUnderTest.step();
 		systemUnderTest.setW(false);
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getDO());
+	}
+
+	@Test
+	public final void test_GetDO_WhenDIIsOnAndWIsOn_ReturnsOn() {
+		systemUnderTest.setDI(true);
+		systemUnderTest.setW(true);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getDO());
+	}
+
+	@Test
+	public final void test_GetDO_WhenDIIsOnAndWIsOnThenWIsOff_ReturnsOn() {
+		systemUnderTest.setDI(true);
+		systemUnderTest.setW(true);
+		systemUnderTest.step();
+		systemUnderTest.setW(false);
+		systemUnderTest.step();
+
+		assertTrue(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -74,9 +75,9 @@ public class LatchTest {
 		systemUnderTest.step();
 		systemUnderTest.setDI(true);
 		systemUnderTest.step();
-		
+
 		assertFalse(systemUnderTest.getDO());
-		
+
 		systemUnderTest.setDI(true);
 		systemUnderTest.setW(true);
 		systemUnderTest.step();
@@ -84,7 +85,7 @@ public class LatchTest {
 		systemUnderTest.step();
 		systemUnderTest.setDI(false);
 		systemUnderTest.step();
-		
+
 		assertTrue(systemUnderTest.getDO());
 	}
 }

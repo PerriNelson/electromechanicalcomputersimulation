@@ -25,7 +25,6 @@ public class BufferTest {
 		systemUnderTest = new Buffer();
 	}
 
-
 	@Test
 	public void test_GetOutput_ByItself_ReturnsFalse() {
 		assertFalse(systemUnderTest.getOutput());

@@ -30,15 +30,15 @@ public final class LevelTriggeredDTypeFlipFlopWithClear extends
 	@Override
 	public void step() {
 		dBar.step();
-		
+
 		rAnd.setB(dBar.getOutput());
 		rAnd.step();
-		
+
 		clear.setA(rAnd.getOutput());
 		clear.step();
-		
+
 		sAnd.step();
-		
+
 		flipFlop.setS(sAnd.getOutput());
 		flipFlop.setR(clear.getOutput());
 		flipFlop.step();

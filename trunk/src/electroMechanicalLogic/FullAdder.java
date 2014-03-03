@@ -52,10 +52,10 @@ public final class FullAdder implements IFullAdder {
 	@Override
 	public void step() {
 		topHalf.step();
-		
+
 		bottomHalf.setB(topHalf.getS());
 		bottomHalf.step();
-		
+
 		or.setA(bottomHalf.getCO());
 		or.setB(topHalf.getCO());
 		or.step();

@@ -10,8 +10,8 @@ package electroMechanicalLogic.Interfaces;
 
 public interface ILatch extends ISimulatedCircuit {
 	public abstract boolean getDO();
-	
+
 	public abstract void setDI(boolean value);
-	
+
 	public abstract void setW(boolean value);
 }
