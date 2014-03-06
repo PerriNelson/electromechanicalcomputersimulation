@@ -11,10 +11,6 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
-/**
- * @author perri
- * 
- */
 public class SixtyFourByOneByteRandomAccessMemory extends
 		EightByOneByteRandomAccessMemory implements
 		ISixtyFourByOneByteRandomAccessMemory {

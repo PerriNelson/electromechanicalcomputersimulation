@@ -8,6 +8,7 @@
 
 package electroMechanicalLogic.Tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -20,6 +21,10 @@ import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 public class RSFlipFlopTest {
 
 	private IRSFlipFlop systemUnderTest;
+
+	private void assertQDoesNotEqualQBar(boolean Q, boolean QBar) {
+		assertEquals("Q != QBar", Q, !QBar);
+	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -136,11 +141,14 @@ public class RSFlipFlopTest {
 		systemUnderTest.setR(false);
 		systemUnderTest.setS(true);
 		systemUnderTest.step();
-		assertFalse(systemUnderTest.getQ() == systemUnderTest.getQBar());
+		boolean Q = systemUnderTest.getQ();
+		boolean QBar = systemUnderTest.getQBar();
+		assertQDoesNotEqualQBar(Q, QBar);
 		systemUnderTest.setR(true);
 		systemUnderTest.setS(false);
 		systemUnderTest.step();
-		assertFalse(systemUnderTest.getQ() == systemUnderTest.getQBar());
+		Q = systemUnderTest.getQ();
+		QBar = systemUnderTest.getQBar();
+		assertQDoesNotEqualQBar(Q, QBar);
 	}
-
 }

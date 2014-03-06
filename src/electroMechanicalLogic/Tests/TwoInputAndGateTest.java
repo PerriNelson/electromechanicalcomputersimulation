@@ -78,14 +78,16 @@ public class TwoInputAndGateTest {
 	@Test
 	public final void test_SetA_WithoutStep_DoesNotAffectOutput() {
 		boolean originalValue = systemUnderTest.getOutput();
-		systemUnderTest.setA(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getOutput());
+		assertFalse("Startup value should be false.", originalValue);
+		systemUnderTest.setA(true);
+		assertEquals("Value should be unchanged", originalValue, systemUnderTest.getOutput());
 	}
 
 	@Test
 	public final void test_SetB_WithoutStep_DoesNotAffectOutput() {
 		boolean originalValue = systemUnderTest.getOutput();
-		systemUnderTest.setB(!originalValue);
-		assertEquals(originalValue, systemUnderTest.getOutput());
+		assertFalse("Startup value should be false.", originalValue);
+		systemUnderTest.setA(true);
+		assertEquals("Value should be unchanged", originalValue, systemUnderTest.getOutput());
 	}
 }
