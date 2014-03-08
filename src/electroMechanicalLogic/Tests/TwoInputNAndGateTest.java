@@ -80,7 +80,8 @@ public class TwoInputNAndGateTest {
 		boolean originalValue = systemUnderTest.getOutput();
 		assertFalse("Startup value should be false.", originalValue);
 		systemUnderTest.setA(true);
-		assertEquals("Value should be unchanged", originalValue, systemUnderTest.getOutput());
+		assertEquals("Value should be unchanged", originalValue,
+				systemUnderTest.getOutput());
 	}
 
 	@Test
@@ -88,6 +89,7 @@ public class TwoInputNAndGateTest {
 		boolean originalValue = systemUnderTest.getOutput();
 		assertFalse("Startup value should be false.", originalValue);
 		systemUnderTest.setB(true);
-		assertEquals("Value should be unchanged", originalValue, systemUnderTest.getOutput());
+		assertEquals("Value should be unchanged", originalValue,
+				systemUnderTest.getOutput());
 	}
 }
