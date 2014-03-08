@@ -246,5 +246,4 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 		dO7.setB(bank1.getDO7());
 		dO7.step();
 	}
-
 }
