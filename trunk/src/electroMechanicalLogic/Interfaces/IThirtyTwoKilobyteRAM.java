@@ -11,9 +11,9 @@ package electroMechanicalLogic.Interfaces;
 public interface IThirtyTwoKilobyteRAM extends IFourKilobyteRAM {
 
 	public abstract void setAC(boolean value);
-	
+
 	public abstract void setAD(boolean value);
-	
+
 	public abstract void setAE(boolean value);
-	
+
 }

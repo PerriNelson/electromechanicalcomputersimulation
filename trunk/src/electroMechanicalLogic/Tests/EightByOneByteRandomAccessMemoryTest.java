@@ -17,17 +17,17 @@ import electroMechanicalLogic.EightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 
 public class EightByOneByteRandomAccessMemoryTest {
-	private IEightByOneByteRandomAccessMemory systemUnderTest;
-	private static final int bit0 = 0x01;
-	private static final int bit1 = 0x02;
-	private static final int bit2 = 0x04;
-	private static final int bit3 = 0x08;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
+	protected IEightByOneByteRandomAccessMemory systemUnderTest;
+	protected static final int bit0 = 0x01;
+	protected static final int bit1 = 0x02;
+	protected static final int bit2 = 0x04;
+	protected static final int bit3 = 0x08;
+	protected static final int bit4 = 0x10;
+	protected static final int bit5 = 0x20;
+	protected static final int bit6 = 0x40;
+	protected static final int bit7 = 0x80;
 
-	private int getDO() {
+	protected final int getDO() {
 		int result = 0;
 
 		result |= systemUnderTest.getDO0() ? bit0 : 0;
@@ -42,13 +42,13 @@ public class EightByOneByteRandomAccessMemoryTest {
 		return result;
 	}
 
-	private void setA(int value) {
+	protected void setA(int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);
 	}
 
-	private void setDI(int value) {
+	protected final void setDI(int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);
@@ -66,24 +66,26 @@ public class EightByOneByteRandomAccessMemoryTest {
 	}
 
 	@Test
-	public final void test() {
-		for (int testValue = 0; testValue < 256; testValue++) {
-			for (int i = 0; i < 8; i++) {
-				for (int a = 0; a < 8; a++) {
-					setA(a);
-					setDI(a == i ? testValue : 0);
-					systemUnderTest.setW(true);
-					systemUnderTest.step();
-					systemUnderTest.setW(false);
-					systemUnderTest.step();
-				}
+	public void test() {
+		for (int i = 0; i < 8; i++) {
+			for (int a = 0; a < 8; a++) {
+				setA(translateAddress(a));
+				setDI((a == i) ? 0xff : 0);
+				systemUnderTest.setW(true);
+				systemUnderTest.step();
+				systemUnderTest.setW(false);
+				systemUnderTest.step();
+			}
 
-				for (int a = 0; a < 8; a++) {
-					setA(a);
-					systemUnderTest.step();
-					assertEquals(getDO(), a == i ? testValue : 0);
-				}
+			for (int a = 0; a < 8; a++) {
+				setA(translateAddress(a));
+				systemUnderTest.step();
+				assertEquals(getDO(), (a == i) ? 0xff : 0);
 			}
 		}
+	}
+
+	protected int translateAddress(int address) {
+		return address;
 	}
 }
