@@ -16,8 +16,6 @@ import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 public class OneKilobyteRAM implements IOneKilobyteRAM {
 
 	protected IOneLineToTwoLineDecoder w = new OneLineToTwoLineDecoder();
-	protected IFiveHundredTwelveByteRAM bank0 = new FiveHundredTwelveByteRAM();
-	protected IFiveHundredTwelveByteRAM bank1 = new FiveHundredTwelveByteRAM();
 	protected ITwoLineToOneLineSelector dO0 = new TwoLineToOneLineSelector();
 	protected ITwoLineToOneLineSelector dO1 = new TwoLineToOneLineSelector();
 	protected ITwoLineToOneLineSelector dO2 = new TwoLineToOneLineSelector();
@@ -26,6 +24,13 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	protected ITwoLineToOneLineSelector dO5 = new TwoLineToOneLineSelector();
 	protected ITwoLineToOneLineSelector dO6 = new TwoLineToOneLineSelector();
 	protected ITwoLineToOneLineSelector dO7 = new TwoLineToOneLineSelector();
+
+	protected IFiveHundredTwelveByteRAM bank0;
+	protected IFiveHundredTwelveByteRAM bank1;
+
+	public OneKilobyteRAM() {
+		initializeBanks();
+	}
 
 	@Override
 	public boolean getDO0() {
@@ -65,6 +70,11 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	@Override
 	public boolean getDO7() {
 		return dO7.getQ();
+	}
+
+	protected void initializeBanks() {
+		bank0 = new FiveHundredTwelveByteRAM();
+		bank1 = new FiveHundredTwelveByteRAM();
 	}
 
 	@Override

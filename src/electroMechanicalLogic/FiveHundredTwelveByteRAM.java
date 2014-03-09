@@ -15,8 +15,8 @@ public class FiveHundredTwelveByteRAM extends
 		SixtyFourByOneByteRandomAccessMemory implements
 		IFiveHundredTwelveByteRAM {
 
-	public FiveHundredTwelveByteRAM() {
-		super();
+	@Override
+	protected void initializeBanks() {
 		bank0 = new SixtyFourByOneByteRandomAccessMemory();
 		bank1 = new SixtyFourByOneByteRandomAccessMemory();
 		bank2 = new SixtyFourByOneByteRandomAccessMemory();

@@ -14,8 +14,8 @@ import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 public class SixtyFourKilobyteRAM extends OneKilobyteRAM implements
 		ISixtyFourKilobyteRAM {
 
-	public SixtyFourKilobyteRAM() {
-		super();
+	@Override
+	protected void initializeBanks() {
 		bank0 = new ThirtyTwoKilobyteRAM();
 		bank1 = new ThirtyTwoKilobyteRAM();
 	}
