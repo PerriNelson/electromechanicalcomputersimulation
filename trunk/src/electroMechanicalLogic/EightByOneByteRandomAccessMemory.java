@@ -17,14 +17,6 @@ public class EightByOneByteRandomAccessMemory implements
 		IEightByOneByteRandomAccessMemory {
 
 	protected IThreeToEightDecoder w = new ThreeToEightDecoder();
-	protected IEightBitLatch bank0 = new EightBitLatch();
-	protected IEightBitLatch bank1 = new EightBitLatch();
-	protected IEightBitLatch bank2 = new EightBitLatch();
-	protected IEightBitLatch bank3 = new EightBitLatch();
-	protected IEightBitLatch bank4 = new EightBitLatch();
-	protected IEightBitLatch bank5 = new EightBitLatch();
-	protected IEightBitLatch bank6 = new EightBitLatch();
-	protected IEightBitLatch bank7 = new EightBitLatch();
 	protected IEightToOneSelector dO0 = new EightToOneSelector();
 	protected IEightToOneSelector dO1 = new EightToOneSelector();
 	protected IEightToOneSelector dO2 = new EightToOneSelector();
@@ -33,6 +25,19 @@ public class EightByOneByteRandomAccessMemory implements
 	protected IEightToOneSelector dO5 = new EightToOneSelector();
 	protected IEightToOneSelector dO6 = new EightToOneSelector();
 	protected IEightToOneSelector dO7 = new EightToOneSelector();
+
+	protected IEightBitLatch bank0;
+	protected IEightBitLatch bank1;
+	protected IEightBitLatch bank2;
+	protected IEightBitLatch bank3;
+	protected IEightBitLatch bank4;
+	protected IEightBitLatch bank5;
+	protected IEightBitLatch bank6;
+	protected IEightBitLatch bank7;
+
+	public EightByOneByteRandomAccessMemory() {
+		initializeBanks();
+	}
 
 	@Override
 	public boolean getDO0() {
@@ -73,6 +78,17 @@ public class EightByOneByteRandomAccessMemory implements
 	@Override
 	public boolean getDO7() {
 		return dO7.getOutput();
+	}
+
+	protected void initializeBanks() {
+		bank0 = new EightBitLatch();
+		bank1 = new EightBitLatch();
+		bank2 = new EightBitLatch();
+		bank3 = new EightBitLatch();
+		bank4 = new EightBitLatch();
+		bank5 = new EightBitLatch();
+		bank6 = new EightBitLatch();
+		bank7 = new EightBitLatch();
 	}
 
 	@Override

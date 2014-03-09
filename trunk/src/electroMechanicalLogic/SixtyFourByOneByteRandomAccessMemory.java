@@ -15,8 +15,8 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 		EightByOneByteRandomAccessMemory implements
 		ISixtyFourByOneByteRandomAccessMemory {
 
-	public SixtyFourByOneByteRandomAccessMemory() {
-		super();
+	@Override
+	protected void initializeBanks() {
 		bank0 = new EightByOneByteRandomAccessMemory();
 		bank1 = new EightByOneByteRandomAccessMemory();
 		bank2 = new EightByOneByteRandomAccessMemory();
