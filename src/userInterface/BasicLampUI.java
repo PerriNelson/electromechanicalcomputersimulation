@@ -9,17 +9,17 @@
 package userInterface;
 
 import java.awt.Graphics;
-import java.net.URL;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 public class BasicLampUI extends ToggleSwitchUI {
-	
+
 	public static ComponentUI createUI(JComponent component) {
 		return new BasicLampUI();
 	}

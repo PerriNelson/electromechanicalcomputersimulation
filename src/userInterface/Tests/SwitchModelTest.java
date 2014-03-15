@@ -22,13 +22,13 @@ import userInterface.Interfaces.PowerState;
 
 public class SwitchModelTest {
 
-	private void expectPropertyChangeEvent(final SwitchModel systemUnderTest,
+	private PropertyChangeListener expectPropertyChangeEvent(final SwitchModel systemUnderTest,
 			final ExpectedPropertyChange[] expectedChanges) {
 
-		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
+		return 
+		new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				if (evt.getSource() == systemUnderTest) {
 					for (ExpectedPropertyChange expectedChange : expectedChanges) {
 						if (expectedChange.getPropertyName().equalsIgnoreCase(
 								evt.getPropertyName())) {
@@ -36,8 +36,7 @@ public class SwitchModelTest {
 						}
 					}
 				}
-			}
-		});
+		};
 	}
 
 	@Test
@@ -192,9 +191,11 @@ public class SwitchModelTest {
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(false);
 
-		expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
 
+		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(false);
+		systemUnderTest.removePropertyChangeListener(listener);
 
 		assertFalse(expectedChanges[0].getPropertyChanged());
 	}
@@ -205,9 +206,12 @@ public class SwitchModelTest {
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(true);
 
-		expectPropertyChangeEvent(systemUnderTest, expectedChanges);
 
+		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+
+		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(false);
+		systemUnderTest.removePropertyChangeListener(listener);
 
 		assertTrue(expectedChanges[0].getPropertyChanged());
 	}
@@ -218,10 +222,46 @@ public class SwitchModelTest {
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(false);
 
-		expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
 
+		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(true);
+		systemUnderTest.removePropertyChangeListener(listener);
 
 		assertTrue(expectedChanges[0].getPropertyChanged());
+	}
+
+	@Test
+	public void SetClosed_FiresPowerOutPropertyChanged_WhenCalledWithTrueAndInitializedWithFalseAndPowerOn() {
+		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] {
+				new ExpectedPropertyChange("closed"),
+				new ExpectedPropertyChange("powerOut")};
+		
+		SwitchModel systemUnderTest = new SwitchModel(false, PowerState.on);
+
+		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+
+		systemUnderTest.addPropertyChangeListener(listener);
+		systemUnderTest.setClosed(true);
+		systemUnderTest.removePropertyChangeListener(listener);
+
+		assertTrue(expectedChanges[1].getPropertyChanged());
+	}
+
+	@Test
+	public void SetClosed_FiresPowerOutPropertyChanged_WhenCalledWithFalseAndInitializedWithTrueAndPowerOn() {
+		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] {
+				new ExpectedPropertyChange("closed"),
+				new ExpectedPropertyChange("powerOut")};
+		
+		SwitchModel systemUnderTest = new SwitchModel(true, PowerState.on);
+
+		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+
+		systemUnderTest.addPropertyChangeListener(listener);
+		systemUnderTest.setClosed(false);
+		systemUnderTest.removePropertyChangeListener(listener);
+
+		assertTrue(expectedChanges[1].getPropertyChanged());
 	}
 }

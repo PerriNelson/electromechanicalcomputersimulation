@@ -17,7 +17,8 @@ import userInterface.Interfaces.ISwitchModel;
 import userInterface.Interfaces.PowerState;
 
 public class SwitchModel implements ISwitchModel {
-	protected transient PropertyChangeEvent propertyChangeEvent = null;
+	private static final String closedPropertyName = "closed";
+	private static final String powerOutPropertyName = "powerOut";
 
 	private EventListenerList eventListeners = new EventListenerList();
 	private boolean closed;
@@ -47,6 +48,8 @@ public class SwitchModel implements ISwitchModel {
 
 	protected void fireOnPropertyChange(String propertyName, Object oldValue,
 			Object newValue) {
+		PropertyChangeEvent propertyChangeEvent = null;
+
 		Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
@@ -81,13 +84,13 @@ public class SwitchModel implements ISwitchModel {
 
 		if (newValue != oldValue) {
 			closed = newValue;
-			fireOnPropertyChange("closed", oldValue, newValue);
+			fireOnPropertyChange(closedPropertyName, oldValue, newValue);
 			if (powerState == PowerState.on) {
 				if (closed) {
-					fireOnPropertyChange("powerOut", PowerState.off,
+					fireOnPropertyChange(powerOutPropertyName, PowerState.off,
 							PowerState.on);
 				} else {
-					fireOnPropertyChange("powerOut", PowerState.on,
+					fireOnPropertyChange(powerOutPropertyName, PowerState.on,
 							PowerState.off);
 				}
 			}
@@ -101,7 +104,7 @@ public class SwitchModel implements ISwitchModel {
 		if (oldValue != newValue) {
 			powerState = newValue;
 			if (closed) {
-				fireOnPropertyChange("powerOut", oldValue, newValue);
+				fireOnPropertyChange(powerOutPropertyName, oldValue, newValue);
 			}
 		}
 	}

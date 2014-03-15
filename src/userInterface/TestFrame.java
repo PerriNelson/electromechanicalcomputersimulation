@@ -19,14 +19,25 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
 
+import userInterface.Interfaces.PowerState;
+
 public class TestFrame extends Frame implements PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
+	private static final String powerOutPropertyName = "powerOut";
+
+	public static void main(String[] args) {
+		TestFrame frame = new TestFrame();
+		frame.setVisible(true);
+	}
+
 	private ToggleSwitch toggleSwitch;
 	private Lamp lamp;
+
 	public TestFrame() {
 		super("UI Components sample");
 		setSize(300, 100);
 		addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent event) {
 				System.exit(0);
 			}
@@ -34,6 +45,7 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		toggleSwitch = new ToggleSwitch();
+		toggleSwitch.setPowerIn(PowerState.on);
 		toggleSwitch.addPropertyChangeListener(this);
 		panel.add(toggleSwitch);
 		lamp = new Lamp();
@@ -41,18 +53,13 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 		panel.setBackground(new Color(192, 192, 192));
 		add(panel, BorderLayout.NORTH);
 	}
-	
-	public static void main(String [] args) {
-		TestFrame frame = new TestFrame();
-		frame.setVisible(true);
-	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitch) {
-		if ("closed".equalsIgnoreCase(evt.getPropertyName())) {
-			lamp.setOn((Boolean)evt.getNewValue());
+			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+				lamp.setOn(PowerState.on == evt.getNewValue());
+			}
 		}
-	}
 	}
 }

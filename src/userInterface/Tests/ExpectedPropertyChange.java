@@ -11,18 +11,19 @@ package userInterface.Tests;
 public class ExpectedPropertyChange {
 	private String propertyName;
 	private boolean propertyChanged = false;
-	
+
 	public ExpectedPropertyChange(String propertyName) {
 		this.propertyName = propertyName;
 	}
-	
+
+	public boolean getPropertyChanged() {
+		return propertyChanged;
+	}
+
 	public String getPropertyName() {
 		return propertyName;
 	}
-	
-	public boolean getPropertyChanged () {
-		return propertyChanged;
-	}
+
 	public void setPropertyChanged() {
 		propertyChanged = true;
 	}

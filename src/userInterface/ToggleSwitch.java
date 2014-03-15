@@ -16,13 +16,16 @@ import javax.swing.JComponent;
 import javax.swing.UIManager;
 
 import userInterface.Interfaces.ISwitchModel;
+import userInterface.Interfaces.PowerState;
 
 public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
+	private static final String closedPropertyName = "closed";
+	private static final String modelPropertyName = "model";
+	private static final String powerOutPropertyName = "powerOut";
+	private static final Dimension size = new Dimension(34, 56);
 
 	private ISwitchModel model;
-
-	private static final Dimension size = new Dimension(34, 56);
 
 	public ToggleSwitch() {
 		super();
@@ -31,10 +34,7 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	}
 
 	public void close() {
-		if (!isClosed()) {
-			model.setClosed(true);
-			firePropertyChange("closed", false, true);
-		}
+		model.setClosed(true);
 	}
 
 	@Override
@@ -49,6 +49,10 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 
 	public ISwitchModel getModel() {
 		return model;
+	}
+
+	public PowerState getPowerOut() {
+		return model.getPowerOut();
 	}
 
 	@Override
@@ -71,32 +75,45 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	}
 
 	public void open() {
-		if (isClosed()) {
-			model.setClosed(false);
-			firePropertyChange("closed", true, false);
-		}
+		model.setClosed(false);
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getSource() == model) {
-			if ("closed".equalsIgnoreCase(evt.getPropertyName()))
-			repaint();
+			if (closedPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+				firePropertyChange(closedPropertyName, evt.getOldValue(),
+						evt.getNewValue());
+				repaint();
+			} else if (powerOutPropertyName.equalsIgnoreCase(evt
+					.getPropertyName())) {
+				firePropertyChange(powerOutPropertyName, evt.getOldValue(),
+						evt.getNewValue());
+			}
 		}
 	}
 
-	public void setModel(ISwitchModel value) {
+	public void setModel(ISwitchModel newModel) {
 		ISwitchModel oldModel = model;
+		if (oldModel != newModel) {
 
-		if (oldModel != null)
-			oldModel.removePropertyChangeListener(this);
+			if (oldModel != null) {
+				oldModel.removePropertyChangeListener(this);
+			}
 
-		if (value == null)
-			model = new SwitchModel();
-		else
-			model = value;
-		model.addPropertyChangeListener(this);
-		firePropertyChange("model", oldModel, model);
+			if (newModel == null) {
+				model = new SwitchModel();
+			} else {
+				model = newModel;
+			}
+
+			model.addPropertyChangeListener(this);
+			firePropertyChange(modelPropertyName, oldModel, model);
+		}
+	}
+
+	public void setPowerIn(PowerState value) {
+		model.setPowerIn(value);
 	}
 
 	public void setUI(ToggleSwitchUI ui) {
@@ -106,10 +123,10 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	@Override
 	public void updateUI() {
 		if (UIManager.get(getUIClassID()) != null) {
-            setUI((ToggleSwitchUI) UIManager.getUI(this));
-        } else {
-            setUI(new BasicToggleSwitchUI());
-        }
+			setUI((ToggleSwitchUI) UIManager.getUI(this));
+		} else {
+			setUI(new BasicToggleSwitchUI());
+		}
 		invalidate();
 	}
 }

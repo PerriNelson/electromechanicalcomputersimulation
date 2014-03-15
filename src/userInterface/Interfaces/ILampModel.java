@@ -21,5 +21,5 @@ public interface ILampModel {
 			PropertyChangeListener listener);
 
 	public abstract void setOn(boolean value);
-	
+
 }
