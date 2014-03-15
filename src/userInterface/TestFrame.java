@@ -49,9 +49,10 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		if (evt.getSource() == toggleSwitch) {
 		if ("closed".equalsIgnoreCase(evt.getPropertyName())) {
 			lamp.setOn((Boolean)evt.getNewValue());
 		}
 	}
-
+	}
 }

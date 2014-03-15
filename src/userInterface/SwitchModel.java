@@ -14,20 +14,39 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import userInterface.Interfaces.ISwitchModel;
+import userInterface.Interfaces.PowerState;
 
 public class SwitchModel implements ISwitchModel {
 	protected transient PropertyChangeEvent propertyChangeEvent = null;
 
 	private EventListenerList eventListeners = new EventListenerList();
 	private boolean closed;
+	private PowerState powerState;
+
+	public SwitchModel() {
+		this(false, PowerState.off);
+	}
+
+	public SwitchModel(boolean closed) {
+		this(closed, PowerState.off);
+	}
+
+	public SwitchModel(boolean closed, PowerState powerState) {
+		this.closed = closed;
+		this.powerState = powerState;
+	}
+
+	public SwitchModel(PowerState powerState) {
+		this(false, powerState);
+	}
 
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
-	protected void fireOnPropertyChange(String propertyName, boolean oldValue,
-			boolean newValue) {
+	protected void fireOnPropertyChange(String propertyName, Object oldValue,
+			Object newValue) {
 		Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
@@ -42,6 +61,11 @@ public class SwitchModel implements ISwitchModel {
 	}
 
 	@Override
+	public PowerState getPowerOut() {
+		return closed ? powerState : PowerState.off;
+	}
+
+	@Override
 	public boolean isClosed() {
 		return closed;
 	}
@@ -52,10 +76,33 @@ public class SwitchModel implements ISwitchModel {
 	}
 
 	@Override
-	public void setClosed(boolean value) {
-		if (value != closed) {
-			closed = value;
-			fireOnPropertyChange("closed", !closed, closed);
+	public void setClosed(boolean newValue) {
+		boolean oldValue = closed;
+
+		if (newValue != oldValue) {
+			closed = newValue;
+			fireOnPropertyChange("closed", oldValue, newValue);
+			if (powerState == PowerState.on) {
+				if (closed) {
+					fireOnPropertyChange("powerOut", PowerState.off,
+							PowerState.on);
+				} else {
+					fireOnPropertyChange("powerOut", PowerState.on,
+							PowerState.off);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void setPowerIn(PowerState newValue) {
+		PowerState oldValue = powerState;
+
+		if (oldValue != newValue) {
+			powerState = newValue;
+			if (closed) {
+				fireOnPropertyChange("powerOut", oldValue, newValue);
+			}
 		}
 	}
 }

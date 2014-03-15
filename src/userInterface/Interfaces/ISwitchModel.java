@@ -15,11 +15,15 @@ public interface ISwitchModel {
 	public abstract void addPropertyChangeListener(
 			PropertyChangeListener listener);
 
+	public abstract PowerState getPowerOut();
+
 	public abstract boolean isClosed();
 
 	public abstract void removePropertyChangeListener(
 			PropertyChangeListener listener);
 
 	public abstract void setClosed(boolean value);
-	
+
+	public abstract void setPowerIn(PowerState value);
+
 }
