@@ -63,13 +63,6 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 		return model.isOn();
 	}
 
-	public void setOn(boolean value) {
-		if (isOn() != value) {
-			model.setOn(value);
-			firePropertyChange("on", !value, value);
-		}
-	}
-
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		repaint();
@@ -89,6 +82,13 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 		firePropertyChange("model", oldModel, model);
 	}
 
+	public void setOn(boolean value) {
+		if (isOn() != value) {
+			model.setOn(value);
+			firePropertyChange("on", !value, value);
+		}
+	}
+
 	public void setUI(LampUI ui) {
 		super.setUI(ui);
 	}
@@ -96,10 +96,10 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 	@Override
 	public void updateUI() {
 		if (UIManager.get(getUIClassID()) != null) {
-            setUI((LampUI) UIManager.getUI(this));
-        } else {
-            setUI(new BasicLampUI());
-        }
+			setUI((LampUI) UIManager.getUI(this));
+		} else {
+			setUI(new BasicLampUI());
+		}
 		invalidate();
 	}
 }

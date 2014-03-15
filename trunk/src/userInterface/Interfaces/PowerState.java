@@ -9,5 +9,6 @@
 package userInterface.Interfaces;
 
 public enum PowerState {
-	off, on
+	off,
+	on
 }
