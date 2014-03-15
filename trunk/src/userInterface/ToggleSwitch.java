@@ -79,7 +79,10 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		repaint();
+		if (evt.getSource() == model) {
+			if ("closed".equalsIgnoreCase(evt.getPropertyName()))
+			repaint();
+		}
 	}
 
 	public void setModel(ISwitchModel value) {
