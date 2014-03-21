@@ -27,14 +27,16 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		return new BasicToggleSwitchUI();
 	}
 
-	private BufferedImage closedImage;
-
-	private BufferedImage openImage;
+	private BufferedImage toggleSwitches = loadImage("images/t23vj.jpg"); 
 
 	public BasicToggleSwitchUI() {
 		super();
-		closedImage = loadImage("images/switchUp.jpg");
-		openImage = loadImage("images/switchDown.jpg");
+		// The toggle switch image was purchased for this project from Martin Velchevski through
+		// the GraphicalRiver market place and is used by permission. The image 590preview.jpg
+		// is a stock preview that came from the purchased package, which included a PhotoShop
+		// image in PSD format. I will probably re-scale this image to more cleanly fit the UI
+		// in the future.
+		toggleSwitches = loadImage("images/590preview.jpg"); 
 	}
 
 	@Override
@@ -47,10 +49,10 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		try {
 			URL url = getClass().getResource(imagePath);
 			if (url == null)
-				return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
+				return new BufferedImage(400, 400, BufferedImage.TYPE_4BYTE_ABGR);
 			return ImageIO.read(url);
 		} catch (IOException ioException) {
-			return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
+			return new BufferedImage(400, 400, BufferedImage.TYPE_4BYTE_ABGR);
 		}
 	}
 
@@ -89,12 +91,14 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		graphics.translate(insets.left, insets.top);
 		int width = component.getWidth() - insets.left - insets.right;
 		int height = component.getHeight() - insets.top - insets.bottom;
-
+		// open: 114, 130, 202, 262
+		// closed: 202, 130, 290, 262
 		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
-		BufferedImage image = toggleSwitch.isClosed() ? closedImage : openImage;
+		int left = toggleSwitch.isClosed() ? 308 : 175;
+		int right = toggleSwitch.isClosed() ? 416 : 284;
 
-		graphics.drawImage(image, 0, 0, width, height, 0, 0, image.getWidth(),
-				image.getHeight(), null);
+		graphics.drawImage(toggleSwitches, 0, 0, width, height, left, 202, right,
+				388, null);
 	}
 
 	@Override
