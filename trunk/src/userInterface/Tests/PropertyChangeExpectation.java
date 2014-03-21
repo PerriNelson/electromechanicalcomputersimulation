@@ -8,11 +8,31 @@
 
 package userInterface.Tests;
 
-public class ExpectedPropertyChange {
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class PropertyChangeExpectation {
 	private String propertyName;
 	private boolean propertyChanged = false;
+	
+	public static PropertyChangeListener getListener(
+			final PropertyChangeExpectation[] expectedChanges) {
 
-	public ExpectedPropertyChange(String propertyName) {
+		return 
+		new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+					for (PropertyChangeExpectation expectedChange : expectedChanges) {
+						if (expectedChange.getPropertyName().equalsIgnoreCase(
+								evt.getPropertyName())) {
+							expectedChange.setPropertyChanged();
+						}
+					}
+				}
+		};
+	}
+
+	public PropertyChangeExpectation(String propertyName) {
 		this.propertyName = propertyName;
 	}
 

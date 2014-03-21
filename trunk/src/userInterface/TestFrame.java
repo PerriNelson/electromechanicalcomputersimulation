@@ -35,7 +35,7 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 
 	public TestFrame() {
 		super("UI Components sample");
-		setSize(300, 100);
+		setSize(300, 150);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent event) {
@@ -50,7 +50,7 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 		panel.add(toggleSwitch);
 		lamp = new Lamp();
 		panel.add(lamp);
-		panel.setBackground(new Color(192, 192, 192));
+		panel.setBackground(new Color(60, 60, 60));
 		add(panel, BorderLayout.NORTH);
 	}
 

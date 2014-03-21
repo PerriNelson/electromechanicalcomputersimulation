@@ -23,7 +23,7 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	private static final String closedPropertyName = "closed";
 	private static final String modelPropertyName = "model";
 	private static final String powerOutPropertyName = "powerOut";
-	private static final Dimension size = new Dimension(34, 56);
+	private static final Dimension size = new Dimension(54, 93);
 
 	private ISwitchModel model;
 

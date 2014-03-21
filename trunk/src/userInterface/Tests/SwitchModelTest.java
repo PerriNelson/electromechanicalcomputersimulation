@@ -12,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
@@ -21,23 +20,6 @@ import userInterface.SwitchModel;
 import userInterface.Interfaces.PowerState;
 
 public class SwitchModelTest {
-
-	private PropertyChangeListener expectPropertyChangeEvent(final SwitchModel systemUnderTest,
-			final ExpectedPropertyChange[] expectedChanges) {
-
-		return 
-		new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-					for (ExpectedPropertyChange expectedChange : expectedChanges) {
-						if (expectedChange.getPropertyName().equalsIgnoreCase(
-								evt.getPropertyName())) {
-							expectedChange.setPropertyChanged();
-						}
-					}
-				}
-		};
-	}
 
 	@Test
 	public void GetPowerOut_ReturnsPowerStateOff_WhenClosedFalseAndSetPowerInCalledWithPowerStateOff() {
@@ -187,11 +169,11 @@ public class SwitchModelTest {
 
 	@Test
 	public void SetClosed_DoesNotFirePropertyChanged_WhenCalledWithFalseAndInitializedWithFalse() {
-		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] { new ExpectedPropertyChange(
+		PropertyChangeExpectation[] expectedChanges = new PropertyChangeExpectation[] { new PropertyChangeExpectation(
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(false);
 
-		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = PropertyChangeExpectation.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(false);
@@ -202,12 +184,12 @@ public class SwitchModelTest {
 
 	@Test
 	public void SetClosed_FiresPropertyChanged_WhenCalledWithFalseAndInitializedWithTrue() {
-		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] { new ExpectedPropertyChange(
+		PropertyChangeExpectation[] expectedChanges = new PropertyChangeExpectation[] { new PropertyChangeExpectation(
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(true);
 
 
-		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = PropertyChangeExpectation.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(false);
@@ -218,11 +200,11 @@ public class SwitchModelTest {
 
 	@Test
 	public void SetClosed_FiresPropertyChanged_WhenCalledWithTrueAndInitializedWithFalse() {
-		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] { new ExpectedPropertyChange(
+		PropertyChangeExpectation[] expectedChanges = new PropertyChangeExpectation[] { new PropertyChangeExpectation(
 				"closed") };
 		SwitchModel systemUnderTest = new SwitchModel(false);
 
-		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = PropertyChangeExpectation.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(true);
@@ -233,13 +215,13 @@ public class SwitchModelTest {
 
 	@Test
 	public void SetClosed_FiresPowerOutPropertyChanged_WhenCalledWithTrueAndInitializedWithFalseAndPowerOn() {
-		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] {
-				new ExpectedPropertyChange("closed"),
-				new ExpectedPropertyChange("powerOut")};
+		PropertyChangeExpectation[] expectedChanges = new PropertyChangeExpectation[] {
+				new PropertyChangeExpectation("closed"),
+				new PropertyChangeExpectation("powerOut")};
 		
 		SwitchModel systemUnderTest = new SwitchModel(false, PowerState.on);
 
-		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = PropertyChangeExpectation.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(true);
@@ -250,13 +232,13 @@ public class SwitchModelTest {
 
 	@Test
 	public void SetClosed_FiresPowerOutPropertyChanged_WhenCalledWithFalseAndInitializedWithTrueAndPowerOn() {
-		ExpectedPropertyChange[] expectedChanges = new ExpectedPropertyChange[] {
-				new ExpectedPropertyChange("closed"),
-				new ExpectedPropertyChange("powerOut")};
+		PropertyChangeExpectation[] expectedChanges = new PropertyChangeExpectation[] {
+				new PropertyChangeExpectation("closed"),
+				new PropertyChangeExpectation("powerOut")};
 		
 		SwitchModel systemUnderTest = new SwitchModel(true, PowerState.on);
 
-		PropertyChangeListener listener = expectPropertyChangeEvent(systemUnderTest, expectedChanges);
+		PropertyChangeListener listener = PropertyChangeExpectation.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
 		systemUnderTest.setClosed(false);
