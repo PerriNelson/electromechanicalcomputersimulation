@@ -12,25 +12,25 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class PropertyChangeExpectation {
-	private String propertyName;
-	private boolean propertyChanged = false;
-	
 	public static PropertyChangeListener getListener(
 			final PropertyChangeExpectation[] expectedChanges) {
 
-		return 
-		new PropertyChangeListener() {
+		return new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-					for (PropertyChangeExpectation expectedChange : expectedChanges) {
-						if (expectedChange.getPropertyName().equalsIgnoreCase(
-								evt.getPropertyName())) {
-							expectedChange.setPropertyChanged();
-						}
+				for (PropertyChangeExpectation expectedChange : expectedChanges) {
+					if (expectedChange.getPropertyName().equalsIgnoreCase(
+							evt.getPropertyName())) {
+						expectedChange.setPropertyChanged();
 					}
 				}
+			}
 		};
 	}
+
+	private String propertyName;
+
+	private boolean propertyChanged = false;
 
 	public PropertyChangeExpectation(String propertyName) {
 		this.propertyName = propertyName;
