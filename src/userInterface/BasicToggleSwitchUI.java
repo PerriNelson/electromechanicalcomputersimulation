@@ -23,20 +23,35 @@ import javax.swing.plaf.ComponentUI;
 public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		MouseListener {
 
+	// The toggle switch image was purchased for this project from Martin
+	// Velchevski through
+	// the GraphicalRiver market place and is used by permission. The image
+	// 590preview.jpg
+	// is a stock preview that came from the purchased package, which included a
+	// PhotoShop
+	// image in PSD format. I will probably re-scale this image to more cleanly
+	// fit the UI
+	// in the future.
+	private static final String imagePath = "images/590preview.jpg";
+
+	private static final int imageHeight = 590;
+	private static final int imageWidth = 590;
+	private static final int switchBottom = 388;
+	private static final int switchClosedLeft = 308;
+	private static final int switchClosedRight = 416;
+	private static final int switchOpenLeft = 175;
+	private static final int switchOpenRight = 284;
+	private static final int switchTop = 202;
+
 	public static ComponentUI createUI(JComponent component) {
 		return new BasicToggleSwitchUI();
 	}
 
-	private BufferedImage toggleSwitches = loadImage("images/t23vj.jpg"); 
+	private BufferedImage toggleSwitches;
 
 	public BasicToggleSwitchUI() {
 		super();
-		// The toggle switch image was purchased for this project from Martin Velchevski through
-		// the GraphicalRiver market place and is used by permission. The image 590preview.jpg
-		// is a stock preview that came from the purchased package, which included a PhotoShop
-		// image in PSD format. I will probably re-scale this image to more cleanly fit the UI
-		// in the future.
-		toggleSwitches = loadImage("images/590preview.jpg"); 
+		toggleSwitches = loadImage(imagePath);
 	}
 
 	@Override
@@ -49,10 +64,12 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		try {
 			URL url = getClass().getResource(imagePath);
 			if (url == null)
-				return new BufferedImage(400, 400, BufferedImage.TYPE_4BYTE_ABGR);
+				return new BufferedImage(imageWidth, imageHeight,
+						BufferedImage.TYPE_4BYTE_ABGR);
 			return ImageIO.read(url);
 		} catch (IOException ioException) {
-			return new BufferedImage(400, 400, BufferedImage.TYPE_4BYTE_ABGR);
+			return new BufferedImage(imageWidth, imageHeight,
+					BufferedImage.TYPE_4BYTE_ABGR);
 		}
 	}
 
@@ -91,14 +108,14 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		graphics.translate(insets.left, insets.top);
 		int width = component.getWidth() - insets.left - insets.right;
 		int height = component.getHeight() - insets.top - insets.bottom;
-		// open: 114, 130, 202, 262
-		// closed: 202, 130, 290, 262
-		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
-		int left = toggleSwitch.isClosed() ? 308 : 175;
-		int right = toggleSwitch.isClosed() ? 416 : 284;
 
-		graphics.drawImage(toggleSwitches, 0, 0, width, height, left, 202, right,
-				388, null);
+		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
+		int left = toggleSwitch.isClosed() ? switchClosedLeft : switchOpenLeft;
+		int right = toggleSwitch.isClosed() ? switchClosedRight
+				: switchOpenRight;
+
+		graphics.drawImage(toggleSwitches, 0, 0, width, height, left,
+				switchTop, right, switchBottom, null);
 	}
 
 	@Override
