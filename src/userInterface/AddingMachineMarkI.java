@@ -8,25 +8,14 @@
 
 package userInterface;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitAdder;
 
-public class AddingMachineMarkI extends Frame implements PropertyChangeListener {
+public class AddingMachineMarkI extends BasicUIFrame implements
+		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 	private static final String powerOutPropertyName = "powerOut";
 
@@ -49,7 +38,6 @@ public class AddingMachineMarkI extends Frame implements PropertyChangeListener 
 		frame.setVisible(true);
 	}
 
-	private JLabel labelPlus;
 	private ToggleSwitch toggleSwitchA0;
 	private ToggleSwitch toggleSwitchB0;
 	private ToggleSwitch toggleSwitchA1;
@@ -80,76 +68,45 @@ public class AddingMachineMarkI extends Frame implements PropertyChangeListener 
 	public AddingMachineMarkI() {
 		super("Adding Machine Mark I");
 		setSize(550, 300);
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent event) {
-				System.exit(0);
-			}
-		});
+
 		adder = new EightBitAdder();
 		adder.setPower(true);
 
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridBagLayout());
-		panel.setBackground(new Color(60, 60, 60));
+		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
+		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
+		toggleSwitchA2 = placeToggleSwitch(column2, aRow);
+		toggleSwitchA3 = placeToggleSwitch(column3, aRow);
+		toggleSwitchA4 = placeToggleSwitch(column4, aRow);
+		toggleSwitchA5 = placeToggleSwitch(column5, aRow);
+		toggleSwitchA6 = placeToggleSwitch(column6, aRow);
+		toggleSwitchA7 = placeToggleSwitch(column7, aRow);
 
-		toggleSwitchA0 = placeToggleSwitch(panel, column0, aRow);
-		toggleSwitchA1 = placeToggleSwitch(panel, column1, aRow);
-		toggleSwitchA2 = placeToggleSwitch(panel, column2, aRow);
-		toggleSwitchA3 = placeToggleSwitch(panel, column3, aRow);
-		toggleSwitchA4 = placeToggleSwitch(panel, column4, aRow);
-		toggleSwitchA5 = placeToggleSwitch(panel, column5, aRow);
-		toggleSwitchA6 = placeToggleSwitch(panel, column6, aRow);
-		toggleSwitchA7 = placeToggleSwitch(panel, column7, aRow);
+		toggleSwitchB0 = placeToggleSwitch(column0, bRow);
+		toggleSwitchB1 = placeToggleSwitch(column1, bRow);
+		toggleSwitchB2 = placeToggleSwitch(column2, bRow);
+		toggleSwitchB3 = placeToggleSwitch(column3, bRow);
+		toggleSwitchB4 = placeToggleSwitch(column4, bRow);
+		toggleSwitchB5 = placeToggleSwitch(column5, bRow);
+		toggleSwitchB6 = placeToggleSwitch(column6, bRow);
+		toggleSwitchB7 = placeToggleSwitch(column7, bRow);
 
-		toggleSwitchB0 = placeToggleSwitch(panel, column0, bRow);
-		toggleSwitchB1 = placeToggleSwitch(panel, column1, bRow);
-		toggleSwitchB2 = placeToggleSwitch(panel, column2, bRow);
-		toggleSwitchB3 = placeToggleSwitch(panel, column3, bRow);
-		toggleSwitchB4 = placeToggleSwitch(panel, column4, bRow);
-		toggleSwitchB5 = placeToggleSwitch(panel, column5, bRow);
-		toggleSwitchB6 = placeToggleSwitch(panel, column6, bRow);
-		toggleSwitchB7 = placeToggleSwitch(panel, column7, bRow);
+		lampCO = placeLamp(columnCO, lampRow);
+		lampS0 = placeLamp(column0, lampRow);
+		lampS1 = placeLamp(column1, lampRow);
+		lampS2 = placeLamp(column2, lampRow);
+		lampS3 = placeLamp(column3, lampRow);
+		lampS4 = placeLamp(column4, lampRow);
+		lampS5 = placeLamp(column5, lampRow);
+		lampS6 = placeLamp(column6, lampRow);
+		lampS7 = placeLamp(column7, lampRow);
 
-		lampCO = placeLamp(panel, columnCO, lampRow);
-		lampS0 = placeLamp(panel, column0, lampRow);
-		lampS1 = placeLamp(panel, column1, lampRow);
-		lampS2 = placeLamp(panel, column2, lampRow);
-		lampS3 = placeLamp(panel, column3, lampRow);
-		lampS4 = placeLamp(panel, column4, lampRow);
-		lampS5 = placeLamp(panel, column5, lampRow);
-		lampS6 = placeLamp(panel, column6, lampRow);
-		lampS7 = placeLamp(panel, column7, lampRow);
-
-		labelPlus = new JLabel();
-		setLabel(labelPlus, "images/PlusLabel.jpg", " + ");
-		placeComponent(panel, labelPlus, columnCO, bRow);
-
-		add(panel);
+		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
 	}
 
-	private void placeComponent(JPanel panel, JComponent component, int column,
-			int row) {
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.CENTER;
-		constraints.gridx = column;
-		constraints.gridy = row;
-		constraints.weightx = .1;
-		constraints.weighty = .1;
-		panel.add(component, constraints);
-	}
-
-	private Lamp placeLamp(JPanel panel, int column, int row) {
-		Lamp lamp = new Lamp();
-		placeComponent(panel, lamp, column, row);
-		return lamp;
-	}
-
-	private ToggleSwitch placeToggleSwitch(JPanel panel, int column, int row) {
-		ToggleSwitch toggleSwitch = new ToggleSwitch();
-		toggleSwitch.setPowerIn(PowerState.on);
+	@Override
+	protected ToggleSwitch placeToggleSwitch(int column, int row) {
+		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
-		placeComponent(panel, toggleSwitch, column, row);
 		return toggleSwitch;
 	}
 
@@ -246,17 +203,5 @@ public class AddingMachineMarkI extends Frame implements PropertyChangeListener 
 		lampS5.setOn(adder.getS5());
 		lampS6.setOn(adder.getS6());
 		lampS7.setOn(adder.getS7());
-	}
-
-	private void setLabel(JLabel label, String imagePath, String alternateText) {
-		try {
-			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
-					.getResource(imagePath))));
-		} catch (Exception exception) {
-			label.setText(alternateText);
-			label.setForeground(Color.white);
-			label.setBackground(Color.black);
-			label.setOpaque(true);
-		}
 	}
 }
