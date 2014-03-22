@@ -22,7 +22,7 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 
 	private ILampModel model;
 
-	private static final Dimension size = new Dimension(32, 32);
+	private static final Dimension size = new Dimension(45, 45);
 
 	public Lamp() {
 		super();

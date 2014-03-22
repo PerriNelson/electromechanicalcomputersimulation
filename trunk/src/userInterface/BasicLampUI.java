@@ -30,8 +30,8 @@ public class BasicLampUI extends ToggleSwitchUI {
 
 	public BasicLampUI() {
 		super();
-		offImage = loadImage("images/lampOff.jpg");
-		onImage = loadImage("images/lampOn.jpg");
+		offImage = loadImage("images/LampOff.jpg");
+		onImage = loadImage("images/LampOn.jpg");
 	}
 
 	private BufferedImage loadImage(String imagePath) {
