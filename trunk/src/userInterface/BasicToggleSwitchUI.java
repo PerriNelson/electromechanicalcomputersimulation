@@ -24,14 +24,11 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		MouseListener {
 
 	// The toggle switch image was purchased for this project from Martin
-	// Velchevski through
-	// the GraphicalRiver market place and is used by permission. The image
-	// 590preview.jpg
-	// is a stock preview that came from the purchased package, which included a
-	// PhotoShop
-	// image in PSD format. I will probably re-scale this image to more cleanly
-	// fit the UI
-	// in the future.
+	// Velchevski through  the GraphicalRiver market place and is used by
+	// permission. The image 590preview.jpg is a stock preview that came from
+	// the purchased package, which included a PhotoShop image in PSD format.
+	// I will probably re-scale this image to more cleanly fit the UI in the
+	// future.
 	private static final String imagePath = "images/590preview.jpg";
 
 	private static final int imageHeight = 590;
@@ -84,7 +81,7 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// DO NOTHING.
+		
 	}
 
 	@Override

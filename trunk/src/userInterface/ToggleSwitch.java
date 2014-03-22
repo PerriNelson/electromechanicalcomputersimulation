@@ -8,6 +8,7 @@
 
 package userInterface;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -30,6 +31,7 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	public ToggleSwitch() {
 		super();
 		setSize(size.width, size.height);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
 		init(new SwitchModel());
 	}
 
