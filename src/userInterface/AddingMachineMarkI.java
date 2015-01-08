@@ -112,84 +112,41 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if (evt.getSource() == toggleSwitchA0) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA0(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA1) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA1(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA2) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA2(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA3) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA3(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA4) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA4(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA5) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA5(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA6) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA6(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA7) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setA7(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB0) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB0(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB1) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB1(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB2) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB2(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB3) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB3(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB4) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB4(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB5) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB5(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB6) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB6(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB7) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-				adder.setB7(PowerState.on == evt.getNewValue());
+		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			boolean powerState = PowerState.on == evt.getNewValue();
+			
+			if (evt.getSource() == toggleSwitchA0) {
+				adder.setA0(powerState);
+			} else if (evt.getSource() == toggleSwitchA1) {
+				adder.setA1(powerState);
+			} else if (evt.getSource() == toggleSwitchA2) {
+				adder.setA2(powerState);
+			} else if (evt.getSource() == toggleSwitchA3) {
+				adder.setA3(powerState);
+			} else if (evt.getSource() == toggleSwitchA4) {
+				adder.setA4(powerState);
+			} else if (evt.getSource() == toggleSwitchA5) {
+				adder.setA5(powerState);
+			} else if (evt.getSource() == toggleSwitchA6) {
+				adder.setA6(powerState);
+			} else if (evt.getSource() == toggleSwitchA7) {
+				adder.setA7(powerState);
+			} else if (evt.getSource() == toggleSwitchB0) {
+				adder.setB0(powerState);
+			} else if (evt.getSource() == toggleSwitchB1) {
+				adder.setB1(powerState);
+			} else if (evt.getSource() == toggleSwitchB2) {
+				adder.setB2(powerState);
+			} else if (evt.getSource() == toggleSwitchB3) {
+				adder.setB3(powerState);
+			} else if (evt.getSource() == toggleSwitchB4) {
+				adder.setB4(powerState);
+			} else if (evt.getSource() == toggleSwitchB5) {
+				adder.setB5(powerState);
+			} else if (evt.getSource() == toggleSwitchB6) {
+				adder.setB6(powerState);
+			} else if (evt.getSource() == toggleSwitchB7) {
+				adder.setB7(powerState);
 			}
 		}
 
