@@ -8,8 +8,7 @@
 
 package electroMechanicalLogic.Tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,23 @@ import electroMechanicalLogic.Interfaces.IFourBitRingCounter;
 
 public class FourBitRingCounterTest {
 
+	private static final byte bit0 = 0x01;
+	private static final byte bit1 = 0x02;
+	private static final byte bit2 = 0x04;
+	private static final byte bit3 = 0x08;
+	
 	private IFourBitRingCounter systemUnderTest;
+
+	private byte getCounterValue() {
+		byte value = 0;
+		
+		value |= systemUnderTest.getQ0() ? bit0 : 0;
+		value |= systemUnderTest.getQ1() ? bit1 : 0;
+		value |= systemUnderTest.getQ2() ? bit2 : 0;
+		value |= systemUnderTest.getQ3() ? bit3 : 0;
+		
+		return value;
+	}
 
 	private void initializeCounter() {
 		systemUnderTest.setPower(true);
@@ -32,7 +47,7 @@ public class FourBitRingCounterTest {
 		systemUnderTest.setClear(false);
 		systemUnderTest.step();
 	}
-
+	
 	private void performOneClockCycle() {
 
 		systemUnderTest.setClk(true);
@@ -48,66 +63,61 @@ public class FourBitRingCounterTest {
 	}
 
 	@Test
-	public void test_Q0IsHighAndQ1IsLowAndQ2IsLowAndQ3IsLow_AfterOneClockCycle() {
+	public void test_OnlyBit2IsSet_AfterThreeClockCycles() {
 		initializeCounter();
 
 		performOneClockCycle();
+		performOneClockCycle();
+		performOneClockCycle();
 
-		assertTrue(systemUnderTest.getQ0());
-		assertFalse(systemUnderTest.getQ1());
-		assertFalse(systemUnderTest.getQ2());
-		assertFalse(systemUnderTest.getQ3());
+		byte counterValue = getCounterValue();
+		
+		assertEquals(counterValue, bit2);
 	}
 
 	@Test
-	public void test_Q0IsLowAndQ1IsHighAndQ2IsLowAndQ3IsLow_AfterTwoClockCycles() {
+	public void test_OnlyBitOneIsSet_AfterTwoClockCycles() {
 		initializeCounter();
 
 		performOneClockCycle();
 		performOneClockCycle();
 
-		assertFalse(systemUnderTest.getQ0());
-		assertTrue(systemUnderTest.getQ1());
-		assertFalse(systemUnderTest.getQ2());
-		assertFalse(systemUnderTest.getQ3());
+		byte counterValue = getCounterValue();
+		
+		assertEquals(counterValue, bit1);
 	}
 
 	@Test
-	public void test_Q0IsLowAndQ1IsLowAndQ2IsHighAndQ3IsLow_AfterThreeClockCycles() {
+	public void test_OnlyBitThreeIsSet_AfterFourClockCycles() {
 		initializeCounter();
 
 		performOneClockCycle();
 		performOneClockCycle();
 		performOneClockCycle();
+		performOneClockCycle();
 
-		assertFalse(systemUnderTest.getQ0());
-		assertFalse(systemUnderTest.getQ1());
-		assertTrue(systemUnderTest.getQ2());
-		assertFalse(systemUnderTest.getQ3());
+		byte counterValue = getCounterValue();
+		
+		assertEquals(counterValue, bit3);
 	}
 
 	@Test
-	public void test_Q0IsLowAndQ1IsLowAndQ2IsLowAndQ3IsHigh_AfterFourClockCycles() {
+	public void test_OnlyBitThreeIsSet_WhenClearIsHigh() {
 		initializeCounter();
 
-		performOneClockCycle();
-		performOneClockCycle();
-		performOneClockCycle();
-		performOneClockCycle();
-
-		assertFalse(systemUnderTest.getQ0());
-		assertFalse(systemUnderTest.getQ1());
-		assertFalse(systemUnderTest.getQ2());
-		assertTrue(systemUnderTest.getQ3());
+		byte counterValue = getCounterValue();
+		
+		assertEquals(counterValue, bit3);
 	}
 
 	@Test
-	public void test_Q0IsLowAndQ1IsLowAndQ2IsLowAndQ3IsHigh_WhenClearIsHigh() {
+	public void test_OnlyBitZeroIsSet_AfterOneClockCycle() {
 		initializeCounter();
 
-		assertFalse(systemUnderTest.getQ0());
-		assertFalse(systemUnderTest.getQ1());
-		assertFalse(systemUnderTest.getQ2());
-		assertTrue(systemUnderTest.getQ3());
+		performOneClockCycle();
+
+		byte counterValue = getCounterValue();
+
+		assertEquals(counterValue, bit0);
 	}
 }
