@@ -105,8 +105,8 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		toggleSwitchSave = placeToggleSwitch(columnControl, aRow);
 		toggleSwitchFromLatch = placeToggleSwitch(columnControl, bRow);
 
-		placeLabel("", "Save", columnLabel, aRow, 1);
-		placeLabel("", "From Latch", columnLabel, bRow, 1);
+		placeLabel("images/SaveLabel.jpg", "Save", columnLabel, aRow, 1);
+		placeLabel("images/FromLatchLabel.jpg", "From Latch", columnLabel, bRow, 1);
 
 		lampCO = placeLamp(columnCO, lampRow);
 		lampS0 = placeLamp(column0, lampRow);
