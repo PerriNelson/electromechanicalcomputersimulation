@@ -26,17 +26,16 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	private static final int bRow = 1;
 	private static final int lampRow = 1;
 
-	private static final int columnCO = 0;
-	private static final int columnControl = 10;
-	private static final int columnLabel = 9;
-	private static final int column0 = 8;
-	private static final int column1 = 7;
-	private static final int column2 = 6;
-	private static final int column3 = 5;
-	private static final int column4 = 4;
-	private static final int column5 = 3;
-	private static final int column6 = 2;
-	private static final int column7 = 1;
+	private static final int columnControl = 9;
+	private static final int columnLabel = 8;
+	private static final int column0 = 7;
+	private static final int column1 = 6;
+	private static final int column2 = 5;
+	private static final int column3 = 4;
+	private static final int column4 = 3;
+	private static final int column5 = 2;
+	private static final int column6 = 1;
+	private static final int column7 = 0;
 
 	public static void main(String[] args) {
 		AddingMachineMarkIV frame = new AddingMachineMarkIV();
@@ -53,7 +52,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	private ToggleSwitch toggleSwitchA7;
 	private ToggleSwitch toggleSwitchAdd;
 	private ToggleSwitch toggleSwitchClear;
-	private Lamp lampCO;
 	private Lamp lampS0;
 	private Lamp lampS1;
 	private Lamp lampS2;
@@ -67,7 +65,7 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 
 	public AddingMachineMarkIV() {
 		super("Adding Machine Mark IV");
-		setSize(640, 200);
+		setSize(595, 200);
 
 		adder = new EightBitAdder();
 		adder.setPower(true);
@@ -89,7 +87,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 		placeLabel("images/AddLabel.jpg", "Add", columnLabel, aRow, 1);
 		placeLabel("images/ClearLabel.jpg", "Clear", columnLabel, bRow, 1);
 
-		lampCO = placeLamp(columnCO, lampRow);
 		lampS0 = placeLamp(column0, lampRow);
 		lampS1 = placeLamp(column1, lampRow);
 		lampS2 = placeLamp(column2, lampRow);
@@ -161,7 +158,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 
 		latch.step();
 		
-		lampCO.setOn(adder.getCO());
 		lampS0.setOn(latch.getDO0());
 		lampS1.setOn(latch.getDO1());
 		lampS2.setOn(latch.getDO2());
