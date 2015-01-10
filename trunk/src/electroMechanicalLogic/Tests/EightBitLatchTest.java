@@ -70,14 +70,14 @@ public class EightBitLatchTest {
 	}
 
 	@Test
-	public final void test() {
+	public void test() {
 		for (int testValue = 0; testValue < 0x100; testValue++) {
 			setDI(testValue);
 			systemUnderTest.setW(true);
 			systemUnderTest.step();
 			systemUnderTest.setW(false);
 			systemUnderTest.step();
-			assertEquals(getDO(), testValue);
+			assertEquals(testValue, getDO());
 		}
 	}
 }
