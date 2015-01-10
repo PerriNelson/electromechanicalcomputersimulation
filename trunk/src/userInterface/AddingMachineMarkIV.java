@@ -139,17 +139,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	}
 
 	private void step() {
-		latch.setDI0(adder.getS0());
-		latch.setDI1(adder.getS1());
-		latch.setDI2(adder.getS2());
-		latch.setDI3(adder.getS3());
-		latch.setDI4(adder.getS4());
-		latch.setDI5(adder.getS5());
-		latch.setDI6(adder.getS6());
-		latch.setDI7(adder.getS7());
-
-		latch.step();
-	
 		adder.setB0(latch.getDO0());
 		adder.setB1(latch.getDO1());
 		adder.setB2(latch.getDO2());
@@ -160,15 +149,26 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 		adder.setB7(latch.getDO7());
 
 		adder.step();
+
+		latch.setDI0(adder.getS0());
+		latch.setDI1(adder.getS1());
+		latch.setDI2(adder.getS2());
+		latch.setDI3(adder.getS3());
+		latch.setDI4(adder.getS4());
+		latch.setDI5(adder.getS5());
+		latch.setDI6(adder.getS6());
+		latch.setDI7(adder.getS7());
+
+		latch.step();
 		
 		lampCO.setOn(adder.getCO());
-		lampS0.setOn(adder.getS0());
-		lampS1.setOn(adder.getS1());
-		lampS2.setOn(adder.getS2());
-		lampS3.setOn(adder.getS3());
-		lampS4.setOn(adder.getS4());
-		lampS5.setOn(adder.getS5());
-		lampS6.setOn(adder.getS6());
-		lampS7.setOn(adder.getS7());
+		lampS0.setOn(latch.getDO0());
+		lampS1.setOn(latch.getDO1());
+		lampS2.setOn(latch.getDO2());
+		lampS3.setOn(latch.getDO3());
+		lampS4.setOn(latch.getDO4());
+		lampS5.setOn(latch.getDO5());
+		lampS6.setOn(latch.getDO6());
+		lampS7.setOn(latch.getDO7());
 	}
 }
