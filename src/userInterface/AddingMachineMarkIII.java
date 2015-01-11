@@ -8,8 +8,12 @@
 
 package userInterface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+
+import javax.swing.Timer;
 
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitAdder;
@@ -72,11 +76,12 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	private EightBitAdder adder;
 	private EightBitLatch latch;
 	private EightBitTwoToOneSelector selector;
+	private Timer timer;
 
 	public AddingMachineMarkIII() {
 		super("Adding Machine Mark III");
 		setSize(650, 300);
-
+		
 		adder = new EightBitAdder();
 		adder.setPower(true);
 		latch = new EightBitLatch();
@@ -119,6 +124,15 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		lampS7 = placeLamp(column7, lampRow);
 
 		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
+		
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				step();
+			}
+		});
+		timer.start();
+
 	}
 
 	@Override
@@ -171,8 +185,6 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 				selector.setSelect(powerState);
 			}
 		}
-
-		step();
 	}
 
 	private void step() {

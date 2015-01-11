@@ -13,7 +13,7 @@ import java.beans.PropertyChangeListener;
 
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.SixtyFourKilobyteRAM;
 
 public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		PropertyChangeListener {
