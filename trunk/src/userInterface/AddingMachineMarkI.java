@@ -8,9 +8,14 @@
 
 package userInterface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.Timer;
+
+import userInterface.Interfaces.IMarkAddingMachineMarkIModel;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitAdder;
 
@@ -63,14 +68,20 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private EightBitAdder adder;
+	private IMarkAddingMachineMarkIModel model;
+	private Timer timer;
 
 	public AddingMachineMarkI() {
 		super("Adding Machine Mark I");
-		setSize(550, 300);
 
-		adder = new EightBitAdder();
-		adder.setPower(true);
+		placeControls();
+		initializeModel();
+
+		startAutomation();
+	}
+
+	private void placeControls() {
+		setSize(550, 300);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -103,6 +114,22 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
 	}
 
+	private void initializeModel() {
+		model = new AddingMachineMarkIModel();
+		model.addPropertyChangeListener(this);
+		model.setPower(true);
+	}
+
+	private void startAutomation() {
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				model.step();
+			}
+		});
+		timer.start();
+	}
+
 	@Override
 	protected ToggleSwitch placeToggleSwitch(int column, int row) {
 		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
@@ -116,49 +143,49 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 			boolean powerState = PowerState.on == evt.getNewValue();
 			
 			if (evt.getSource() == toggleSwitchA0) {
-				adder.setA0(powerState);
+				model.setA0(powerState);
 			} else if (evt.getSource() == toggleSwitchA1) {
-				adder.setA1(powerState);
+				model.setA1(powerState);
 			} else if (evt.getSource() == toggleSwitchA2) {
-				adder.setA2(powerState);
+				model.setA2(powerState);
 			} else if (evt.getSource() == toggleSwitchA3) {
-				adder.setA3(powerState);
+				model.setA3(powerState);
 			} else if (evt.getSource() == toggleSwitchA4) {
-				adder.setA4(powerState);
+				model.setA4(powerState);
 			} else if (evt.getSource() == toggleSwitchA5) {
-				adder.setA5(powerState);
+				model.setA5(powerState);
 			} else if (evt.getSource() == toggleSwitchA6) {
-				adder.setA6(powerState);
+				model.setA6(powerState);
 			} else if (evt.getSource() == toggleSwitchA7) {
-				adder.setA7(powerState);
+				model.setA7(powerState);
 			} else if (evt.getSource() == toggleSwitchB0) {
-				adder.setB0(powerState);
+				model.setB0(powerState);
 			} else if (evt.getSource() == toggleSwitchB1) {
-				adder.setB1(powerState);
+				model.setB1(powerState);
 			} else if (evt.getSource() == toggleSwitchB2) {
-				adder.setB2(powerState);
+				model.setB2(powerState);
 			} else if (evt.getSource() == toggleSwitchB3) {
-				adder.setB3(powerState);
+				model.setB3(powerState);
 			} else if (evt.getSource() == toggleSwitchB4) {
-				adder.setB4(powerState);
+				model.setB4(powerState);
 			} else if (evt.getSource() == toggleSwitchB5) {
-				adder.setB5(powerState);
+				model.setB5(powerState);
 			} else if (evt.getSource() == toggleSwitchB6) {
-				adder.setB6(powerState);
+				model.setB6(powerState);
 			} else if (evt.getSource() == toggleSwitchB7) {
-				adder.setB7(powerState);
+				model.setB7(powerState);
 			}
 		}
-
-		adder.step();
-		lampCO.setOn(adder.getCO());
-		lampS0.setOn(adder.getS0());
-		lampS1.setOn(adder.getS1());
-		lampS2.setOn(adder.getS2());
-		lampS3.setOn(adder.getS3());
-		lampS4.setOn(adder.getS4());
-		lampS5.setOn(adder.getS5());
-		lampS6.setOn(adder.getS6());
-		lampS7.setOn(adder.getS7());
+		else if (evt.getSource() == model) {
+			lampCO.setOn(model.getCO());
+			lampS0.setOn(model.getS0());
+			lampS1.setOn(model.getS1());
+			lampS2.setOn(model.getS2());
+			lampS3.setOn(model.getS3());
+			lampS4.setOn(model.getS4());
+			lampS5.setOn(model.getS5());
+			lampS6.setOn(model.getS6());
+			lampS7.setOn(model.getS7());
+		}
 	}
 }
