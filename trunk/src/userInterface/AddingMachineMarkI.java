@@ -15,9 +15,8 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.Timer;
 
-import userInterface.Interfaces.IMarkAddingMachineMarkIModel;
+import userInterface.Interfaces.IAddingMachineMarkIModel;
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.EightBitAdder;
 
 public class AddingMachineMarkI extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -68,7 +67,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private IMarkAddingMachineMarkIModel model;
+	private IAddingMachineMarkIModel model;
 	private Timer timer;
 
 	public AddingMachineMarkI() {
@@ -78,6 +77,12 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 		initializeModel();
 
 		startAutomation();
+	}
+
+	private void initializeModel() {
+		model = new AddingMachineMarkIModel();
+		model.addPropertyChangeListener(this);
+		model.setPower(true);
 	}
 
 	private void placeControls() {
@@ -114,22 +119,6 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
 	}
 
-	private void initializeModel() {
-		model = new AddingMachineMarkIModel();
-		model.addPropertyChangeListener(this);
-		model.setPower(true);
-	}
-
-	private void startAutomation() {
-		timer = new Timer(10, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.step();
-			}
-		});
-		timer.start();
-	}
-
 	@Override
 	protected ToggleSwitch placeToggleSwitch(int column, int row) {
 		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
@@ -141,7 +130,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 			boolean powerState = PowerState.on == evt.getNewValue();
-			
+
 			if (evt.getSource() == toggleSwitchA0) {
 				model.setA0(powerState);
 			} else if (evt.getSource() == toggleSwitchA1) {
@@ -175,8 +164,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 			} else if (evt.getSource() == toggleSwitchB7) {
 				model.setB7(powerState);
 			}
-		}
-		else if (evt.getSource() == model) {
+		} else if (evt.getSource() == model) {
 			lampCO.setOn(model.getCO());
 			lampS0.setOn(model.getS0());
 			lampS1.setOn(model.getS1());
@@ -187,5 +175,15 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 			lampS6.setOn(model.getS6());
 			lampS7.setOn(model.getS7());
 		}
+	}
+
+	private void startAutomation() {
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				model.step();
+			}
+		});
+		timer.start();
 	}
 }

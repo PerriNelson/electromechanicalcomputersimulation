@@ -8,13 +8,15 @@
 
 package userInterface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.Timer;
+
+import userInterface.Interfaces.IAddingMachineMarkIIModel;
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitOnesComplement;
-import electroMechanicalLogic.TwoInputXOrGate;
 
 public class AddingMachineMarkII extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -70,20 +72,26 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private EightBitAdder adder;
-	private EightBitOnesComplement complement;
-	private TwoInputXOrGate overflowUnderflow;
+	private IAddingMachineMarkIIModel model;
+	private Timer timer;
 
 	public AddingMachineMarkII() {
 		super("Adding Machine Mark II");
-		setSize(650, 420);
+		placeControls();
 
-		adder = new EightBitAdder();
-		adder.setPower(true);
-		complement = new EightBitOnesComplement();
-		complement.setPower(true);
-		overflowUnderflow = new TwoInputXOrGate();
-		overflowUnderflow.setPower(true);
+		initializeModel();
+
+		startAutomation();
+	}
+
+	private void initializeModel() {
+		model = new AddingMachineMarkIIModel();
+		model.addPropertyChangeListener(this);
+		model.setPower(true);
+	}
+
+	private void placeControls() {
+		setSize(650, 420);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -105,7 +113,8 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 
 		placeLabel("images/SubtractLabel.jpg", "", columnCO, labelRow0, 1);
 		placeLabel("images/AddLabel.jpg", "", columnCO, labelRow1, 1);
-		placeLabel("images/OverflowUnderflowLabel.jpg", "", columnCO, labelRow2, 1);
+		placeLabel("images/OverflowUnderflowLabel.jpg", "", columnCO,
+				labelRow2, 1);
 		toggleSwitchAddSubtract = placeToggleSwitch(columnCO, bRow);
 
 		lampCO = placeLamp(columnCO, lampRow);
@@ -132,69 +141,61 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 			boolean powerState = PowerState.on == evt.getNewValue();
 
 			if (evt.getSource() == toggleSwitchA0) {
-				adder.setA0(powerState);
+				model.setA0(powerState);
 			} else if (evt.getSource() == toggleSwitchA1) {
-				adder.setA1(powerState);
+				model.setA1(powerState);
 			} else if (evt.getSource() == toggleSwitchA2) {
-				adder.setA2(powerState);
+				model.setA2(powerState);
 			} else if (evt.getSource() == toggleSwitchA3) {
-				adder.setA3(powerState);
+				model.setA3(powerState);
 			} else if (evt.getSource() == toggleSwitchA4) {
-				adder.setA4(powerState);
+				model.setA4(powerState);
 			} else if (evt.getSource() == toggleSwitchA5) {
-				adder.setA5(powerState);
+				model.setA5(powerState);
 			} else if (evt.getSource() == toggleSwitchA6) {
-				adder.setA6(powerState);
+				model.setA6(powerState);
 			} else if (evt.getSource() == toggleSwitchA7) {
-				adder.setA7(powerState);
+				model.setA7(powerState);
 			} else if (evt.getSource() == toggleSwitchB0) {
-				complement.setI0(powerState);
+				model.setB0(powerState);
 			} else if (evt.getSource() == toggleSwitchB1) {
-				complement.setI1(powerState);
+				model.setB1(powerState);
 			} else if (evt.getSource() == toggleSwitchB2) {
-				complement.setI2(powerState);
+				model.setB2(powerState);
 			} else if (evt.getSource() == toggleSwitchB3) {
-				complement.setI3(powerState);
+				model.setB3(powerState);
 			} else if (evt.getSource() == toggleSwitchB4) {
-				complement.setI4(powerState);
+				model.setB4(powerState);
 			} else if (evt.getSource() == toggleSwitchB5) {
-				complement.setI5(powerState);
+				model.setB5(powerState);
 			} else if (evt.getSource() == toggleSwitchB6) {
-				complement.setI6(powerState);
+				model.setB6(powerState);
 			} else if (evt.getSource() == toggleSwitchB7) {
-				complement.setI7(powerState);
+				model.setB7(powerState);
 			} else if (evt.getSource() == toggleSwitchAddSubtract) {
-				complement.setInvert(powerState);
-				adder.setCI(powerState);
-				overflowUnderflow.setB(powerState);
+				model.setSubtract(powerState);
 			}
+		} else if (evt.getSource() == model) {
+			lampCO.setOn(model.getOverflow());
+
+			lampS0.setOn(model.getS0());
+			lampS1.setOn(model.getS1());
+			lampS2.setOn(model.getS2());
+			lampS3.setOn(model.getS3());
+			lampS4.setOn(model.getS4());
+			lampS5.setOn(model.getS5());
+			lampS6.setOn(model.getS6());
+			lampS7.setOn(model.getS7());
 		}
+	}
 
-		complement.step();
-
-		adder.setB0(complement.getO0());
-		adder.setB1(complement.getO1());
-		adder.setB2(complement.getO2());
-		adder.setB3(complement.getO3());
-		adder.setB4(complement.getO4());
-		adder.setB5(complement.getO5());
-		adder.setB6(complement.getO6());
-		adder.setB7(complement.getO7());
-
-		adder.step();
-
-		overflowUnderflow.setA(adder.getCO());
-		overflowUnderflow.step();
-
-		lampCO.setOn(overflowUnderflow.getOutput());
-
-		lampS0.setOn(adder.getS0());
-		lampS1.setOn(adder.getS1());
-		lampS2.setOn(adder.getS2());
-		lampS3.setOn(adder.getS3());
-		lampS4.setOn(adder.getS4());
-		lampS5.setOn(adder.getS5());
-		lampS6.setOn(adder.getS6());
-		lampS7.setOn(adder.getS7());
+	private void startAutomation() {
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				model.step();
+			}
+		});
+		timer.start();
 	}
 }
