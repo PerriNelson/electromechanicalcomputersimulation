@@ -8,15 +8,10 @@
 
 package userInterface;
 
-public class AddingMachineMarkIIIa extends AddingMachineMarkIII {
-	public static final long serialVersionUID = 1l;
+import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 
-	public static void main(String[] args) {
-		AddingMachineMarkIIIa frame = new AddingMachineMarkIIIa();
-		frame.setVisible(true);
-	}
-
-	public AddingMachineMarkIIIa() {
-		super("Adding Machine Mark IIIa", new AddingMachineMarkIIIaModel());
+public class AddingMachineMarkIIIaModel extends AddingMachineMarkIIIModelBase {
+	public AddingMachineMarkIIIaModel() {
+		super(new EightBitEdgeTriggeredLatchWithClear());
 	}
 }

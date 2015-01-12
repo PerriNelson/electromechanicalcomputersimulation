@@ -15,10 +15,8 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.Timer;
 
+import userInterface.Interfaces.IAddingMachineMarkIIIModel;
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitLatch;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
 
 public class AddingMachineMarkIII extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -73,21 +71,31 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private EightBitAdder adder;
-	private EightBitLatch latch;
-	private EightBitTwoToOneSelector selector;
+	private IAddingMachineMarkIIIModel model;
 	private Timer timer;
 
 	public AddingMachineMarkIII() {
-		super("Adding Machine Mark III");
+		this("Adding Machine Mark III", new AddingMachineMarkIIIModel());
+	}
+
+	protected AddingMachineMarkIII(String caption,
+			IAddingMachineMarkIIIModel model) {
+		super(caption);
+		placeControls();
+
+		initializeModel(model);
+
+		startAutomation();
+	}
+
+	protected void initializeModel(IAddingMachineMarkIIIModel theModel) {
+		model = theModel;
+		model.addPropertyChangeListener(this);
+		model.setPower(true);
+	}
+
+	private void placeControls() {
 		setSize(650, 300);
-		
-		adder = new EightBitAdder();
-		adder.setPower(true);
-		latch = new EightBitLatch();
-		latch.setPower(true);
-		selector = new EightBitTwoToOneSelector();
-		selector.setPower(true);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -106,12 +114,13 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		toggleSwitchB5 = placeToggleSwitch(column5, bRow);
 		toggleSwitchB6 = placeToggleSwitch(column6, bRow);
 		toggleSwitchB7 = placeToggleSwitch(column7, bRow);
-		
+
 		toggleSwitchSave = placeToggleSwitch(columnControl, aRow);
 		toggleSwitchFromLatch = placeToggleSwitch(columnControl, bRow);
 
 		placeLabel("images/SaveLabel.jpg", "Save", columnLabel, aRow, 1);
-		placeLabel("images/FromLatchLabel.jpg", "From Latch", columnLabel, bRow, 1);
+		placeLabel("images/FromLatchLabel.jpg", "From Latch", columnLabel,
+				bRow, 1);
 
 		lampCO = placeLamp(columnCO, lampRow);
 		lampS0 = placeLamp(column0, lampRow);
@@ -124,15 +133,6 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		lampS7 = placeLamp(column7, lampRow);
 
 		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
-		
-		timer = new Timer(10, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				step();
-			}
-		});
-		timer.start();
-
 	}
 
 	@Override
@@ -146,89 +146,64 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 			boolean powerState = PowerState.on == evt.getNewValue();
-			
+
 			if (evt.getSource() == toggleSwitchA0) {
-				adder.setA0(powerState);
+				model.setA0(powerState);
 			} else if (evt.getSource() == toggleSwitchA1) {
-				adder.setA1(powerState);
+				model.setA1(powerState);
 			} else if (evt.getSource() == toggleSwitchA2) {
-				adder.setA2(powerState);
+				model.setA2(powerState);
 			} else if (evt.getSource() == toggleSwitchA3) {
-				adder.setA3(powerState);
+				model.setA3(powerState);
 			} else if (evt.getSource() == toggleSwitchA4) {
-				adder.setA4(powerState);
+				model.setA4(powerState);
 			} else if (evt.getSource() == toggleSwitchA5) {
-				adder.setA5(powerState);
+				model.setA5(powerState);
 			} else if (evt.getSource() == toggleSwitchA6) {
-				adder.setA6(powerState);
+				model.setA6(powerState);
 			} else if (evt.getSource() == toggleSwitchA7) {
-				adder.setA7(powerState);
+				model.setA7(powerState);
 			} else if (evt.getSource() == toggleSwitchB0) {
-				selector.setA0(powerState);
+				model.setB0(powerState);
 			} else if (evt.getSource() == toggleSwitchB1) {
-				selector.setA1(powerState);
+				model.setB1(powerState);
 			} else if (evt.getSource() == toggleSwitchB2) {
-				selector.setA2(powerState);
+				model.setB2(powerState);
 			} else if (evt.getSource() == toggleSwitchB3) {
-				selector.setA3(powerState);
+				model.setB3(powerState);
 			} else if (evt.getSource() == toggleSwitchB4) {
-				selector.setA4(powerState);
+				model.setB4(powerState);
 			} else if (evt.getSource() == toggleSwitchB5) {
-				selector.setA5(powerState);
+				model.setB5(powerState);
 			} else if (evt.getSource() == toggleSwitchB6) {
-				selector.setA6(powerState);
+				model.setB6(powerState);
 			} else if (evt.getSource() == toggleSwitchB7) {
-				selector.setA7(powerState);
+				model.setB7(powerState);
 			} else if (evt.getSource() == toggleSwitchSave) {
-				latch.setW(powerState);
+				model.setSave(powerState);
 			} else if (evt.getSource() == toggleSwitchFromLatch) {
-				selector.setSelect(powerState);
+				model.setFromLatch(powerState);
 			}
+		} else if (evt.getSource() == model) {
+			lampCO.setOn(model.getCO());
+			lampS0.setOn(model.getS0());
+			lampS1.setOn(model.getS1());
+			lampS2.setOn(model.getS2());
+			lampS3.setOn(model.getS3());
+			lampS4.setOn(model.getS4());
+			lampS5.setOn(model.getS5());
+			lampS6.setOn(model.getS6());
+			lampS7.setOn(model.getS7());
 		}
 	}
 
-	private void step() {
-		selector.step();
-		
-		adder.setB0(selector.getO0());
-		adder.setB1(selector.getO1());
-		adder.setB2(selector.getO2());
-		adder.setB3(selector.getO3());
-		adder.setB4(selector.getO4());
-		adder.setB5(selector.getO5());
-		adder.setB6(selector.getO6());
-		adder.setB7(selector.getO7());
-
-		adder.step();
-		
-		lampCO.setOn(adder.getCO());
-		lampS0.setOn(adder.getS0());
-		lampS1.setOn(adder.getS1());
-		lampS2.setOn(adder.getS2());
-		lampS3.setOn(adder.getS3());
-		lampS4.setOn(adder.getS4());
-		lampS5.setOn(adder.getS5());
-		lampS6.setOn(adder.getS6());
-		lampS7.setOn(adder.getS7());
-
-		latch.setDI0(adder.getS0());
-		latch.setDI1(adder.getS1());
-		latch.setDI2(adder.getS2());
-		latch.setDI3(adder.getS3());
-		latch.setDI4(adder.getS4());
-		latch.setDI5(adder.getS5());
-		latch.setDI6(adder.getS6());
-		latch.setDI7(adder.getS7());
-
-		latch.step();
-
-		selector.setB0(latch.getDO0());
-		selector.setB1(latch.getDO1());
-		selector.setB2(latch.getDO2());
-		selector.setB3(latch.getDO3());
-		selector.setB4(latch.getDO4());
-		selector.setB5(latch.getDO5());
-		selector.setB6(latch.getDO6());
-		selector.setB7(latch.getDO7());
+	private void startAutomation() {
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				model.step();
+			}
+		});
+		timer.start();
 	}
 }
