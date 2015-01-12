@@ -22,17 +22,17 @@ public class FourBitRingCounterTest {
 	private static final byte bit1 = 0x02;
 	private static final byte bit2 = 0x04;
 	private static final byte bit3 = 0x08;
-	
+
 	private IFourBitRingCounter systemUnderTest;
 
 	private byte getCounterValue() {
 		byte value = 0;
-		
+
 		value |= systemUnderTest.getQ0() ? bit0 : 0;
 		value |= systemUnderTest.getQ1() ? bit1 : 0;
 		value |= systemUnderTest.getQ2() ? bit2 : 0;
 		value |= systemUnderTest.getQ3() ? bit3 : 0;
-		
+
 		return value;
 	}
 
@@ -47,7 +47,7 @@ public class FourBitRingCounterTest {
 		systemUnderTest.setClear(false);
 		systemUnderTest.step();
 	}
-	
+
 	private void performOneClockCycle() {
 
 		systemUnderTest.setClk(true);
@@ -71,7 +71,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 
 		byte counterValue = getCounterValue();
-		
+
 		assertEquals(counterValue, bit2);
 	}
 
@@ -83,7 +83,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 
 		byte counterValue = getCounterValue();
-		
+
 		assertEquals(counterValue, bit1);
 	}
 
@@ -97,7 +97,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 
 		byte counterValue = getCounterValue();
-		
+
 		assertEquals(counterValue, bit3);
 	}
 
@@ -106,7 +106,7 @@ public class FourBitRingCounterTest {
 		initializeCounter();
 
 		byte counterValue = getCounterValue();
-		
+
 		assertEquals(counterValue, bit3);
 	}
 

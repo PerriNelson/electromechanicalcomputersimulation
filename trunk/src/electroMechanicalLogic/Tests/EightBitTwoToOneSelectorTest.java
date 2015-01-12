@@ -73,14 +73,14 @@ public class EightBitTwoToOneSelectorTest {
 	}
 
 	@Test
-	public void test_OnlyO0IsOn_WhenOnlyA0IsOnAndOnlyB0IsOffAndSelectIsOff() {
-		setA(bit0);
-		setB(~bit0);
+	public void test_OnlyO0IsOff_WhenOnlyA0IsOffAndOnlyB0IsnAndSelectIsOff() {
+		setA(~bit0);
+		setB(bit0);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit0);
+
+		assertEquals(getOutput(), ~bit0);
 	}
 
 	@Test
@@ -88,20 +88,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit0);
 		setB(~bit0);
 		systemUnderTest.setSelect(true);
-		
-		systemUnderTest.step();
-		
-		assertEquals(getOutput(), ~bit0);
-	}
 
-	@Test
-	public void test_OnlyO0IsOff_WhenOnlyA0IsOffAndOnlyB0IsnAndSelectIsOff() {
-		setA(~bit0);
-		setB(bit0);
-		systemUnderTest.setSelect(false);
-		
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit0);
 	}
 
@@ -110,21 +99,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit0);
 		setB(bit0);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit0);
 	}
 
 	@Test
-	public void test_OnlyO1IsOn_WhenOnlyA1IsOnAndOnlyB1IsOffAndSelectIsOff() {
-		setA(bit1);
-		setB(~bit1);
+	public void test_OnlyO0IsOn_WhenOnlyA0IsOnAndOnlyB0IsOffAndSelectIsOff() {
+		setA(bit0);
+		setB(~bit0);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit1);
+
+		assertEquals(getOutput(), bit0);
 	}
 
 	@Test
@@ -132,9 +121,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit1);
 		setB(~bit1);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit1);
 	}
 
@@ -143,9 +132,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit1);
 		setB(bit1);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit1);
 	}
 
@@ -154,21 +143,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit1);
 		setB(bit1);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit1);
 	}
 
 	@Test
-	public void test_OnlyO2IsOn_WhenOnlyA2IsOnAndOnlyB2IsOffAndSelectIsOff() {
-		setA(bit2);
-		setB(~bit2);
+	public void test_OnlyO1IsOn_WhenOnlyA1IsOnAndOnlyB1IsOffAndSelectIsOff() {
+		setA(bit1);
+		setB(~bit1);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit2);
+
+		assertEquals(getOutput(), bit1);
 	}
 
 	@Test
@@ -176,9 +165,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit2);
 		setB(~bit2);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit2);
 	}
 
@@ -187,9 +176,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit2);
 		setB(bit2);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit2);
 	}
 
@@ -198,21 +187,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit2);
 		setB(bit2);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit2);
 	}
 
 	@Test
-	public void test_OnlyO3IsOn_WhenOnlyA3IsOnAndOnlyB3IsOffAndSelectIsOff() {
-		setA(bit3);
-		setB(~bit3);
+	public void test_OnlyO2IsOn_WhenOnlyA2IsOnAndOnlyB2IsOffAndSelectIsOff() {
+		setA(bit2);
+		setB(~bit2);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit3);
+
+		assertEquals(getOutput(), bit2);
 	}
 
 	@Test
@@ -220,9 +209,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit3);
 		setB(~bit3);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit3);
 	}
 
@@ -231,9 +220,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit3);
 		setB(bit3);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit3);
 	}
 
@@ -242,32 +231,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit3);
 		setB(bit3);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit3);
 	}
 
 	@Test
-	public void test_OnlyO4IsOn_WhenOnlyA4IsOnAndOnlyB4IsOffAndSelectIsOff() {
-		setA(bit4);
-		setB(~bit4);
+	public void test_OnlyO3IsOn_WhenOnlyA3IsOnAndOnlyB3IsOffAndSelectIsOff() {
+		setA(bit3);
+		setB(~bit3);
 		systemUnderTest.setSelect(false);
-		
-		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit4);
-	}
 
-	@Test
-	public void test_OnlyO4IsOff_WhenOnlyA4IsOnAndOnlyB4IsOffAndSelectIsOn() {
-		setA(bit4);
-		setB(~bit4);
-		systemUnderTest.setSelect(true);
-		
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), ~bit4);
+
+		assertEquals(getOutput(), bit3);
 	}
 
 	@Test
@@ -275,9 +253,20 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit4);
 		setB(bit4);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
+		assertEquals(getOutput(), ~bit4);
+	}
+
+	@Test
+	public void test_OnlyO4IsOff_WhenOnlyA4IsOnAndOnlyB4IsOffAndSelectIsOn() {
+		setA(bit4);
+		setB(~bit4);
+		systemUnderTest.setSelect(true);
+
+		systemUnderTest.step();
+
 		assertEquals(getOutput(), ~bit4);
 	}
 
@@ -286,21 +275,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit4);
 		setB(bit4);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit4);
 	}
 
 	@Test
-	public void test_OnlyO5IsOn_WhenOnlyA5IsOnAndOnlyB5IsOffAndSelectIsOff() {
-		setA(bit5);
-		setB(~bit5);
+	public void test_OnlyO4IsOn_WhenOnlyA4IsOnAndOnlyB4IsOffAndSelectIsOff() {
+		setA(bit4);
+		setB(~bit4);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit5);
+
+		assertEquals(getOutput(), bit4);
 	}
 
 	@Test
@@ -308,9 +297,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit5);
 		setB(~bit5);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit5);
 	}
 
@@ -319,9 +308,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit5);
 		setB(bit5);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit5);
 	}
 
@@ -330,21 +319,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit5);
 		setB(bit5);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit5);
 	}
 
 	@Test
-	public void test_OnlyO6IsOn_WhenOnlyA6IsOnAndOnlyB6IsOffAndSelectIsOff() {
-		setA(bit6);
-		setB(~bit6);
+	public void test_OnlyO5IsOn_WhenOnlyA5IsOnAndOnlyB5IsOffAndSelectIsOff() {
+		setA(bit5);
+		setB(~bit5);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit6);
+
+		assertEquals(getOutput(), bit5);
 	}
 
 	@Test
@@ -352,9 +341,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit6);
 		setB(~bit6);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit6);
 	}
 
@@ -363,9 +352,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit6);
 		setB(bit6);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit6);
 	}
 
@@ -374,21 +363,21 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit6);
 		setB(bit6);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), bit6);
 	}
 
 	@Test
-	public void test_OnlyO7IsOn_WhenOnlyA7IsOnAndOnlyB7IsOffAndSelectIsOff() {
-		setA(bit7);
-		setB(~bit7);
+	public void test_OnlyO6IsOn_WhenOnlyA6IsOnAndOnlyB6IsOffAndSelectIsOff() {
+		setA(bit6);
+		setB(~bit6);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
-		assertEquals(getOutput(), bit7);
+
+		assertEquals(getOutput(), bit6);
 	}
 
 	@Test
@@ -396,9 +385,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(bit7);
 		setB(~bit7);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit7);
 	}
 
@@ -407,9 +396,9 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit7);
 		setB(bit7);
 		systemUnderTest.setSelect(false);
-		
+
 		systemUnderTest.step();
-		
+
 		assertEquals(getOutput(), ~bit7);
 	}
 
@@ -418,9 +407,20 @@ public class EightBitTwoToOneSelectorTest {
 		setA(~bit7);
 		setB(bit7);
 		systemUnderTest.setSelect(true);
-		
+
 		systemUnderTest.step();
-		
+
+		assertEquals(getOutput(), bit7);
+	}
+
+	@Test
+	public void test_OnlyO7IsOn_WhenOnlyA7IsOnAndOnlyB7IsOffAndSelectIsOff() {
+		setA(bit7);
+		setB(~bit7);
+		systemUnderTest.setSelect(false);
+
+		systemUnderTest.step();
+
 		assertEquals(getOutput(), bit7);
 	}
 }
