@@ -8,13 +8,18 @@
 
 package userInterface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+
+import javax.swing.Timer;
 
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitLatch;
+import electroMechanicalLogic.EightBitLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 
 public class AddingMachineMarkIV extends BasicUIFrame implements
@@ -61,7 +66,9 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	private Lamp lampS6;
 	private Lamp lampS7;
 	private EightBitAdder adder;
-	private EightBitEdgeTriggeredLatchWithClear latch;
+	private EightBitLatchWithClear latch;
+	private Timer timer;
+
 
 	public AddingMachineMarkIV() {
 		super("Adding Machine Mark IV");
@@ -69,7 +76,7 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 
 		adder = new EightBitAdder();
 		adder.setPower(true);
-		latch = new EightBitEdgeTriggeredLatchWithClear();
+		latch = new EightBitLatchWithClear();
 		latch.setPower(true);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
@@ -95,6 +102,14 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 		lampS5 = placeLamp(column5, lampRow);
 		lampS6 = placeLamp(column6, lampRow);
 		lampS7 = placeLamp(column7, lampRow);
+		
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				step();
+			}
+		});
+		timer.start();
 	}
 
 	@Override
@@ -131,8 +146,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 				latch.setClr(powerState);
 			}
 		}
-
-		step();
 	}
 
 	private void step() {
