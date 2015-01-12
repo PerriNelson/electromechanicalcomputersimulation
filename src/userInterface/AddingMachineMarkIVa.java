@@ -18,8 +18,6 @@ import javax.swing.Timer;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
-import electroMechanicalLogic.EightBitLatch;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
 
 public class AddingMachineMarkIVa extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -68,7 +66,6 @@ public class AddingMachineMarkIVa extends BasicUIFrame implements
 	private EightBitEdgeTriggeredLatchWithClear latch;
 	private Timer timer;
 
-
 	public AddingMachineMarkIVa() {
 		super("Adding Machine Mark IV");
 		setSize(595, 200);
@@ -101,7 +98,7 @@ public class AddingMachineMarkIVa extends BasicUIFrame implements
 		lampS5 = placeLamp(column5, lampRow);
 		lampS6 = placeLamp(column6, lampRow);
 		lampS7 = placeLamp(column7, lampRow);
-		
+
 		timer = new Timer(10, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -122,7 +119,7 @@ public class AddingMachineMarkIVa extends BasicUIFrame implements
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 			boolean powerState = PowerState.on == evt.getNewValue();
-			
+
 			if (evt.getSource() == toggleSwitchA0) {
 				adder.setA0(powerState);
 			} else if (evt.getSource() == toggleSwitchA1) {
@@ -169,7 +166,7 @@ public class AddingMachineMarkIVa extends BasicUIFrame implements
 		latch.setDI7(adder.getS7());
 
 		latch.step();
-		
+
 		lampS0.setOn(latch.getDO0());
 		lampS1.setOn(latch.getDO1());
 		lampS2.setOn(latch.getDO2());

@@ -28,19 +28,6 @@ public class EightBitEdgeTriggeredLatchWithClearTest extends EightBitLatchTest {
 	}
 
 	@Test
-	public final void test_WhenClearSet_AllAddressesReturnOff() {
-		for (int testValue = 0; testValue < 0x100; testValue++) {
-			setDI(testValue);
-			((IEightBitLatchWithClear) systemUnderTest).setClr(true);
-			systemUnderTest.setW(false);
-			systemUnderTest.step();
-			systemUnderTest.setW(true);
-			systemUnderTest.step();
-			assertEquals(0, getDO());
-		}
-	}
-
-	@Test
 	@Override
 	public void test() {
 		systemUnderTest.step();
@@ -51,6 +38,19 @@ public class EightBitEdgeTriggeredLatchWithClearTest extends EightBitLatchTest {
 			systemUnderTest.setW(true);
 			systemUnderTest.step();
 			assertEquals(testValue, getDO());
+		}
+	}
+
+	@Test
+	public final void test_WhenClearSet_AllAddressesReturnOff() {
+		for (int testValue = 0; testValue < 0x100; testValue++) {
+			setDI(testValue);
+			((IEightBitLatchWithClear) systemUnderTest).setClr(true);
+			systemUnderTest.setW(false);
+			systemUnderTest.step();
+			systemUnderTest.setW(true);
+			systemUnderTest.step();
+			assertEquals(0, getDO());
 		}
 	}
 

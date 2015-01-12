@@ -14,7 +14,6 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitLatch;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
@@ -33,7 +32,7 @@ public abstract class AddingMachineMarkIIIModelBase implements
 	protected AddingMachineMarkIIIModelBase(IEightBitLatch eightBitLatch) {
 		latch = eightBitLatch;
 	}
-	
+
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
@@ -53,55 +52,6 @@ public abstract class AddingMachineMarkIIIModelBase implements
 						.propertyChange(propertyChangeEvent);
 			}
 		}
-	}
-
-	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
-	}
-
-	@Override
-	public void setPower(boolean value) {
-		adder.setPower(true);
-		latch.setPower(true);
-		selector.setPower(true);
-	}
-
-	@Override
-	public void step() {
-		selector.step();
-		
-		adder.setB0(selector.getO0());
-		adder.setB1(selector.getO1());
-		adder.setB2(selector.getO2());
-		adder.setB3(selector.getO3());
-		adder.setB4(selector.getO4());
-		adder.setB5(selector.getO5());
-		adder.setB6(selector.getO6());
-		adder.setB7(selector.getO7());
-
-		adder.step();
-		
-		latch.setDI0(adder.getS0());
-		latch.setDI1(adder.getS1());
-		latch.setDI2(adder.getS2());
-		latch.setDI3(adder.getS3());
-		latch.setDI4(adder.getS4());
-		latch.setDI5(adder.getS5());
-		latch.setDI6(adder.getS6());
-		latch.setDI7(adder.getS7());
-
-		latch.step();
-
-		selector.setB0(latch.getDO0());
-		selector.setB1(latch.getDO1());
-		selector.setB2(latch.getDO2());
-		selector.setB3(latch.getDO3());
-		selector.setB4(latch.getDO4());
-		selector.setB5(latch.getDO5());
-		selector.setB6(latch.getDO6());
-		selector.setB7(latch.getDO7());
-		fireOnPropertyChange();
 	}
 
 	@Override
@@ -147,6 +97,11 @@ public abstract class AddingMachineMarkIIIModelBase implements
 	@Override
 	public boolean getS7() {
 		return adder.getS7();
+	}
+
+	@Override
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -235,8 +190,52 @@ public abstract class AddingMachineMarkIIIModelBase implements
 	}
 
 	@Override
+	public void setPower(boolean value) {
+		adder.setPower(true);
+		latch.setPower(true);
+		selector.setPower(true);
+	}
+
+	@Override
 	public void setSave(boolean value) {
 		latch.setW(value);
+	}
+
+	@Override
+	public void step() {
+		selector.step();
+
+		adder.setB0(selector.getO0());
+		adder.setB1(selector.getO1());
+		adder.setB2(selector.getO2());
+		adder.setB3(selector.getO3());
+		adder.setB4(selector.getO4());
+		adder.setB5(selector.getO5());
+		adder.setB6(selector.getO6());
+		adder.setB7(selector.getO7());
+
+		adder.step();
+
+		latch.setDI0(adder.getS0());
+		latch.setDI1(adder.getS1());
+		latch.setDI2(adder.getS2());
+		latch.setDI3(adder.getS3());
+		latch.setDI4(adder.getS4());
+		latch.setDI5(adder.getS5());
+		latch.setDI6(adder.getS6());
+		latch.setDI7(adder.getS7());
+
+		latch.step();
+
+		selector.setB0(latch.getDO0());
+		selector.setB1(latch.getDO1());
+		selector.setB2(latch.getDO2());
+		selector.setB3(latch.getDO3());
+		selector.setB4(latch.getDO4());
+		selector.setB5(latch.getDO5());
+		selector.setB6(latch.getDO6());
+		selector.setB7(latch.getDO7());
+		fireOnPropertyChange();
 	}
 
 }
