@@ -8,14 +8,11 @@
 
 package userInterface;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.Timer;
-
 import userInterface.Interfaces.IAddingMachineMarkIIIModel;
+import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 
 public class AddingMachineMarkIII extends BasicUIFrame implements
@@ -72,7 +69,7 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	private Lamp lampS6;
 	private Lamp lampS7;
 	private IAddingMachineMarkIIIModel model;
-	private Timer timer;
+	private IAutomationDriver automationDriver;
 
 	public AddingMachineMarkIII() {
 		this("Adding Machine Mark III", new AddingMachineMarkIIIModel());
@@ -197,13 +194,8 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		}
 	}
 
-	private void startAutomation() {
-		timer = new Timer(10, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.step();
-			}
-		});
-		timer.start();
+	public void startAutomation() {
+		automationDriver = new AutomationDriver(model);
+		automationDriver.start();
 	}
 }
