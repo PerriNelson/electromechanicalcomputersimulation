@@ -13,8 +13,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 
 public class EightBitTwoToOneSelectorTest {
 

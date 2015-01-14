@@ -6,20 +6,21 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
+import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
 
-public class AddingMachineMarkIVa extends AddingMachineMarkIV {
+public class AddingMachineMarkIIIa extends AddingMachineMarkIII {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(String[] args) {
-		AddingMachineMarkIVa frame = new AddingMachineMarkIVa();
+		AddingMachineMarkIIIa frame = new AddingMachineMarkIIIa();
 		frame.setVisible(true);
 	}
 
-	public AddingMachineMarkIVa() {
-		super("Adding Machine Mark IVa", new AddingMachineMarkIVModel(
+	public AddingMachineMarkIIIa() {
+		super("Adding Machine Mark IIIa", new AddingMachineMarkIIIModel(
 				new EightBitEdgeTriggeredLatchWithClear()));
 	}
 }

@@ -1,15 +1,15 @@
 /*
-  ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
+  ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
   Attribution-ShareAlike 3.0 Unported License.
   To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
 
-package userInterface.Interfaces;
+package electroMechanicalMachine.Model.Interfaces;
 
-public interface IAddingMachineMarkIIModel extends IMachineModel {
-	public abstract boolean getOverflow();
+public interface IAddingMachineMarkIIIModel extends IMachineModel {
+	public abstract boolean getCO();
 
 	public abstract boolean getS0();
 
@@ -59,5 +59,7 @@ public interface IAddingMachineMarkIIModel extends IMachineModel {
 
 	public abstract void setB7(boolean value);
 
-	public abstract void setSubtract(boolean value);
+	public abstract void setFromLatch(boolean value);
+
+	public abstract void setSave(boolean value);
 }

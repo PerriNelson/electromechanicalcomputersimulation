@@ -6,14 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.Interfaces.IAddingMachineMarkIModel;
+import userInterface.AutomationDriver;
+import userInterface.BasicUIFrame;
+import userInterface.Lamp;
+import userInterface.ToggleSwitch;
 import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
+import electroMechanicalMachine.Model.AddingMachineMarkIModel;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
 public class AddingMachineMarkI extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -113,7 +118,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 		lampS6 = placeLamp(column6, lampRow);
 		lampS7 = placeLamp(column7, lampRow);
 
-		placeLabel("images/PlusLabel.jpg", " + ", columnCO, bRow, 1);
+		placeLabel("Labels/PlusLabel.jpg", " + ", columnCO, bRow, 1);
 	}
 
 	@Override
