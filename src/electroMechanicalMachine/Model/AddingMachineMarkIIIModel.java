@@ -6,7 +6,7 @@ ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Cre
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -18,18 +18,16 @@ import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 
-import userInterface.Interfaces.IAddingMachineMarkIIIModel;
-
-public abstract class AddingMachineMarkIIIModelBase implements
-		IAddingMachineMarkIIIModel {
+public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 
 	private final IEightBitAdder adder = new EightBitAdder();
 	private IEightBitLatch latch;
 	private final IEightBitTwoToOneSelector selector = new EightBitTwoToOneSelector();
 	private EventListenerList eventListeners = new EventListenerList();
 
-	protected AddingMachineMarkIIIModelBase(IEightBitLatch eightBitLatch) {
+	public AddingMachineMarkIIIModel(IEightBitLatch eightBitLatch) {
 		latch = eightBitLatch;
 	}
 

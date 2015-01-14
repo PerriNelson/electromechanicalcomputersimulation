@@ -6,19 +6,26 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import userInterface.Interfaces.IAddingMachineMarkIModel;
 import electroMechanicalLogic.EightBitAdder;
+import electroMechanicalLogic.EightBitOnesComplement;
+import electroMechanicalLogic.TwoInputXOrGate;
+import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
+import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
 
-public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
+public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 
-	private final EightBitAdder adder = new EightBitAdder();
+	private final IEightBitAdder adder = new EightBitAdder();
+	private final IEightBitOnesComplement complement = new EightBitOnesComplement();
+	private final ITwoInputSingleOutputGate overflowUnderflow = new TwoInputXOrGate();
 	private EventListenerList eventListeners = new EventListenerList();
 
 	@Override
@@ -43,8 +50,8 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 	}
 
 	@Override
-	public boolean getCO() {
-		return adder.getCO();
+	public boolean getOverflow() {
+		return overflowUnderflow.getOutput();
 	}
 
 	@Override
@@ -134,57 +141,76 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 
 	@Override
 	public void setB0(boolean value) {
-		adder.setB0(value);
+		complement.setI0(value);
 	}
 
 	@Override
 	public void setB1(boolean value) {
-		adder.setB1(value);
+		complement.setI1(value);
 	}
 
 	@Override
 	public void setB2(boolean value) {
-		adder.setB2(value);
+		complement.setI2(value);
 	}
 
 	@Override
 	public void setB3(boolean value) {
-		adder.setB3(value);
+		complement.setI3(value);
 	}
 
 	@Override
 	public void setB4(boolean value) {
-		adder.setB4(value);
+		complement.setI4(value);
 	}
 
 	@Override
 	public void setB5(boolean value) {
-		adder.setB5(value);
+		complement.setI5(value);
 	}
 
 	@Override
 	public void setB6(boolean value) {
-		adder.setB6(value);
+		complement.setI6(value);
 	}
 
 	@Override
 	public void setB7(boolean value) {
-		adder.setB7(value);
-	}
-
-	@Override
-	public void setCI(boolean value) {
-		adder.setCI(value);
+		complement.setI7(value);
 	}
 
 	@Override
 	public void setPower(boolean value) {
 		adder.setPower(value);
+		complement.setPower(value);
+		overflowUnderflow.setPower(value);
+	}
+
+	@Override
+	public void setSubtract(boolean value) {
+		complement.setInvert(value);
+		adder.setCI(value);
+		overflowUnderflow.setB(value);
 	}
 
 	@Override
 	public void step() {
+		complement.step();
+
+		adder.setB0(complement.getO0());
+		adder.setB1(complement.getO1());
+		adder.setB2(complement.getO2());
+		adder.setB3(complement.getO3());
+		adder.setB4(complement.getO4());
+		adder.setB5(complement.getO5());
+		adder.setB6(complement.getO6());
+		adder.setB7(complement.getO7());
+
 		adder.step();
+
+		overflowUnderflow.setA(adder.getCO());
+		overflowUnderflow.step();
+
 		fireOnPropertyChange();
 	}
 }

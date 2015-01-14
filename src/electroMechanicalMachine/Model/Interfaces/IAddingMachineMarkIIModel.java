@@ -6,9 +6,11 @@
   USA.
  */
 
-package userInterface.Interfaces;
+package electroMechanicalMachine.Model.Interfaces;
 
-public interface IAddingMachineMarkIVModel extends IMachineModel {
+public interface IAddingMachineMarkIIModel extends IMachineModel {
+	public abstract boolean getOverflow();
+
 	public abstract boolean getS0();
 
 	public abstract boolean getS1();
@@ -41,7 +43,21 @@ public interface IAddingMachineMarkIVModel extends IMachineModel {
 
 	public abstract void setA7(boolean value);
 
-	public abstract void setAdd(boolean value);
+	public abstract void setB0(boolean value);
 
-	public abstract void setClear(boolean value);
+	public abstract void setB1(boolean value);
+
+	public abstract void setB2(boolean value);
+
+	public abstract void setB3(boolean value);
+
+	public abstract void setB4(boolean value);
+
+	public abstract void setB5(boolean value);
+
+	public abstract void setB6(boolean value);
+
+	public abstract void setB7(boolean value);
+
+	public abstract void setSubtract(boolean value);
 }

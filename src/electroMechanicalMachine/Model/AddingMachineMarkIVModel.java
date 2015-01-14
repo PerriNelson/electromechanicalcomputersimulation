@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -14,20 +14,18 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitOnesComplement;
-import electroMechanicalLogic.TwoInputXOrGate;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
-import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
-import userInterface.Interfaces.IAddingMachineMarkIIModel;
-
-public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
-
+public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	private final IEightBitAdder adder = new EightBitAdder();
-	private final IEightBitOnesComplement complement = new EightBitOnesComplement();
-	private final ITwoInputSingleOutputGate overflowUnderflow = new TwoInputXOrGate();
+	private IEightBitLatchWithClear latch;
 	private EventListenerList eventListeners = new EventListenerList();
+
+	public AddingMachineMarkIVModel(IEightBitLatchWithClear theLatch) {
+		latch = theLatch;
+	}
 
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -51,48 +49,43 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	}
 
 	@Override
-	public boolean getOverflow() {
-		return overflowUnderflow.getOutput();
-	}
-
-	@Override
 	public boolean getS0() {
-		return adder.getS0();
+		return latch.getDO0();
 	}
 
 	@Override
 	public boolean getS1() {
-		return adder.getS1();
+		return latch.getDO1();
 	}
 
 	@Override
 	public boolean getS2() {
-		return adder.getS2();
+		return latch.getDO2();
 	}
 
 	@Override
 	public boolean getS3() {
-		return adder.getS3();
+		return latch.getDO3();
 	}
 
 	@Override
 	public boolean getS4() {
-		return adder.getS4();
+		return latch.getDO4();
 	}
 
 	@Override
 	public boolean getS5() {
-		return adder.getS5();
+		return latch.getDO5();
 	}
 
 	@Override
 	public boolean getS6() {
-		return adder.getS6();
+		return latch.getDO6();
 	}
 
 	@Override
 	public boolean getS7() {
-		return adder.getS7();
+		return latch.getDO7();
 	}
 
 	@Override
@@ -141,77 +134,46 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	}
 
 	@Override
-	public void setB0(boolean value) {
-		complement.setI0(value);
+	public void setAdd(boolean value) {
+		latch.setW(value);
 	}
 
 	@Override
-	public void setB1(boolean value) {
-		complement.setI1(value);
-	}
-
-	@Override
-	public void setB2(boolean value) {
-		complement.setI2(value);
-	}
-
-	@Override
-	public void setB3(boolean value) {
-		complement.setI3(value);
-	}
-
-	@Override
-	public void setB4(boolean value) {
-		complement.setI4(value);
-	}
-
-	@Override
-	public void setB5(boolean value) {
-		complement.setI5(value);
-	}
-
-	@Override
-	public void setB6(boolean value) {
-		complement.setI6(value);
-	}
-
-	@Override
-	public void setB7(boolean value) {
-		complement.setI7(value);
+	public void setClear(boolean value) {
+		latch.setClr(value);
 	}
 
 	@Override
 	public void setPower(boolean value) {
 		adder.setPower(value);
-		complement.setPower(value);
-		overflowUnderflow.setPower(value);
-	}
-
-	@Override
-	public void setSubtract(boolean value) {
-		complement.setInvert(value);
-		adder.setCI(value);
-		overflowUnderflow.setB(value);
+		latch.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		complement.step();
-
-		adder.setB0(complement.getO0());
-		adder.setB1(complement.getO1());
-		adder.setB2(complement.getO2());
-		adder.setB3(complement.getO3());
-		adder.setB4(complement.getO4());
-		adder.setB5(complement.getO5());
-		adder.setB6(complement.getO6());
-		adder.setB7(complement.getO7());
+		adder.setB0(latch.getDO0());
+		adder.setB1(latch.getDO1());
+		adder.setB2(latch.getDO2());
+		adder.setB3(latch.getDO3());
+		adder.setB4(latch.getDO4());
+		adder.setB5(latch.getDO5());
+		adder.setB6(latch.getDO6());
+		adder.setB7(latch.getDO7());
 
 		adder.step();
 
-		overflowUnderflow.setA(adder.getCO());
-		overflowUnderflow.step();
+		latch.setDI0(adder.getS0());
+		latch.setDI1(adder.getS1());
+		latch.setDI2(adder.getS2());
+		latch.setDI3(adder.getS3());
+		latch.setDI4(adder.getS4());
+		latch.setDI5(adder.getS5());
+		latch.setDI6(adder.getS6());
+		latch.setDI7(adder.getS7());
+
+		latch.step();
 
 		fireOnPropertyChange();
 	}
+
 }

@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import userInterface.Interfaces.IAutomationDriver;
-import userInterface.Interfaces.IMachineModel;
+import electroMechanicalMachine.Model.Interfaces.IMachineModel;
 
 public class AutomationDriver implements IAutomationDriver {
 	private Timer timer;

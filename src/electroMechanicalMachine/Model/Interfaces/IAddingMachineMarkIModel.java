@@ -6,12 +6,10 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
+import electroMechanicalLogic.Interfaces.IEightBitAdder;
 
-public class AddingMachineMarkIIIaModel extends AddingMachineMarkIIIModelBase {
-	public AddingMachineMarkIIIaModel() {
-		super(new EightBitEdgeTriggeredLatchWithClear());
-	}
+public interface IAddingMachineMarkIModel extends IMachineModel, IEightBitAdder {
+
 }

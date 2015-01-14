@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface.Interfaces;
+package electroMechanicalMachine.Model.Interfaces;
 
 import java.beans.PropertyChangeListener;
 

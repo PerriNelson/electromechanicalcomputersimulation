@@ -6,15 +6,20 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.Interfaces.IAddingMachineMarkIVModel;
+import userInterface.AutomationDriver;
+import userInterface.BasicUIFrame;
+import userInterface.Lamp;
+import userInterface.ToggleSwitch;
 import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitLatchWithClear;
+import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
 public class AddingMachineMarkIV extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -99,8 +104,8 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 		toggleSwitchAdd = placeToggleSwitch(columnControl, aRow);
 		toggleSwitchClear = placeToggleSwitch(columnControl, bRow);
 
-		placeLabel("images/AddLabel.jpg", "Add", columnLabel, aRow, 1);
-		placeLabel("images/ClearLabel.jpg", "Clear", columnLabel, bRow, 1);
+		placeLabel("Labels/AddLabel.jpg", "Add", columnLabel, aRow, 1);
+		placeLabel("Labels/ClearLabel.jpg", "Clear", columnLabel, bRow, 1);
 
 		lampS0 = placeLamp(column0, lampRow);
 		lampS1 = placeLamp(column1, lampRow);

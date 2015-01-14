@@ -6,28 +6,33 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.Interfaces.IAddingMachineMarkIIModel;
+import userInterface.AutomationDriver;
+import userInterface.BasicUIFrame;
+import userInterface.Lamp;
+import userInterface.ToggleSwitch;
 import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
+import electroMechanicalLogic.EightBitLatch;
+import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 
-public class AddingMachineMarkII extends BasicUIFrame implements
+public class AddingMachineMarkIII extends BasicUIFrame implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 	private static final String powerOutPropertyName = "powerOut";
 
 	private static final int aRow = 0;
-	private static final int labelRow0 = 1;
-	private static final int bRow = 2;
-	private static final int labelRow1 = 3;
-	private static final int lampRow = 4;
-	private static final int labelRow2 = 5;
+	private static final int bRow = 1;
+	private static final int lampRow = 2;
 
 	private static final int columnCO = 0;
+	private static final int columnControl = 10;
+	private static final int columnLabel = 9;
 	private static final int column0 = 8;
 	private static final int column1 = 7;
 	private static final int column2 = 6;
@@ -38,7 +43,7 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 	private static final int column7 = 1;
 
 	public static void main(String[] args) {
-		AddingMachineMarkII frame = new AddingMachineMarkII();
+		AddingMachineMarkIII frame = new AddingMachineMarkIII();
 		frame.setVisible(true);
 	}
 
@@ -58,8 +63,8 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 	private ToggleSwitch toggleSwitchB6;
 	private ToggleSwitch toggleSwitchA7;
 	private ToggleSwitch toggleSwitchB7;
-	private ToggleSwitch toggleSwitchAddSubtract;
-
+	private ToggleSwitch toggleSwitchSave;
+	private ToggleSwitch toggleSwitchFromLatch;
 	private Lamp lampCO;
 	private Lamp lampS0;
 	private Lamp lampS1;
@@ -69,26 +74,32 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private IAddingMachineMarkIIModel model;
+	private IAddingMachineMarkIIIModel model;
 	private IAutomationDriver automationDriver;
 
-	public AddingMachineMarkII() {
-		super("Adding Machine Mark II");
+	public AddingMachineMarkIII() {
+		this("Adding Machine Mark III", new AddingMachineMarkIIIModel(
+				new EightBitLatch()));
+	}
+
+	protected AddingMachineMarkIII(String caption,
+			IAddingMachineMarkIIIModel model) {
+		super(caption);
 		placeControls();
 
-		initializeModel();
+		initializeModel(model);
 
 		startAutomation();
 	}
 
-	private void initializeModel() {
-		model = new AddingMachineMarkIIModel();
+	protected void initializeModel(IAddingMachineMarkIIIModel theModel) {
+		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
 	private void placeControls() {
-		setSize(650, 420);
+		setSize(650, 300);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -108,11 +119,12 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 		toggleSwitchB6 = placeToggleSwitch(column6, bRow);
 		toggleSwitchB7 = placeToggleSwitch(column7, bRow);
 
-		placeLabel("images/SubtractLabel.jpg", "", columnCO, labelRow0, 1);
-		placeLabel("images/AddLabel.jpg", "", columnCO, labelRow1, 1);
-		placeLabel("images/OverflowUnderflowLabel.jpg", "", columnCO,
-				labelRow2, 1);
-		toggleSwitchAddSubtract = placeToggleSwitch(columnCO, bRow);
+		toggleSwitchSave = placeToggleSwitch(columnControl, aRow);
+		toggleSwitchFromLatch = placeToggleSwitch(columnControl, bRow);
+
+		placeLabel("Labels/SaveLabel.jpg", "Save", columnLabel, aRow, 1);
+		placeLabel("Labels/FromLatchLabel.jpg", "From Latch", columnLabel,
+				bRow, 1);
 
 		lampCO = placeLamp(columnCO, lampRow);
 		lampS0 = placeLamp(column0, lampRow);
@@ -123,6 +135,8 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 		lampS5 = placeLamp(column5, lampRow);
 		lampS6 = placeLamp(column6, lampRow);
 		lampS7 = placeLamp(column7, lampRow);
+
+		placeLabel("Labels/PlusLabel.jpg", " + ", columnCO, bRow, 1);
 	}
 
 	@Override
@@ -169,12 +183,13 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 				model.setB6(powerState);
 			} else if (evt.getSource() == toggleSwitchB7) {
 				model.setB7(powerState);
-			} else if (evt.getSource() == toggleSwitchAddSubtract) {
-				model.setSubtract(powerState);
+			} else if (evt.getSource() == toggleSwitchSave) {
+				model.setSave(powerState);
+			} else if (evt.getSource() == toggleSwitchFromLatch) {
+				model.setFromLatch(powerState);
 			}
 		} else if (evt.getSource() == model) {
-			lampCO.setOn(model.getOverflow());
-
+			lampCO.setOn(model.getCO());
 			lampS0.setOn(model.getS0());
 			lampS1.setOn(model.getS1());
 			lampS2.setOn(model.getS2());

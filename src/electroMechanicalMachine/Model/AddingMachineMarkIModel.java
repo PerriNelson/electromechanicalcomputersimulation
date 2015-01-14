@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -14,19 +14,12 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
-import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
+import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
-import userInterface.Interfaces.IAddingMachineMarkIVModel;
+public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 
-public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
-	private final IEightBitAdder adder = new EightBitAdder();
-	private IEightBitLatchWithClear latch;
+	private final EightBitAdder adder = new EightBitAdder();
 	private EventListenerList eventListeners = new EventListenerList();
-
-	public AddingMachineMarkIVModel(IEightBitLatchWithClear theLatch) {
-		latch = theLatch;
-	}
 
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -50,43 +43,48 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	}
 
 	@Override
+	public boolean getCO() {
+		return adder.getCO();
+	}
+
+	@Override
 	public boolean getS0() {
-		return latch.getDO0();
+		return adder.getS0();
 	}
 
 	@Override
 	public boolean getS1() {
-		return latch.getDO1();
+		return adder.getS1();
 	}
 
 	@Override
 	public boolean getS2() {
-		return latch.getDO2();
+		return adder.getS2();
 	}
 
 	@Override
 	public boolean getS3() {
-		return latch.getDO3();
+		return adder.getS3();
 	}
 
 	@Override
 	public boolean getS4() {
-		return latch.getDO4();
+		return adder.getS4();
 	}
 
 	@Override
 	public boolean getS5() {
-		return latch.getDO5();
+		return adder.getS5();
 	}
 
 	@Override
 	public boolean getS6() {
-		return latch.getDO6();
+		return adder.getS6();
 	}
 
 	@Override
 	public boolean getS7() {
-		return latch.getDO7();
+		return adder.getS7();
 	}
 
 	@Override
@@ -135,46 +133,58 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	}
 
 	@Override
-	public void setAdd(boolean value) {
-		latch.setW(value);
+	public void setB0(boolean value) {
+		adder.setB0(value);
 	}
 
 	@Override
-	public void setClear(boolean value) {
-		latch.setClr(value);
+	public void setB1(boolean value) {
+		adder.setB1(value);
+	}
+
+	@Override
+	public void setB2(boolean value) {
+		adder.setB2(value);
+	}
+
+	@Override
+	public void setB3(boolean value) {
+		adder.setB3(value);
+	}
+
+	@Override
+	public void setB4(boolean value) {
+		adder.setB4(value);
+	}
+
+	@Override
+	public void setB5(boolean value) {
+		adder.setB5(value);
+	}
+
+	@Override
+	public void setB6(boolean value) {
+		adder.setB6(value);
+	}
+
+	@Override
+	public void setB7(boolean value) {
+		adder.setB7(value);
+	}
+
+	@Override
+	public void setCI(boolean value) {
+		adder.setCI(value);
 	}
 
 	@Override
 	public void setPower(boolean value) {
 		adder.setPower(value);
-		latch.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		adder.setB0(latch.getDO0());
-		adder.setB1(latch.getDO1());
-		adder.setB2(latch.getDO2());
-		adder.setB3(latch.getDO3());
-		adder.setB4(latch.getDO4());
-		adder.setB5(latch.getDO5());
-		adder.setB6(latch.getDO6());
-		adder.setB7(latch.getDO7());
-
 		adder.step();
-
-		latch.setDI0(adder.getS0());
-		latch.setDI1(adder.getS1());
-		latch.setDI2(adder.getS2());
-		latch.setDI3(adder.getS3());
-		latch.setDI4(adder.getS4());
-		latch.setDI5(adder.getS5());
-		latch.setDI6(adder.getS6());
-		latch.setDI7(adder.getS7());
-
-		latch.step();
-
 		fireOnPropertyChange();
 	}
-
 }
