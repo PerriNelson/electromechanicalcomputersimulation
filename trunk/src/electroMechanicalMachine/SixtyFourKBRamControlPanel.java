@@ -6,14 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import userInterface.AutomationDriver;
+import userInterface.BasicUIFrame;
+import userInterface.Lamp;
+import userInterface.ToggleSwitch;
+import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
+import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
+import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		PropertyChangeListener {
@@ -50,32 +55,42 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 	}
 
 	private ToggleSwitch[] addressSwitches;
-	private TwoLineToOneLineSelector[] addressSelectors;
 	private ToggleSwitch[] dataSwitches;
-	private TwoLineToOneLineSelector[] dataSelectors;
 	private Lamp[] lamps;
 	private ToggleSwitch write;
-	private TwoLineToOneLineSelector writeSelector;
 	private ToggleSwitch takeOver;
-	private SixtyFourKilobyteRAM ram;
+
+	protected ISixtyFourKilobyteRamControlPanelModel model;
+	protected IAutomationDriver automationDriver;
 
 	public SixtyFourKBRamControlPanel() {
-		super("64KB RAM Control Panel");
-		setSize(925, 370);
+		this("64KB RAM Control Panel",
+				new SixtyFourKilobyteRamControlPanelModel());
 
-		placeLabel("images/64KbRamControlPanelLabel.jpg",
+	}
+
+	public SixtyFourKBRamControlPanel(String caption,
+			ISixtyFourKilobyteRamControlPanelModel theModel) {
+		super(caption);
+		placeControls();
+
+		initializeModel(theModel);
+
+		startAutomation();
+	}
+
+	protected void initializeModel(
+			ISixtyFourKilobyteRamControlPanelModel theModel) {
+		model = theModel;
+		model.addPropertyChangeListener(this);
+		model.setPower(true);
+	}
+
+	private void placeControls() {
+		setSize(925, 370);
+		placeLabel("Labels/64KbRamControlPanelLabel.jpg",
 				"64KB RAM Control Panel", columnF, titleRow, 16);
 
-		addressSelectors = new TwoLineToOneLineSelector[16];
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i] = new TwoLineToOneLineSelector();
-			addressSelectors[i].setPower(true);
-		}
-		dataSelectors = new TwoLineToOneLineSelector[8];
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i] = new TwoLineToOneLineSelector();
-			dataSelectors[i].setPower(true);
-		}
 		addressSwitches = new ToggleSwitch[16];
 		addressSwitches[0] = placeToggleSwitch(column0, addressSwitchRow);
 		addressSwitches[1] = placeToggleSwitch(column1, addressSwitchRow);
@@ -94,22 +109,22 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		addressSwitches[14] = placeToggleSwitch(columnE, addressSwitchRow);
 		addressSwitches[15] = placeToggleSwitch(columnF, addressSwitchRow);
 
-		placeLabel("images/A0Label.jpg", " A0 ", column0, addressLabelRow, 1);
-		placeLabel("images/A1Label.jpg", " A1 ", column1, addressLabelRow, 1);
-		placeLabel("images/A2Label.jpg", " A2 ", column2, addressLabelRow, 1);
-		placeLabel("images/A3Label.jpg", " A3 ", column3, addressLabelRow, 1);
-		placeLabel("images/A4Label.jpg", " A4 ", column4, addressLabelRow, 1);
-		placeLabel("images/A5Label.jpg", " A5 ", column5, addressLabelRow, 1);
-		placeLabel("images/A6Label.jpg", " A6 ", column6, addressLabelRow, 1);
-		placeLabel("images/A7Label.jpg", " A7 ", column7, addressLabelRow, 1);
-		placeLabel("images/A8Label.jpg", " A8 ", column8, addressLabelRow, 1);
-		placeLabel("images/A9Label.jpg", " A9 ", column9, addressLabelRow, 1);
-		placeLabel("images/AALabel.jpg", " AA ", columnA, addressLabelRow, 1);
-		placeLabel("images/ABLabel.jpg", " AB ", columnB, addressLabelRow, 1);
-		placeLabel("images/ACLabel.jpg", " AC ", columnC, addressLabelRow, 1);
-		placeLabel("images/ADLabel.jpg", " AD ", columnD, addressLabelRow, 1);
-		placeLabel("images/AELabel.jpg", " AE ", columnE, addressLabelRow, 1);
-		placeLabel("images/AFLabel.jpg", " AF ", columnF, addressLabelRow, 1);
+		placeLabel("Labels/A0Label.jpg", " A0 ", column0, addressLabelRow, 1);
+		placeLabel("Labels/A1Label.jpg", " A1 ", column1, addressLabelRow, 1);
+		placeLabel("Labels/A2Label.jpg", " A2 ", column2, addressLabelRow, 1);
+		placeLabel("Labels/A3Label.jpg", " A3 ", column3, addressLabelRow, 1);
+		placeLabel("Labels/A4Label.jpg", " A4 ", column4, addressLabelRow, 1);
+		placeLabel("Labels/A5Label.jpg", " A5 ", column5, addressLabelRow, 1);
+		placeLabel("Labels/A6Label.jpg", " A6 ", column6, addressLabelRow, 1);
+		placeLabel("Labels/A7Label.jpg", " A7 ", column7, addressLabelRow, 1);
+		placeLabel("Labels/A8Label.jpg", " A8 ", column8, addressLabelRow, 1);
+		placeLabel("Labels/A9Label.jpg", " A9 ", column9, addressLabelRow, 1);
+		placeLabel("Labels/AALabel.jpg", " AA ", columnA, addressLabelRow, 1);
+		placeLabel("Labels/ABLabel.jpg", " AB ", columnB, addressLabelRow, 1);
+		placeLabel("Labels/ACLabel.jpg", " AC ", columnC, addressLabelRow, 1);
+		placeLabel("Labels/ADLabel.jpg", " AD ", columnD, addressLabelRow, 1);
+		placeLabel("Labels/AELabel.jpg", " AE ", columnE, addressLabelRow, 1);
+		placeLabel("Labels/AFLabel.jpg", " AF ", columnF, addressLabelRow, 1);
 
 		dataSwitches = new ToggleSwitch[8];
 		dataSwitches[0] = placeToggleSwitch(column8, dataSwitchRow);
@@ -122,21 +137,19 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		dataSwitches[7] = placeToggleSwitch(columnF, dataSwitchRow);
 
 		write = placeToggleSwitch(column5, dataSwitchRow);
-		placeLabel("images/WriteLabel.jpg", " Write ", column6, dataLabelRow, 3);
-		writeSelector = new TwoLineToOneLineSelector();
-		writeSelector.setPower(true);
+		placeLabel("Labels/WriteLabel.jpg", " Write ", column6, dataLabelRow, 3);
 		takeOver = placeToggleSwitch(column2, dataSwitchRow);
-		placeLabel("images/TakeOverLabel.jpg", " Take Over ", column3,
+		placeLabel("Labels/TakeOverLabel.jpg", " Take Over ", column3,
 				dataLabelRow, 3);
 
-		placeLabel("images/D0Label.jpg", " D0 ", column8, dataLabelRow, 1);
-		placeLabel("images/D1Label.jpg", " D1 ", column9, dataLabelRow, 1);
-		placeLabel("images/D2Label.jpg", " D2 ", columnA, dataLabelRow, 1);
-		placeLabel("images/D3Label.jpg", " D3 ", columnB, dataLabelRow, 1);
-		placeLabel("images/D4Label.jpg", " D4 ", columnC, dataLabelRow, 1);
-		placeLabel("images/D5Label.jpg", " D5 ", columnD, dataLabelRow, 1);
-		placeLabel("images/D6Label.jpg", " D6 ", columnE, dataLabelRow, 1);
-		placeLabel("images/D7Label.jpg", " D7 ", columnF, dataLabelRow, 1);
+		placeLabel("Labels/D0Label.jpg", " D0 ", column8, dataLabelRow, 1);
+		placeLabel("Labels/D1Label.jpg", " D1 ", column9, dataLabelRow, 1);
+		placeLabel("Labels/D2Label.jpg", " D2 ", columnA, dataLabelRow, 1);
+		placeLabel("Labels/D3Label.jpg", " D3 ", columnB, dataLabelRow, 1);
+		placeLabel("Labels/D4Label.jpg", " D4 ", columnC, dataLabelRow, 1);
+		placeLabel("Labels/D5Label.jpg", " D5 ", columnD, dataLabelRow, 1);
+		placeLabel("Labels/D6Label.jpg", " D6 ", columnE, dataLabelRow, 1);
+		placeLabel("Labels/D7Label.jpg", " D7 ", columnF, dataLabelRow, 1);
 
 		lamps = new Lamp[8];
 		lamps[0] = placeLamp(column8, dataLampRow);
@@ -147,9 +160,6 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		lamps[5] = placeLamp(columnD, dataLampRow);
 		lamps[6] = placeLamp(columnE, dataLampRow);
 		lamps[7] = placeLamp(columnF, dataLampRow);
-
-		ram = new SixtyFourKilobyteRAM();
-		ram.setPower(true);
 	}
 
 	@Override
@@ -161,99 +171,126 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		Object source = evt.getSource();
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			Object source = evt.getSource();
 			Boolean value = PowerState.on == evt.getNewValue();
 			for (int i = 0; i < 16; i++) {
 
 				if (source == addressSwitches[i]) {
 					setAddress(i, value);
-					step();
 					return;
 				}
 			}
 			for (int i = 0; i < 8; i++) {
 				if (source == dataSwitches[i]) {
 					setData(i, value);
-					step();
 					return;
 				}
 			}
 			if (source == write) {
-				writeSelector.setB(value);
-				step();
-				return;
+				model.setCpW(value);
+			} else if (source == takeOver) {
+				model.setCpTakeover(value);
 			}
-			if (source == takeOver) {
-				setTakeOver(value);
-				step();
-				return;
-			}
+		} else if (source == model) {
+			lamps[0].setOn(model.getDO0());
+			lamps[1].setOn(model.getDO1());
+			lamps[2].setOn(model.getDO2());
+			lamps[3].setOn(model.getDO3());
+			lamps[4].setOn(model.getDO4());
+			lamps[5].setOn(model.getDO5());
+			lamps[6].setOn(model.getDO6());
+			lamps[7].setOn(model.getDO7());
 		}
 	}
 
 	private void setAddress(int bit, Boolean value) {
-		addressSelectors[bit].setB(value);
+		switch (bit) {
+		case 0:
+			model.setCpA0(value);
+			break;
+		case 1:
+			model.setCpA1(value);
+			break;
+		case 2:
+			model.setCpA2(value);
+			break;
+		case 3:
+			model.setCpA3(value);
+			break;
+		case 4:
+			model.setCpA4(value);
+			break;
+		case 5:
+			model.setCpA5(value);
+			break;
+		case 6:
+			model.setCpA6(value);
+			break;
+		case 7:
+			model.setCpA7(value);
+			break;
+		case 8:
+			model.setCpA8(value);
+			break;
+		case 9:
+			model.setCpA9(value);
+			break;
+		case 10:
+			model.setCpAA(value);
+			break;
+		case 11:
+			model.setCpAB(value);
+			break;
+		case 12:
+			model.setCpAC(value);
+			break;
+		case 13:
+			model.setCpAD(value);
+			break;
+		case 14:
+			model.setCpAE(value);
+			break;
+		case 15:
+			model.setCpAF(value);
+			break;
+		}
 	}
 
 	private void setData(int bit, Boolean value) {
-		dataSelectors[bit].setB(value);
+		switch (bit) {
+		case 0:
+			model.setCpDI0(value);
+			break;
+		case 1:
+			model.setCpDI1(value);
+			break;
+		case 2:
+			model.setCpDI2(value);
+			break;
+		case 3:
+			model.setCpDI3(value);
+			break;
+		case 4:
+			model.setCpDI4(value);
+			break;
+		case 5:
+			model.setCpDI5(value);
+			break;
+		case 6:
+			model.setCpDI6(value);
+			break;
+		case 7:
+			model.setCpDI7(value);
+			break;
+		}
 	}
 
-	private void setTakeOver(Boolean value) {
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].setSelect(value);
-		}
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].setSelect(value);
-		}
-		writeSelector.setSelect(value);
+	protected void startAutomation() {
+		// The slow RAM takes a while to step so we give the
+		// host machine's thread time to do other things by
+		// driving the automation a bit more slowly.
+		automationDriver = new AutomationDriver(model, 250);
+		automationDriver.start();
 	}
-
-	private void step() {
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].step();
-		}
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].step();
-		}
-		writeSelector.step();
-		ram.setA0(addressSelectors[0].getQ());
-		ram.setA1(addressSelectors[1].getQ());
-		ram.setA2(addressSelectors[2].getQ());
-		ram.setA3(addressSelectors[3].getQ());
-		ram.setA4(addressSelectors[4].getQ());
-		ram.setA5(addressSelectors[5].getQ());
-		ram.setA6(addressSelectors[6].getQ());
-		ram.setA7(addressSelectors[7].getQ());
-		ram.setA8(addressSelectors[8].getQ());
-		ram.setA9(addressSelectors[9].getQ());
-		ram.setAA(addressSelectors[10].getQ());
-		ram.setAB(addressSelectors[11].getQ());
-		ram.setAC(addressSelectors[12].getQ());
-		ram.setAD(addressSelectors[13].getQ());
-		ram.setAE(addressSelectors[14].getQ());
-		ram.setAF(addressSelectors[15].getQ());
-		ram.setDI0(dataSelectors[0].getQ());
-		ram.setDI1(dataSelectors[1].getQ());
-		ram.setDI2(dataSelectors[2].getQ());
-		ram.setDI3(dataSelectors[3].getQ());
-		ram.setDI4(dataSelectors[4].getQ());
-		ram.setDI5(dataSelectors[5].getQ());
-		ram.setDI6(dataSelectors[6].getQ());
-		ram.setDI7(dataSelectors[7].getQ());
-		ram.setW(writeSelector.getQ());
-
-		ram.step();
-
-		lamps[0].setOn(ram.getDO0());
-		lamps[1].setOn(ram.getDO1());
-		lamps[2].setOn(ram.getDO2());
-		lamps[3].setOn(ram.getDO3());
-		lamps[4].setOn(ram.getDO4());
-		lamps[5].setOn(ram.getDO5());
-		lamps[6].setOn(ram.getDO6());
-		lamps[7].setOn(ram.getDO7());
-	}
-
 }
