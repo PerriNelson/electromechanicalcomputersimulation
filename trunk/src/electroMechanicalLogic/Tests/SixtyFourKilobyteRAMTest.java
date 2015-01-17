@@ -24,7 +24,7 @@ public class SixtyFourKilobyteRAMTest extends ThirtyTwoKilobyteRAMTest {
 		super.setA(value);
 		((ISixtyFourKilobyteRAM) systemUnderTest).setAF((value & bitF) == bitF);
 	}
-
+ 
 	@Override
 	@Before
 	public void setUp() throws Exception {

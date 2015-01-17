@@ -17,11 +17,11 @@ import java.beans.PropertyChangeListener;
 import org.junit.Before;
 import org.junit.Test;
 
-// We use the fast RAM because otherwise these tests will take minutes to run.
-// Using the slow RAM should produce the same results, but much more slowly.
 import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
+// We use the fast RAM because otherwise these tests will take minutes to run.
+// Using the slow RAM should produce the same results, but much more slowly.
 
 public class SixtyFourKilobyteRamControlPanelModelTest {
 	private static final int bit0 = 0x01;

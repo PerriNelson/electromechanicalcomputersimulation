@@ -25,7 +25,7 @@ public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {
 				new SixtyFourKilobyteRamControlPanelModel(
 						new SixtyFourKilobyteRAM()));
 	}
-	
+
 	@Override
 	protected void startAutomation() {
 		automationDriver = new AutomationDriver(model);

@@ -25,7 +25,7 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 		super.setA(value);
 		((IOneKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
 	}
-
+ 
 	@Override
 	@Before
 	public void setUp() throws Exception {

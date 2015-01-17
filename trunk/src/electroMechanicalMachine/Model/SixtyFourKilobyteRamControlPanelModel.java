@@ -28,12 +28,12 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 
 	private EventListenerList eventListeners = new EventListenerList();
 
-	
 	public SixtyFourKilobyteRamControlPanelModel() {
 		this(new SixtyFourKilobyteRAM());
 	}
-	
-	public SixtyFourKilobyteRamControlPanelModel(ISixtyFourKilobyteRAM sixtyFourKilobyteRAM) {
+
+	public SixtyFourKilobyteRamControlPanelModel(
+			ISixtyFourKilobyteRAM sixtyFourKilobyteRAM) {
 		ram = sixtyFourKilobyteRAM;
 		addressSelectors = new TwoLineToOneLineSelector[16];
 		for (int i = 0; i < 16; i++) {
@@ -45,7 +45,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		}
 		writeSelector = new TwoLineToOneLineSelector();
 	}
-	
+
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
@@ -68,64 +68,6 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
-	}
-
-	@Override
-	public void setPower(boolean value) {
-		ram.setPower(value);
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].setPower(true);
-		}
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].setPower(true);
-		}
-		writeSelector.setPower(true);
-	}
-
-	@Override
-	public void step() {
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].step();
-		}
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].step();
-		}
-		writeSelector.step();
-
-		ram.setA0(addressSelectors[0].getQ());
-		ram.setA1(addressSelectors[1].getQ());
-		ram.setA2(addressSelectors[2].getQ());
-		ram.setA3(addressSelectors[3].getQ());
-		ram.setA4(addressSelectors[4].getQ());
-		ram.setA5(addressSelectors[5].getQ());
-		ram.setA6(addressSelectors[6].getQ());
-		ram.setA7(addressSelectors[7].getQ());
-		ram.setA8(addressSelectors[8].getQ());
-		ram.setA9(addressSelectors[9].getQ());
-		ram.setAA(addressSelectors[10].getQ());
-		ram.setAB(addressSelectors[11].getQ());
-		ram.setAC(addressSelectors[12].getQ());
-		ram.setAD(addressSelectors[13].getQ());
-		ram.setAE(addressSelectors[14].getQ());
-		ram.setAF(addressSelectors[15].getQ());
-		ram.setDI0(dataSelectors[0].getQ());
-		ram.setDI1(dataSelectors[1].getQ());
-		ram.setDI2(dataSelectors[2].getQ());
-		ram.setDI3(dataSelectors[3].getQ());
-		ram.setDI4(dataSelectors[4].getQ());
-		ram.setDI5(dataSelectors[5].getQ());
-		ram.setDI6(dataSelectors[6].getQ());
-		ram.setDI7(dataSelectors[7].getQ());
-		ram.setW(writeSelector.getQ());
-
-		ram.step();
-		
-		fireOnPropertyChange();
-	}
-
-	@Override
 	public boolean getDO0() {
 		return ram.getDO0();
 	}
@@ -144,6 +86,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	public boolean getDO3() {
 		return ram.getDO3();
 	}
+
 	@Override
 	public boolean getDO4() {
 		return ram.getDO4();
@@ -162,6 +105,11 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	@Override
 	public boolean getDO7() {
 		return ram.getDO7();
+	}
+
+	@Override
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -423,5 +371,58 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	@Override
 	public void setEcW(boolean value) {
 		writeSelector.setA(value);
+	}
+
+	@Override
+	public void setPower(boolean value) {
+		ram.setPower(value);
+		for (int i = 0; i < 16; i++) {
+			addressSelectors[i].setPower(value);
+		}
+		for (int i = 0; i < 8; i++) {
+			dataSelectors[i].setPower(value);
+		}
+		writeSelector.setPower(value);
+	}
+
+	@Override
+	public void step() {
+		for (int i = 0; i < 16; i++) {
+			addressSelectors[i].step();
+		}
+		for (int i = 0; i < 8; i++) {
+			dataSelectors[i].step();
+		}
+		writeSelector.step();
+
+		ram.setA0(addressSelectors[0].getQ());
+		ram.setA1(addressSelectors[1].getQ());
+		ram.setA2(addressSelectors[2].getQ());
+		ram.setA3(addressSelectors[3].getQ());
+		ram.setA4(addressSelectors[4].getQ());
+		ram.setA5(addressSelectors[5].getQ());
+		ram.setA6(addressSelectors[6].getQ());
+		ram.setA7(addressSelectors[7].getQ());
+		ram.setA8(addressSelectors[8].getQ());
+		ram.setA9(addressSelectors[9].getQ());
+		ram.setAA(addressSelectors[10].getQ());
+		ram.setAB(addressSelectors[11].getQ());
+		ram.setAC(addressSelectors[12].getQ());
+		ram.setAD(addressSelectors[13].getQ());
+		ram.setAE(addressSelectors[14].getQ());
+		ram.setAF(addressSelectors[15].getQ());
+		ram.setDI0(dataSelectors[0].getQ());
+		ram.setDI1(dataSelectors[1].getQ());
+		ram.setDI2(dataSelectors[2].getQ());
+		ram.setDI3(dataSelectors[3].getQ());
+		ram.setDI4(dataSelectors[4].getQ());
+		ram.setDI5(dataSelectors[5].getQ());
+		ram.setDI6(dataSelectors[6].getQ());
+		ram.setDI7(dataSelectors[7].getQ());
+		ram.setW(writeSelector.getQ());
+
+		ram.step();
+
+		fireOnPropertyChange();
 	}
 }

@@ -27,7 +27,7 @@ public class FiveHundredTwelveByteRAMTest extends
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
 				.setA8((value & bit8) == bit8);
 	}
-
+ 
 	@Override
 	@Before
 	public void setUp() throws Exception {

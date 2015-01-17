@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import electroMechanicalLogic.ThreeToEightDecoder;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
-
+ 
 public class ThreeToEightDecoderTest {
 
 	private IThreeToEightDecoder systemUnderTest;

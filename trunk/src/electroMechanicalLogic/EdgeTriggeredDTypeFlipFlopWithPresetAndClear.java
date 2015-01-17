@@ -33,6 +33,31 @@ public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 		return norQBar.getOutput();
 	}
 
+	private void internalStep() {
+		norClear.setB(norD.getOutput());
+		norClear.setA(norPreset.getOutput());
+
+		norPreset.setC(norClear.getOutput());
+
+		norClk.setC(norPreset.getOutput());
+		norClk.setA(norD.getOutput());
+
+		norD.setC(norClk.getOutput());
+
+		norQ.setB(norPreset.getOutput());
+		norQ.setA(norQBar.getOutput());
+
+		norQBar.setA(norClk.getOutput());
+		norQBar.setC(norQ.getOutput());
+
+		norClear.step();
+		norPreset.step();
+		norClk.step();
+		norD.step();
+		norQ.step();
+		norQBar.step();
+	}
+
 	@Override
 	public void setClear(boolean value) {
 		norClear.setC(value);
@@ -71,40 +96,15 @@ public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 	public void step() {
 		clkBar.step();
 
-		stepFrontRow();
-		stepFrontRow();
-
-		stepBackRow();
-		stepBackRow();
-	}
-
-	private void stepBackRow() {
-		norQBar.setA(norClk.getOutput());
-		norQBar.setC(norQ.getOutput());
-
-		norQ.setA(norQBar.getOutput());
-		norQ.setB(norPreset.getOutput());
-
-		norQBar.step();
-		norQ.step();
-	}
-
-	private void stepFrontRow() {
-		norD.setC(norClk.getOutput());
-
-		norClk.setA(norD.getOutput());
-		norClk.setB(clkBar.getOutput());
-		norClk.setC(norPreset.getOutput());
-
 		norPreset.setA(clkBar.getOutput());
-		norPreset.setC(norClear.getOutput());
+		norClk.setB(clkBar.getOutput());
 
-		norClear.setB(norD.getOutput());
-		norClear.setC(norPreset.getOutput());
+		internalStep();
+		internalStep();
+		internalStep();
 
-		norD.step();
-		norClk.step();
-		norPreset.step();
-		norClear.step();
+		internalStep();
+		internalStep();
+		internalStep();
 	}
 }

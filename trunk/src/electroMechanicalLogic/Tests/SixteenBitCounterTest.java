@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import electroMechanicalLogic.SixteenBitCounter;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounter;
-
+ 
 public class SixteenBitCounterTest {
 	private static final int bit0 = 0x0001;
 	private static final int bit1 = 0x0002;
