@@ -26,7 +26,7 @@ public class EightBitOnesComplementTest {
 	private static final byte bit5 = 0x20;
 	private static final byte bit6 = 0x40;
 	private static final byte bit7 = (byte) 0x80;
-
+ 
 	private IEightBitOnesComplement systemUnderTest;
 
 	private byte getOutput() {

@@ -27,7 +27,7 @@ public class FourBitRingCounterTest {
 
 	private byte getCounterValue() {
 		byte value = 0;
-
+ 
 		value |= systemUnderTest.getQ0() ? bit0 : 0;
 		value |= systemUnderTest.getQ1() ? bit1 : 0;
 		value |= systemUnderTest.getQ2() ? bit2 : 0;

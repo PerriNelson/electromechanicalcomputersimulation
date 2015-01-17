@@ -24,7 +24,7 @@ public class LatchWithClearTest extends LatchTest {
 		systemUnderTest = new LatchWithClear();
 		systemUnderTest.setPower(true);
 	}
-
+ 
 	@Test
 	public final void test_GetDO_WhenDIIsOnAndClrIsOnAndWIsOnThenWIsOff_ReturnsOff() {
 		systemUnderTest.setDI(true);

@@ -33,7 +33,7 @@ public class OneLineToTwoLineDecoderTest {
 		assertFalse(systemUnderTest.getO0());
 		assertFalse(systemUnderTest.getO1());
 	}
-
+ 
 	@Test
 	public final void test_WhenInputIsOnAndSelectIsOff_Output0IsOnAndOutput1IsOff() {
 		systemUnderTest.setInput(true);

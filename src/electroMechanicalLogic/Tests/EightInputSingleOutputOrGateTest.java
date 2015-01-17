@@ -32,7 +32,7 @@ public class EightInputSingleOutputOrGateTest {
 		systemUnderTest.setI6(false);
 		systemUnderTest.setI7(false);
 	}
-
+ 
 	@Test
 	public void test_GetOutput_WhenAllInputsAreOff_ReturnsOn() {
 		systemUnderTest.step();

@@ -28,7 +28,7 @@ public class InverterTest {
 	public void test_GetOutput_ByItself_ReturnsFalse() {
 		assertFalse(systemUnderTest.getOutput());
 	}
-
+ 
 	@Test
 	public void test_GetOutput_WhenPowerAndInputAreOff_ReturnsFalse() {
 		systemUnderTest.setPower(false);

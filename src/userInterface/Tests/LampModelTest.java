@@ -33,7 +33,7 @@ public class LampModelTest {
 		systemUnderTest.setOn(true);
 		assertTrue(systemUnderTest.isOn());
 	}
-
+ 
 	@Test
 	public void SetOn_DoesNotFireOnPropertyChanged_WhenCalledWithFalseAfterInitialized() {
 		PropertyChangeListener listener = PropertyChangeExpectation

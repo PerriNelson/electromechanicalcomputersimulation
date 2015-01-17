@@ -15,7 +15,7 @@ import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemoryTest extends
 		EightByOneByteRandomAccessMemoryTest {
-
+ 
 	@Override
 	protected void setA(int value) {
 		super.setA(value);

@@ -25,7 +25,7 @@ public class EightBitLatchTest {
 	private static final int bit5 = 0x20;
 	private static final int bit6 = 0x40;
 	private static final int bit7 = 0x80;
-
+ 
 	protected IEightBitLatch systemUnderTest;
 
 	protected int getDO() {

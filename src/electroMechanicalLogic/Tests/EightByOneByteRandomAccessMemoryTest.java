@@ -26,7 +26,7 @@ public class EightByOneByteRandomAccessMemoryTest {
 	protected static final int bit5 = 0x20;
 	protected static final int bit6 = 0x40;
 	protected static final int bit7 = 0x80;
-
+ 
 	protected final int getDO() {
 		int result = 0;
 

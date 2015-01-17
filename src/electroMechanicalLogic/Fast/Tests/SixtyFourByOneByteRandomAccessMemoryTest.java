@@ -20,7 +20,7 @@ public class SixtyFourByOneByteRandomAccessMemoryTest extends
 		electroMechanicalLogic.Tests.SixtyFourByOneByteRandomAccessMemoryTest {
 
 	@Before
-	@Override
+	@Override 
 	public void setUp() throws Exception {
 		systemUnderTest = new SixtyFourByOneByteRandomAccessMemory();
 		systemUnderTest.setPower(true);

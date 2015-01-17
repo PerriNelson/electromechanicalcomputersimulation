@@ -25,7 +25,7 @@ public class SixtyFourKilobyteRAMTest extends
 		systemUnderTest = new SixtyFourKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
-
+ 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
 		int maxAddress = ((IRandomAccessMemory) systemUnderTest)

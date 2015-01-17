@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public class TwoInputNAndGateTest {
 
 	private ITwoInputSingleOutputGate systemUnderTest;
-
+ 
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new electroMechanicalLogic.TwoInputNAndGate();

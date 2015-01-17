@@ -26,8 +26,8 @@ public class EightByOneByteRandomAccessMemoryTest extends
 		systemUnderTest.setPower(true);
 	}
 
-	@Override
 	@Test
+	@Override
 	public void test() {
 		int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
 				.getMaxAddress();
