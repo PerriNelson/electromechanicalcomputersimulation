@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 public class FourKilobyteRAMTest extends
 		electroMechanicalLogic.Tests.FourKilobyteRAMTest {
 
-	@Before 
+	@Before
 	@Override
 	public void setUp() throws Exception {
 		systemUnderTest = new FourKilobyteRAM();

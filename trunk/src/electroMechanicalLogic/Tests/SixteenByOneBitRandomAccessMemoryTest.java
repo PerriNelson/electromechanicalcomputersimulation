@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import electroMechanicalLogic.SixteenByOneBitRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
- 
+
 public class SixteenByOneBitRandomAccessMemoryTest {
 	private static ISixteenByOneBitRandomAccessMemory systemUnderTest;
 	private static final int bit0 = 0x01;

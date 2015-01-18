@@ -25,7 +25,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest = new TwoLineToOneLineSelector();
 		systemUnderTest.setPower(true);
 	}
- 
+
 	@Test
 	public void test_GetQ_WhenAIsOffAndBIsOffAndSelectIsOff_ReturnsOff() {
 		systemUnderTest.setA(false);

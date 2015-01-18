@@ -17,7 +17,7 @@ public class ThirtyTwoKilobyteRAMTest extends FourKilobyteRAMTest {
 	protected static final int bitC = 0x1000;
 	protected static final int bitD = 0x2000;
 	protected static final int bitE = 0x4000;
- 
+
 	@Override
 	protected void setA(int value) {
 		super.setA(value);

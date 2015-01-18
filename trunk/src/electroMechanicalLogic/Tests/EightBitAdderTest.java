@@ -25,7 +25,7 @@ public class EightBitAdderTest {
 	private static final int bit6 = 0x40;
 	private static final int bit7 = 0x80;
 	private static final int bit8 = 0x100;
- 
+
 	private IEightBitAdder systemUnderTest;
 
 	private int getSum() {

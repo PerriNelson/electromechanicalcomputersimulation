@@ -18,7 +18,7 @@ import electroMechanicalLogic.EdgeTriggeredDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 
 public class EdgeTriggeredDTypeFlipFlopTest {
- 
+
 	IDTypeFlipFlop systemUnderTest;
 
 	@Before

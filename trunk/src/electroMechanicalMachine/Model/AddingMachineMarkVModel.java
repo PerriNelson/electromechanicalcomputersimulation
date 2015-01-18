@@ -15,6 +15,7 @@ import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
@@ -32,6 +33,8 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	private IEightBitLatchWithClear latch;
 	private IEightBitAdder adder;
 	private IOscillator clock;
+	private Inverter clearBar;
+	private Inverter clkBar;
 	private ISixteenBitCounterWithClear counter;
 
 	public AddingMachineMarkVModel() {
@@ -44,6 +47,8 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 		latch = new EightBitEdgeTriggeredLatchWithClear();
 		clock = new Oscillator();
 		counter = new SixteenBitCounterWithClear();
+		clearBar = new Inverter();
+		clkBar = new Inverter();
 	}
 
 	@Override
@@ -236,6 +241,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	public void setClear(boolean value) {
 		latch.setClr(value);
 		counter.setClear(value);
+		clearBar.setInput(value);
 	}
 
 	@Override
@@ -283,8 +289,8 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 		controlPanel.setPower(value);
 		adder.setPower(value);
 		latch.setPower(value);
-		clock.setPower(value);
 		counter.setPower(value);
+		clearBar.setPower(value);
 	}
 
 	@Override
@@ -347,13 +353,19 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 		latch.setDI6(adder.getS6());
 		latch.setDI7(adder.getS7());
 
+		clearBar.step();
+		clock.setPower(clearBar.getOutput());
 		clock.step();
 
-		latch.setW(clock.getOutput());
+		clkBar.setPower(clearBar.getOutput());
+		clkBar.setInput(clock.getOutput());
+		clkBar.step();
+
+		latch.setW(clkBar.getOutput());
 
 		latch.step();
 
-		counter.setClk(clock.getOutput());
+		counter.setClk(clkBar.getOutput());
 		counter.step();
 
 		fireOnPropertyChange();

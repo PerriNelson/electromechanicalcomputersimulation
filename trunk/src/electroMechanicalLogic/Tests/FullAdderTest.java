@@ -23,7 +23,7 @@ public class FullAdderTest {
 	public void setUp() throws Exception {
 		systemUnderTest = new electroMechanicalLogic.FullAdder();
 	}
- 
+
 	@Test
 	public final void test_GetCO_WhenPowerIsOffAndAIsOffAndBIsOffAndCIIsOff_ReturnsOff() {
 		systemUnderTest.setPower(false);

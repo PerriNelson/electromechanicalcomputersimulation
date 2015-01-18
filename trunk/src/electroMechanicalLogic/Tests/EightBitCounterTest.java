@@ -17,7 +17,7 @@ import electroMechanicalLogic.EightBitCounter;
 import electroMechanicalLogic.Interfaces.IEightBitCounter;
 
 public class EightBitCounterTest {
- 
+
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;

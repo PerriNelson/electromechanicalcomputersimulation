@@ -25,7 +25,7 @@ public class LevelTriggeredDTypeFlipFlopTest {
 		systemUnderTest = new LevelTriggeredDTypeFlipFlop();
 		systemUnderTest.setPower(true);
 	}
- 
+
 	@Test
 	public final void test_GetQ_WhenClockIsOnAndDataIsOff_ReturnsOff() {
 		systemUnderTest.setD(false);

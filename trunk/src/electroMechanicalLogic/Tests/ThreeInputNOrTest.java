@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import electroMechanicalLogic.ThreeInputNOrGate;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
- 
+
 public class ThreeInputNOrTest {
 	private IThreeInputSingleOutputGate systemUnderTest;
 

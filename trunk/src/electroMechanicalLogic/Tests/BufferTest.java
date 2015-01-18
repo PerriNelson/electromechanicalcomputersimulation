@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.IRelay;
 public class BufferTest {
 
 	private IRelay systemUnderTest;
- 
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new Buffer();

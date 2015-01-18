@@ -20,7 +20,7 @@ public class OneKilobyteRAMTest extends
 		electroMechanicalLogic.Tests.OneKilobyteRAMTest {
 
 	@Before
-	@Override 
+	@Override
 	public void setUp() throws Exception {
 		systemUnderTest = new OneKilobyteRAM();
 		systemUnderTest.setPower(true);

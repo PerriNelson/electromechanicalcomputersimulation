@@ -25,7 +25,7 @@ public class FourKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 		((IFourKilobyteRAM) systemUnderTest).setAA((value & bitA) == bitA);
 		((IFourKilobyteRAM) systemUnderTest).setAB((value & bitB) == bitB);
 	}
- 
+
 	@Override
 	@Before
 	public void setUp() throws Exception {

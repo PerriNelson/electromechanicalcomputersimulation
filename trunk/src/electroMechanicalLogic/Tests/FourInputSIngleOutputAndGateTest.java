@@ -25,7 +25,7 @@ public class FourInputSIngleOutputAndGateTest {
 		systemUnderTest = new FourInputSingleOutputAndGate();
 		systemUnderTest.setPower(true);
 	}
- 
+
 	@Test
 	public void test_GetOutput_WhenAIsOffAndBIsOffAndCIsOffAndDIsOff_ReturnsOff() {
 		systemUnderTest.setA(false);

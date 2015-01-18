@@ -32,7 +32,7 @@ public class AddingMachineMarkIIIModelTest {
 	private static final int bit7 = 0x80;
 	private IAddingMachineMarkIIIModel systemUnderTest;
 	private boolean eventFired = false;
- 
+
 	private int getSum() {
 		int sum = 0;
 		if (systemUnderTest.getS0())

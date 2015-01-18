@@ -24,7 +24,7 @@ public class TwoInputAndGateTest {
 	public void setUp() throws Exception {
 		systemUnderTest = new electroMechanicalLogic.TwoInputAndGate();
 	}
- 
+
 	@Test
 	public final void test_GetOutput_WhenPowerIsOffAIsOnAndBIsOn_ReturnsFalse() {
 		systemUnderTest.setPower(false);

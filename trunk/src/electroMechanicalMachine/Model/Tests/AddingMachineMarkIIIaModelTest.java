@@ -20,7 +20,7 @@ import org.junit.Test;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
- 
+
 public class AddingMachineMarkIIIaModelTest {
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;

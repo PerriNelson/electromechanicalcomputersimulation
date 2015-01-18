@@ -42,7 +42,7 @@ public class AddingMachineMarkVModelTest {
 	private static final boolean off = false;
 	private IAddingMachineMarkVModel systemUnderTest;
 	private boolean eventFired = false;
- 
+
 	private int getDataOut() {
 		int dataOut = 0;
 		if (systemUnderTest.getDO0())
@@ -124,7 +124,9 @@ public class AddingMachineMarkVModelTest {
 	public void setUp() throws Exception {
 		systemUnderTest = new AddingMachineMarkVModel(
 				new SixtyFourKilobyteRAM());
-		systemUnderTest.setPower(true);
+		systemUnderTest.setPower(on);
+		systemUnderTest.setClear(on);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.step();
 	}
 
@@ -2532,6 +2534,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit0On_SumHasOnlyBit0OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI0(on);
 		systemUnderTest.setW(on);
@@ -2553,6 +2556,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit1On_SumHasOnlyBit1OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI1(on);
 		systemUnderTest.setW(on);
@@ -2574,6 +2578,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit2On_SumHasOnlyBit2OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI2(on);
 		systemUnderTest.setW(on);
@@ -2584,6 +2589,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit3On_SumHasOnlyBit3OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI3(on);
 		systemUnderTest.setW(on);
@@ -2594,6 +2600,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit4On_SumHasOnlyBit4OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI4(on);
 		systemUnderTest.setW(on);
@@ -2604,6 +2611,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit5On_SumHasOnlyBit5OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI5(on);
 		systemUnderTest.setW(on);
@@ -2614,6 +2622,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit6On_SumHasOnlyBit6OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI6(on);
 		systemUnderTest.setW(on);
@@ -2624,6 +2633,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroHasOnlyBit7On_SumHasOnlyBit7OnAfterFirstAddition() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI7(on);
 		systemUnderTest.setW(on);
@@ -2634,6 +2644,7 @@ public class AddingMachineMarkVModelTest {
 
 	@Test
 	public void test_WhenTakeoverIsOnDataAtAddressZeroIs1_SumIsTwoAfterTwoCycles() {
+		systemUnderTest.setClear(off);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setDI0(on);
 		systemUnderTest.setW(on);
