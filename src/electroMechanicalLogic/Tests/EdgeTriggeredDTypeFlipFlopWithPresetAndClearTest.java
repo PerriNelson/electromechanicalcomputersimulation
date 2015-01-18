@@ -95,41 +95,6 @@ public class EdgeTriggeredDTypeFlipFlopWithPresetAndClearTest {
 	}
 
 	@Test
-	public final void test_GetQBar_WhenDTurnsOffAndClockTurnsOn_ReturnsOn() {
-		systemUnderTest.setD(on);
-		systemUnderTest.step();
-		systemUnderTest.setClk(on);
-		systemUnderTest.step();
-		systemUnderTest.setD(off);
-		systemUnderTest.setClk(off);
-		systemUnderTest.step();
-		systemUnderTest.setClk(on);
-		systemUnderTest.step();
-
-		assertEquals(on, systemUnderTest.getQBar());
-	}
-
-	@Test
-	public final void test_GetQBar_WhenDIsOnAndClockTransitionsToOn_ReturnsOff() {
-		systemUnderTest.setD(on);
-		systemUnderTest.step();
-		systemUnderTest.setClk(on);
-		systemUnderTest.step();
-
-		assertEquals(off, systemUnderTest.getQBar());
-	}
-
-	@Test
-	public final void test_GetQBar_WhenClockIsOnAndDTransitionsToOn_ReturnsOn() {
-		systemUnderTest.setClk(on);
-		systemUnderTest.step();
-		systemUnderTest.setD(on);
-		systemUnderTest.step();
-
-		assertEquals(on, systemUnderTest.getQBar());
-	}
-
-	@Test
 	public final void test_GetQ_WhenPresetIsOn_ReturnsOn() {
 		systemUnderTest.setPreset(on);
 		systemUnderTest.step();
@@ -169,6 +134,41 @@ public class EdgeTriggeredDTypeFlipFlopWithPresetAndClearTest {
 		systemUnderTest.setClear(on);
 		systemUnderTest.step();
 		systemUnderTest.setClear(off);
+		systemUnderTest.step();
+
+		assertEquals(on, systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenClockIsOnAndDTransitionsToOn_ReturnsOn() {
+		systemUnderTest.setClk(on);
+		systemUnderTest.step();
+		systemUnderTest.setD(on);
+		systemUnderTest.step();
+
+		assertEquals(on, systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenDIsOnAndClockTransitionsToOn_ReturnsOff() {
+		systemUnderTest.setD(on);
+		systemUnderTest.step();
+		systemUnderTest.setClk(on);
+		systemUnderTest.step();
+
+		assertEquals(off, systemUnderTest.getQBar());
+	}
+
+	@Test
+	public final void test_GetQBar_WhenDTurnsOffAndClockTurnsOn_ReturnsOn() {
+		systemUnderTest.setD(on);
+		systemUnderTest.step();
+		systemUnderTest.setClk(on);
+		systemUnderTest.step();
+		systemUnderTest.setD(off);
+		systemUnderTest.setClk(off);
+		systemUnderTest.step();
+		systemUnderTest.setClk(on);
 		systemUnderTest.step();
 
 		assertEquals(on, systemUnderTest.getQBar());

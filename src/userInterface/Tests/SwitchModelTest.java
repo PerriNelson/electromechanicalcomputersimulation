@@ -29,7 +29,7 @@ public class SwitchModelTest {
 		PowerState actualValue = systemUnderTest.getPowerOut();
 
 		assertEquals(PowerState.off, actualValue);
-	} 
+	}
 
 	@Test
 	public void GetPowerOut_ReturnsPowerStateOff_WhenClosedFalseAndSetPowerInCalledWithPowerStateOn() {

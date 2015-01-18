@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.ILatch;
 
 public class LatchTest {
 	protected ILatch systemUnderTest;
- 
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new Latch();

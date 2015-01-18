@@ -27,7 +27,7 @@ public class FrequencyDividerTest {
 		systemUnderTest.setPower(true);
 		systemUnderTest.step();
 	}
- 
+
 	@Test
 	public final void test_GetQ_AtStartOfSecondClockCycle_ReturnsOn() {
 		systemUnderTest.setClk(true);

@@ -27,7 +27,7 @@ public class PropertyChangeExpectation {
 			}
 		};
 	}
- 
+
 	private String propertyName;
 
 	private boolean propertyChanged = false;

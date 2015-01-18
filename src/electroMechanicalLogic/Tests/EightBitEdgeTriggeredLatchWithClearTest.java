@@ -26,7 +26,7 @@ public class EightBitEdgeTriggeredLatchWithClearTest extends EightBitLatchTest {
 		((IEightBitLatchWithClear) systemUnderTest).setClr(false);
 		systemUnderTest.step();
 	}
- 
+
 	@Test
 	@Override
 	public void test() {

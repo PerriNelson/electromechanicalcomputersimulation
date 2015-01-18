@@ -31,7 +31,7 @@ public class HalfAdderTest {
 		systemUnderTest.step();
 		assertFalse(systemUnderTest.getCO());
 	}
- 
+
 	@Test
 	public final void test_GetCO_WhenPowerIsOffAndAIsOffAndBIsOn_ReturnsOff() {
 		systemUnderTest.setPower(false);

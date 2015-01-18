@@ -28,7 +28,7 @@ public class EightBitTwoToOneSelectorTest {
 	private static final byte bit7 = (byte) 0x80;
 
 	IEightBitTwoToOneSelector systemUnderTest;
- 
+
 	private byte getOutput() {
 		byte value = 0;
 

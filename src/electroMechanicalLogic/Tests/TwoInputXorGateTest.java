@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public class TwoInputXorGateTest {
 
 	private ITwoInputSingleOutputGate systemUnderTest;
- 
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new electroMechanicalLogic.TwoInputXOrGate();

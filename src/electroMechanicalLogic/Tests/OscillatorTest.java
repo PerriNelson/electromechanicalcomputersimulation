@@ -26,7 +26,7 @@ public class OscillatorTest {
 		systemUnderTest = new Oscillator();
 		systemUnderTest.setPower(true);
 	}
- 
+
 	@Test
 	public final void test_GetOutput_WhenFirstStepped_ReturnsOn() {
 		systemUnderTest.step();

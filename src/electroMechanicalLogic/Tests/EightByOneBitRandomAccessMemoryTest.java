@@ -27,7 +27,7 @@ public class EightByOneBitRandomAccessMemoryTest {
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);
 	}
- 
+
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EightByOneBitRandomAccessMemory();
