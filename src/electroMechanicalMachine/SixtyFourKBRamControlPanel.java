@@ -53,7 +53,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		SixtyFourKBRamControlPanel frame = new SixtyFourKBRamControlPanel();
 		frame.setVisible(true);
 	}
-
+ 
 	private ToggleSwitch[] addressSwitches;
 	private ToggleSwitch[] dataSwitches;
 	private Lamp[] lamps;
