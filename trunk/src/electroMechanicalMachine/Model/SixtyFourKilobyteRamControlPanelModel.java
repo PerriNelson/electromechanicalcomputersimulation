@@ -21,7 +21,7 @@ import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPan
 public class SixtyFourKilobyteRamControlPanelModel implements
 		ISixtyFourKilobyteRamControlPanelModel {
 
-	private static ISixtyFourKilobyteRAM ram;
+	private ISixtyFourKilobyteRAM ram;
 	private TwoLineToOneLineSelector[] addressSelectors;
 	private TwoLineToOneLineSelector[] dataSelectors;
 	private TwoLineToOneLineSelector writeSelector;
