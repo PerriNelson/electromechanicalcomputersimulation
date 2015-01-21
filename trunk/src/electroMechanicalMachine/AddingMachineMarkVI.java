@@ -125,8 +125,8 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 		placeLabel("Labels/AddingMachineMarkVILabel.jpg",
 				"Adding Machine Mark VI", columnF, titleRow, 16);
 
-		useCodePanel = placeToggleSwitch(column0, codeSwitchRow);
-		placeLabel("Labels/CodeRAM.jpg", " CodeRAM ", column0, codeLabelRow, 1);
+		useCodePanel = placeToggleSwitch(column3, codeSwitchRow, 4);
+		placeLabel("Labels/UseCodeRAMLabel.jpg", " Use Code RAM ", column3, codeLabelRow, 4);
 		
 		addressSwitch0 = placeToggleSwitch(column0, addressSwitchRow);
 		addressSwitch1 = placeToggleSwitch(column1, addressSwitchRow);
