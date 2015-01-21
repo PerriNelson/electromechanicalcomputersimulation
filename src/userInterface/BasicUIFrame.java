@@ -78,9 +78,13 @@ public class BasicUIFrame extends Frame {
 	}
 
 	protected ToggleSwitch placeToggleSwitch(int column, int row) {
+		return placeToggleSwitch(column, row, 1);
+	}
+
+	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
 		ToggleSwitch toggleSwitch = new ToggleSwitch();
 		toggleSwitch.setPowerIn(PowerState.on);
-		placeComponent(toggleSwitch, column, row, 1);
+		placeComponent(toggleSwitch, column, row, columns);
 		return toggleSwitch;
 	}
 }
