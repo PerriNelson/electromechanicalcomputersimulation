@@ -58,6 +58,72 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
 	}
 
+	private void setDataIn(int value) {
+		systemUnderTest.setDI0((value & bit0) == bit0);
+		systemUnderTest.setDI1((value & bit1) == bit1);
+		systemUnderTest.setDI2((value & bit2) == bit2);
+		systemUnderTest.setDI3((value & bit3) == bit3);
+		systemUnderTest.setDI4((value & bit4) == bit4);
+		systemUnderTest.setDI5((value & bit5) == bit5);
+		systemUnderTest.setDI6((value & bit6) == bit6);
+		systemUnderTest.setDI7((value & bit7) == bit7);
+	}
+	
+	private int getDataOut() {
+		int dataOut = 0;
+		dataOut |= systemUnderTest.getDO0() ? bit0 : 0;
+		dataOut |= systemUnderTest.getDO1() ? bit1 : 0;
+		dataOut |= systemUnderTest.getDO2() ? bit2 : 0;
+		dataOut |= systemUnderTest.getDO3() ? bit3 : 0;
+		dataOut |= systemUnderTest.getDO4() ? bit4 : 0;
+		dataOut |= systemUnderTest.getDO5() ? bit5 : 0;
+		dataOut |= systemUnderTest.getDO6() ? bit6 : 0;
+		dataOut |= systemUnderTest.getDO7() ? bit7 : 0;
+		return dataOut;
+	}
+	
+	@Test
+	public void test_DataWrittenWithUseCodePanelOn_CannotBeRetrievedWithUseCodePanelOff() {
+		systemUnderTest.setTakeover(on);
+		for (int i = 0; i < 65536; i++) {
+			systemUnderTest.setUseCodePanel(on);
+			systemUnderTest.step();
+			
+			setAddress(i);
+			setDataIn(0xff);
+			systemUnderTest.setW(on);
+			systemUnderTest.step();
+			
+			systemUnderTest.setW(off);
+			systemUnderTest.step();
+			systemUnderTest.setUseCodePanel(off);
+			systemUnderTest.step();
+			
+			assertEquals(0, getDataOut());
+		}
+	}
+	
+	@Test
+	public void test_DataWrittenWithUseCodePanelOff_CannotBeRetrievedWithUseCodePanelOn() {
+		systemUnderTest.setTakeover(on);
+		for (int i = 0; i < 65536; i++) {
+			systemUnderTest.setUseCodePanel(off);
+			systemUnderTest.step();
+			
+			setAddress(i);
+			setDataIn(0xff);
+			systemUnderTest.setW(on);
+			systemUnderTest.step();
+			
+			systemUnderTest.setW(off);
+			systemUnderTest.step();
+			systemUnderTest.setUseCodePanel(on);
+			systemUnderTest.step();
+			
+			assertEquals(0, getDataOut());
+		}
+	}
+	
 	@Before
 	public void Setup() {
 		systemUnderTest = new AddingMachineMarkVIModel(

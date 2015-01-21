@@ -198,10 +198,14 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
+		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row, columns);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
+	}
+	@Override
+	protected ToggleSwitch placeToggleSwitch(int column, int row) {
+		return placeToggleSwitch(column, row, 1);
 	}
 
 	@Override
