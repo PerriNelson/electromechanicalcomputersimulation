@@ -9,6 +9,7 @@
 package electroMechanicalMachine.Model.Tests;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 import java.beans.PropertyChangeEvent;
@@ -20,20 +21,12 @@ import org.junit.Test;
 import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
+import static electroMechanicalMachine.Model.Tests.TestConstants.*;
+
 // We use the fast RAM because otherwise these tests will take minutes to run.
 // Using the slow RAM should produce the same results, but much more slowly.
 
 public class SixtyFourKilobyteRamControlPanelModelTest {
-	private static final int bit0 = 0x01;
-	private static final int bit1 = 0x02;
-	private static final int bit2 = 0x04;
-	private static final int bit3 = 0x08;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
-	private static final boolean on = true;
-	private static final boolean off = false;
 
 	private ISixtyFourKilobyteRamControlPanelModel systemUnderTest;
 	private boolean eventFired = false;

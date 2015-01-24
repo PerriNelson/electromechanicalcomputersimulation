@@ -15,18 +15,8 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.MarkVIALU;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
-
+import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 public class MarkVIALUTest {
-	private static final int bit0 = 0x1;
-	private static final int bit1 = 0x2;
-	private static final int bit2 = 0x4;
-	private static final int bit3 = 0x8;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
-	private static final boolean on = true;
-	private static final boolean off = false;
 	private IMarkVIALU systemUnderTest;
 
 	private int getDataOut() {

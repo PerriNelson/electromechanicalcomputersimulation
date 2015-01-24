@@ -16,9 +16,9 @@ import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
 
 public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
-	private IRelay ci0Bar;
+	protected IRelay ci0Bar;
 	private IRelay ci4Bar;
-	private IRelay ci5Bar;
+	protected IRelay ci5Bar;
 	private IEightInputSingleOutputGate add;
 	private IEightInputSingleOutputGate halt;
 	private IEightInputSingleOutputGate load;
