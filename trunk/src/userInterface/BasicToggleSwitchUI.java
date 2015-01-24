@@ -23,6 +23,10 @@ import javax.swing.plaf.ComponentUI;
 public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		MouseListener {
 
+	public static ComponentUI createUI(JComponent component) {
+		return new BasicToggleSwitchUI();
+	}
+
 	// The toggle switch image was purchased for this project from Martin
 	// Velchevski through the GraphicalRiver market place and is used by
 	// permission. The image 590preview.jpg is a stock preview that came from
@@ -30,7 +34,6 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	// I will probably re-scale this image to more cleanly fit the UI in the
 	// future.
 	private static final String imagePath = "images/590preview.jpg";
-
 	private static final int imageHeight = 590;
 	private static final int imageWidth = 590;
 	private static final int switchBottom = 388;
@@ -38,11 +41,8 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	private static final int switchClosedRight = 416;
 	private static final int switchOpenLeft = 175;
 	private static final int switchOpenRight = 284;
-	private static final int switchTop = 202;
 
-	public static ComponentUI createUI(JComponent component) {
-		return new BasicToggleSwitchUI();
-	}
+	private static final int switchTop = 202;
 
 	private BufferedImage toggleSwitches;
 

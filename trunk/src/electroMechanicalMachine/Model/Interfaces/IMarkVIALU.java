@@ -13,43 +13,43 @@ import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 public interface IMarkVIALU extends ISimulatedCircuit {
 
 	public abstract boolean getDO0();
-	
+
 	public abstract boolean getDO1();
-	
+
 	public abstract boolean getDO2();
-	
+
 	public abstract boolean getDO3();
-	
+
 	public abstract boolean getDO4();
-	
+
 	public abstract boolean getDO5();
-	
+
 	public abstract boolean getDO6();
-	
+
 	public abstract boolean getDO7();
-	
+
 	public abstract void setAdd(boolean value);
-	
+
 	public abstract void setClear(boolean value);
-	
+
 	public abstract void setClock(boolean value);
-	
+
 	public abstract void setDI0(boolean value);
-	
+
 	public abstract void setDI1(boolean value);
-	
+
 	public abstract void setDI2(boolean value);
-	
+
 	public abstract void setDI3(boolean value);
-	
+
 	public abstract void setDI4(boolean value);
-	
+
 	public abstract void setDI5(boolean value);
-	
+
 	public abstract void setDI6(boolean value);
-	
+
 	public abstract void setDI7(boolean value);
-	
+
 	public abstract void setLoad(boolean value);
 
 }

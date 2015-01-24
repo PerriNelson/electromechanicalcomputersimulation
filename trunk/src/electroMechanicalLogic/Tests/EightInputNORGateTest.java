@@ -60,7 +60,8 @@ public class EightInputNORGateTest {
 			setInput(i);
 			systemUnderTest.step();
 
-			assertFalse(String.format("i == %d", i), systemUnderTest.getOutput());
+			assertFalse(String.format("i == %d", i),
+					systemUnderTest.getOutput());
 		}
 	}
 }

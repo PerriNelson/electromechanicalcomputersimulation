@@ -21,7 +21,10 @@ public class MarkVITimingAndMemoryWriteControl implements
 		IMarkVITimingAndMemoryWriteControl {
 	private Oscillator oscillator = new Oscillator();
 	private IRelay clearBar = new Inverter();
-	private IRelay clock = new Inverter();
+	private IRelay oscillatorBar = new Inverter();
+	private IRelay haltBar = new Inverter();
+	private ITwoInputSingleOutputGate clock = new TwoInputAndGate();
+
 	private ITwoInputSingleOutputGate write = new TwoInputAndGate();
 	private ISixteenBitCounterWithClear address = new SixteenBitCounterWithClear();
 
@@ -107,7 +110,7 @@ public class MarkVITimingAndMemoryWriteControl implements
 
 	@Override
 	public boolean getClock() {
-		return clock.getOutput();
+		return oscillatorBar.getOutput();
 	}
 
 	@Override
@@ -122,12 +125,19 @@ public class MarkVITimingAndMemoryWriteControl implements
 	}
 
 	@Override
+	public void setHalt(boolean value) {
+		haltBar.setInput(value);
+	}
+
+	@Override
 	public void setPower(boolean value) {
 		oscillator.setPower(value);
 		clearBar.setPower(value);
-		clock.setPower(value);
+		haltBar.setPower(value);
+		oscillatorBar.setPower(value);
 		address.setPower(value);
 		write.setPower(value);
+		clock.setPower(value);
 	}
 
 	@Override
@@ -138,6 +148,7 @@ public class MarkVITimingAndMemoryWriteControl implements
 	@Override
 	public void step() {
 		clearBar.step();
+		haltBar.step();
 
 		stepClock();
 		stepAddress();
@@ -152,8 +163,11 @@ public class MarkVITimingAndMemoryWriteControl implements
 	private void stepClock() {
 		oscillator.setPower(clearBar.getOutput());
 		oscillator.step();
-		clock.setPower(clearBar.getOutput());
-		clock.setInput(oscillator.getOutput());
+		oscillatorBar.setPower(clearBar.getOutput());
+		oscillatorBar.setInput(oscillator.getOutput());
+		oscillatorBar.step();
+		clock.setA(oscillatorBar.getOutput());
+		clock.setB(haltBar.getOutput());
 		clock.step();
 	}
 

@@ -39,6 +39,28 @@ public class AddingMachineMarkVIModelTest {
 
 	private IAddingMachineMarkVIModel systemUnderTest;
 
+	private int add(int a, int b) {
+		return (a + b) & 0xff;
+	}
+
+	private int getDataOut() {
+		int dataOut = 0;
+		dataOut |= systemUnderTest.getDO0() ? bit0 : 0;
+		dataOut |= systemUnderTest.getDO1() ? bit1 : 0;
+		dataOut |= systemUnderTest.getDO2() ? bit2 : 0;
+		dataOut |= systemUnderTest.getDO3() ? bit3 : 0;
+		dataOut |= systemUnderTest.getDO4() ? bit4 : 0;
+		dataOut |= systemUnderTest.getDO5() ? bit5 : 0;
+		dataOut |= systemUnderTest.getDO6() ? bit6 : 0;
+		dataOut |= systemUnderTest.getDO7() ? bit7 : 0;
+		return dataOut;
+	}
+
+	private void performOneClockCycle() {
+		systemUnderTest.step();
+		systemUnderTest.step();
+	}
+
 	private void setAddress(int address) {
 		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
 		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
@@ -68,62 +90,7 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setDI6((value & bit6) == bit6);
 		systemUnderTest.setDI7((value & bit7) == bit7);
 	}
-	
-	private int getDataOut() {
-		int dataOut = 0;
-		dataOut |= systemUnderTest.getDO0() ? bit0 : 0;
-		dataOut |= systemUnderTest.getDO1() ? bit1 : 0;
-		dataOut |= systemUnderTest.getDO2() ? bit2 : 0;
-		dataOut |= systemUnderTest.getDO3() ? bit3 : 0;
-		dataOut |= systemUnderTest.getDO4() ? bit4 : 0;
-		dataOut |= systemUnderTest.getDO5() ? bit5 : 0;
-		dataOut |= systemUnderTest.getDO6() ? bit6 : 0;
-		dataOut |= systemUnderTest.getDO7() ? bit7 : 0;
-		return dataOut;
-	}
-	
-	@Test
-	public void test_DataWrittenWithUseCodePanelOn_CannotBeRetrievedWithUseCodePanelOff() {
-		systemUnderTest.setTakeover(on);
-		for (int i = 0; i < 65536; i++) {
-			systemUnderTest.setUseCodePanel(on);
-			systemUnderTest.step();
-			
-			setAddress(i);
-			setDataIn(0xff);
-			systemUnderTest.setW(on);
-			systemUnderTest.step();
-			
-			systemUnderTest.setW(off);
-			systemUnderTest.step();
-			systemUnderTest.setUseCodePanel(off);
-			systemUnderTest.step();
-			
-			assertEquals(0, getDataOut());
-		}
-	}
-	
-	@Test
-	public void test_DataWrittenWithUseCodePanelOff_CannotBeRetrievedWithUseCodePanelOn() {
-		systemUnderTest.setTakeover(on);
-		for (int i = 0; i < 65536; i++) {
-			systemUnderTest.setUseCodePanel(off);
-			systemUnderTest.step();
-			
-			setAddress(i);
-			setDataIn(0xff);
-			systemUnderTest.setW(on);
-			systemUnderTest.step();
-			
-			systemUnderTest.setW(off);
-			systemUnderTest.step();
-			systemUnderTest.setUseCodePanel(on);
-			systemUnderTest.step();
-			
-			assertEquals(0, getDataOut());
-		}
-	}
-	
+
 	@Before
 	public void Setup() {
 		systemUnderTest = new AddingMachineMarkVIModel(
@@ -131,6 +98,160 @@ public class AddingMachineMarkVIModelTest {
 
 		systemUnderTest.setPower(on);
 		setAddress(0);
+	}
+
+	@Test
+	public void test_DataWrittenWithUseCodePanelOff_CannotBeRetrievedWithUseCodePanelOn() {
+		systemUnderTest.setTakeover(on);
+		for (int i = 0; i < 65536; i++) {
+			systemUnderTest.setUseCodePanel(off);
+			systemUnderTest.step();
+
+			setAddress(i);
+			setDataIn(0xff);
+			systemUnderTest.setW(on);
+			systemUnderTest.step();
+
+			systemUnderTest.setW(off);
+			systemUnderTest.step();
+			systemUnderTest.setUseCodePanel(on);
+			systemUnderTest.step();
+
+			assertEquals(0, getDataOut());
+		}
+	}
+
+	@Test
+	public void test_DataWrittenWithUseCodePanelOn_CannotBeRetrievedWithUseCodePanelOff() {
+		systemUnderTest.setTakeover(on);
+		for (int i = 0; i < 65536; i++) {
+			systemUnderTest.setUseCodePanel(on);
+			systemUnderTest.step();
+
+			setAddress(i);
+			setDataIn(0xff);
+			systemUnderTest.setW(on);
+			systemUnderTest.step();
+
+			systemUnderTest.setW(off);
+			systemUnderTest.step();
+			systemUnderTest.setUseCodePanel(off);
+			systemUnderTest.step();
+
+			assertEquals(0, getDataOut());
+		}
+	}
+
+	@Test
+	public void test_ExampleFromBook_ProducesExpectedResults() {
+		systemUnderTest.setReset(on);
+		systemUnderTest.setTakeover(on);
+		systemUnderTest.setUseCodePanel(off);
+		setAddress(0);
+		setDataIn(0x27);
+		systemUnderTest.setW(on);
+		systemUnderTest.step();
+
+		setAddress(1);
+		setDataIn(0xA2);
+		systemUnderTest.step();
+
+		setAddress(2);
+		setDataIn(0x18);
+		systemUnderTest.step();
+
+		setAddress(4);
+		setDataIn(0x1f);
+		systemUnderTest.step();
+
+		setAddress(5);
+		setDataIn(0x89);
+		systemUnderTest.step();
+
+		setAddress(7);
+		setDataIn(0x33);
+		systemUnderTest.step();
+
+		setAddress(8);
+		setDataIn(0x2A);
+		systemUnderTest.step();
+
+		setAddress(9);
+		setDataIn(0x55);
+		systemUnderTest.step();
+
+		systemUnderTest.setUseCodePanel(on);
+		setAddress(0);
+		setDataIn(0x10);
+		systemUnderTest.step();
+
+		setAddress(1);
+		setDataIn(0x20);
+		systemUnderTest.step();
+
+		setAddress(2);
+		setDataIn(0x20);
+		systemUnderTest.step();
+
+		setAddress(3);
+		setDataIn(0x11);
+		systemUnderTest.step();
+
+		setAddress(4);
+		setDataIn(0x10);
+		systemUnderTest.step();
+
+		setAddress(5);
+		setDataIn(0x20);
+		systemUnderTest.step();
+
+		setAddress(6);
+		setDataIn(0x11);
+		systemUnderTest.step();
+
+		setAddress(7);
+		setDataIn(0x10);
+		systemUnderTest.step();
+
+		setAddress(8);
+		setDataIn(0x20);
+		systemUnderTest.step();
+
+		setAddress(9);
+		setDataIn(0x20);
+		systemUnderTest.step();
+
+		setAddress(10);
+		setDataIn(0x11);
+		systemUnderTest.step();
+
+		setAddress(11);
+		setDataIn(0xff);
+		systemUnderTest.step();
+
+		systemUnderTest.setReset(off);
+		systemUnderTest.setTakeover(off);
+
+		for (int i = 0; i < 12; i++) {
+			performOneClockCycle();
+		}
+
+		systemUnderTest.setReset(on);
+		systemUnderTest.setTakeover(on);
+		systemUnderTest.setW(off);
+		systemUnderTest.setUseCodePanel(off);
+
+		setAddress(3);
+		systemUnderTest.step();
+		assertEquals(add(add(0x27, 0xa2), 0x18), getDataOut());
+
+		setAddress(6);
+		systemUnderTest.step();
+		assertEquals(add(0x1f, 0x89), getDataOut());
+
+		setAddress(10);
+		systemUnderTest.step();
+		assertEquals(add(add(0x33, 0x2a), 0x55), getDataOut());
 	}
 
 	@Test

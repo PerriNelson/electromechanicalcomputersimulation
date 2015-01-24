@@ -12,12 +12,12 @@ import electroMechanicalLogic.TwoInputNAndGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class NANDGate extends GateDemoFrame {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(String[] args) {
 		NANDGate frame = new NANDGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public NANDGate() {
 		super("Two Input NAND Gate");

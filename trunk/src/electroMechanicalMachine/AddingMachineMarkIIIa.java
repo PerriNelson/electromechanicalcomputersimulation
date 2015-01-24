@@ -12,12 +12,12 @@ import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
 
 public class AddingMachineMarkIIIa extends AddingMachineMarkIII {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(String[] args) {
 		AddingMachineMarkIIIa frame = new AddingMachineMarkIIIa();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public AddingMachineMarkIIIa() {
 		super("Adding Machine Mark IIIa", new AddingMachineMarkIIIModel(
