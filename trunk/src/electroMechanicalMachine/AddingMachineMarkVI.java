@@ -52,7 +52,6 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	private static final int columnD = 3;
 	private static final int columnE = 2;
 	private static final int columnF = 1;
-	private static final int columnControl0 = 0;
 
 	public static void main(String[] args) {
 		AddingMachineMarkVI frame = new AddingMachineMarkVI();
