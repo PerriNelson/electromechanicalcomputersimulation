@@ -20,13 +20,13 @@ import javax.swing.plaf.ComponentUI;
 
 public class BasicLampUI extends ToggleSwitchUI {
 
-	public static ComponentUI createUI(JComponent component) {
+	public static ComponentUI createUI(final JComponent component) {
 		return new BasicLampUI();
 	}
 
-	private BufferedImage offImage;
+	private final BufferedImage offImage;
 
-	private BufferedImage onImage;
+	private final BufferedImage onImage;
 
 	public BasicLampUI() {
 		super();
@@ -34,26 +34,27 @@ public class BasicLampUI extends ToggleSwitchUI {
 		onImage = loadImage("images/LampOn.jpg");
 	}
 
-	private BufferedImage loadImage(String imagePath) {
+	private BufferedImage loadImage(final String imagePath) {
 		try {
-			URL url = getClass().getResource(imagePath);
-			if (url == null)
+			final URL url = getClass().getResource(imagePath);
+			if (url == null) {
 				return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
+			}
 			return ImageIO.read(url);
-		} catch (IOException ioException) {
+		} catch (final IOException ioException) {
 			return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
 		}
 	}
 
 	@Override
-	public void paint(Graphics graphics, JComponent component) {
-		Insets insets = component.getInsets();
+	public void paint(final Graphics graphics, final JComponent component) {
+		final Insets insets = component.getInsets();
 		graphics.translate(insets.left, insets.top);
-		int width = component.getWidth() - insets.left - insets.right;
-		int height = component.getHeight() - insets.top - insets.bottom;
+		final int width = component.getWidth() - insets.left - insets.right;
+		final int height = component.getHeight() - insets.top - insets.bottom;
 
-		Lamp lamp = (Lamp) component;
-		BufferedImage image = lamp.isOn() ? onImage : offImage;
+		final Lamp lamp = (Lamp) component;
+		final BufferedImage image = lamp.isOn() ? onImage : offImage;
 
 		graphics.drawImage(image, 0, 0, width, height, 0, 0, image.getWidth(),
 				image.getHeight(), null);

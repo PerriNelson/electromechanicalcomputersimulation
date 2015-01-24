@@ -17,8 +17,8 @@ public class PropertyChangeExpectation {
 
 		return new PropertyChangeListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				for (PropertyChangeExpectation expectedChange : expectedChanges) {
+			public void propertyChange(final PropertyChangeEvent evt) {
+				for (final PropertyChangeExpectation expectedChange : expectedChanges) {
 					if (expectedChange.getPropertyName().equalsIgnoreCase(
 							evt.getPropertyName())) {
 						expectedChange.setPropertyChanged();
@@ -28,11 +28,11 @@ public class PropertyChangeExpectation {
 		};
 	}
 
-	private String propertyName;
+	private final String propertyName;
 
 	private boolean propertyChanged = false;
 
-	public PropertyChangeExpectation(String propertyName) {
+	public PropertyChangeExpectation(final String propertyName) {
 		this.propertyName = propertyName;
 	}
 

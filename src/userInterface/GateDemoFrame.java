@@ -23,25 +23,25 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public abstract class GateDemoFrame extends Frame implements
-		PropertyChangeListener {
+PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 	private static final String powerOutPropertyName = "powerOut";
 
-	private ToggleSwitch toggleSwitch1;
-	private ToggleSwitch toggleSwitch2;
-	private ITwoInputSingleOutputGate gate;
-	private Lamp lamp;
+	private final ToggleSwitch toggleSwitch1;
+	private final ToggleSwitch toggleSwitch2;
+	private final ITwoInputSingleOutputGate gate;
+	private final Lamp lamp;
 
-	public GateDemoFrame(String caption) {
+	public GateDemoFrame(final String caption) {
 		super(caption);
 		setSize(300, 103);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		toggleSwitch1 = new ToggleSwitch();
 		toggleSwitch1.setPowerIn(PowerState.on);
@@ -62,7 +62,7 @@ public abstract class GateDemoFrame extends Frame implements
 	protected abstract ITwoInputSingleOutputGate getGate();
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitch1) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				gate.setA(PowerState.on == evt.getNewValue());

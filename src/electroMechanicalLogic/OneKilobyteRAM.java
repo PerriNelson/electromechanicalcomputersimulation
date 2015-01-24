@@ -78,61 +78,61 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		bank0.setA0(value);
 		bank1.setA0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		bank0.setA1(value);
 		bank1.setA1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		bank0.setA2(value);
 		bank1.setA2(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		bank0.setA3(value);
 		bank1.setA3(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		bank0.setA4(value);
 		bank1.setA4(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		bank0.setA5(value);
 		bank1.setA5(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		bank0.setA6(value);
 		bank1.setA6(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		bank0.setA7(value);
 		bank1.setA7(value);
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		bank0.setA8(value);
 		bank1.setA8(value);
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		w.setSelect(value);
 		dO0.setSelect(value);
 		dO1.setSelect(value);
@@ -145,55 +145,55 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		bank0.setDI0(value);
 		bank1.setDI0(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		bank0.setDI1(value);
 		bank1.setDI1(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		bank0.setDI2(value);
 		bank1.setDI2(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		bank0.setDI3(value);
 		bank1.setDI3(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		bank0.setDI4(value);
 		bank1.setDI4(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		bank0.setDI5(value);
 		bank1.setDI5(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		bank0.setDI6(value);
 		bank1.setDI6(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		bank0.setDI7(value);
 		bank1.setDI7(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		w.setPower(value);
 
 		bank0.setPower(value);
@@ -210,7 +210,7 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		w.setInput(value);
 	}
 

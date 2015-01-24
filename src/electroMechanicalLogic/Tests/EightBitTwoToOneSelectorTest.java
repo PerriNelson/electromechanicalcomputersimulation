@@ -44,7 +44,7 @@ public class EightBitTwoToOneSelectorTest {
 		return value;
 	}
 
-	private void setA(int value) {
+	private void setA(final int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);
@@ -55,7 +55,7 @@ public class EightBitTwoToOneSelectorTest {
 		systemUnderTest.setA7((value & bit7) == bit7);
 	}
 
-	private void setB(int value) {
+	private void setB(final int value) {
 		systemUnderTest.setB0((value & bit0) == bit0);
 		systemUnderTest.setB1((value & bit1) == bit1);
 		systemUnderTest.setB2((value & bit2) == bit2);

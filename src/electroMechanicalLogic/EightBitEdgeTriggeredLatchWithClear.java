@@ -12,15 +12,15 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 
 public class EightBitEdgeTriggeredLatchWithClear implements
-		IEightBitLatchWithClear {
-	private IDTypeFlipFlopWithPresetAndClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit4 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit5 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit6 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit7 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+IEightBitLatchWithClear {
+	private final IDTypeFlipFlopWithPresetAndClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit4 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit5 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit6 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit7 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
 
 	@Override
 	public boolean getDO0() {
@@ -63,7 +63,7 @@ public class EightBitEdgeTriggeredLatchWithClear implements
 	}
 
 	@Override
-	public void setClr(boolean value) {
+	public void setClr(final boolean value) {
 		bit0.setClear(value);
 		bit1.setClear(value);
 		bit2.setClear(value);
@@ -75,47 +75,47 @@ public class EightBitEdgeTriggeredLatchWithClear implements
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		bit0.setD(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		bit1.setD(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		bit2.setD(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		bit3.setD(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		bit4.setD(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		bit5.setD(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		bit6.setD(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		bit7.setD(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);
@@ -127,7 +127,7 @@ public class EightBitEdgeTriggeredLatchWithClear implements
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		bit0.setClk(value);
 		bit1.setClk(value);
 		bit2.setClk(value);

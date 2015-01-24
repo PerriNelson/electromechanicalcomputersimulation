@@ -15,18 +15,18 @@ import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class EightToOneSelector implements IEightToOneSelector {
 
-	private IEightInputSingleOutputGate or = new EightInputSingleOutputOrGate();
-	private IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and3 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and4 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and5 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and6 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and7 = new FourInputSingleOutputAndGate();
-	private IRelay inverter0 = new Inverter();
-	private IRelay inverter1 = new Inverter();
-	private IRelay inverter2 = new Inverter();
+	private final IEightInputSingleOutputGate or = new EightInputSingleOutputOrGate();
+	private final IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and3 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and4 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and5 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and6 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and7 = new FourInputSingleOutputAndGate();
+	private final IRelay inverter0 = new Inverter();
+	private final IRelay inverter1 = new Inverter();
+	private final IRelay inverter2 = new Inverter();
 
 	@Override
 	public boolean getOutput() {
@@ -34,47 +34,47 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	}
 
 	@Override
-	public void setD0(boolean value) {
+	public void setD0(final boolean value) {
 		and0.setD(value);
 	}
 
 	@Override
-	public void setD1(boolean value) {
+	public void setD1(final boolean value) {
 		and1.setD(value);
 	}
 
 	@Override
-	public void setD2(boolean value) {
+	public void setD2(final boolean value) {
 		and2.setD(value);
 	}
 
 	@Override
-	public void setD3(boolean value) {
+	public void setD3(final boolean value) {
 		and3.setD(value);
 	}
 
 	@Override
-	public void setD4(boolean value) {
+	public void setD4(final boolean value) {
 		and4.setD(value);
 	}
 
 	@Override
-	public void setD5(boolean value) {
+	public void setD5(final boolean value) {
 		and5.setD(value);
 	}
 
 	@Override
-	public void setD6(boolean value) {
+	public void setD6(final boolean value) {
 		and6.setD(value);
 	}
 
 	@Override
-	public void setD7(boolean value) {
+	public void setD7(final boolean value) {
 		and7.setD(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		or.setPower(value);
 		and0.setPower(value);
 		and1.setPower(value);
@@ -90,7 +90,7 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	}
 
 	@Override
-	public void setS0(boolean value) {
+	public void setS0(final boolean value) {
 		and1.setC(value);
 		and3.setC(value);
 		and5.setC(value);
@@ -99,7 +99,7 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	}
 
 	@Override
-	public void setS1(boolean value) {
+	public void setS1(final boolean value) {
 		and2.setC(value);
 		and3.setB(value);
 		and6.setC(value);
@@ -108,7 +108,7 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	}
 
 	@Override
-	public void setS2(boolean value) {
+	public void setS2(final boolean value) {
 		and4.setC(value);
 		and5.setB(value);
 		and6.setB(value);
@@ -122,9 +122,9 @@ public final class EightToOneSelector implements IEightToOneSelector {
 		inverter1.step();
 		inverter2.step();
 
-		boolean s0Bar = inverter0.getOutput();
-		boolean s1Bar = inverter1.getOutput();
-		boolean s2Bar = inverter2.getOutput();
+		final boolean s0Bar = inverter0.getOutput();
+		final boolean s1Bar = inverter1.getOutput();
+		final boolean s2Bar = inverter2.getOutput();
 
 		and0.setA(s2Bar);
 		and0.setB(s1Bar);

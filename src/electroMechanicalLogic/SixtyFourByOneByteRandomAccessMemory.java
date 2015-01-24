@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemory extends
-		EightByOneByteRandomAccessMemory implements
-		ISixtyFourByOneByteRandomAccessMemory {
+EightByOneByteRandomAccessMemory implements
+ISixtyFourByOneByteRandomAccessMemory {
 
 	@Override
 	protected void initializeBanks() {
@@ -28,7 +28,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		((IEightByOneByteRandomAccessMemory) bank0).setA0(value);
 		((IEightByOneByteRandomAccessMemory) bank1).setA0(value);
 		((IEightByOneByteRandomAccessMemory) bank2).setA0(value);
@@ -40,7 +40,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		((IEightByOneByteRandomAccessMemory) bank0).setA1(value);
 		((IEightByOneByteRandomAccessMemory) bank1).setA1(value);
 		((IEightByOneByteRandomAccessMemory) bank2).setA1(value);
@@ -52,7 +52,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		((IEightByOneByteRandomAccessMemory) bank0).setA2(value);
 		((IEightByOneByteRandomAccessMemory) bank1).setA2(value);
 		((IEightByOneByteRandomAccessMemory) bank2).setA2(value);
@@ -64,7 +64,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		w.setS0(value);
 		dO0.setS0(value);
 		dO1.setS0(value);
@@ -77,7 +77,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		w.setS1(value);
 		dO0.setS1(value);
 		dO1.setS1(value);
@@ -90,7 +90,7 @@ public class SixtyFourByOneByteRandomAccessMemory extends
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		w.setS2(value);
 		dO0.setS2(value);
 		dO1.setS2(value);

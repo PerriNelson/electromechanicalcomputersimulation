@@ -19,21 +19,21 @@ import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKilobyteRamControlPanelModel implements
-		ISixtyFourKilobyteRamControlPanelModel {
+ISixtyFourKilobyteRamControlPanelModel {
 
-	private ISixtyFourKilobyteRAM ram;
-	private TwoLineToOneLineSelector[] addressSelectors;
-	private TwoLineToOneLineSelector[] dataSelectors;
-	private TwoLineToOneLineSelector writeSelector;
+	private final ISixtyFourKilobyteRAM ram;
+	private final TwoLineToOneLineSelector[] addressSelectors;
+	private final TwoLineToOneLineSelector[] dataSelectors;
+	private final TwoLineToOneLineSelector writeSelector;
 
-	private EventListenerList eventListeners = new EventListenerList();
+	private final EventListenerList eventListeners = new EventListenerList();
 
 	public SixtyFourKilobyteRamControlPanelModel() {
 		this(new SixtyFourKilobyteRAM());
 	}
 
 	public SixtyFourKilobyteRamControlPanelModel(
-			ISixtyFourKilobyteRAM sixtyFourKilobyteRAM) {
+			final ISixtyFourKilobyteRAM sixtyFourKilobyteRAM) {
 		ram = sixtyFourKilobyteRAM;
 		addressSelectors = new TwoLineToOneLineSelector[16];
 		for (int i = 0; i < 16; i++) {
@@ -47,14 +47,14 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
 	protected void fireOnPropertyChange() {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -62,7 +62,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -108,132 +108,133 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setCpA0(boolean value) {
+	public void setCpA0(final boolean value) {
 		addressSelectors[0].setB(value);
 	}
 
 	@Override
-	public void setCpA1(boolean value) {
+	public void setCpA1(final boolean value) {
 		addressSelectors[1].setB(value);
 	}
 
 	@Override
-	public void setCpA2(boolean value) {
+	public void setCpA2(final boolean value) {
 		addressSelectors[2].setB(value);
 	}
 
 	@Override
-	public void setCpA3(boolean value) {
+	public void setCpA3(final boolean value) {
 		addressSelectors[3].setB(value);
 	}
 
 	@Override
-	public void setCpA4(boolean value) {
+	public void setCpA4(final boolean value) {
 		addressSelectors[4].setB(value);
 	}
 
 	@Override
-	public void setCpA5(boolean value) {
+	public void setCpA5(final boolean value) {
 		addressSelectors[5].setB(value);
 	}
 
 	@Override
-	public void setCpA6(boolean value) {
+	public void setCpA6(final boolean value) {
 		addressSelectors[6].setB(value);
 	}
 
 	@Override
-	public void setCpA7(boolean value) {
+	public void setCpA7(final boolean value) {
 		addressSelectors[7].setB(value);
 	}
 
 	@Override
-	public void setCpA8(boolean value) {
+	public void setCpA8(final boolean value) {
 		addressSelectors[8].setB(value);
 	}
 
 	@Override
-	public void setCpA9(boolean value) {
+	public void setCpA9(final boolean value) {
 		addressSelectors[9].setB(value);
 	}
 
 	@Override
-	public void setCpAA(boolean value) {
+	public void setCpAA(final boolean value) {
 		addressSelectors[10].setB(value);
 	}
 
 	@Override
-	public void setCpAB(boolean value) {
+	public void setCpAB(final boolean value) {
 		addressSelectors[11].setB(value);
 	}
 
 	@Override
-	public void setCpAC(boolean value) {
+	public void setCpAC(final boolean value) {
 		addressSelectors[12].setB(value);
 	}
 
 	@Override
-	public void setCpAD(boolean value) {
+	public void setCpAD(final boolean value) {
 		addressSelectors[13].setB(value);
 	}
 
 	@Override
-	public void setCpAE(boolean value) {
+	public void setCpAE(final boolean value) {
 		addressSelectors[14].setB(value);
 	}
 
 	@Override
-	public void setCpAF(boolean value) {
+	public void setCpAF(final boolean value) {
 		addressSelectors[15].setB(value);
 	}
 
 	@Override
-	public void setCpDI0(boolean value) {
+	public void setCpDI0(final boolean value) {
 		dataSelectors[0].setB(value);
 	}
 
 	@Override
-	public void setCpDI1(boolean value) {
+	public void setCpDI1(final boolean value) {
 		dataSelectors[1].setB(value);
 	}
 
 	@Override
-	public void setCpDI2(boolean value) {
+	public void setCpDI2(final boolean value) {
 		dataSelectors[2].setB(value);
 	}
 
 	@Override
-	public void setCpDI3(boolean value) {
+	public void setCpDI3(final boolean value) {
 		dataSelectors[3].setB(value);
 	}
 
 	@Override
-	public void setCpDI4(boolean value) {
+	public void setCpDI4(final boolean value) {
 		dataSelectors[4].setB(value);
 	}
 
 	@Override
-	public void setCpDI5(boolean value) {
+	public void setCpDI5(final boolean value) {
 		dataSelectors[5].setB(value);
 	}
 
 	@Override
-	public void setCpDI6(boolean value) {
+	public void setCpDI6(final boolean value) {
 		dataSelectors[6].setB(value);
 	}
 
 	@Override
-	public void setCpDI7(boolean value) {
+	public void setCpDI7(final boolean value) {
 		dataSelectors[7].setB(value);
 	}
 
 	@Override
-	public void setCpTakeover(boolean value) {
+	public void setCpTakeover(final boolean value) {
 		for (int i = 0; i < 16; i++) {
 			addressSelectors[i].setSelect(value);
 		}
@@ -244,137 +245,137 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public void setCpW(boolean value) {
+	public void setCpW(final boolean value) {
 		writeSelector.setB(value);
 	}
 
 	@Override
-	public void setEcA0(boolean value) {
+	public void setEcA0(final boolean value) {
 		addressSelectors[0].setA(value);
 	}
 
 	@Override
-	public void setEcA1(boolean value) {
+	public void setEcA1(final boolean value) {
 		addressSelectors[1].setA(value);
 	}
 
 	@Override
-	public void setEcA2(boolean value) {
+	public void setEcA2(final boolean value) {
 		addressSelectors[2].setA(value);
 	}
 
 	@Override
-	public void setEcA3(boolean value) {
+	public void setEcA3(final boolean value) {
 		addressSelectors[3].setA(value);
 	}
 
 	@Override
-	public void setEcA4(boolean value) {
+	public void setEcA4(final boolean value) {
 		addressSelectors[4].setA(value);
 	}
 
 	@Override
-	public void setEcA5(boolean value) {
+	public void setEcA5(final boolean value) {
 		addressSelectors[5].setA(value);
 	}
 
 	@Override
-	public void setEcA6(boolean value) {
+	public void setEcA6(final boolean value) {
 		addressSelectors[6].setA(value);
 	}
 
 	@Override
-	public void setEcA7(boolean value) {
+	public void setEcA7(final boolean value) {
 		addressSelectors[7].setA(value);
 	}
 
 	@Override
-	public void setEcA8(boolean value) {
+	public void setEcA8(final boolean value) {
 		addressSelectors[8].setA(value);
 	}
 
 	@Override
-	public void setEcA9(boolean value) {
+	public void setEcA9(final boolean value) {
 		addressSelectors[9].setA(value);
 	}
 
 	@Override
-	public void setEcAA(boolean value) {
+	public void setEcAA(final boolean value) {
 		addressSelectors[10].setA(value);
 	}
 
 	@Override
-	public void setEcAB(boolean value) {
+	public void setEcAB(final boolean value) {
 		addressSelectors[11].setA(value);
 	}
 
 	@Override
-	public void setEcAC(boolean value) {
+	public void setEcAC(final boolean value) {
 		addressSelectors[12].setA(value);
 	}
 
 	@Override
-	public void setEcAD(boolean value) {
+	public void setEcAD(final boolean value) {
 		addressSelectors[13].setA(value);
 	}
 
 	@Override
-	public void setEcAE(boolean value) {
+	public void setEcAE(final boolean value) {
 		addressSelectors[14].setA(value);
 	}
 
 	@Override
-	public void setEcAF(boolean value) {
+	public void setEcAF(final boolean value) {
 		addressSelectors[15].setA(value);
 	}
 
 	@Override
-	public void setEcDI0(boolean value) {
+	public void setEcDI0(final boolean value) {
 		dataSelectors[0].setA(value);
 	}
 
 	@Override
-	public void setEcDI1(boolean value) {
+	public void setEcDI1(final boolean value) {
 		dataSelectors[1].setA(value);
 	}
 
 	@Override
-	public void setEcDI2(boolean value) {
+	public void setEcDI2(final boolean value) {
 		dataSelectors[2].setA(value);
 	}
 
 	@Override
-	public void setEcDI3(boolean value) {
+	public void setEcDI3(final boolean value) {
 		dataSelectors[3].setA(value);
 	}
 
 	@Override
-	public void setEcDI4(boolean value) {
+	public void setEcDI4(final boolean value) {
 		dataSelectors[4].setA(value);
 	}
 
 	@Override
-	public void setEcDI5(boolean value) {
+	public void setEcDI5(final boolean value) {
 		dataSelectors[5].setA(value);
 	}
 
 	@Override
-	public void setEcDI6(boolean value) {
+	public void setEcDI6(final boolean value) {
 		dataSelectors[6].setA(value);
 	}
 
 	@Override
-	public void setEcDI7(boolean value) {
+	public void setEcDI7(final boolean value) {
 		dataSelectors[7].setA(value);
 	}
 
 	@Override
-	public void setEcW(boolean value) {
+	public void setEcW(final boolean value) {
 		writeSelector.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		ram.setPower(value);
 		for (int i = 0; i < 16; i++) {
 			addressSelectors[i].setPower(value);

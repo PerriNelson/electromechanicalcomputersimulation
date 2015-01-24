@@ -14,17 +14,17 @@ import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 
-	private IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and3 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and4 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and5 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and6 = new FourInputSingleOutputAndGate();
-	private IFourInputSingleOutputGate and7 = new FourInputSingleOutputAndGate();
-	private IRelay inverter0 = new Inverter();
-	private IRelay inverter1 = new Inverter();
-	private IRelay inverter2 = new Inverter();
+	private final IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and3 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and4 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and5 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and6 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and7 = new FourInputSingleOutputAndGate();
+	private final IRelay inverter0 = new Inverter();
+	private final IRelay inverter1 = new Inverter();
+	private final IRelay inverter2 = new Inverter();
 
 	@Override
 	public boolean getO0() {
@@ -67,7 +67,7 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 	}
 
 	@Override
-	public void setData(boolean value) {
+	public void setData(final boolean value) {
 		and0.setD(value);
 		and1.setD(value);
 		and2.setD(value);
@@ -79,7 +79,7 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		and0.setPower(value);
 		and1.setPower(value);
 		and2.setPower(value);
@@ -94,7 +94,7 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 	}
 
 	@Override
-	public void setS0(boolean value) {
+	public void setS0(final boolean value) {
 		inverter0.setInput(value);
 		and1.setC(value);
 		and3.setC(value);
@@ -103,7 +103,7 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 	}
 
 	@Override
-	public void setS1(boolean value) {
+	public void setS1(final boolean value) {
 		inverter1.setInput(value);
 		and2.setC(value);
 		and3.setB(value);
@@ -112,7 +112,7 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 	}
 
 	@Override
-	public void setS2(boolean value) {
+	public void setS2(final boolean value) {
 		inverter2.setInput(value);
 		and4.setC(value);
 		and5.setB(value);
@@ -126,9 +126,9 @@ public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 		inverter1.step();
 		inverter2.step();
 
-		boolean s0bar = inverter0.getOutput();
-		boolean s1bar = inverter1.getOutput();
-		boolean s2bar = inverter2.getOutput();
+		final boolean s0bar = inverter0.getOutput();
+		final boolean s1bar = inverter1.getOutput();
+		final boolean s2bar = inverter2.getOutput();
 
 		and0.setC(s0bar);
 		and0.setB(s1bar);

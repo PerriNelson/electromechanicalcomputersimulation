@@ -12,8 +12,8 @@ import electroMechanicalLogic.TwoInputAndGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class AndGate extends GateDemoFrame {
-	public static void main(String[] args) {
-		AndGate frame = new AndGate();
+	public static void main(final String[] args) {
+		final AndGate frame = new AndGate();
 		frame.setVisible(true);
 	}
 

@@ -31,27 +31,35 @@ public class EightBitLatchTest {
 	protected int getDO() {
 		int result = 0;
 
-		if (systemUnderTest.getDO0())
+		if (systemUnderTest.getDO0()) {
 			result |= bit0;
-		if (systemUnderTest.getDO1())
+		}
+		if (systemUnderTest.getDO1()) {
 			result |= bit1;
-		if (systemUnderTest.getDO2())
+		}
+		if (systemUnderTest.getDO2()) {
 			result |= bit2;
-		if (systemUnderTest.getDO3())
+		}
+		if (systemUnderTest.getDO3()) {
 			result |= bit3;
-		if (systemUnderTest.getDO4())
+		}
+		if (systemUnderTest.getDO4()) {
 			result |= bit4;
-		if (systemUnderTest.getDO5())
+		}
+		if (systemUnderTest.getDO5()) {
 			result |= bit5;
-		if (systemUnderTest.getDO6())
+		}
+		if (systemUnderTest.getDO6()) {
 			result |= bit6;
-		if (systemUnderTest.getDO7())
+		}
+		if (systemUnderTest.getDO7()) {
 			result |= bit7;
+		}
 
 		return result;
 	}
 
-	protected void setDI(int value) {
+	protected void setDI(final int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);

@@ -20,7 +20,7 @@ public class SixtyFourKilobyteRAMTest extends ThirtyTwoKilobyteRAMTest {
 	protected static final int bitF = 0x8000;
 
 	@Override
-	protected void setA(int value) {
+	protected void setA(final int value) {
 		super.setA(value);
 		((ISixtyFourKilobyteRAM) systemUnderTest).setAF((value & bitF) == bitF);
 	}
@@ -54,7 +54,7 @@ public class SixtyFourKilobyteRAMTest extends ThirtyTwoKilobyteRAMTest {
 	}
 
 	@Override
-	protected int translateAddress(int address) {
+	protected int translateAddress(final int address) {
 		return address == 0 ? 0 : 0xffff;
 	}
 }

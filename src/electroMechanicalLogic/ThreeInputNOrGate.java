@@ -13,9 +13,9 @@ import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
 public class ThreeInputNOrGate implements IThreeInputSingleOutputGate {
 
-	private IRelay relayA = new Inverter();
-	private IRelay relayB = new Inverter();
-	private IRelay relayC = new Inverter();
+	private final IRelay relayA = new Inverter();
+	private final IRelay relayB = new Inverter();
+	private final IRelay relayC = new Inverter();
 
 	@Override
 	public boolean getOutput() {
@@ -23,22 +23,22 @@ public class ThreeInputNOrGate implements IThreeInputSingleOutputGate {
 	}
 
 	@Override
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		relayA.setInput(value);
 	}
 
 	@Override
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		relayB.setInput(value);
 	}
 
 	@Override
-	public void setC(boolean value) {
+	public void setC(final boolean value) {
 		relayC.setInput(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		relayA.setPower(value);
 	}
 

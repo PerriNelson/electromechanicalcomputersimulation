@@ -13,9 +13,9 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class FullAdder implements IFullAdder {
 
-	private IHalfAdder bottomHalf = new HalfAdder();
-	private IHalfAdder topHalf = new HalfAdder();
-	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
+	private final IHalfAdder bottomHalf = new HalfAdder();
+	private final IHalfAdder topHalf = new HalfAdder();
+	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
 
 	@Override
 	public boolean getCO() {
@@ -28,22 +28,22 @@ public final class FullAdder implements IFullAdder {
 	}
 
 	@Override
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		topHalf.setA(value);
 	}
 
 	@Override
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		topHalf.setB(value);
 	}
 
 	@Override
-	public void setCI(boolean value) {
+	public void setCI(final boolean value) {
 		bottomHalf.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bottomHalf.setPower(value);
 		topHalf.setPower(value);
 		or.setPower(value);

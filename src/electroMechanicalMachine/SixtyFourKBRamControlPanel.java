@@ -21,9 +21,9 @@ import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		SixtyFourKBRamControlPanel frame = new SixtyFourKBRamControlPanel();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final SixtyFourKBRamControlPanel frame = new SixtyFourKBRamControlPanel();
 		frame.setVisible(true);
 	}
 
@@ -70,8 +70,8 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 
 	}
 
-	public SixtyFourKBRamControlPanel(String caption,
-			ISixtyFourKilobyteRamControlPanelModel theModel) {
+	public SixtyFourKBRamControlPanel(final String caption,
+			final ISixtyFourKilobyteRamControlPanelModel theModel) {
 		super(caption);
 		placeControls();
 
@@ -81,7 +81,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 	}
 
 	protected void initializeModel(
-			ISixtyFourKilobyteRamControlPanelModel theModel) {
+			final ISixtyFourKilobyteRamControlPanelModel theModel) {
 		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
@@ -164,17 +164,17 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		Object source = evt.getSource();
+	public void propertyChange(final PropertyChangeEvent evt) {
+		final Object source = evt.getSource();
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			Boolean value = PowerState.on == evt.getNewValue();
+			final Boolean value = PowerState.on == evt.getNewValue();
 			for (int i = 0; i < 16; i++) {
 
 				if (source == addressSwitches[i]) {
@@ -205,7 +205,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		}
 	}
 
-	private void setAddress(int bit, Boolean value) {
+	private void setAddress(final int bit, final Boolean value) {
 		switch (bit) {
 		case 0:
 			model.setCpA0(value);
@@ -258,7 +258,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		}
 	}
 
-	private void setData(int bit, Boolean value) {
+	private void setData(final int bit, final Boolean value) {
 		switch (bit) {
 		case 0:
 			model.setCpDI0(value);

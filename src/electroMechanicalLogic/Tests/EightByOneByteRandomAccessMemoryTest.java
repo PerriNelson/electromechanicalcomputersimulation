@@ -42,13 +42,13 @@ public class EightByOneByteRandomAccessMemoryTest {
 		return result;
 	}
 
-	protected void setA(int value) {
+	protected void setA(final int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);
 	}
 
-	protected final void setDI(int value) {
+	protected final void setDI(final int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);
@@ -85,7 +85,7 @@ public class EightByOneByteRandomAccessMemoryTest {
 		}
 	}
 
-	protected int translateAddress(int address) {
+	protected int translateAddress(final int address) {
 		return address;
 	}
 }

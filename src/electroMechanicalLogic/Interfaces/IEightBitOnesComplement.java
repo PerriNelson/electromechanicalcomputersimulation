@@ -8,39 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightBitOnesComplement extends ISimulatedCircuit {
-
-	public abstract boolean getO0();
-
-	public abstract boolean getO1();
-
-	public abstract boolean getO2();
-
-	public abstract boolean getO3();
-
-	public abstract boolean getO4();
-
-	public abstract boolean getO5();
-
-	public abstract boolean getO6();
-
-	public abstract boolean getO7();
-
-	public abstract void setI0(boolean value);
-
-	public abstract void setI1(boolean value);
-
-	public abstract void setI2(boolean value);
-
-	public abstract void setI3(boolean value);
-
-	public abstract void setI4(boolean value);
-
-	public abstract void setI5(boolean value);
-
-	public abstract void setI6(boolean value);
-
-	public abstract void setI7(boolean value);
-
+public interface IEightBitOnesComplement extends ISimulatedCircuit,
+		IEightBitDataOut, IEightBitDataIn {
 	public abstract void setInvert(boolean value);
 }

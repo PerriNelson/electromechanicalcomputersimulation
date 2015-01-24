@@ -44,26 +44,34 @@ public class AddingMachineMarkIIIaModelTest {
 
 	private int getSum() {
 		int sum = 0;
-		if (systemUnderTest.getS0())
+		if (systemUnderTest.getS0()) {
 			sum = sum | bit0;
-		if (systemUnderTest.getS1())
+		}
+		if (systemUnderTest.getS1()) {
 			sum = sum | bit1;
-		if (systemUnderTest.getS2())
+		}
+		if (systemUnderTest.getS2()) {
 			sum = sum | bit2;
-		if (systemUnderTest.getS3())
+		}
+		if (systemUnderTest.getS3()) {
 			sum = sum | bit3;
-		if (systemUnderTest.getS4())
+		}
+		if (systemUnderTest.getS4()) {
 			sum = sum | bit4;
-		if (systemUnderTest.getS5())
+		}
+		if (systemUnderTest.getS5()) {
 			sum = sum | bit5;
-		if (systemUnderTest.getS6())
+		}
+		if (systemUnderTest.getS6()) {
 			sum = sum | bit6;
-		if (systemUnderTest.getS7())
+		}
+		if (systemUnderTest.getS7()) {
 			sum = sum | bit7;
+		}
 		return sum;
 	}
 
-	private void setAInputs(int value) {
+	private void setAInputs(final int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);
@@ -74,7 +82,7 @@ public class AddingMachineMarkIIIaModelTest {
 		systemUnderTest.setA7((value & bit7) == bit7);
 	}
 
-	private void setBInputs(int value) {
+	private void setBInputs(final int value) {
 		systemUnderTest.setB0((value & bit0) == bit0);
 		systemUnderTest.setB1((value & bit1) == bit1);
 		systemUnderTest.setB2((value & bit2) == bit2);
@@ -104,7 +112,7 @@ public class AddingMachineMarkIIIaModelTest {
 				setAInputs(a);
 				setBInputs(b);
 				systemUnderTest.step();
-				String message = String.format("a = %d b = %d", a, b);
+				final String message = String.format("a = %d b = %d", a, b);
 				assertEquals(message, (a + b) & 0xff, getSum());
 			}
 		}
@@ -119,7 +127,7 @@ public class AddingMachineMarkIIIaModelTest {
 				systemUnderTest.step();
 				systemUnderTest.step();
 
-				String message = String.format("a = %d b = %d", a, b);
+				final String message = String.format("a = %d b = %d", a, b);
 				assertEquals(message, (a + b) & 0xff, getSum());
 			}
 		}
@@ -133,7 +141,7 @@ public class AddingMachineMarkIIIaModelTest {
 				setAInputs(a);
 				setBInputs(b);
 				systemUnderTest.step();
-				String message = String.format("a = %d b = %d", a, b);
+				final String message = String.format("a = %d b = %d", a, b);
 				assertEquals(message, a & 0xff, getSum());
 			}
 		}
@@ -151,7 +159,7 @@ public class AddingMachineMarkIIIaModelTest {
 
 				toggleSaveOffAndOn();
 
-				String message = String.format("a = %d b = %d", a, b);
+				final String message = String.format("a = %d b = %d", a, b);
 				expectedSum += a;
 				if ((expectedSum & 0x0100) == 0x0100) {
 					assertTrue("Csrry expected", systemUnderTest.getCO());
@@ -175,7 +183,7 @@ public class AddingMachineMarkIIIaModelTest {
 
 			for (int b = 0; b < 256; b++) {
 				systemUnderTest.step();
-				String message = String.format("a = %d b = %d", a, b);
+				final String message = String.format("a = %d b = %d", a, b);
 				assertEquals(message, a, getSum());
 			}
 		}
@@ -185,7 +193,7 @@ public class AddingMachineMarkIIIaModelTest {
 	public void test_WhenStepped_FiresPropertyChangeEvent() {
 		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void propertyChange(final PropertyChangeEvent evt) {
 				eventFired = true;
 			}
 		});

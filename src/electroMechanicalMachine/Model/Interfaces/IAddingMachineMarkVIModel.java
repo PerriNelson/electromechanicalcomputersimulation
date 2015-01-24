@@ -11,7 +11,7 @@ package electroMechanicalMachine.Model.Interfaces;
 import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 
 public interface IAddingMachineMarkVIModel extends IMachineModel,
-		IEightBitDataOut {
+IEightBitDataOut {
 
 	public abstract void setA0(boolean value);
 

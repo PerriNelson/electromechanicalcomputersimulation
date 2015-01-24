@@ -34,7 +34,7 @@ public class MarkVIInstructionDecoderTest {
 
 	protected IMarkVIInstructionDecoder systemUnderTest;
 
-	protected void setCode(int code) {
+	protected void setCode(final int code) {
 		systemUnderTest.setCI0((code & bit0) == bit0);
 		systemUnderTest.setCI1((code & bit1) == bit1);
 		systemUnderTest.setCI2((code & bit2) == bit2);
@@ -78,8 +78,9 @@ public class MarkVIInstructionDecoderTest {
 	@Test
 	public void test_WhenCodeIsNotAdd_getAdd_ReturnsFalse() {
 		for (int code = 0; code < 256; code++) {
-			if (code == addCode)
+			if (code == addCode) {
 				continue;
+			}
 
 			setCode(code);
 			systemUnderTest.step();
@@ -92,8 +93,9 @@ public class MarkVIInstructionDecoderTest {
 	@Test
 	public void test_WhenCodeIsNotHalt_getHalt_ReturnsFalse() {
 		for (int code = 0; code < 256; code++) {
-			if (code == haltCode)
+			if (code == haltCode) {
 				continue;
+			}
 
 			setCode(code);
 			systemUnderTest.step();
@@ -106,8 +108,9 @@ public class MarkVIInstructionDecoderTest {
 	@Test
 	public void test_WhenCodeIsNotLoad_getLoad_ReturnsFalse() {
 		for (int code = 0; code < 256; code++) {
-			if (code == loadCode)
+			if (code == loadCode) {
 				continue;
+			}
 
 			setCode(code);
 			systemUnderTest.step();
@@ -120,8 +123,9 @@ public class MarkVIInstructionDecoderTest {
 	@Test
 	public void test_WhenCodeIsNotStore_getStore_ReturnsFalse() {
 		for (int code = 0; code < 256; code++) {
-			if (code == storeCode)
+			if (code == storeCode) {
 				continue;
+			}
 
 			setCode(code);
 			systemUnderTest.step();

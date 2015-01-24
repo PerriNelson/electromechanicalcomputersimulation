@@ -10,7 +10,7 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class TwoInputOrGate extends TwoRelaySingleOutputGate implements
-		ITwoInputSingleOutputGate {
+ITwoInputSingleOutputGate {
 
 	public TwoInputOrGate() {
 		super(new Buffer(), new Buffer());
@@ -22,7 +22,7 @@ public final class TwoInputOrGate extends TwoRelaySingleOutputGate implements
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		relayA.setPower(value);
 		relayB.setPower(value);
 	}

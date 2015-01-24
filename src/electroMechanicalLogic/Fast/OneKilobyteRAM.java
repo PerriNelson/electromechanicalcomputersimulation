@@ -11,7 +11,7 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
 
 public class OneKilobyteRAM extends FiveHundredTwelveByteRAM implements
-		IOneKilobyteRAM {
+IOneKilobyteRAM {
 	protected static final int bit8 = 0x100;
 	protected static final int bit9 = 0x200;
 
@@ -21,7 +21,7 @@ public class OneKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		addressIn = value ? addressIn | bit9 : addressIn & ~bit9;
 	}
 }

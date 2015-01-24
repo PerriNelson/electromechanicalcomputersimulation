@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class HalfAdder implements IHalfAdder {
 
-	private ITwoInputSingleOutputGate xor = new TwoInputXOrGate();
-	private ITwoInputSingleOutputGate and = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate xor = new TwoInputXOrGate();
+	private final ITwoInputSingleOutputGate and = new TwoInputAndGate();
 
 	@Override
 	public boolean getCO() {
@@ -26,19 +26,19 @@ public final class HalfAdder implements IHalfAdder {
 	}
 
 	@Override
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		xor.setA(value);
 		and.setA(value);
 	}
 
 	@Override
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		xor.setB(value);
 		and.setB(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		xor.setPower(value);
 		and.setPower(value);
 	}

@@ -70,7 +70,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 		performOneClockCycle();
 
-		byte counterValue = getCounterValue();
+		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit2);
 	}
@@ -82,7 +82,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 		performOneClockCycle();
 
-		byte counterValue = getCounterValue();
+		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit1);
 	}
@@ -96,7 +96,7 @@ public class FourBitRingCounterTest {
 		performOneClockCycle();
 		performOneClockCycle();
 
-		byte counterValue = getCounterValue();
+		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit3);
 	}
@@ -105,7 +105,7 @@ public class FourBitRingCounterTest {
 	public void test_OnlyBitThreeIsSet_WhenClearIsHigh() {
 		initializeCounter();
 
-		byte counterValue = getCounterValue();
+		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit3);
 	}
@@ -116,7 +116,7 @@ public class FourBitRingCounterTest {
 
 		performOneClockCycle();
 
-		byte counterValue = getCounterValue();
+		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit0);
 	}

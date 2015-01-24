@@ -21,9 +21,9 @@ import electroMechanicalMachine.Model.AddingMachineMarkIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
 public class AddingMachineMarkI extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		AddingMachineMarkI frame = new AddingMachineMarkI();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkI frame = new AddingMachineMarkI();
 		frame.setVisible(true);
 	}
 
@@ -123,16 +123,16 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			boolean powerState = PowerState.on == evt.getNewValue();
+			final boolean powerState = PowerState.on == evt.getNewValue();
 
 			if (evt.getSource() == toggleSwitchA0) {
 				model.setA0(powerState);

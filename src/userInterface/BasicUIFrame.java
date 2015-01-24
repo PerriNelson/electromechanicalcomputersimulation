@@ -26,13 +26,13 @@ import userInterface.Interfaces.PowerState;
 public class BasicUIFrame extends Frame {
 	public static final long serialVersionUID = 1l;
 
-	private JPanel panel;
+	private final JPanel panel;
 
-	public BasicUIFrame(String caption) {
+	public BasicUIFrame(final String caption) {
 		super(caption);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
@@ -44,9 +44,9 @@ public class BasicUIFrame extends Frame {
 		add(panel);
 	}
 
-	protected void placeComponent(JComponent component, int column, int row,
-			int columns) {
-		GridBagConstraints constraints = new GridBagConstraints();
+	protected void placeComponent(final JComponent component, final int column,
+			final int row, final int columns) {
+		final GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.CENTER;
 		constraints.gridx = column;
 		constraints.gridwidth = columns;
@@ -56,13 +56,14 @@ public class BasicUIFrame extends Frame {
 		panel.add(component, constraints);
 	}
 
-	protected void placeLabel(String imagePath, String alternateText,
-			int column, int row, int columns) {
-		JLabel label = new JLabel();
+	protected void placeLabel(final String imagePath,
+			final String alternateText, final int column, final int row,
+			final int columns) {
+		final JLabel label = new JLabel();
 		try {
 			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
 					.getResource(imagePath))));
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			label.setText(alternateText);
 			label.setForeground(Color.white);
 			label.setBackground(Color.black);
@@ -71,18 +72,19 @@ public class BasicUIFrame extends Frame {
 		placeComponent(label, column, row, columns);
 	}
 
-	protected Lamp placeLamp(int column, int row) {
-		Lamp lamp = new Lamp();
+	protected Lamp placeLamp(final int column, final int row) {
+		final Lamp lamp = new Lamp();
 		placeComponent(lamp, column, row, 1);
 		return lamp;
 	}
 
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
 		return placeToggleSwitch(column, row, 1);
 	}
 
-	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
-		ToggleSwitch toggleSwitch = new ToggleSwitch();
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row,
+			final int columns) {
+		final ToggleSwitch toggleSwitch = new ToggleSwitch();
 		toggleSwitch.setPowerIn(PowerState.on);
 		placeComponent(toggleSwitch, column, row, columns);
 		return toggleSwitch;

@@ -12,14 +12,14 @@ import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IFullAdder;
 
 public final class EightBitAdder implements IEightBitAdder {
-	private IFullAdder adder0 = new FullAdder();
-	private IFullAdder adder1 = new FullAdder();
-	private IFullAdder adder2 = new FullAdder();
-	private IFullAdder adder3 = new FullAdder();
-	private IFullAdder adder4 = new FullAdder();
-	private IFullAdder adder5 = new FullAdder();
-	private IFullAdder adder6 = new FullAdder();
-	private IFullAdder adder7 = new FullAdder();
+	private final IFullAdder adder0 = new FullAdder();
+	private final IFullAdder adder1 = new FullAdder();
+	private final IFullAdder adder2 = new FullAdder();
+	private final IFullAdder adder3 = new FullAdder();
+	private final IFullAdder adder4 = new FullAdder();
+	private final IFullAdder adder5 = new FullAdder();
+	private final IFullAdder adder6 = new FullAdder();
+	private final IFullAdder adder7 = new FullAdder();
 
 	@Override
 	public boolean getCO() {
@@ -67,92 +67,92 @@ public final class EightBitAdder implements IEightBitAdder {
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		adder0.setA(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		adder1.setA(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		adder2.setA(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		adder3.setA(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		adder4.setA(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		adder5.setA(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		adder6.setA(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		adder7.setA(value);
 	}
 
 	@Override
-	public void setB0(boolean value) {
+	public void setB0(final boolean value) {
 		adder0.setB(value);
 	}
 
 	@Override
-	public void setB1(boolean value) {
+	public void setB1(final boolean value) {
 		adder1.setB(value);
 	}
 
 	@Override
-	public void setB2(boolean value) {
+	public void setB2(final boolean value) {
 		adder2.setB(value);
 	}
 
 	@Override
-	public void setB3(boolean value) {
+	public void setB3(final boolean value) {
 		adder3.setB(value);
 	}
 
 	@Override
-	public void setB4(boolean value) {
+	public void setB4(final boolean value) {
 		adder4.setB(value);
 	}
 
 	@Override
-	public void setB5(boolean value) {
+	public void setB5(final boolean value) {
 		adder5.setB(value);
 	}
 
 	@Override
-	public void setB6(boolean value) {
+	public void setB6(final boolean value) {
 		adder6.setB(value);
 	}
 
 	@Override
-	public void setB7(boolean value) {
+	public void setB7(final boolean value) {
 		adder7.setB(value);
 	}
 
 	@Override
-	public void setCI(boolean value) {
+	public void setCI(final boolean value) {
 		adder0.setCI(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		adder0.setPower(value);
 		adder1.setPower(value);
 		adder2.setPower(value);

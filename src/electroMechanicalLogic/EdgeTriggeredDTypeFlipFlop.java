@@ -14,14 +14,14 @@ import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
-	private IRSFlipFlop stage1 = new RSFlipFlop();
-	private IRSFlipFlop stage2 = new RSFlipFlop();
-	private ITwoInputSingleOutputGate sAnd1 = new TwoInputAndGate();
-	private ITwoInputSingleOutputGate rAnd1 = new TwoInputAndGate();
-	private ITwoInputSingleOutputGate sAnd2 = new TwoInputAndGate();
-	private ITwoInputSingleOutputGate rAnd2 = new TwoInputAndGate();
-	private IRelay dBar = new Inverter();
-	private IRelay clkBar = new Inverter();
+	private final IRSFlipFlop stage1 = new RSFlipFlop();
+	private final IRSFlipFlop stage2 = new RSFlipFlop();
+	private final ITwoInputSingleOutputGate sAnd1 = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate rAnd1 = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate sAnd2 = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate rAnd2 = new TwoInputAndGate();
+	private final IRelay dBar = new Inverter();
+	private final IRelay clkBar = new Inverter();
 
 	@Override
 	public boolean getQ() {
@@ -34,20 +34,20 @@ public final class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		clkBar.setInput(value);
 		sAnd2.setB(value);
 		rAnd2.setA(value);
 	}
 
 	@Override
-	public void setD(boolean value) {
+	public void setD(final boolean value) {
 		dBar.setInput(value);
 		rAnd1.setB(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		dBar.setPower(value);
 		clkBar.setPower(value);
 		sAnd1.setPower(value);

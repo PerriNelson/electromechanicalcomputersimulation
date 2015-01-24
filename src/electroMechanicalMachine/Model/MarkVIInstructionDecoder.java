@@ -17,12 +17,12 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
 
 public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	protected IRelay ci0Bar;
-	private IRelay ci4Bar;
+	private final IRelay ci4Bar;
 	protected IRelay ci5Bar;
-	private IEightInputSingleOutputGate add;
-	private IEightInputSingleOutputGate halt;
-	private IEightInputSingleOutputGate load;
-	private IEightInputSingleOutputGate store;
+	private final IEightInputSingleOutputGate add;
+	private final IEightInputSingleOutputGate halt;
+	private final IEightInputSingleOutputGate load;
+	private final IEightInputSingleOutputGate store;
 
 	public MarkVIInstructionDecoder() {
 		ci0Bar = new Inverter();
@@ -55,7 +55,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI0(boolean value) {
+	public void setCI0(final boolean value) {
 		ci0Bar.setInput(value);
 		add.setI0(value);
 		load.setI0(value);
@@ -63,7 +63,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI1(boolean value) {
+	public void setCI1(final boolean value) {
 		add.setI1(value);
 		halt.setI1(value);
 		load.setI1(value);
@@ -71,7 +71,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI2(boolean value) {
+	public void setCI2(final boolean value) {
 		add.setI2(value);
 		halt.setI2(value);
 		load.setI2(value);
@@ -79,7 +79,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI3(boolean value) {
+	public void setCI3(final boolean value) {
 		add.setI3(value);
 		halt.setI3(value);
 		load.setI3(value);
@@ -87,14 +87,14 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI4(boolean value) {
+	public void setCI4(final boolean value) {
 		ci4Bar.setInput(value);
 		add.setI4(value);
 		halt.setI4(value);
 	}
 
 	@Override
-	public void setCI5(boolean value) {
+	public void setCI5(final boolean value) {
 		ci5Bar.setInput(value);
 		halt.setI5(value);
 		load.setI5(value);
@@ -102,7 +102,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI6(boolean value) {
+	public void setCI6(final boolean value) {
 		add.setI6(value);
 		halt.setI6(value);
 		load.setI6(value);
@@ -110,7 +110,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI7(boolean value) {
+	public void setCI7(final boolean value) {
 		add.setI7(value);
 		halt.setI7(value);
 		load.setI7(value);
@@ -118,7 +118,7 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		ci0Bar.setPower(value);
 		ci4Bar.setPower(value);
 		ci5Bar.setPower(value);

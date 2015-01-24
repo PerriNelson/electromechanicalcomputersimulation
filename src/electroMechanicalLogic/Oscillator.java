@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IOscillator;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class Oscillator implements IOscillator {
-	private IRelay inverter = new Inverter();
+	private final IRelay inverter = new Inverter();
 
 	@Override
 	public boolean getOutput() {
@@ -20,7 +20,7 @@ public final class Oscillator implements IOscillator {
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		inverter.setPower(value);
 	}
 

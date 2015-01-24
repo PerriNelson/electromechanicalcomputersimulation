@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
 
 public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
-		IFourKilobyteRAM {
+IFourKilobyteRAM {
 
 	@Override
 	protected void initializeBanks() {
@@ -27,7 +27,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		((IFiveHundredTwelveByteRAM) bank0).setA6(value);
 		((IFiveHundredTwelveByteRAM) bank1).setA6(value);
 		((IFiveHundredTwelveByteRAM) bank2).setA6(value);
@@ -39,7 +39,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		((IFiveHundredTwelveByteRAM) bank0).setA7(value);
 		((IFiveHundredTwelveByteRAM) bank1).setA7(value);
 		((IFiveHundredTwelveByteRAM) bank2).setA7(value);
@@ -51,7 +51,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		((IFiveHundredTwelveByteRAM) bank0).setA8(value);
 		((IFiveHundredTwelveByteRAM) bank1).setA8(value);
 		((IFiveHundredTwelveByteRAM) bank2).setA8(value);
@@ -63,7 +63,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		w.setS0(value);
 		dO0.setS0(value);
 		dO1.setS0(value);
@@ -76,7 +76,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setAA(boolean value) {
+	public void setAA(final boolean value) {
 		w.setS1(value);
 		dO0.setS1(value);
 		dO1.setS1(value);
@@ -89,7 +89,7 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 	}
 
 	@Override
-	public void setAB(boolean value) {
+	public void setAB(final boolean value) {
 		w.setS2(value);
 		dO0.setS2(value);
 		dO1.setS2(value);

@@ -67,7 +67,7 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 		return ToggleSwitchUI.UI_CLASS_ID;
 	}
 
-	private void init(ISwitchModel newModel) {
+	private void init(final ISwitchModel newModel) {
 		setModel(newModel);
 		updateUI();
 	}
@@ -81,7 +81,7 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == model) {
 			if (closedPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				firePropertyChange(closedPropertyName, evt.getOldValue(),
@@ -95,8 +95,8 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 		}
 	}
 
-	public void setModel(ISwitchModel newModel) {
-		ISwitchModel oldModel = model;
+	public void setModel(final ISwitchModel newModel) {
+		final ISwitchModel oldModel = model;
 		if (oldModel != newModel) {
 
 			if (oldModel != null) {
@@ -114,11 +114,11 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 		}
 	}
 
-	public void setPowerIn(PowerState value) {
+	public void setPowerIn(final PowerState value) {
 		model.setPowerIn(value);
 	}
 
-	public void setUI(ToggleSwitchUI ui) {
+	public void setUI(final ToggleSwitchUI ui) {
 		super.setUI(ui);
 	}
 

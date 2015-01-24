@@ -11,16 +11,16 @@ import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class EightInputSingleOutputOrGate implements
-		IEightInputSingleOutputGate {
+IEightInputSingleOutputGate {
 
-	private IRelay bit0 = new Buffer();
-	private IRelay bit1 = new Buffer();
-	private IRelay bit2 = new Buffer();
-	private IRelay bit3 = new Buffer();
-	private IRelay bit4 = new Buffer();
-	private IRelay bit5 = new Buffer();
-	private IRelay bit6 = new Buffer();
-	private IRelay bit7 = new Buffer();
+	private final IRelay bit0 = new Buffer();
+	private final IRelay bit1 = new Buffer();
+	private final IRelay bit2 = new Buffer();
+	private final IRelay bit3 = new Buffer();
+	private final IRelay bit4 = new Buffer();
+	private final IRelay bit5 = new Buffer();
+	private final IRelay bit6 = new Buffer();
+	private final IRelay bit7 = new Buffer();
 
 	@Override
 	public boolean getOutput() {
@@ -30,49 +30,49 @@ public final class EightInputSingleOutputOrGate implements
 	}
 
 	@Override
-	public void setI0(boolean value) {
+	public void setI0(final boolean value) {
 		bit0.setInput(value);
 	}
 
 	@Override
-	public void setI1(boolean value) {
+	public void setI1(final boolean value) {
 		bit1.setInput(value);
 	}
 
 	@Override
-	public void setI2(boolean value) {
+	public void setI2(final boolean value) {
 		bit2.setInput(value);
 	}
 
 	@Override
-	public void setI3(boolean value) {
+	public void setI3(final boolean value) {
 		bit3.setInput(value);
 	}
 
 	@Override
-	public void setI4(boolean value) {
+	public void setI4(final boolean value) {
 		bit4.setInput(value);
 	}
 
 	@Override
-	public void setI5(boolean value) {
+	public void setI5(final boolean value) {
 		bit5.setInput(value);
 	}
 
 	@Override
-	public void setI6(boolean value) {
+	public void setI6(final boolean value) {
 		bit6.setInput(value);
 
 	}
 
 	@Override
-	public void setI7(boolean value) {
+	public void setI7(final boolean value) {
 		bit7.setInput(value);
 
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);

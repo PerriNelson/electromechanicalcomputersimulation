@@ -11,8 +11,8 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAM extends
-		SixtyFourByOneByteRandomAccessMemory implements
-		IFiveHundredTwelveByteRAM {
+SixtyFourByOneByteRandomAccessMemory implements
+IFiveHundredTwelveByteRAM {
 	protected static final int bit8 = 0x100;
 
 	@Override
@@ -21,17 +21,17 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		addressIn = value ? addressIn | bit6 : addressIn & ~bit6;
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		addressIn = value ? addressIn | bit7 : addressIn & ~bit7;
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		addressIn = value ? addressIn | bit8 : addressIn & ~bit8;
 	}
 }

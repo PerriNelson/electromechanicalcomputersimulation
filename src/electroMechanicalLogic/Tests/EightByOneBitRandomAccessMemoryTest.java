@@ -22,7 +22,7 @@ public class EightByOneBitRandomAccessMemoryTest {
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
 
-	private void setA(int value) {
+	private void setA(final int value) {
 		systemUnderTest.setA0((value & bit0) == bit0);
 		systemUnderTest.setA1((value & bit1) == bit1);
 		systemUnderTest.setA2((value & bit2) == bit2);

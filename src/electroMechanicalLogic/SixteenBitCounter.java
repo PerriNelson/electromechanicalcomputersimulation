@@ -12,15 +12,15 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounter;
 
 public class SixteenBitCounter extends EightBitCounter implements
-		ISixteenBitCounter {
-	private IDTypeFlipFlop bit8 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit9 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitA = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitB = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitC = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitD = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitE = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bitF = new EdgeTriggeredDTypeFlipFlop();
+ISixteenBitCounter {
+	private final IDTypeFlipFlop bit8 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit9 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitA = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitB = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitC = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitD = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitE = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bitF = new EdgeTriggeredDTypeFlipFlop();
 
 	@Override
 	public boolean getQ8() {
@@ -63,7 +63,7 @@ public class SixteenBitCounter extends EightBitCounter implements
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		super.setPower(value);
 		bit8.setPower(value);
 		bit9.setPower(value);

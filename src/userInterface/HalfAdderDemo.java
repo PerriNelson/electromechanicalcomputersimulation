@@ -27,8 +27,8 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.HalfAdder;
 
 public class HalfAdderDemo extends Frame implements PropertyChangeListener {
-	public static void main(String[] args) {
-		HalfAdderDemo frame = new HalfAdderDemo();
+	public static void main(final String[] args) {
+		final HalfAdderDemo frame = new HalfAdderDemo();
 		frame.setVisible(true);
 	}
 
@@ -44,29 +44,29 @@ public class HalfAdderDemo extends Frame implements PropertyChangeListener {
 
 	private static final int columnS = 3;
 
-	private JLabel labelA;
-	private JLabel labelB;
-	private JLabel labelCO;
-	private JLabel labelS;
-	private ToggleSwitch toggleSwitchA;
-	private ToggleSwitch toggleSwitchB;
-	private Lamp lampCO;
-	private Lamp lampS;
-	private HalfAdder halfAdder;
+	private final JLabel labelA;
+	private final JLabel labelB;
+	private final JLabel labelCO;
+	private final JLabel labelS;
+	private final ToggleSwitch toggleSwitchA;
+	private final ToggleSwitch toggleSwitchB;
+	private final Lamp lampCO;
+	private final Lamp lampS;
+	private final HalfAdder halfAdder;
 
 	public HalfAdderDemo() {
 		super("Half Adder");
 		setSize(300, 170);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
 		halfAdder = new HalfAdder();
 		halfAdder.setPower(true);
 
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		panel.setBackground(new Color(60, 60, 60));
 
@@ -105,9 +105,9 @@ public class HalfAdderDemo extends Frame implements PropertyChangeListener {
 		add(panel);
 	}
 
-	private void placeComponent(JPanel panel, JComponent component, int column,
-			int row) {
-		GridBagConstraints constraints = new GridBagConstraints();
+	private void placeComponent(final JPanel panel, final JComponent component,
+			final int column, final int row) {
+		final GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.CENTER;
 		constraints.gridx = column;
 		constraints.gridy = row;
@@ -117,7 +117,7 @@ public class HalfAdderDemo extends Frame implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitchA) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				halfAdder.setA(PowerState.on == evt.getNewValue());
@@ -133,11 +133,12 @@ public class HalfAdderDemo extends Frame implements PropertyChangeListener {
 		lampS.setOn(halfAdder.getS());
 	}
 
-	private void setLabel(JLabel label, String imagePath, String alternateText) {
+	private void setLabel(final JLabel label, final String imagePath,
+			final String alternateText) {
 		try {
 			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
 					.getResource(imagePath))));
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			label.setText(alternateText);
 			label.setForeground(Color.white);
 			label.setBackground(Color.black);

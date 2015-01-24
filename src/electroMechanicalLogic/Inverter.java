@@ -13,8 +13,8 @@ public final class Inverter extends RelayBase implements IRelay {
 
 	@Override
 	public boolean getOutput() {
-		return (state & PowerMaskOut) == PowerMaskOut
-				&& (state & InputMaskOut) == 0;
+		return ((state & PowerMaskOut) == PowerMaskOut)
+				&& ((state & InputMaskOut) == 0);
 	}
 
 }

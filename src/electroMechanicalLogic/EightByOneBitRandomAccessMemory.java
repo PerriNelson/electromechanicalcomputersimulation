@@ -14,17 +14,17 @@ import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public final class EightByOneBitRandomAccessMemory implements
-		IEightByOneBitRandomAccessMemory {
-	private IThreeToEightDecoder decoder = new ThreeToEightDecoder();
-	private ILatch bit0 = new Latch();
-	private ILatch bit1 = new Latch();
-	private ILatch bit2 = new Latch();
-	private ILatch bit3 = new Latch();
-	private ILatch bit4 = new Latch();
-	private ILatch bit5 = new Latch();
-	private ILatch bit6 = new Latch();
-	private ILatch bit7 = new Latch();
-	private IEightToOneSelector selector = new EightToOneSelector();
+IEightByOneBitRandomAccessMemory {
+	private final IThreeToEightDecoder decoder = new ThreeToEightDecoder();
+	private final ILatch bit0 = new Latch();
+	private final ILatch bit1 = new Latch();
+	private final ILatch bit2 = new Latch();
+	private final ILatch bit3 = new Latch();
+	private final ILatch bit4 = new Latch();
+	private final ILatch bit5 = new Latch();
+	private final ILatch bit6 = new Latch();
+	private final ILatch bit7 = new Latch();
+	private final IEightToOneSelector selector = new EightToOneSelector();
 
 	@Override
 	public boolean getDO() {
@@ -32,25 +32,25 @@ public final class EightByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		decoder.setS0(value);
 		selector.setS0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		decoder.setS1(value);
 		selector.setS1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		decoder.setS2(value);
 		selector.setS2(value);
 	}
 
 	@Override
-	public void setDI(boolean value) {
+	public void setDI(final boolean value) {
 		bit0.setDI(value);
 		bit1.setDI(value);
 		bit2.setDI(value);
@@ -62,7 +62,7 @@ public final class EightByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		decoder.setPower(value);
 		bit0.setPower(value);
 		bit1.setPower(value);
@@ -76,7 +76,7 @@ public final class EightByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		decoder.setData(value);
 	}
 

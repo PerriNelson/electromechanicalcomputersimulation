@@ -29,7 +29,7 @@ public class EightInputNORGateTest {
 
 	private IEightInputSingleOutputGate systemUnderTest;
 
-	private void setInput(int input) {
+	private void setInput(final int input) {
 		systemUnderTest.setI0((input & bit0) == bit0);
 		systemUnderTest.setI1((input & bit1) == bit1);
 		systemUnderTest.setI2((input & bit2) == bit2);

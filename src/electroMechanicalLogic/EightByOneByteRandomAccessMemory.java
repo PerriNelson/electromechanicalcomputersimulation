@@ -14,7 +14,7 @@ import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public class EightByOneByteRandomAccessMemory implements
-		IEightByOneByteRandomAccessMemory {
+IEightByOneByteRandomAccessMemory {
 
 	protected IThreeToEightDecoder w = new ThreeToEightDecoder();
 	protected IEightToOneSelector dO0 = new EightToOneSelector();
@@ -92,7 +92,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		w.setS0(value);
 		dO0.setS0(value);
 		dO1.setS0(value);
@@ -105,7 +105,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		w.setS1(value);
 		dO0.setS1(value);
 		dO1.setS1(value);
@@ -118,7 +118,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		w.setS2(value);
 		dO0.setS2(value);
 		dO1.setS2(value);
@@ -131,7 +131,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		bank0.setDI0(value);
 		bank1.setDI0(value);
 		bank2.setDI0(value);
@@ -143,7 +143,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		bank0.setDI1(value);
 		bank1.setDI1(value);
 		bank2.setDI1(value);
@@ -155,7 +155,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		bank0.setDI2(value);
 		bank1.setDI2(value);
 		bank2.setDI2(value);
@@ -167,7 +167,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		bank0.setDI3(value);
 		bank1.setDI3(value);
 		bank2.setDI3(value);
@@ -179,7 +179,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		bank0.setDI4(value);
 		bank1.setDI4(value);
 		bank2.setDI4(value);
@@ -191,7 +191,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		bank0.setDI5(value);
 		bank1.setDI5(value);
 		bank2.setDI5(value);
@@ -203,7 +203,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		bank0.setDI6(value);
 		bank1.setDI6(value);
 		bank2.setDI6(value);
@@ -215,7 +215,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		bank0.setDI7(value);
 		bank1.setDI7(value);
 		bank2.setDI7(value);
@@ -227,7 +227,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		w.setPower(value);
 		bank0.setPower(value);
 		bank1.setPower(value);
@@ -248,7 +248,7 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		w.setData(value);
 	}
 

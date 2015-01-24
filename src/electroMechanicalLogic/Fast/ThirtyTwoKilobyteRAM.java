@@ -11,7 +11,7 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
-		IThirtyTwoKilobyteRAM {
+IThirtyTwoKilobyteRAM {
 	protected static final int bitC = 0x1000;
 	protected static final int bitD = 0x2000;
 	protected static final int bitE = 0x4000;
@@ -22,17 +22,17 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAC(boolean value) {
+	public void setAC(final boolean value) {
 		addressIn = value ? addressIn | bitC : addressIn & ~bitC;
 	}
 
 	@Override
-	public void setAD(boolean value) {
+	public void setAD(final boolean value) {
 		addressIn = value ? addressIn | bitD : addressIn & ~bitD;
 	}
 
 	@Override
-	public void setAE(boolean value) {
+	public void setAE(final boolean value) {
 		addressIn = value ? addressIn | bitE : addressIn & ~bitE;
 	}
 }

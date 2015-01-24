@@ -22,12 +22,12 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 
 public class MarkVIALU implements IMarkVIALU {
-	private IEightBitAdder adder = new EightBitAdder();
-	private ITwoInputSingleOutputGate clockAndLoadOrAdd = new TwoInputAndGate();
-	private IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
-	private IRelay loadBar = new Inverter();
-	private ITwoInputSingleOutputGate loadOrAdd = new TwoInputOrGate();
-	private IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
+	private final IEightBitAdder adder = new EightBitAdder();
+	private final ITwoInputSingleOutputGate clockAndLoadOrAdd = new TwoInputAndGate();
+	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
+	private final IRelay loadBar = new Inverter();
+	private final ITwoInputSingleOutputGate loadOrAdd = new TwoInputOrGate();
+	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
 
 	@Override
 	public boolean getDO0() {
@@ -70,76 +70,76 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	@Override
-	public void setAdd(boolean value) {
+	public void setAdd(final boolean value) {
 		loadOrAdd.setB(value);
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		latch.setClr(value);
 	}
 
 	@Override
-	public void setClock(boolean value) {
+	public void setClock(final boolean value) {
 		clockAndLoadOrAdd.setA(value);
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		adder.setA0(value);
 		loadSelector.setA0(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		adder.setA1(value);
 		loadSelector.setA1(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		adder.setA2(value);
 		loadSelector.setA2(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		adder.setA3(value);
 		loadSelector.setA3(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		adder.setA4(value);
 		loadSelector.setA4(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		adder.setA5(value);
 		loadSelector.setA5(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		adder.setA6(value);
 		loadSelector.setA6(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		adder.setA7(value);
 		loadSelector.setA7(value);
 	}
 
 	@Override
-	public void setLoad(boolean value) {
+	public void setLoad(final boolean value) {
 		loadBar.setInput(value);
 		loadOrAdd.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		adder.setPower(value);
 		clockAndLoadOrAdd.setPower(value);
 		latch.setPower(value);

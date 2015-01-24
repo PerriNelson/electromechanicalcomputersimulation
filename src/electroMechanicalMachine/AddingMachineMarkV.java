@@ -22,9 +22,9 @@ import electroMechanicalMachine.Model.AddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 
 public class AddingMachineMarkV extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		AddingMachineMarkV frame = new AddingMachineMarkV();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkV frame = new AddingMachineMarkV();
 		frame.setVisible(true);
 	}
 
@@ -73,7 +73,8 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 
 	}
 
-	public AddingMachineMarkV(String caption, IAddingMachineMarkVModel theModel) {
+	public AddingMachineMarkV(final String caption,
+			final IAddingMachineMarkVModel theModel) {
 		super(caption);
 		placeControls();
 
@@ -82,7 +83,7 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 		startAutomation();
 	}
 
-	protected void initializeModel(IAddingMachineMarkVModel theModel) {
+	protected void initializeModel(final IAddingMachineMarkVModel theModel) {
 		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
@@ -176,17 +177,17 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		Object source = evt.getSource();
+	public void propertyChange(final PropertyChangeEvent evt) {
+		final Object source = evt.getSource();
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			Boolean value = PowerState.on == evt.getNewValue();
+			final Boolean value = PowerState.on == evt.getNewValue();
 			for (int i = 0; i < 16; i++) {
 
 				if (source == addressSwitches[i]) {
@@ -227,7 +228,7 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 		}
 	}
 
-	private void setAddress(int bit, Boolean value) {
+	private void setAddress(final int bit, final Boolean value) {
 		switch (bit) {
 		case 0:
 			model.setA0(value);
@@ -280,7 +281,7 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 		}
 	}
 
-	private void setData(int bit, Boolean value) {
+	private void setData(final int bit, final Boolean value) {
 		switch (bit) {
 		case 0:
 			model.setDI0(value);

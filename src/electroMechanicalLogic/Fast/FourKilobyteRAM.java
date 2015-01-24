@@ -20,12 +20,12 @@ public class FourKilobyteRAM extends OneKilobyteRAM implements IFourKilobyteRAM 
 	}
 
 	@Override
-	public void setAA(boolean value) {
+	public void setAA(final boolean value) {
 		addressIn = value ? addressIn | bitA : addressIn & ~bitA;
 	}
 
 	@Override
-	public void setAB(boolean value) {
+	public void setAB(final boolean value) {
 		addressIn = value ? addressIn | bitB : addressIn & ~bitB;
 	}
 }

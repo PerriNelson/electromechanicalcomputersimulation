@@ -31,19 +31,19 @@ public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		sAnd.setB(value);
 		rAnd.setA(value);
 	}
 
 	@Override
-	public void setD(boolean value) {
+	public void setD(final boolean value) {
 		dBar.setInput(value);
 		sAnd.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		dBar.setPower(value);
 		sAnd.setPower(value);
 		rAnd.setPower(value);

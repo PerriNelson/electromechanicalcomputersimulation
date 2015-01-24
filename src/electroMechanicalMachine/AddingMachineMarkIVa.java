@@ -12,8 +12,8 @@ import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
 
 public class AddingMachineMarkIVa extends AddingMachineMarkIV {
-	public static void main(String[] args) {
-		AddingMachineMarkIVa frame = new AddingMachineMarkIVa();
+	public static void main(final String[] args) {
+		final AddingMachineMarkIVa frame = new AddingMachineMarkIVa();
 		frame.setVisible(true);
 	}
 

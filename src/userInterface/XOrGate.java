@@ -12,8 +12,8 @@ import electroMechanicalLogic.TwoInputXOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class XOrGate extends GateDemoFrame {
-	public static void main(String[] args) {
-		XOrGate frame = new XOrGate();
+	public static void main(final String[] args) {
+		final XOrGate frame = new XOrGate();
 		frame.setVisible(true);
 	}
 

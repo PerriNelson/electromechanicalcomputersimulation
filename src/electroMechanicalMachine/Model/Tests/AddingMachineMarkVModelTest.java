@@ -46,22 +46,30 @@ public class AddingMachineMarkVModelTest {
 
 	private int getSum() {
 		int sum = 0;
-		if (systemUnderTest.getS0())
+		if (systemUnderTest.getS0()) {
 			sum = sum | bit0;
-		if (systemUnderTest.getS1())
+		}
+		if (systemUnderTest.getS1()) {
 			sum = sum | bit1;
-		if (systemUnderTest.getS2())
+		}
+		if (systemUnderTest.getS2()) {
 			sum = sum | bit2;
-		if (systemUnderTest.getS3())
+		}
+		if (systemUnderTest.getS3()) {
 			sum = sum | bit3;
-		if (systemUnderTest.getS4())
+		}
+		if (systemUnderTest.getS4()) {
 			sum = sum | bit4;
-		if (systemUnderTest.getS5())
+		}
+		if (systemUnderTest.getS5()) {
 			sum = sum | bit5;
-		if (systemUnderTest.getS6())
+		}
+		if (systemUnderTest.getS6()) {
 			sum = sum | bit6;
-		if (systemUnderTest.getS7())
+		}
+		if (systemUnderTest.getS7()) {
 			sum = sum | bit7;
+		}
 		return sum;
 	}
 
@@ -70,7 +78,7 @@ public class AddingMachineMarkVModelTest {
 		systemUnderTest.step();
 	}
 
-	private void setAddress(int address) {
+	private void setAddress(final int address) {
 		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
 		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
 		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
@@ -89,7 +97,7 @@ public class AddingMachineMarkVModelTest {
 		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	private void setDataIn(int value) {
+	private void setDataIn(final int value) {
 		systemUnderTest.setDI0(((value & bit0) == bit0) ? on : off);
 		systemUnderTest.setDI1(((value & bit1) == bit1) ? on : off);
 		systemUnderTest.setDI2(((value & bit2) == bit2) ? on : off);
@@ -2434,7 +2442,7 @@ public class AddingMachineMarkVModelTest {
 	public void test_Step_FiresPropertyChangeEvent() {
 		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void propertyChange(final PropertyChangeEvent evt) {
 				eventFired = true;
 			}
 		});

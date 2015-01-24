@@ -24,7 +24,7 @@ public class ThreeToEightDecoderTest {
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;
 
-	private void setS(int value) {
+	private void setS(final int value) {
 		systemUnderTest.setS0((value & bit0) == bit0);
 		systemUnderTest.setS1((value & bit1) == bit1);
 		systemUnderTest.setS2((value & bit2) == bit2);

@@ -13,16 +13,16 @@ abstract class TwoRelaySingleOutputGate {
 	protected final IRelay relayA;
 	protected final IRelay relayB;
 
-	TwoRelaySingleOutputGate(IRelay relayA, IRelay relayB) {
+	TwoRelaySingleOutputGate(final IRelay relayA, final IRelay relayB) {
 		this.relayA = relayA;
 		this.relayB = relayB;
 	}
 
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		relayA.setInput(value);
 	}
 
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		relayB.setInput(value);
 	}
 }

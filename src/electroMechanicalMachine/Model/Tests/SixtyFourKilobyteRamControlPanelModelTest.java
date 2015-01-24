@@ -2761,7 +2761,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WhenStepped_FiresPropertyChangeEvent() {
 		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void propertyChange(final PropertyChangeEvent evt) {
 				eventFired = true;
 			}
 		});

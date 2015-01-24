@@ -17,15 +17,16 @@ import userInterface.Interfaces.IAutomationDriver;
 import electroMechanicalMachine.Model.Interfaces.IMachineModel;
 
 public class AutomationDriver implements IAutomationDriver {
-	private int cycleTime;
+	private final int cycleTime;
 	private Timer timer;
-	private IMachineModel model;
+	private final IMachineModel model;
 
-	public AutomationDriver(IMachineModel machine) {
+	public AutomationDriver(final IMachineModel machine) {
 		this(machine, 10);
 	}
 
-	public AutomationDriver(IMachineModel machine, int cycleTimeInMilliseconds) {
+	public AutomationDriver(final IMachineModel machine,
+			final int cycleTimeInMilliseconds) {
 		model = machine;
 		cycleTime = cycleTimeInMilliseconds;
 	}
@@ -34,7 +35,7 @@ public class AutomationDriver implements IAutomationDriver {
 	public void start() {
 		timer = new Timer(cycleTime, new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(final ActionEvent arg0) {
 				model.step();
 			}
 		});

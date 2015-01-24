@@ -27,8 +27,8 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.FullAdder;
 
 public class FullAdderDemo extends Frame implements PropertyChangeListener {
-	public static void main(String[] args) {
-		FullAdderDemo frame = new FullAdderDemo();
+	public static void main(final String[] args) {
+		final FullAdderDemo frame = new FullAdderDemo();
 		frame.setVisible(true);
 	}
 
@@ -45,31 +45,31 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 
 	private static final int columnS = 4;
 
-	private JLabel labelCI;
-	private JLabel labelA;
-	private JLabel labelB;
-	private JLabel labelCO;
-	private JLabel labelS;
-	private ToggleSwitch toggleSwitchCI;
-	private ToggleSwitch toggleSwitchA;
-	private ToggleSwitch toggleSwitchB;
-	private Lamp lampCO;
-	private Lamp lampS;
-	private FullAdder fullAdder;
+	private final JLabel labelCI;
+	private final JLabel labelA;
+	private final JLabel labelB;
+	private final JLabel labelCO;
+	private final JLabel labelS;
+	private final ToggleSwitch toggleSwitchCI;
+	private final ToggleSwitch toggleSwitchA;
+	private final ToggleSwitch toggleSwitchB;
+	private final Lamp lampCO;
+	private final Lamp lampS;
+	private final FullAdder fullAdder;
 
 	public FullAdderDemo() {
 		super("Full Adder");
 		setSize(350, 170);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
 		fullAdder = new FullAdder();
 		fullAdder.setPower(true);
 
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		panel.setBackground(new Color(60, 60, 60));
 
@@ -117,9 +117,9 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 		add(panel);
 	}
 
-	private void placeComponent(JPanel panel, JComponent component, int column,
-			int row) {
-		GridBagConstraints constraints = new GridBagConstraints();
+	private void placeComponent(final JPanel panel, final JComponent component,
+			final int column, final int row) {
+		final GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.CENTER;
 		constraints.gridx = column;
 		constraints.gridy = row;
@@ -129,7 +129,7 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitchCI) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				fullAdder.setCI(PowerState.on == evt.getNewValue());
@@ -150,11 +150,12 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 		lampS.setOn(fullAdder.getS());
 	}
 
-	private void setLabel(JLabel label, String imagePath, String alternateText) {
+	private void setLabel(final JLabel label, final String imagePath,
+			final String alternateText) {
 		try {
 			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
 					.getResource(imagePath))));
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			label.setText(alternateText);
 			label.setForeground(Color.white);
 			label.setBackground(Color.black);

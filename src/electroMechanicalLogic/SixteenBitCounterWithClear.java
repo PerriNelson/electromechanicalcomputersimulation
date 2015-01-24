@@ -12,22 +12,22 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
 
 public class SixteenBitCounterWithClear implements ISixteenBitCounterWithClear {
-	private IDTypeFlipFlopWithClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit4 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit5 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit6 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit7 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit8 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bit9 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitA = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitB = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitC = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitD = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitE = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithClear bitF = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit4 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit5 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit6 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit7 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit8 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bit9 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitA = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitB = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitC = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitD = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitE = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithClear bitF = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
 
 	@Override
 	public boolean getQ0() {
@@ -110,7 +110,7 @@ public class SixteenBitCounterWithClear implements ISixteenBitCounterWithClear {
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		bit0.setClear(value);
 		bit1.setClear(value);
 		bit2.setClear(value);
@@ -130,12 +130,12 @@ public class SixteenBitCounterWithClear implements ISixteenBitCounterWithClear {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		bit0.setClk(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);

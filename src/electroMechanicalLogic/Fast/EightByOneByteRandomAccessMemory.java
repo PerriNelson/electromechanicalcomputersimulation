@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class EightByOneByteRandomAccessMemory implements
-		IEightByOneByteRandomAccessMemory, IRandomAccessMemory {
+IEightByOneByteRandomAccessMemory, IRandomAccessMemory {
 	protected int addressIn;
 	protected int addressOut;
 	protected byte dataIn;
@@ -33,14 +33,14 @@ public class EightByOneByteRandomAccessMemory implements
 	protected static final int bit7 = 0x80;
 
 	public EightByOneByteRandomAccessMemory() {
-		int maxAddress = getMaxAddress();
+		final int maxAddress = getMaxAddress();
 		randomAccessMemory = new byte[maxAddress + 1];
 		clearRandomAccessMemory();
 	}
 
 	private void clearRandomAccessMemory() {
-		int maxAddress = getMaxAddress();
-		for (int address = 0; address < maxAddress + 1; address++) {
+		final int maxAddress = getMaxAddress();
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			randomAccessMemory[address] = 0;
 		}
 	}
@@ -91,67 +91,67 @@ public class EightByOneByteRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		addressIn = value ? addressIn | bit0 : addressIn & ~bit0;
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		addressIn = value ? addressIn | bit1 : addressIn & ~bit1;
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		addressIn = value ? addressIn | bit2 : addressIn & ~bit2;
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit0) : (byte) (dataIn & ~bit0);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit1) : (byte) (dataIn & ~bit1);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit2) : (byte) (dataIn & ~bit2);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit3) : (byte) (dataIn & ~bit3);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit4) : (byte) (dataIn & ~bit4);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit5) : (byte) (dataIn & ~bit5);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit6) : (byte) (dataIn & ~bit6);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		dataIn = value ? (byte) (dataIn | bit7) : (byte) (dataIn & ~bit7);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		powerIn = value;
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		writeIn = value;
 	}
 

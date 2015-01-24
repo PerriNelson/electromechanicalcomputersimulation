@@ -12,8 +12,8 @@ import electroMechanicalLogic.TwoInputNAndGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class NANDGate extends GateDemoFrame {
-	public static void main(String[] args) {
-		NANDGate frame = new NANDGate();
+	public static void main(final String[] args) {
+		final NANDGate frame = new NANDGate();
 		frame.setVisible(true);
 	}
 

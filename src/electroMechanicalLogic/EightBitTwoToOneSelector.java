@@ -63,87 +63,87 @@ public class EightBitTwoToOneSelector implements IEightBitTwoToOneSelector {
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		bit0.setA(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		bit1.setA(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		bit2.setA(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		bit3.setA(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		bit4.setA(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		bit5.setA(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		bit6.setA(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		bit7.setA(value);
 	}
 
 	@Override
-	public void setB0(boolean value) {
+	public void setB0(final boolean value) {
 		bit0.setB(value);
 	}
 
 	@Override
-	public void setB1(boolean value) {
+	public void setB1(final boolean value) {
 		bit1.setB(value);
 	}
 
 	@Override
-	public void setB2(boolean value) {
+	public void setB2(final boolean value) {
 		bit2.setB(value);
 	}
 
 	@Override
-	public void setB3(boolean value) {
+	public void setB3(final boolean value) {
 		bit3.setB(value);
 	}
 
 	@Override
-	public void setB4(boolean value) {
+	public void setB4(final boolean value) {
 		bit4.setB(value);
 	}
 
 	@Override
-	public void setB5(boolean value) {
+	public void setB5(final boolean value) {
 		bit5.setB(value);
 	}
 
 	@Override
-	public void setB6(boolean value) {
+	public void setB6(final boolean value) {
 		bit6.setB(value);
 	}
 
 	@Override
-	public void setB7(boolean value) {
+	public void setB7(final boolean value) {
 		bit7.setB(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);
@@ -155,7 +155,7 @@ public class EightBitTwoToOneSelector implements IEightBitTwoToOneSelector {
 	}
 
 	@Override
-	public void setSelect(boolean value) {
+	public void setSelect(final boolean value) {
 		bit0.setSelect(value);
 		bit1.setSelect(value);
 		bit2.setSelect(value);

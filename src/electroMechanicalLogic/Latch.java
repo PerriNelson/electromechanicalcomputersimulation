@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.ILatch;
 
 public final class Latch implements ILatch {
-	private IDTypeFlipFlop flipFlop = new LevelTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop flipFlop = new LevelTriggeredDTypeFlipFlop();
 
 	@Override
 	public boolean getDO() {
@@ -20,17 +20,17 @@ public final class Latch implements ILatch {
 	}
 
 	@Override
-	public void setDI(boolean value) {
+	public void setDI(final boolean value) {
 		flipFlop.setD(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		flipFlop.setPower(value);
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		flipFlop.setClk(value);
 	}
 

@@ -11,7 +11,7 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 
 public class SixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAM implements
-		ISixtyFourKilobyteRAM {
+ISixtyFourKilobyteRAM {
 	protected static final int bitF = 0x8000;
 
 	@Override
@@ -20,7 +20,7 @@ public class SixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAM implements
 	}
 
 	@Override
-	public void setAF(boolean value) {
+	public void setAF(final boolean value) {
 		addressIn = value ? addressIn | bitF : addressIn & ~bitF;
 	}
 }

@@ -35,8 +35,9 @@ public class MarkVIIInstructionDecoderTest extends MarkVIInstructionDecoderTest 
 	@Test
 	public void test_WhenCodeIsNotSubtract_getSubtract_ReturnsFalse() {
 		for (int code = 0; code < 256; code++) {
-			if (code == subtractCode)
+			if (code == subtractCode) {
 				continue;
+			}
 
 			setCode(code);
 			systemUnderTest.step();

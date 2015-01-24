@@ -45,60 +45,84 @@ public class SixteenBitCounterTest {
 
 	private int getEightBitValue() {
 		int result = 0;
-		if (systemUnderTest.getQ0())
+		if (systemUnderTest.getQ0()) {
 			result |= bit0;
-		if (systemUnderTest.getQ1())
+		}
+		if (systemUnderTest.getQ1()) {
 			result |= bit1;
-		if (systemUnderTest.getQ2())
+		}
+		if (systemUnderTest.getQ2()) {
 			result |= bit2;
-		if (systemUnderTest.getQ3())
+		}
+		if (systemUnderTest.getQ3()) {
 			result |= bit3;
-		if (systemUnderTest.getQ4())
+		}
+		if (systemUnderTest.getQ4()) {
 			result |= bit4;
-		if (systemUnderTest.getQ5())
+		}
+		if (systemUnderTest.getQ5()) {
 			result |= bit5;
-		if (systemUnderTest.getQ6())
+		}
+		if (systemUnderTest.getQ6()) {
 			result |= bit6;
-		if (systemUnderTest.getQ7())
+		}
+		if (systemUnderTest.getQ7()) {
 			result |= bit7;
+		}
 
 		return result;
 	}
 
 	private int getSixteenBitValue() {
 		int result = 0;
-		if (systemUnderTest.getQ0())
+		if (systemUnderTest.getQ0()) {
 			result |= bit0;
-		if (systemUnderTest.getQ1())
+		}
+		if (systemUnderTest.getQ1()) {
 			result |= bit1;
-		if (systemUnderTest.getQ2())
+		}
+		if (systemUnderTest.getQ2()) {
 			result |= bit2;
-		if (systemUnderTest.getQ3())
+		}
+		if (systemUnderTest.getQ3()) {
 			result |= bit3;
-		if (systemUnderTest.getQ4())
+		}
+		if (systemUnderTest.getQ4()) {
 			result |= bit4;
-		if (systemUnderTest.getQ5())
+		}
+		if (systemUnderTest.getQ5()) {
 			result |= bit5;
-		if (systemUnderTest.getQ6())
+		}
+		if (systemUnderTest.getQ6()) {
 			result |= bit6;
-		if (systemUnderTest.getQ7())
+		}
+		if (systemUnderTest.getQ7()) {
 			result |= bit7;
-		if (systemUnderTest.getQ8())
+		}
+		if (systemUnderTest.getQ8()) {
 			result |= bit8;
-		if (systemUnderTest.getQ9())
+		}
+		if (systemUnderTest.getQ9()) {
 			result |= bit9;
-		if (systemUnderTest.getQA())
+		}
+		if (systemUnderTest.getQA()) {
 			result |= bitA;
-		if (systemUnderTest.getQB())
+		}
+		if (systemUnderTest.getQB()) {
 			result |= bitB;
-		if (systemUnderTest.getQC())
+		}
+		if (systemUnderTest.getQC()) {
 			result |= bitC;
-		if (systemUnderTest.getQD())
+		}
+		if (systemUnderTest.getQD()) {
 			result |= bitD;
-		if (systemUnderTest.getQE())
+		}
+		if (systemUnderTest.getQE()) {
 			result |= bitE;
-		if (systemUnderTest.getQF())
+		}
+		if (systemUnderTest.getQF()) {
 			result |= bitF;
+		}
 
 		return result;
 	}

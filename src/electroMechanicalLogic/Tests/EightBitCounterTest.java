@@ -38,22 +38,30 @@ public class EightBitCounterTest {
 
 	private int getValue() {
 		int result = 0;
-		if (systemUnderTest.getQ0())
+		if (systemUnderTest.getQ0()) {
 			result |= bit0;
-		if (systemUnderTest.getQ1())
+		}
+		if (systemUnderTest.getQ1()) {
 			result |= bit1;
-		if (systemUnderTest.getQ2())
+		}
+		if (systemUnderTest.getQ2()) {
 			result |= bit2;
-		if (systemUnderTest.getQ3())
+		}
+		if (systemUnderTest.getQ3()) {
 			result |= bit3;
-		if (systemUnderTest.getQ4())
+		}
+		if (systemUnderTest.getQ4()) {
 			result |= bit4;
-		if (systemUnderTest.getQ5())
+		}
+		if (systemUnderTest.getQ5()) {
 			result |= bit5;
-		if (systemUnderTest.getQ6())
+		}
+		if (systemUnderTest.getQ6()) {
 			result |= bit6;
-		if (systemUnderTest.getQ7())
+		}
+		if (systemUnderTest.getQ7()) {
 			result |= bit7;
+		}
 
 		return result;
 	}
