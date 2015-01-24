@@ -8,23 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightBitLatch extends ISimulatedCircuit {
-	public abstract boolean getDO0();
-
-	public abstract boolean getDO1();
-
-	public abstract boolean getDO2();
-
-	public abstract boolean getDO3();
-
-	public abstract boolean getDO4();
-
-	public abstract boolean getDO5();
-
-	public abstract boolean getDO6();
-
-	public abstract boolean getDO7();
-
+public interface IEightBitLatch extends ISimulatedCircuit, IEightBitDataOut {
 	public abstract void setDI0(boolean value);
 
 	public abstract void setDI1(boolean value);

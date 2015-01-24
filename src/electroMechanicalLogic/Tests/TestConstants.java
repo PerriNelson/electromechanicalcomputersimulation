@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.Model.Tests;
+package electroMechanicalLogic.Tests;
 
 public class TestConstants {
 	public static final int bit0 = 0x01;
@@ -25,7 +25,7 @@ public class TestConstants {
 	public static final int bitD = 0x2000;
 	public static final int bitE = 0x4000;
 	public static final int bitF = 0x8000;
-	
+
 	public static final boolean on = true;
 	public static final boolean off = false;
 

@@ -8,6 +8,14 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -16,7 +24,6 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.MarkVIInstructionDecoder;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class MarkVIInstructionDecoderTest {
 

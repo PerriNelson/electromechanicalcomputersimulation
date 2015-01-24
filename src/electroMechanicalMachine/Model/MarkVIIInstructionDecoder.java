@@ -31,42 +31,43 @@ public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder
 		super.setCI1(value);
 		subtract.setI1(value);
 	}
+
 	@Override
 	public void setCI2(boolean value) {
 		super.setCI2(value);
 		subtract.setI2(value);
 	}
-	
+
 	@Override
 	public void setCI3(boolean value) {
 		super.setCI3(value);
 		subtract.setI3(value);
 	}
-	
+
 	@Override
 	public void setCI4(boolean value) {
 		super.setCI4(value);
 		subtract.setI4(value);
 	}
-	
+
 	@Override
 	public void setCI6(boolean value) {
 		super.setCI6(value);
 		subtract.setI6(value);
 	}
-	
+
 	@Override
 	public void setCI7(boolean value) {
 		super.setCI7(value);
 		subtract.setI7(value);
 	}
-	
+
 	@Override
 	public void setPower(boolean value) {
 		super.setPower(value);
 		subtract.setPower(value);
 	}
-	
+
 	@Override
 	public void step() {
 		super.step();

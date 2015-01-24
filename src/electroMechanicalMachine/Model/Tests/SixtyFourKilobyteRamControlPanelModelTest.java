@@ -8,8 +8,18 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.off;
+import static electroMechanicalLogic.Tests.TestConstants.on;
+import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertTrue;
 
 import java.beans.PropertyChangeEvent;
@@ -21,36 +31,11 @@ import org.junit.Test;
 import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
-
-// We use the fast RAM because otherwise these tests will take minutes to run.
-// Using the slow RAM should produce the same results, but much more slowly.
 
 public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	private ISixtyFourKilobyteRamControlPanelModel systemUnderTest;
 	private boolean eventFired = false;
-
-	private int getOutput() {
-		int output = 0;
-		if (systemUnderTest.getDO0())
-			output = output | bit0;
-		if (systemUnderTest.getDO1())
-			output = output | bit1;
-		if (systemUnderTest.getDO2())
-			output = output | bit2;
-		if (systemUnderTest.getDO3())
-			output = output | bit3;
-		if (systemUnderTest.getDO4())
-			output = output | bit4;
-		if (systemUnderTest.getDO5())
-			output = output | bit5;
-		if (systemUnderTest.getDO6())
-			output = output | bit6;
-		if (systemUnderTest.getDO7())
-			output = output | bit7;
-		return output;
-	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -124,7 +109,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -139,7 +124,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -154,7 +139,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -169,7 +154,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -184,7 +169,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -199,7 +184,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -214,7 +199,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -229,7 +214,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -244,7 +229,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -259,7 +244,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -274,7 +259,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -289,7 +274,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -304,7 +289,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -319,7 +304,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -334,7 +319,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -349,7 +334,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -362,7 +347,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -377,7 +362,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -392,7 +377,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -407,7 +392,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -422,7 +407,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -437,7 +422,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -452,7 +437,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -467,7 +452,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -482,7 +467,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -497,7 +482,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -512,7 +497,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -527,7 +512,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -542,7 +527,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -557,7 +542,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -572,7 +557,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -585,7 +570,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -600,7 +585,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -615,7 +600,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -630,7 +615,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -645,7 +630,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -660,7 +645,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -675,7 +660,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -690,7 +675,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -705,7 +690,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -720,7 +705,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -735,7 +720,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -750,7 +735,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -765,7 +750,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -780,7 +765,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -793,7 +778,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -808,7 +793,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -823,7 +808,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -838,7 +823,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -853,7 +838,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -868,7 +853,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -883,7 +868,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -898,7 +883,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -913,7 +898,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -928,7 +913,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -943,7 +928,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -958,7 +943,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -973,7 +958,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -986,7 +971,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1001,7 +986,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1016,7 +1001,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1031,7 +1016,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1046,7 +1031,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1061,7 +1046,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1076,7 +1061,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1091,7 +1076,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1106,7 +1091,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1121,7 +1106,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1136,7 +1121,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1151,7 +1136,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1164,7 +1149,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1179,7 +1164,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1194,7 +1179,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1209,7 +1194,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1224,7 +1209,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1239,7 +1224,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1254,7 +1239,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1269,7 +1254,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1284,7 +1269,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1299,7 +1284,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1314,7 +1299,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1327,7 +1312,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1342,7 +1327,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1357,7 +1342,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1372,7 +1357,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1387,7 +1372,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1402,7 +1387,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1417,7 +1402,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1432,7 +1417,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1447,7 +1432,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1462,7 +1447,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1475,7 +1460,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1490,7 +1475,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1505,7 +1490,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1520,7 +1505,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1535,7 +1520,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1550,7 +1535,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1565,7 +1550,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1580,7 +1565,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1595,7 +1580,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1608,7 +1593,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1623,7 +1608,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1638,7 +1623,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1653,7 +1638,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1668,7 +1653,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1683,7 +1668,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1698,7 +1683,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1713,7 +1698,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1726,7 +1711,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1741,7 +1726,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1756,7 +1741,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1771,7 +1756,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1786,7 +1771,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1801,7 +1786,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1816,7 +1801,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1829,7 +1814,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1845,7 +1830,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1861,7 +1846,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1877,7 +1862,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1893,7 +1878,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1909,7 +1894,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1922,7 +1907,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1938,7 +1923,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1954,7 +1939,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1970,7 +1955,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1986,7 +1971,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -1999,7 +1984,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2015,7 +2000,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2031,7 +2016,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2047,7 +2032,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2060,7 +2045,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2076,7 +2061,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2092,7 +2077,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2105,7 +2090,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2121,7 +2106,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2134,7 +2119,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2146,7 +2131,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(off);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2160,7 +2145,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA0(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2174,7 +2159,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA1(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2188,7 +2173,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA2(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2202,7 +2187,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA3(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2216,7 +2201,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA4(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2230,7 +2215,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA5(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2244,7 +2229,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA6(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2258,7 +2243,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA7(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2272,7 +2257,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA8(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2286,7 +2271,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcA9(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2300,7 +2285,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAA(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2314,7 +2299,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAB(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2328,7 +2313,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAC(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2342,7 +2327,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAD(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2356,7 +2341,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAE(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2370,7 +2355,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcAF(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2381,7 +2366,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2394,7 +2379,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2407,7 +2392,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2420,7 +2405,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2433,7 +2418,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2446,7 +2431,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2459,7 +2444,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2472,7 +2457,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2485,7 +2470,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2498,7 +2483,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2511,7 +2496,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2524,7 +2509,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2537,7 +2522,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2550,7 +2535,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2563,7 +2548,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2576,7 +2561,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2589,7 +2574,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2601,7 +2586,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2613,7 +2598,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2625,7 +2610,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2637,7 +2622,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2649,7 +2634,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2661,7 +2646,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2673,7 +2658,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2685,7 +2670,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2697,7 +2682,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2709,7 +2694,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2721,7 +2706,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2733,7 +2718,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2745,7 +2730,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2757,7 +2742,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2769,7 +2754,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(off);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2791,7 +2776,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2802,7 +2787,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2812,7 +2797,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2823,7 +2808,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2833,7 +2818,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2844,7 +2829,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2854,7 +2839,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2865,7 +2850,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2875,7 +2860,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2886,7 +2871,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2896,7 +2881,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2907,7 +2892,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2917,7 +2902,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2928,7 +2913,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2938,7 +2923,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2949,7 +2934,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2959,7 +2944,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2970,7 +2955,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2980,7 +2965,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -2991,7 +2976,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3001,7 +2986,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3012,7 +2997,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3022,7 +3007,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3033,7 +3018,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3043,7 +3028,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3054,7 +3039,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3064,7 +3049,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3075,7 +3060,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3085,7 +3070,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3096,7 +3081,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3106,7 +3091,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3117,7 +3102,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3126,7 +3111,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3136,7 +3121,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3145,7 +3130,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3155,7 +3140,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit1, getOutput());
+		assertEquals(bit1, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3164,7 +3149,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3174,7 +3159,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit2, getOutput());
+		assertEquals(bit2, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3183,7 +3168,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3193,7 +3178,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit3, getOutput());
+		assertEquals(bit3, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3202,7 +3187,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3212,7 +3197,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit4, getOutput());
+		assertEquals(bit4, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3221,7 +3206,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3231,7 +3216,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit5, getOutput());
+		assertEquals(bit5, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3240,7 +3225,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3250,7 +3235,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit6, getOutput());
+		assertEquals(bit6, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3259,7 +3244,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3269,7 +3254,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(bit7, getOutput());
+		assertEquals(bit7, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3278,7 +3263,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3288,7 +3273,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3298,7 +3283,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3308,7 +3293,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3318,7 +3303,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3328,7 +3313,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3338,7 +3323,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3348,7 +3333,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3358,7 +3343,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3368,7 +3353,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3378,7 +3363,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3388,7 +3373,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3398,7 +3383,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3408,7 +3393,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3418,7 +3403,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3428,7 +3413,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3438,7 +3423,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit0, getOutput());
+		assertEquals(bit0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3448,7 +3433,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3457,7 +3442,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit1, getOutput());
+		assertEquals(bit1, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3467,7 +3452,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3476,7 +3461,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit2, getOutput());
+		assertEquals(bit2, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3486,7 +3471,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3495,7 +3480,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit3, getOutput());
+		assertEquals(bit3, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3505,7 +3490,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3514,7 +3499,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit4, getOutput());
+		assertEquals(bit4, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3524,7 +3509,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3533,7 +3518,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit5, getOutput());
+		assertEquals(bit5, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3543,7 +3528,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3552,7 +3537,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit6, getOutput());
+		assertEquals(bit6, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3562,7 +3547,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3571,7 +3556,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 
-		assertEquals(bit7, getOutput());
+		assertEquals(bit7, getDataOut(systemUnderTest));
 	}
 
 	@Test
@@ -3581,6 +3566,6 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getOutput());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 }

@@ -8,6 +8,24 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.bit8;
+import static electroMechanicalLogic.Tests.TestConstants.bit9;
+import static electroMechanicalLogic.Tests.TestConstants.bitA;
+import static electroMechanicalLogic.Tests.TestConstants.bitB;
+import static electroMechanicalLogic.Tests.TestConstants.bitC;
+import static electroMechanicalLogic.Tests.TestConstants.bitD;
+import static electroMechanicalLogic.Tests.TestConstants.bitE;
+import static electroMechanicalLogic.Tests.TestConstants.bitF;
+import static electroMechanicalLogic.Tests.TestConstants.off;
+import static electroMechanicalLogic.Tests.TestConstants.on;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -15,7 +33,6 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.MarkVITimingAndMemoryWriteControl;
 import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteControl;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class MarkVITimingAndMemoryWriteControlTest {
 	private IMarkVITimingAndMemoryWriteControl systemUnderTest;
