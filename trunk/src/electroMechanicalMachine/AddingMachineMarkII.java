@@ -21,7 +21,7 @@ import electroMechanicalMachine.Model.AddingMachineMarkIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
 
 public class AddingMachineMarkII extends BasicUIFrame implements
-PropertyChangeListener {
+		PropertyChangeListener {
 	public static void main(final String[] args) {
 		final AddingMachineMarkII frame = new AddingMachineMarkII();
 		frame.setVisible(true);

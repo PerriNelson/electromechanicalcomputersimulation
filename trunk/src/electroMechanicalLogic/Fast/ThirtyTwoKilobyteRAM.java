@@ -11,7 +11,7 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
-IThirtyTwoKilobyteRAM {
+		IThirtyTwoKilobyteRAM {
 	protected static final int bitC = 0x1000;
 	protected static final int bitD = 0x2000;
 	protected static final int bitE = 0x4000;

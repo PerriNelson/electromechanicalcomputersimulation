@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.ThirtyTwoKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class ThirtyTwoKilobyteRAMTest extends
-electroMechanicalLogic.Tests.ThirtyTwoKilobyteRAMTest {
+		electroMechanicalLogic.Tests.ThirtyTwoKilobyteRAMTest {
 
 	@Override
 	@Before

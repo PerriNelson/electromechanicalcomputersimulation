@@ -11,8 +11,8 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAM extends
-SixtyFourByOneByteRandomAccessMemory implements
-IFiveHundredTwelveByteRAM {
+		SixtyFourByOneByteRandomAccessMemory implements
+		IFiveHundredTwelveByteRAM {
 	protected static final int bit8 = 0x100;
 
 	@Override

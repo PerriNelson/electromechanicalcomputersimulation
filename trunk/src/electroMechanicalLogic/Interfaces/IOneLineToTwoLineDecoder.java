@@ -9,9 +9,9 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface IOneLineToTwoLineDecoder extends ISimulatedCircuit {
-	public abstract boolean getO0();
+	public abstract boolean getA();
 
-	public abstract boolean getO1();
+	public abstract boolean getB();
 
 	public abstract void setInput(boolean value);
 

@@ -17,7 +17,7 @@ import static electroMechanicalLogic.Tests.TestConstants.bit5;
 import static electroMechanicalLogic.Tests.TestConstants.bit6;
 import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
-import static electroMechanicalLogic.Tests.TestUtilities.setInput;
+import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -38,7 +38,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputFiveIsOff_WhenOnlyInputFiveIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit5);
+		setDataIn(systemUnderTest, bit5);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -48,7 +48,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputFiveIsOn_WhenOnlyInputFiveIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit5);
+		setDataIn(systemUnderTest, bit5);
 
 		systemUnderTest.step();
 
@@ -57,7 +57,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputFourIsOff_WhenOnlyInputFourIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit4);
+		setDataIn(systemUnderTest, bit4);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -67,7 +67,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputFourIsOn_WhenOnlyInputFourIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit4);
+		setDataIn(systemUnderTest, bit4);
 
 		systemUnderTest.step();
 
@@ -76,7 +76,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputOneIsOff_WhenOnlyInputOneIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit1);
+		setDataIn(systemUnderTest, bit1);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -86,7 +86,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputOneIsOn_WhenOnlyInputOneIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit1);
+		setDataIn(systemUnderTest, bit1);
 
 		systemUnderTest.step();
 
@@ -95,7 +95,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputSevenIsOff_WhenOnlyInputSevenIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit7);
+		setDataIn(systemUnderTest, bit7);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -105,7 +105,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputSevenIsOn_WhenOnlyInputSevenIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit7);
+		setDataIn(systemUnderTest, bit7);
 
 		systemUnderTest.step();
 
@@ -114,7 +114,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputSixIsOff_WhenOnlyInputSixIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit6);
+		setDataIn(systemUnderTest, bit6);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -124,7 +124,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputSixIsOn_WhenOnlyInputSixIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit6);
+		setDataIn(systemUnderTest, bit6);
 
 		systemUnderTest.step();
 
@@ -133,7 +133,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputThreeIsOff_WhenOnlyInputThreeIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit3);
+		setDataIn(systemUnderTest, bit3);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -143,7 +143,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputThreeIsOn_WhenOnlyInputThreeIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit3);
+		setDataIn(systemUnderTest, bit3);
 
 		systemUnderTest.step();
 
@@ -152,7 +152,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputTwoIsOff_WhenOnlyInputTwoIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit2);
+		setDataIn(systemUnderTest, bit2);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -162,7 +162,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputTwoIsOn_WhenOnlyInputTwoIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit2);
+		setDataIn(systemUnderTest, bit2);
 
 		systemUnderTest.step();
 
@@ -171,7 +171,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputZeroIsOff_WhenOnlyInputZeroIsSetAndInvertIsSet() {
-		setInput(systemUnderTest, bit0);
+		setDataIn(systemUnderTest, bit0);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
@@ -181,7 +181,7 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputZeroIsOn_WhenOnlyInputZeroIsSetAndInvertIsNotSet() {
-		setInput(systemUnderTest, bit0);
+		setDataIn(systemUnderTest, bit0);
 
 		systemUnderTest.step();
 

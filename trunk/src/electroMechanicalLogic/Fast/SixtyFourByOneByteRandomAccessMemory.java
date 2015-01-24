@@ -11,8 +11,8 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemory extends
-EightByOneByteRandomAccessMemory implements
-ISixtyFourByOneByteRandomAccessMemory {
+		EightByOneByteRandomAccessMemory implements
+		ISixtyFourByOneByteRandomAccessMemory {
 	@Override
 	public int getMaxAddress() {
 		return 0x3f;

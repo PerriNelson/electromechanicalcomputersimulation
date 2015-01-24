@@ -14,7 +14,7 @@ import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public final class EightByOneBitRandomAccessMemory implements
-IEightByOneBitRandomAccessMemory {
+		IEightByOneBitRandomAccessMemory {
 	private final IThreeToEightDecoder decoder = new ThreeToEightDecoder();
 	private final ILatch bit0 = new Latch();
 	private final ILatch bit1 = new Latch();

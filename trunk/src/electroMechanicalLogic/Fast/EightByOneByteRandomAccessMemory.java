@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class EightByOneByteRandomAccessMemory implements
-IEightByOneByteRandomAccessMemory, IRandomAccessMemory {
+		IEightByOneByteRandomAccessMemory, IRandomAccessMemory {
 	protected int addressIn;
 	protected int addressOut;
 	protected byte dataIn;

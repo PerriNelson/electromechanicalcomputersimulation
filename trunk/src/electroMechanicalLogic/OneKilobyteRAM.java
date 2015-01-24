@@ -34,42 +34,42 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 
 	@Override
 	public boolean getDO0() {
-		return dO0.getQ();
+		return dO0.getDO();
 	}
 
 	@Override
 	public boolean getDO1() {
-		return dO1.getQ();
+		return dO1.getDO();
 	}
 
 	@Override
 	public boolean getDO2() {
-		return dO2.getQ();
+		return dO2.getDO();
 	}
 
 	@Override
 	public boolean getDO3() {
-		return dO3.getQ();
+		return dO3.getDO();
 	}
 
 	@Override
 	public boolean getDO4() {
-		return dO4.getQ();
+		return dO4.getDO();
 	}
 
 	@Override
 	public boolean getDO5() {
-		return dO5.getQ();
+		return dO5.getDO();
 	}
 
 	@Override
 	public boolean getDO6() {
-		return dO6.getQ();
+		return dO6.getDO();
 	}
 
 	@Override
 	public boolean getDO7() {
-		return dO7.getQ();
+		return dO7.getDO();
 	}
 
 	protected void initializeBanks() {
@@ -218,10 +218,10 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 	public void step() {
 		w.step();
 
-		bank0.setW(w.getO0());
+		bank0.setW(w.getA());
 		bank0.step();
 
-		bank1.setW(w.getO1());
+		bank1.setW(w.getB());
 		bank1.step();
 
 		dO0.setA(bank0.getDO0());

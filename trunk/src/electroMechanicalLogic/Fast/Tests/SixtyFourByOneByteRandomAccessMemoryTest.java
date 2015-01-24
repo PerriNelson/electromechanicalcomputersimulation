@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.SixtyFourByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemoryTest extends
-electroMechanicalLogic.Tests.SixtyFourByOneByteRandomAccessMemoryTest {
+		electroMechanicalLogic.Tests.SixtyFourByOneByteRandomAccessMemoryTest {
 
 	@Before
 	@Override

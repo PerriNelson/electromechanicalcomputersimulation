@@ -36,7 +36,7 @@ public class LampModel implements ILampModel {
 							propertyName, oldValue, newValue);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}

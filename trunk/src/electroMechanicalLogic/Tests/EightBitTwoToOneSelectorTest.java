@@ -32,14 +32,14 @@ public class EightBitTwoToOneSelectorTest {
 	private byte getOutput() {
 		byte value = 0;
 
-		value |= systemUnderTest.getO0() ? bit0 : 0;
-		value |= systemUnderTest.getO1() ? bit1 : 0;
-		value |= systemUnderTest.getO2() ? bit2 : 0;
-		value |= systemUnderTest.getO3() ? bit3 : 0;
-		value |= systemUnderTest.getO4() ? bit4 : 0;
-		value |= systemUnderTest.getO5() ? bit5 : 0;
-		value |= systemUnderTest.getO6() ? bit6 : 0;
-		value |= systemUnderTest.getO7() ? bit7 : 0;
+		value |= systemUnderTest.getDO0() ? bit0 : 0;
+		value |= systemUnderTest.getDO1() ? bit1 : 0;
+		value |= systemUnderTest.getDO2() ? bit2 : 0;
+		value |= systemUnderTest.getDO3() ? bit3 : 0;
+		value |= systemUnderTest.getDO4() ? bit4 : 0;
+		value |= systemUnderTest.getDO5() ? bit5 : 0;
+		value |= systemUnderTest.getDO6() ? bit6 : 0;
+		value |= systemUnderTest.getDO7() ? bit7 : 0;
 
 		return value;
 	}

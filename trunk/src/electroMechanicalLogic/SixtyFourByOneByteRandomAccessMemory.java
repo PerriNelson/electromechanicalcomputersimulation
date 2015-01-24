@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemory extends
-EightByOneByteRandomAccessMemory implements
-ISixtyFourByOneByteRandomAccessMemory {
+		EightByOneByteRandomAccessMemory implements
+		ISixtyFourByOneByteRandomAccessMemory {
 
 	@Override
 	protected void initializeBanks() {

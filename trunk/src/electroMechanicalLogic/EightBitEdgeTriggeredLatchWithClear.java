@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 
 public class EightBitEdgeTriggeredLatchWithClear implements
-IEightBitLatchWithClear {
+		IEightBitLatchWithClear {
 	private final IDTypeFlipFlopWithPresetAndClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
 	private final IDTypeFlipFlopWithPresetAndClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
 	private final IDTypeFlipFlopWithPresetAndClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();

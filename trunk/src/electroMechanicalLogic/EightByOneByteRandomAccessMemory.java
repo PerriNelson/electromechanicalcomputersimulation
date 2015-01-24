@@ -14,7 +14,7 @@ import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public class EightByOneByteRandomAccessMemory implements
-IEightByOneByteRandomAccessMemory {
+		IEightByOneByteRandomAccessMemory {
 
 	protected IThreeToEightDecoder w = new ThreeToEightDecoder();
 	protected IEightToOneSelector dO0 = new EightToOneSelector();

@@ -33,7 +33,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(false);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getQ());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(true);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getQ());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(false);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getQ());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(true);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
+		assertTrue(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(false);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
+		assertTrue(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(true);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getQ());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(false);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
+		assertTrue(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -103,7 +103,7 @@ public class TwoLineToOneLineSelectorTest {
 		systemUnderTest.setSelect(true);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getQ());
+		assertTrue(systemUnderTest.getDO());
 	}
 
 }

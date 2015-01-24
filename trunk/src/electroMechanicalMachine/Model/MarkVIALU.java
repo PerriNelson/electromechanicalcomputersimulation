@@ -176,14 +176,14 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	private void stepLatch() {
-		latch.setDI0(loadSelector.getO0());
-		latch.setDI1(loadSelector.getO1());
-		latch.setDI2(loadSelector.getO2());
-		latch.setDI3(loadSelector.getO3());
-		latch.setDI4(loadSelector.getO4());
-		latch.setDI5(loadSelector.getO5());
-		latch.setDI6(loadSelector.getO6());
-		latch.setDI7(loadSelector.getO7());
+		latch.setDI0(loadSelector.getDO0());
+		latch.setDI1(loadSelector.getDO1());
+		latch.setDI2(loadSelector.getDO2());
+		latch.setDI3(loadSelector.getDO3());
+		latch.setDI4(loadSelector.getDO4());
+		latch.setDI5(loadSelector.getDO5());
+		latch.setDI6(loadSelector.getDO6());
+		latch.setDI7(loadSelector.getDO7());
 		latch.setW(clockAndLoadOrAdd.getOutput());
 		latch.step();
 	}

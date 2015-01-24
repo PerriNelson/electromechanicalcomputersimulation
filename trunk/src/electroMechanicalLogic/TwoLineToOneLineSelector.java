@@ -13,7 +13,7 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public final class TwoLineToOneLineSelector implements
-ITwoLineToOneLineSelector {
+		ITwoLineToOneLineSelector {
 
 	private final IRelay selectInverter = new Inverter();
 	private final ITwoInputSingleOutputGate andA = new TwoInputAndGate();
@@ -21,7 +21,7 @@ ITwoLineToOneLineSelector {
 	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
 
 	@Override
-	public boolean getQ() {
+	public boolean getDO() {
 		return or.getOutput();
 	}
 

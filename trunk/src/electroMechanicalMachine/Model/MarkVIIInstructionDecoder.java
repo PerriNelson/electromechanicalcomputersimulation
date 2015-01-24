@@ -13,7 +13,7 @@ import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIInstructionDecoder;
 
 public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder
-implements IMarkVIIInstructionDecoder {
+		implements IMarkVIIInstructionDecoder {
 	private final IEightInputSingleOutputGate subtract;
 
 	public MarkVIIInstructionDecoder() {
@@ -27,38 +27,38 @@ implements IMarkVIIInstructionDecoder {
 	}
 
 	@Override
-	public void setCI1(final boolean value) {
-		super.setCI1(value);
+	public void setDI1(final boolean value) {
+		super.setDI1(value);
 		subtract.setI1(value);
 	}
 
 	@Override
-	public void setCI2(final boolean value) {
-		super.setCI2(value);
+	public void setDI2(final boolean value) {
+		super.setDI2(value);
 		subtract.setI2(value);
 	}
 
 	@Override
-	public void setCI3(final boolean value) {
-		super.setCI3(value);
+	public void setDI3(final boolean value) {
+		super.setDI3(value);
 		subtract.setI3(value);
 	}
 
 	@Override
-	public void setCI4(final boolean value) {
-		super.setCI4(value);
+	public void setDI4(final boolean value) {
+		super.setDI4(value);
 		subtract.setI4(value);
 	}
 
 	@Override
-	public void setCI6(final boolean value) {
-		super.setCI6(value);
+	public void setDI6(final boolean value) {
+		super.setDI6(value);
 		subtract.setI6(value);
 	}
 
 	@Override
-	public void setCI7(final boolean value) {
-		super.setCI7(value);
+	public void setDI7(final boolean value) {
+		super.setDI7(value);
 		subtract.setI7(value);
 	}
 

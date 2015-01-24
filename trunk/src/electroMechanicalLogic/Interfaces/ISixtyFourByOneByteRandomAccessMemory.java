@@ -9,7 +9,7 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface ISixtyFourByOneByteRandomAccessMemory extends
-IEightByOneByteRandomAccessMemory {
+		IEightByOneByteRandomAccessMemory {
 	public abstract void setA3(boolean value);
 
 	public abstract void setA4(boolean value);

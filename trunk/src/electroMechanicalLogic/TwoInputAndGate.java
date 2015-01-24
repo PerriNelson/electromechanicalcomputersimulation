@@ -10,7 +10,7 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class TwoInputAndGate extends TwoRelaySingleOutputGate implements
-ITwoInputSingleOutputGate {
+		ITwoInputSingleOutputGate {
 
 	public TwoInputAndGate() {
 		super(new Buffer(), new Buffer());

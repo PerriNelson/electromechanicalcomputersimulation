@@ -21,7 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 public class BasicToggleSwitchUI extends ToggleSwitchUI implements
-MouseListener {
+		MouseListener {
 
 	public static ComponentUI createUI(final JComponent component) {
 		return new BasicToggleSwitchUI();

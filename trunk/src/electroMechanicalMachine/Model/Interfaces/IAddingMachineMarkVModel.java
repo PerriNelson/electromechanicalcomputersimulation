@@ -11,7 +11,7 @@ package electroMechanicalMachine.Model.Interfaces;
 import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 
 public interface IAddingMachineMarkVModel extends IMachineModel,
-IEightBitDataOut {
+		IEightBitDataOut {
 
 	public abstract boolean getS0();
 

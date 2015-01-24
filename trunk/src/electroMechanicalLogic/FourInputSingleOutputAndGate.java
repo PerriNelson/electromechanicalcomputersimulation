@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class FourInputSingleOutputAndGate implements
-IFourInputSingleOutputGate {
+		IFourInputSingleOutputGate {
 
 	private final IRelay relayA = new Buffer();
 	private final IRelay relayB = new Buffer();

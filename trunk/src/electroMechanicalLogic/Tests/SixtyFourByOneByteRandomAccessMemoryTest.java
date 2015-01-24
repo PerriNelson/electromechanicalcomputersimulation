@@ -14,17 +14,17 @@ import electroMechanicalLogic.SixtyFourByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemoryTest extends
-EightByOneByteRandomAccessMemoryTest {
+		EightByOneByteRandomAccessMemoryTest {
 
 	@Override
 	protected void setA(final int value) {
 		super.setA(value);
 		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-		.setA3((value & bit3) == bit3);
+				.setA3((value & bit3) == bit3);
 		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-		.setA4((value & bit4) == bit4);
+				.setA4((value & bit4) == bit4);
 		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-		.setA5((value & bit5) == bit5);
+				.setA5((value & bit5) == bit5);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounter;
 
 public class SixteenBitCounter extends EightBitCounter implements
-ISixteenBitCounter {
+		ISixteenBitCounter {
 	private final IDTypeFlipFlop bit8 = new EdgeTriggeredDTypeFlipFlop();
 	private final IDTypeFlipFlop bit9 = new EdgeTriggeredDTypeFlipFlop();
 	private final IDTypeFlipFlop bitA = new EdgeTriggeredDTypeFlipFlop();

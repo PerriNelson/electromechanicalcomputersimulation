@@ -9,6 +9,6 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface IEightBitOnesComplement extends ISimulatedCircuit,
-		IEightBitDataOut, IEightBitDataIn {
+IEightBitDataOut, IEightBitDataIn {
 	public abstract void setInvert(boolean value);
 }

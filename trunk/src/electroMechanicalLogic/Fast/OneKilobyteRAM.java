@@ -11,7 +11,7 @@ package electroMechanicalLogic.Fast;
 import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
 
 public class OneKilobyteRAM extends FiveHundredTwelveByteRAM implements
-IOneKilobyteRAM {
+		IOneKilobyteRAM {
 	protected static final int bit8 = 0x100;
 	protected static final int bit9 = 0x200;
 

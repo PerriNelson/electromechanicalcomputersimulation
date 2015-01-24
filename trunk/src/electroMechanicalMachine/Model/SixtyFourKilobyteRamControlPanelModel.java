@@ -19,7 +19,7 @@ import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKilobyteRamControlPanelModel implements
-ISixtyFourKilobyteRamControlPanelModel {
+		ISixtyFourKilobyteRamControlPanelModel {
 
 	private final ISixtyFourKilobyteRAM ram;
 	private final TwoLineToOneLineSelector[] addressSelectors;
@@ -62,7 +62,7 @@ ISixtyFourKilobyteRamControlPanelModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -396,31 +396,31 @@ ISixtyFourKilobyteRamControlPanelModel {
 		}
 		writeSelector.step();
 
-		ram.setA0(addressSelectors[0].getQ());
-		ram.setA1(addressSelectors[1].getQ());
-		ram.setA2(addressSelectors[2].getQ());
-		ram.setA3(addressSelectors[3].getQ());
-		ram.setA4(addressSelectors[4].getQ());
-		ram.setA5(addressSelectors[5].getQ());
-		ram.setA6(addressSelectors[6].getQ());
-		ram.setA7(addressSelectors[7].getQ());
-		ram.setA8(addressSelectors[8].getQ());
-		ram.setA9(addressSelectors[9].getQ());
-		ram.setAA(addressSelectors[10].getQ());
-		ram.setAB(addressSelectors[11].getQ());
-		ram.setAC(addressSelectors[12].getQ());
-		ram.setAD(addressSelectors[13].getQ());
-		ram.setAE(addressSelectors[14].getQ());
-		ram.setAF(addressSelectors[15].getQ());
-		ram.setDI0(dataSelectors[0].getQ());
-		ram.setDI1(dataSelectors[1].getQ());
-		ram.setDI2(dataSelectors[2].getQ());
-		ram.setDI3(dataSelectors[3].getQ());
-		ram.setDI4(dataSelectors[4].getQ());
-		ram.setDI5(dataSelectors[5].getQ());
-		ram.setDI6(dataSelectors[6].getQ());
-		ram.setDI7(dataSelectors[7].getQ());
-		ram.setW(writeSelector.getQ());
+		ram.setA0(addressSelectors[0].getDO());
+		ram.setA1(addressSelectors[1].getDO());
+		ram.setA2(addressSelectors[2].getDO());
+		ram.setA3(addressSelectors[3].getDO());
+		ram.setA4(addressSelectors[4].getDO());
+		ram.setA5(addressSelectors[5].getDO());
+		ram.setA6(addressSelectors[6].getDO());
+		ram.setA7(addressSelectors[7].getDO());
+		ram.setA8(addressSelectors[8].getDO());
+		ram.setA9(addressSelectors[9].getDO());
+		ram.setAA(addressSelectors[10].getDO());
+		ram.setAB(addressSelectors[11].getDO());
+		ram.setAC(addressSelectors[12].getDO());
+		ram.setAD(addressSelectors[13].getDO());
+		ram.setAE(addressSelectors[14].getDO());
+		ram.setAF(addressSelectors[15].getDO());
+		ram.setDI0(dataSelectors[0].getDO());
+		ram.setDI1(dataSelectors[1].getDO());
+		ram.setDI2(dataSelectors[2].getDO());
+		ram.setDI3(dataSelectors[3].getDO());
+		ram.setDI4(dataSelectors[4].getDO());
+		ram.setDI5(dataSelectors[5].getDO());
+		ram.setDI6(dataSelectors[6].getDO());
+		ram.setDI7(dataSelectors[7].getDO());
+		ram.setW(writeSelector.getDO());
 
 		ram.step();
 

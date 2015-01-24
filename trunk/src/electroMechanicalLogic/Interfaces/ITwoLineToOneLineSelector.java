@@ -8,7 +8,7 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface ITwoLineToOneLineSelector extends ISimulatedCircuit {
-	public abstract boolean getQ();
+	public abstract boolean getDO();
 
 	public abstract void setA(boolean value);
 

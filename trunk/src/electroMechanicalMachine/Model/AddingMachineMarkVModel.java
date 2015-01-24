@@ -14,6 +14,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
+import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
@@ -67,7 +68,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -326,23 +327,8 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 
 		controlPanel.step();
 
-		adder.setA0(controlPanel.getDO0());
-		adder.setA1(controlPanel.getDO1());
-		adder.setA2(controlPanel.getDO2());
-		adder.setA3(controlPanel.getDO3());
-		adder.setA4(controlPanel.getDO4());
-		adder.setA5(controlPanel.getDO5());
-		adder.setA6(controlPanel.getDO6());
-		adder.setA7(controlPanel.getDO7());
-
-		adder.setB0(latch.getDO0());
-		adder.setB1(latch.getDO1());
-		adder.setB2(latch.getDO2());
-		adder.setB3(latch.getDO3());
-		adder.setB4(latch.getDO4());
-		adder.setB5(latch.getDO5());
-		adder.setB6(latch.getDO6());
-		adder.setB7(latch.getDO7());
+		EightBitDataPath.DataOutToAIn(controlPanel, adder);
+		EightBitDataPath.DataOutToBIn(latch, adder);
 		adder.step();
 
 		latch.setDI0(adder.getS0());

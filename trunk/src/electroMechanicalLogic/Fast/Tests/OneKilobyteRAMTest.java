@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.OneKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class OneKilobyteRAMTest extends
-electroMechanicalLogic.Tests.OneKilobyteRAMTest {
+		electroMechanicalLogic.Tests.OneKilobyteRAMTest {
 
 	@Before
 	@Override

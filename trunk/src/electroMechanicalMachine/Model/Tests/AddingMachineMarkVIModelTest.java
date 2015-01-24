@@ -8,24 +8,11 @@
 
 package electroMechanicalMachine.Model.Tests;
 
-import static electroMechanicalLogic.Tests.TestConstants.bit0;
-import static electroMechanicalLogic.Tests.TestConstants.bit1;
-import static electroMechanicalLogic.Tests.TestConstants.bit2;
-import static electroMechanicalLogic.Tests.TestConstants.bit3;
-import static electroMechanicalLogic.Tests.TestConstants.bit4;
-import static electroMechanicalLogic.Tests.TestConstants.bit5;
-import static electroMechanicalLogic.Tests.TestConstants.bit6;
-import static electroMechanicalLogic.Tests.TestConstants.bit7;
-import static electroMechanicalLogic.Tests.TestConstants.bit8;
-import static electroMechanicalLogic.Tests.TestConstants.bit9;
-import static electroMechanicalLogic.Tests.TestConstants.bitA;
-import static electroMechanicalLogic.Tests.TestConstants.bitB;
-import static electroMechanicalLogic.Tests.TestConstants.bitC;
-import static electroMechanicalLogic.Tests.TestConstants.bitD;
-import static electroMechanicalLogic.Tests.TestConstants.bitE;
-import static electroMechanicalLogic.Tests.TestConstants.bitF;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
+import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
+import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
+import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -43,52 +30,17 @@ public class AddingMachineMarkVIModelTest {
 		return (a + b) & 0xff;
 	}
 
-	private int getDataOut() {
-		int dataOut = 0;
-		dataOut |= systemUnderTest.getDO0() ? bit0 : 0;
-		dataOut |= systemUnderTest.getDO1() ? bit1 : 0;
-		dataOut |= systemUnderTest.getDO2() ? bit2 : 0;
-		dataOut |= systemUnderTest.getDO3() ? bit3 : 0;
-		dataOut |= systemUnderTest.getDO4() ? bit4 : 0;
-		dataOut |= systemUnderTest.getDO5() ? bit5 : 0;
-		dataOut |= systemUnderTest.getDO6() ? bit6 : 0;
-		dataOut |= systemUnderTest.getDO7() ? bit7 : 0;
-		return dataOut;
-	}
-
 	private void performOneClockCycle() {
 		systemUnderTest.step();
 		systemUnderTest.step();
 	}
 
-	private void setAddress(final int address) {
-		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
-		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
-		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
-		systemUnderTest.setA3((address & bit3) == bit3 ? on : off);
-		systemUnderTest.setA4((address & bit4) == bit4 ? on : off);
-		systemUnderTest.setA5((address & bit5) == bit5 ? on : off);
-		systemUnderTest.setA6((address & bit6) == bit6 ? on : off);
-		systemUnderTest.setA7((address & bit7) == bit7 ? on : off);
-		systemUnderTest.setA8((address & bit8) == bit8 ? on : off);
-		systemUnderTest.setA9((address & bit9) == bit9 ? on : off);
-		systemUnderTest.setAA((address & bitA) == bitA ? on : off);
-		systemUnderTest.setAB((address & bitB) == bitB ? on : off);
-		systemUnderTest.setAC((address & bitC) == bitC ? on : off);
-		systemUnderTest.setAD((address & bitD) == bitD ? on : off);
-		systemUnderTest.setAE((address & bitE) == bitE ? on : off);
-		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
-	}
+	private void performWrite() {
+		systemUnderTest.setW(on);
+		systemUnderTest.step();
 
-	private void setDataIn(final int value) {
-		systemUnderTest.setDI0((value & bit0) == bit0);
-		systemUnderTest.setDI1((value & bit1) == bit1);
-		systemUnderTest.setDI2((value & bit2) == bit2);
-		systemUnderTest.setDI3((value & bit3) == bit3);
-		systemUnderTest.setDI4((value & bit4) == bit4);
-		systemUnderTest.setDI5((value & bit5) == bit5);
-		systemUnderTest.setDI6((value & bit6) == bit6);
-		systemUnderTest.setDI7((value & bit7) == bit7);
+		systemUnderTest.setW(off);
+		systemUnderTest.step();
 	}
 
 	@Before
@@ -97,7 +49,8 @@ public class AddingMachineMarkVIModelTest {
 				new SixtyFourKilobyteRAM(), new SixtyFourKilobyteRAM());
 
 		systemUnderTest.setPower(on);
-		setAddress(0);
+		setAddress(systemUnderTest, 0);
+		systemUnderTest.setReset(on);
 	}
 
 	@Test
@@ -107,17 +60,15 @@ public class AddingMachineMarkVIModelTest {
 			systemUnderTest.setUseCodePanel(off);
 			systemUnderTest.step();
 
-			setAddress(i);
-			setDataIn(0xff);
-			systemUnderTest.setW(on);
-			systemUnderTest.step();
+			setAddress(systemUnderTest, i);
+			setDataIn(systemUnderTest, 0xff);
 
-			systemUnderTest.setW(off);
-			systemUnderTest.step();
+			performWrite();
+
 			systemUnderTest.setUseCodePanel(on);
 			systemUnderTest.step();
 
-			assertEquals(0, getDataOut());
+			assertEquals(0, getDataOut(systemUnderTest));
 		}
 	}
 
@@ -128,17 +79,15 @@ public class AddingMachineMarkVIModelTest {
 			systemUnderTest.setUseCodePanel(on);
 			systemUnderTest.step();
 
-			setAddress(i);
-			setDataIn(0xff);
-			systemUnderTest.setW(on);
-			systemUnderTest.step();
+			setAddress(systemUnderTest, i);
+			setDataIn(systemUnderTest, 0xff);
 
-			systemUnderTest.setW(off);
-			systemUnderTest.step();
+			performWrite();
+
 			systemUnderTest.setUseCodePanel(off);
 			systemUnderTest.step();
 
-			assertEquals(0, getDataOut());
+			assertEquals(0, getDataOut(systemUnderTest));
 		}
 	}
 
@@ -147,86 +96,86 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setReset(on);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setUseCodePanel(off);
-		setAddress(0);
-		setDataIn(0x27);
+		setAddress(systemUnderTest, 0);
+		setDataIn(systemUnderTest, 0x27);
 		systemUnderTest.setW(on);
 		systemUnderTest.step();
 
-		setAddress(1);
-		setDataIn(0xA2);
+		setAddress(systemUnderTest, 1);
+		setDataIn(systemUnderTest, 0xA2);
 		systemUnderTest.step();
 
-		setAddress(2);
-		setDataIn(0x18);
+		setAddress(systemUnderTest, 2);
+		setDataIn(systemUnderTest, 0x18);
 		systemUnderTest.step();
 
-		setAddress(4);
-		setDataIn(0x1f);
+		setAddress(systemUnderTest, 4);
+		setDataIn(systemUnderTest, 0x1f);
 		systemUnderTest.step();
 
-		setAddress(5);
-		setDataIn(0x89);
+		setAddress(systemUnderTest, 5);
+		setDataIn(systemUnderTest, 0x89);
 		systemUnderTest.step();
 
-		setAddress(7);
-		setDataIn(0x33);
+		setAddress(systemUnderTest, 7);
+		setDataIn(systemUnderTest, 0x33);
 		systemUnderTest.step();
 
-		setAddress(8);
-		setDataIn(0x2A);
+		setAddress(systemUnderTest, 8);
+		setDataIn(systemUnderTest, 0x2A);
 		systemUnderTest.step();
 
-		setAddress(9);
-		setDataIn(0x55);
+		setAddress(systemUnderTest, 9);
+		setDataIn(systemUnderTest, 0x55);
 		systemUnderTest.step();
 
 		systemUnderTest.setUseCodePanel(on);
-		setAddress(0);
-		setDataIn(0x10);
+		setAddress(systemUnderTest, 0);
+		setDataIn(systemUnderTest, 0x10);
 		systemUnderTest.step();
 
-		setAddress(1);
-		setDataIn(0x20);
+		setAddress(systemUnderTest, 1);
+		setDataIn(systemUnderTest, 0x20);
 		systemUnderTest.step();
 
-		setAddress(2);
-		setDataIn(0x20);
+		setAddress(systemUnderTest, 2);
+		setDataIn(systemUnderTest, 0x20);
 		systemUnderTest.step();
 
-		setAddress(3);
-		setDataIn(0x11);
+		setAddress(systemUnderTest, 3);
+		setDataIn(systemUnderTest, 0x11);
 		systemUnderTest.step();
 
-		setAddress(4);
-		setDataIn(0x10);
+		setAddress(systemUnderTest, 4);
+		setDataIn(systemUnderTest, 0x10);
 		systemUnderTest.step();
 
-		setAddress(5);
-		setDataIn(0x20);
+		setAddress(systemUnderTest, 5);
+		setDataIn(systemUnderTest, 0x20);
 		systemUnderTest.step();
 
-		setAddress(6);
-		setDataIn(0x11);
+		setAddress(systemUnderTest, 6);
+		setDataIn(systemUnderTest, 0x11);
 		systemUnderTest.step();
 
-		setAddress(7);
-		setDataIn(0x10);
+		setAddress(systemUnderTest, 7);
+		setDataIn(systemUnderTest, 0x10);
 		systemUnderTest.step();
 
-		setAddress(8);
-		setDataIn(0x20);
+		setAddress(systemUnderTest, 8);
+		setDataIn(systemUnderTest, 0x20);
 		systemUnderTest.step();
 
-		setAddress(9);
-		setDataIn(0x20);
+		setAddress(systemUnderTest, 9);
+		setDataIn(systemUnderTest, 0x20);
 		systemUnderTest.step();
 
-		setAddress(10);
-		setDataIn(0x11);
+		setAddress(systemUnderTest, 10);
+		setDataIn(systemUnderTest, 0x11);
 		systemUnderTest.step();
 
-		setAddress(11);
-		setDataIn(0xff);
+		setAddress(systemUnderTest, 11);
+		setDataIn(systemUnderTest, 0xff);
 		systemUnderTest.step();
 
 		systemUnderTest.setReset(off);
@@ -241,17 +190,17 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setW(off);
 		systemUnderTest.setUseCodePanel(off);
 
-		setAddress(3);
+		setAddress(systemUnderTest, 3);
 		systemUnderTest.step();
-		assertEquals(add(add(0x27, 0xa2), 0x18), getDataOut());
+		assertEquals(add(add(0x27, 0xa2), 0x18), getDataOut(systemUnderTest));
 
-		setAddress(6);
+		setAddress(systemUnderTest, 6);
 		systemUnderTest.step();
-		assertEquals(add(0x1f, 0x89), getDataOut());
+		assertEquals(add(0x1f, 0x89), getDataOut(systemUnderTest));
 
-		setAddress(10);
+		setAddress(systemUnderTest, 10);
 		systemUnderTest.step();
-		assertEquals(add(add(0x33, 0x2a), 0x55), getDataOut());
+		assertEquals(add(add(0x33, 0x2a), 0x55), getDataOut(systemUnderTest));
 	}
 
 	@Test

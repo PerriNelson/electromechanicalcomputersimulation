@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
-IThirtyTwoKilobyteRAM {
+		IThirtyTwoKilobyteRAM {
 
 	@Override
 	protected void initializeBanks() {

@@ -23,43 +23,43 @@ public class EightBitTwoToOneSelector implements IEightBitTwoToOneSelector {
 	private static final ITwoLineToOneLineSelector bit7 = new TwoLineToOneLineSelector();
 
 	@Override
-	public boolean getO0() {
-		return bit0.getQ();
+	public boolean getDO0() {
+		return bit0.getDO();
 	}
 
 	@Override
-	public boolean getO1() {
-		return bit1.getQ();
+	public boolean getDO1() {
+		return bit1.getDO();
 	}
 
 	@Override
-	public boolean getO2() {
-		return bit2.getQ();
+	public boolean getDO2() {
+		return bit2.getDO();
 	}
 
 	@Override
-	public boolean getO3() {
-		return bit3.getQ();
+	public boolean getDO3() {
+		return bit3.getDO();
 	}
 
 	@Override
-	public boolean getO4() {
-		return bit4.getQ();
+	public boolean getDO4() {
+		return bit4.getDO();
 	}
 
 	@Override
-	public boolean getO5() {
-		return bit5.getQ();
+	public boolean getDO5() {
+		return bit5.getDO();
 	}
 
 	@Override
-	public boolean getO6() {
-		return bit6.getQ();
+	public boolean getDO6() {
+		return bit6.getDO();
 	}
 
 	@Override
-	public boolean getO7() {
-		return bit7.getQ();
+	public boolean getDO7() {
+		return bit7.getDO();
 	}
 
 	@Override
