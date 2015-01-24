@@ -8,9 +8,11 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
+import electroMechanicalLogic.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface IMarkVIInstructionDecoder extends ISimulatedCircuit {
+public interface IMarkVIInstructionDecoder extends ISimulatedCircuit,
+IEightBitDataIn {
 	public abstract boolean getAdd();
 
 	public abstract boolean getHalt();
@@ -18,20 +20,4 @@ public interface IMarkVIInstructionDecoder extends ISimulatedCircuit {
 	public abstract boolean getLoad();
 
 	public abstract boolean getStore();
-
-	public abstract void setCI0(boolean value);
-
-	public abstract void setCI1(boolean value);
-
-	public abstract void setCI2(boolean value);
-
-	public abstract void setCI3(boolean value);
-
-	public abstract void setCI4(boolean value);
-
-	public abstract void setCI5(boolean value);
-
-	public abstract void setCI6(boolean value);
-
-	public abstract void setCI7(boolean value);
 }

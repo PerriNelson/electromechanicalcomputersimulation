@@ -8,58 +8,12 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
+import electroMechanicalLogic.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.ISixteenBitAInput;
 
 public interface IAddingMachineMarkVIModel extends IMachineModel,
-IEightBitDataOut {
-
-	public abstract void setA0(boolean value);
-
-	public abstract void setA1(boolean value);
-
-	public abstract void setA2(boolean value);
-
-	public abstract void setA3(boolean value);
-
-	public abstract void setA4(boolean value);
-
-	public abstract void setA5(boolean value);
-
-	public abstract void setA6(boolean value);
-
-	public abstract void setA7(boolean value);
-
-	public abstract void setA8(boolean value);
-
-	public abstract void setA9(boolean value);
-
-	public abstract void setAA(boolean value);
-
-	public abstract void setAB(boolean value);
-
-	public abstract void setAC(boolean value);
-
-	public abstract void setAD(boolean value);
-
-	public abstract void setAE(boolean value);
-
-	public abstract void setAF(boolean value);
-
-	public abstract void setDI0(boolean value);
-
-	public abstract void setDI1(boolean value);
-
-	public abstract void setDI2(boolean value);
-
-	public abstract void setDI3(boolean value);
-
-	public abstract void setDI4(boolean value);
-
-	public abstract void setDI5(boolean value);
-
-	public abstract void setDI6(boolean value);
-
-	public abstract void setDI7(boolean value);
+IEightBitDataOut, IEightBitDataIn, ISixteenBitAInput {
 
 	public abstract void setReset(boolean value);
 

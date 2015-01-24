@@ -30,8 +30,8 @@ public class OneLineToTwoLineDecoderTest {
 	public final void test_WhenInputIsOff_BothOutputsAreOff() {
 		systemUnderTest.setInput(false);
 		systemUnderTest.step();
-		assertFalse(systemUnderTest.getO0());
-		assertFalse(systemUnderTest.getO1());
+		assertFalse(systemUnderTest.getA());
+		assertFalse(systemUnderTest.getB());
 	}
 
 	@Test
@@ -39,8 +39,8 @@ public class OneLineToTwoLineDecoderTest {
 		systemUnderTest.setInput(true);
 		systemUnderTest.setSelect(false);
 		systemUnderTest.step();
-		assertTrue(systemUnderTest.getO0());
-		assertFalse(systemUnderTest.getO1());
+		assertTrue(systemUnderTest.getA());
+		assertFalse(systemUnderTest.getB());
 	}
 
 	@Test
@@ -48,8 +48,8 @@ public class OneLineToTwoLineDecoderTest {
 		systemUnderTest.setInput(true);
 		systemUnderTest.setSelect(true);
 		systemUnderTest.step();
-		assertFalse(systemUnderTest.getO0());
-		assertTrue(systemUnderTest.getO1());
+		assertFalse(systemUnderTest.getA());
+		assertTrue(systemUnderTest.getB());
 	}
 
 }

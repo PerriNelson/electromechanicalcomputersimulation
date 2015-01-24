@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.FiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class FiveHundredTwelveByteRAMTest extends
-electroMechanicalLogic.Tests.FiveHundredTwelveByteRAMTest {
+		electroMechanicalLogic.Tests.FiveHundredTwelveByteRAMTest {
 
 	@Before
 	@Override

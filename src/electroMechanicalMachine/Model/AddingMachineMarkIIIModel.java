@@ -47,7 +47,7 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -204,14 +204,14 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 	public void step() {
 		selector.step();
 
-		adder.setB0(selector.getO0());
-		adder.setB1(selector.getO1());
-		adder.setB2(selector.getO2());
-		adder.setB3(selector.getO3());
-		adder.setB4(selector.getO4());
-		adder.setB5(selector.getO5());
-		adder.setB6(selector.getO6());
-		adder.setB7(selector.getO7());
+		adder.setB0(selector.getDO0());
+		adder.setB1(selector.getDO1());
+		adder.setB2(selector.getDO2());
+		adder.setB3(selector.getDO3());
+		adder.setB4(selector.getDO4());
+		adder.setB5(selector.getDO5());
+		adder.setB6(selector.getDO6());
+		adder.setB7(selector.getDO7());
 
 		adder.step();
 

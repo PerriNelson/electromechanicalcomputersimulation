@@ -58,7 +58,7 @@ public class SwitchModel implements ISwitchModel {
 							propertyName, oldValue, newValue);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}

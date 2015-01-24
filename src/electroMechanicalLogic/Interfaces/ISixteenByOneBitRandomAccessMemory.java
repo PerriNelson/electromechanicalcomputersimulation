@@ -9,6 +9,6 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface ISixteenByOneBitRandomAccessMemory extends
-IEightByOneBitRandomAccessMemory {
+		IEightByOneBitRandomAccessMemory {
 	public abstract void setA3(boolean value);
 }

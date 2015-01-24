@@ -13,6 +13,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
+import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
@@ -134,49 +135,49 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
 
 	@Override
 	public boolean getDO0() {
-		return selectDO0.getQ();
+		return selectDO0.getDO();
 	}
 
 	@Override
 	public boolean getDO1() {
-		return selectDO1.getQ();
+		return selectDO1.getDO();
 	}
 
 	@Override
 	public boolean getDO2() {
-		return selectDO2.getQ();
+		return selectDO2.getDO();
 	}
 
 	@Override
 	public boolean getDO3() {
-		return selectDO3.getQ();
+		return selectDO3.getDO();
 	}
 
 	@Override
 	public boolean getDO4() {
-		return selectDO4.getQ();
+		return selectDO4.getDO();
 	}
 
 	@Override
 	public boolean getDO5() {
-		return selectDO5.getQ();
+		return selectDO5.getDO();
 	}
 
 	@Override
 	public boolean getDO6() {
-		return selectDO6.getQ();
+		return selectDO6.getDO();
 	}
 
 	@Override
 	public boolean getDO7() {
-		return selectDO7.getQ();
+		return selectDO7.getDO();
 	}
 
 	@Override
@@ -441,22 +442,22 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepCodeRam() {
-		codeRam.setCpA0(decodeA0.getO1());
-		codeRam.setCpA1(decodeA1.getO1());
-		codeRam.setCpA2(decodeA2.getO1());
-		codeRam.setCpA3(decodeA3.getO1());
-		codeRam.setCpA4(decodeA4.getO1());
-		codeRam.setCpA5(decodeA5.getO1());
-		codeRam.setCpA6(decodeA6.getO1());
-		codeRam.setCpA7(decodeA7.getO1());
-		codeRam.setCpA8(decodeA8.getO1());
-		codeRam.setCpA9(decodeA9.getO1());
-		codeRam.setCpAA(decodeAA.getO1());
-		codeRam.setCpAB(decodeAB.getO1());
-		codeRam.setCpAC(decodeAC.getO1());
-		codeRam.setCpAD(decodeAD.getO1());
-		codeRam.setCpAE(decodeAE.getO1());
-		codeRam.setCpAF(decodeAF.getO1());
+		codeRam.setCpA0(decodeA0.getB());
+		codeRam.setCpA1(decodeA1.getB());
+		codeRam.setCpA2(decodeA2.getB());
+		codeRam.setCpA3(decodeA3.getB());
+		codeRam.setCpA4(decodeA4.getB());
+		codeRam.setCpA5(decodeA5.getB());
+		codeRam.setCpA6(decodeA6.getB());
+		codeRam.setCpA7(decodeA7.getB());
+		codeRam.setCpA8(decodeA8.getB());
+		codeRam.setCpA9(decodeA9.getB());
+		codeRam.setCpAA(decodeAA.getB());
+		codeRam.setCpAB(decodeAB.getB());
+		codeRam.setCpAC(decodeAC.getB());
+		codeRam.setCpAD(decodeAD.getB());
+		codeRam.setCpAE(decodeAE.getB());
+		codeRam.setCpAF(decodeAF.getB());
 
 		codeRam.setEcA0(timingAndMemoryWriteControl.getA0());
 		codeRam.setEcA1(timingAndMemoryWriteControl.getA1());
@@ -475,37 +476,37 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		codeRam.setEcAE(timingAndMemoryWriteControl.getAE());
 		codeRam.setEcAF(timingAndMemoryWriteControl.getAF());
 
-		codeRam.setCpDI0(decodeDI0.getO1());
-		codeRam.setCpDI1(decodeDI1.getO1());
-		codeRam.setCpDI2(decodeDI2.getO1());
-		codeRam.setCpDI3(decodeDI3.getO1());
-		codeRam.setCpDI4(decodeDI4.getO1());
-		codeRam.setCpDI5(decodeDI5.getO1());
-		codeRam.setCpDI6(decodeDI6.getO1());
-		codeRam.setCpDI7(decodeDI7.getO1());
+		codeRam.setCpDI0(decodeDI0.getB());
+		codeRam.setCpDI1(decodeDI1.getB());
+		codeRam.setCpDI2(decodeDI2.getB());
+		codeRam.setCpDI3(decodeDI3.getB());
+		codeRam.setCpDI4(decodeDI4.getB());
+		codeRam.setCpDI5(decodeDI5.getB());
+		codeRam.setCpDI6(decodeDI6.getB());
+		codeRam.setCpDI7(decodeDI7.getB());
 
-		codeRam.setCpW(decodeW.getO1());
+		codeRam.setCpW(decodeW.getB());
 
 		codeRam.step();
 	}
 
 	private void stepDataRam() {
-		dataRam.setCpA0(decodeA0.getO0());
-		dataRam.setCpA1(decodeA1.getO0());
-		dataRam.setCpA2(decodeA2.getO0());
-		dataRam.setCpA3(decodeA3.getO0());
-		dataRam.setCpA4(decodeA4.getO0());
-		dataRam.setCpA5(decodeA5.getO0());
-		dataRam.setCpA6(decodeA6.getO0());
-		dataRam.setCpA7(decodeA7.getO0());
-		dataRam.setCpA8(decodeA8.getO0());
-		dataRam.setCpA9(decodeA9.getO0());
-		dataRam.setCpAA(decodeAA.getO0());
-		dataRam.setCpAB(decodeAB.getO0());
-		dataRam.setCpAC(decodeAC.getO0());
-		dataRam.setCpAD(decodeAD.getO0());
-		dataRam.setCpAE(decodeAE.getO0());
-		dataRam.setCpAF(decodeAF.getO0());
+		dataRam.setCpA0(decodeA0.getA());
+		dataRam.setCpA1(decodeA1.getA());
+		dataRam.setCpA2(decodeA2.getA());
+		dataRam.setCpA3(decodeA3.getA());
+		dataRam.setCpA4(decodeA4.getA());
+		dataRam.setCpA5(decodeA5.getA());
+		dataRam.setCpA6(decodeA6.getA());
+		dataRam.setCpA7(decodeA7.getA());
+		dataRam.setCpA8(decodeA8.getA());
+		dataRam.setCpA9(decodeA9.getA());
+		dataRam.setCpAA(decodeAA.getA());
+		dataRam.setCpAB(decodeAB.getA());
+		dataRam.setCpAC(decodeAC.getA());
+		dataRam.setCpAD(decodeAD.getA());
+		dataRam.setCpAE(decodeAE.getA());
+		dataRam.setCpAF(decodeAF.getA());
 
 		dataRam.setEcA0(timingAndMemoryWriteControl.getA0());
 		dataRam.setEcA1(timingAndMemoryWriteControl.getA1());
@@ -524,14 +525,14 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		dataRam.setEcAE(timingAndMemoryWriteControl.getAE());
 		dataRam.setEcAF(timingAndMemoryWriteControl.getAF());
 
-		dataRam.setCpDI0(decodeDI0.getO0());
-		dataRam.setCpDI1(decodeDI1.getO0());
-		dataRam.setCpDI2(decodeDI2.getO0());
-		dataRam.setCpDI3(decodeDI3.getO0());
-		dataRam.setCpDI4(decodeDI4.getO0());
-		dataRam.setCpDI5(decodeDI5.getO0());
-		dataRam.setCpDI6(decodeDI6.getO0());
-		dataRam.setCpDI7(decodeDI7.getO0());
+		dataRam.setCpDI0(decodeDI0.getA());
+		dataRam.setCpDI1(decodeDI1.getA());
+		dataRam.setCpDI2(decodeDI2.getA());
+		dataRam.setCpDI3(decodeDI3.getA());
+		dataRam.setCpDI4(decodeDI4.getA());
+		dataRam.setCpDI5(decodeDI5.getA());
+		dataRam.setCpDI6(decodeDI6.getA());
+		dataRam.setCpDI7(decodeDI7.getA());
 
 		dataRam.setEcDI0(alu.getDO0());
 		dataRam.setEcDI1(alu.getDO1());
@@ -542,7 +543,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		dataRam.setEcDI6(alu.getDO6());
 		dataRam.setEcDI7(alu.getDO7());
 
-		dataRam.setCpW(decodeW.getO0());
+		dataRam.setCpW(decodeW.getA());
 		dataRam.setEcW(timingAndMemoryWriteControl.getWrite());
 
 		dataRam.step();
@@ -579,14 +580,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepInstructionDecoder() {
-		instructionDecoder.setCI0(codeRam.getDO0());
-		instructionDecoder.setCI1(codeRam.getDO1());
-		instructionDecoder.setCI2(codeRam.getDO2());
-		instructionDecoder.setCI3(codeRam.getDO3());
-		instructionDecoder.setCI4(codeRam.getDO4());
-		instructionDecoder.setCI5(codeRam.getDO5());
-		instructionDecoder.setCI6(codeRam.getDO6());
-		instructionDecoder.setCI7(codeRam.getDO7());
+		EightBitDataPath.DataOutToDataIn(codeRam, instructionDecoder);
 		instructionDecoder.step();
 	}
 

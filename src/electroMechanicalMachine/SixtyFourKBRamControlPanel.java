@@ -21,7 +21,7 @@ import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
-PropertyChangeListener {
+		PropertyChangeListener {
 	public static void main(final String[] args) {
 		final SixtyFourKBRamControlPanel frame = new SixtyFourKBRamControlPanel();
 		frame.setVisible(true);

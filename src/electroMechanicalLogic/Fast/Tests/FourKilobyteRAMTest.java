@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.FourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class FourKilobyteRAMTest extends
-electroMechanicalLogic.Tests.FourKilobyteRAMTest {
+		electroMechanicalLogic.Tests.FourKilobyteRAMTest {
 
 	@Before
 	@Override

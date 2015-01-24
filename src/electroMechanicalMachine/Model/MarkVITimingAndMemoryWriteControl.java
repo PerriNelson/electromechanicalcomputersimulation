@@ -18,7 +18,7 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteControl;
 
 public class MarkVITimingAndMemoryWriteControl implements
-IMarkVITimingAndMemoryWriteControl {
+		IMarkVITimingAndMemoryWriteControl {
 	private final Oscillator oscillator = new Oscillator();
 	private final IRelay clearBar = new Inverter();
 	private final IRelay oscillatorBar = new Inverter();

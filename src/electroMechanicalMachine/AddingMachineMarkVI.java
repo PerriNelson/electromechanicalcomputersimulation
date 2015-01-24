@@ -22,7 +22,7 @@ import electroMechanicalMachine.Model.AddingMachineMarkVIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVI extends BasicUIFrame implements
-PropertyChangeListener {
+		PropertyChangeListener {
 	public static void main(final String[] args) {
 		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
 		frame.setVisible(true);

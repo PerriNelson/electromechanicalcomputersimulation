@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class FiveHundredTwelveByteRAM extends
-SixtyFourByOneByteRandomAccessMemory implements
-IFiveHundredTwelveByteRAM {
+		SixtyFourByOneByteRandomAccessMemory implements
+		IFiveHundredTwelveByteRAM {
 
 	@Override
 	protected void initializeBanks() {

@@ -23,7 +23,7 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public abstract class GateDemoFrame extends Frame implements
-PropertyChangeListener {
+		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 	private static final String powerOutPropertyName = "powerOut";
 

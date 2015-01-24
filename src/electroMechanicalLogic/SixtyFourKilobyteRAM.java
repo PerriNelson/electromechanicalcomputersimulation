@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class SixtyFourKilobyteRAM extends OneKilobyteRAM implements
-ISixtyFourKilobyteRAM {
+		ISixtyFourKilobyteRAM {
 
 	@Override
 	protected void initializeBanks() {

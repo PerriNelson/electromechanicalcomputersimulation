@@ -14,46 +14,46 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OneLineToTwoLineDecoder implements IOneLineToTwoLineDecoder {
 
-	private final IRelay inverter = new Inverter();
-	private final ITwoInputSingleOutputGate and0 = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate and1 = new TwoInputAndGate();
+	private final IRelay select = new Inverter();
+	private final ITwoInputSingleOutputGate a = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate b = new TwoInputAndGate();
 
 	@Override
-	public boolean getO0() {
-		return and0.getOutput();
+	public boolean getA() {
+		return a.getOutput();
 	}
 
 	@Override
-	public boolean getO1() {
-		return and1.getOutput();
+	public boolean getB() {
+		return b.getOutput();
 	}
 
 	@Override
 	public void setInput(final boolean value) {
-		and0.setA(value);
-		and1.setA(value);
+		a.setA(value);
+		b.setA(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		inverter.setPower(value);
-		and0.setPower(value);
-		and1.setPower(value);
+		select.setPower(value);
+		a.setPower(value);
+		b.setPower(value);
 	}
 
 	@Override
 	public void setSelect(final boolean value) {
-		and1.setB(value);
-		inverter.setInput(value);
+		b.setB(value);
+		select.setInput(value);
 	}
 
 	@Override
 	public void step() {
-		inverter.step();
+		select.step();
 
-		and0.setB(inverter.getOutput());
-		and0.step();
+		a.setB(select.getOutput());
+		a.step();
 
-		and1.step();
+		b.step();
 	}
 }

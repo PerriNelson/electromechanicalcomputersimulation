@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.EightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class EightByOneByteRandomAccessMemoryTest extends
-electroMechanicalLogic.Tests.EightByOneByteRandomAccessMemoryTest {
+		electroMechanicalLogic.Tests.EightByOneByteRandomAccessMemoryTest {
 
 	@Before
 	@Override

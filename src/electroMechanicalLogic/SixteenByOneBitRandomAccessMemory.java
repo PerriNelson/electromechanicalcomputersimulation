@@ -14,7 +14,7 @@ import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public class SixteenByOneBitRandomAccessMemory implements
-ISixteenByOneBitRandomAccessMemory {
+		ISixteenByOneBitRandomAccessMemory {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
 	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
@@ -23,7 +23,7 @@ ISixteenByOneBitRandomAccessMemory {
 
 	@Override
 	public boolean getDO() {
-		return selector.getQ();
+		return selector.getDO();
 	}
 
 	@Override
@@ -73,10 +73,10 @@ ISixteenByOneBitRandomAccessMemory {
 	public void step() {
 		decoder.step();
 
-		bank0.setW(decoder.getO0());
+		bank0.setW(decoder.getA());
 		bank0.step();
 
-		bank1.setW(decoder.getO1());
+		bank1.setW(decoder.getB());
 		bank1.step();
 
 		selector.setA(bank0.getDO());

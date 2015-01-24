@@ -30,7 +30,7 @@ public class EightToOneSelectorTests {
 	private static final int bit7 = 0x80;
 
 	private static final int[] OnValues = new int[] { 0x01, 0x02, 0x04, 0x08,
-		0x10, 0x20, 0x40, 0x80 };
+			0x10, 0x20, 0x40, 0x80 };
 
 	private void setD(final int value) {
 		systemUnderTest.setD0((value & bit0) == bit0);
