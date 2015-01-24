@@ -23,17 +23,22 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 
 public class AddingMachineMarkV extends BasicUIFrame implements
 		PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-	private static final String powerOutPropertyName = "powerOut";
+	public static void main(String[] args) {
+		AddingMachineMarkV frame = new AddingMachineMarkV();
+		frame.setVisible(true);
+	}
 
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
 	private static final int titleRow = 0;
 	private static final int addressSwitchRow = 1;
 	private static final int addressLabelRow = 2;
 	private static final int dataSwitchRow = 3;
 	private static final int dataLabelRow = 4;
 	private static final int dataLampRow = 5;
-	private static final int sumLampRow = 6;
 
+	private static final int sumLampRow = 6;
 	private static final int column0 = 15;
 	private static final int column1 = 14;
 	private static final int column2 = 13;
@@ -49,12 +54,8 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 	private static final int columnC = 3;
 	private static final int columnD = 2;
 	private static final int columnE = 1;
-	private static final int columnF = 0;
 
-	public static void main(String[] args) {
-		AddingMachineMarkV frame = new AddingMachineMarkV();
-		frame.setVisible(true);
-	}
+	private static final int columnF = 0;
 
 	private ToggleSwitch[] addressSwitches;
 	private ToggleSwitch[] dataSwitches;

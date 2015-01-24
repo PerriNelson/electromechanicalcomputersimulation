@@ -113,6 +113,23 @@ public class MarkVITimingAndMemoryWriteControlTest {
 	}
 
 	@Test
+	public void test_WhenHaltIsTurnedOn_AddressStopsAdvancing() {
+		for (int address = 0; address < 32768; address++) {
+			systemUnderTest.step();
+			systemUnderTest.step();
+		}
+		int expectedAddress = getAddress();
+
+		systemUnderTest.setHalt(on);
+
+		for (int address = 32768; address < 65536; address++) {
+			systemUnderTest.step();
+			systemUnderTest.step();
+			assertEquals(expectedAddress, getAddress());
+		}
+	}
+
+	@Test
 	public void test_WhenStoreIsOff_WriteIsOffThroughMultipleSteps() {
 		for (int i = 0; i < 4; i++) {
 			systemUnderTest.step();

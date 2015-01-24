@@ -25,7 +25,7 @@ public interface IAddingMachineMarkVIModel extends IMachineModel {
 	public abstract boolean getDO6();
 
 	public abstract boolean getDO7();
-	
+
 	public abstract void setA0(boolean value);
 
 	public abstract void setA1(boolean value);
@@ -73,11 +73,13 @@ public interface IAddingMachineMarkVIModel extends IMachineModel {
 	public abstract void setDI6(boolean value);
 
 	public abstract void setDI7(boolean value);
-	
+
+	public abstract void setReset(boolean value);
+
 	public abstract void setTakeover(boolean value);
-	
-	public abstract void setW(boolean value);
 
 	public abstract void setUseCodePanel(boolean value);
+
+	public abstract void setW(boolean value);
 
 }

@@ -12,12 +12,12 @@ import electroMechanicalLogic.TwoInputAndGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class AndGate extends GateDemoFrame {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(String[] args) {
 		AndGate frame = new AndGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public AndGate() {
 		super("Two Input AND Gate");

@@ -27,21 +27,22 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.HalfAdder;
 
 public class HalfAdderDemo extends Frame implements PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-	private static final String powerOutPropertyName = "powerOut";
-
-	private static final int labelRow = 0;
-	private static final int controlRow = 1;
-
-	private static final int columnA = 0;
-	private static final int columnB = 1;
-	private static final int columnCO = 2;
-	private static final int columnS = 3;
-
 	public static void main(String[] args) {
 		HalfAdderDemo frame = new HalfAdderDemo();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
+	private static final int labelRow = 0;
+
+	private static final int controlRow = 1;
+	private static final int columnA = 0;
+	private static final int columnB = 1;
+	private static final int columnCO = 2;
+
+	private static final int columnS = 3;
 
 	private JLabel labelA;
 	private JLabel labelB;

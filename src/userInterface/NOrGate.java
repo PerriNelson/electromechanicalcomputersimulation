@@ -12,12 +12,12 @@ import electroMechanicalLogic.TwoInputNOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class NOrGate extends GateDemoFrame {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(String[] args) {
 		NOrGate frame = new NOrGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public NOrGate() {
 		super("Two Input NOR Gate");

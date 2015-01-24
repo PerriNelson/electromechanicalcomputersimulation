@@ -12,12 +12,12 @@ import electroMechanicalLogic.TwoInputXOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class XOrGate extends GateDemoFrame {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(String[] args) {
 		XOrGate frame = new XOrGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public XOrGate() {
 		super("Two Input XOR Gate");

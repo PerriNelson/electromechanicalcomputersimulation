@@ -23,19 +23,24 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVI extends BasicUIFrame implements
 		PropertyChangeListener {
+	public static void main(String[] args) {
+		AddingMachineMarkVI frame = new AddingMachineMarkVI();
+		frame.setVisible(true);
+	}
+
 	public static final long serialVersionUID = 1l;
+
 	private static final String powerOutPropertyName = "powerOut";
 
 	private static final int titleRow = 0;
-	
 	private static final int codeSwitchRow = 1;
 	private static final int codeLabelRow = 2;
 	private static final int addressSwitchRow = 3;
 	private static final int addressLabelRow = 4;
 	private static final int dataSwitchRow = 5;
 	private static final int dataLabelRow = 6;
-	private static final int dataLampRow = 7;
 
+	private static final int dataLampRow = 7;
 	private static final int column0 = 16;
 	private static final int column1 = 15;
 	private static final int column2 = 14;
@@ -51,14 +56,11 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	private static final int columnC = 4;
 	private static final int columnD = 3;
 	private static final int columnE = 2;
+
 	private static final int columnF = 1;
 
-	public static void main(String[] args) {
-		AddingMachineMarkVI frame = new AddingMachineMarkVI();
-		frame.setVisible(true);
-	}
-
-	private ToggleSwitch useCodePanel;
+	private ToggleSwitch useCodePanelSwitch;
+	private ToggleSwitch resetSwitch;
 	private ToggleSwitch addressSwitch0;
 	private ToggleSwitch addressSwitch1;
 	private ToggleSwitch addressSwitch2;
@@ -124,9 +126,13 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 		placeLabel("Labels/AddingMachineMarkVILabel.jpg",
 				"Adding Machine Mark VI", columnF, titleRow, 16);
 
-		useCodePanel = placeToggleSwitch(column3, codeSwitchRow, 4);
-		placeLabel("Labels/UseCodeRAMLabel.jpg", " Use Code RAM ", column3, codeLabelRow, 4);
-		
+		useCodePanelSwitch = placeToggleSwitch(column3, codeSwitchRow, 4);
+		placeLabel("Labels/UseCodeRAMLabel.jpg", " Use Code RAM ", column3,
+				codeLabelRow, 4);
+
+		resetSwitch = placeToggleSwitch(column5, codeSwitchRow, 2);
+		placeLabel("Labels/ResetLabel.jpg", " Reset ", column5, codeLabelRow, 2);
+
 		addressSwitch0 = placeToggleSwitch(column0, addressSwitchRow);
 		addressSwitch1 = placeToggleSwitch(column1, addressSwitchRow);
 		addressSwitch2 = placeToggleSwitch(column2, addressSwitchRow);
@@ -197,14 +203,16 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row, columns);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
-	}
-	@Override
 	protected ToggleSwitch placeToggleSwitch(int column, int row) {
 		return placeToggleSwitch(column, row, 1);
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
+		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
+				columns);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override
@@ -212,8 +220,10 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 		Object source = evt.getSource();
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 			Boolean value = PowerState.on == evt.getNewValue();
-			if (source == useCodePanel) {
+			if (source == useCodePanelSwitch) {
 				model.setUseCodePanel(value);
+			} else if (source == resetSwitch) {
+				model.setReset(value);
 			} else if (source == addressSwitch0) {
 				model.setA0(value);
 			} else if (source == addressSwitch1) {
@@ -280,7 +290,7 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	}
 
 	protected void startAutomation() {
-		automationDriver = new AutomationDriver(model, 1);
+		automationDriver = new AutomationDriver(model, 10);
 		automationDriver.start();
 	}
 }

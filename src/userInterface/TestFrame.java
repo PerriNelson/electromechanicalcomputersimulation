@@ -22,13 +22,14 @@ import javax.swing.JPanel;
 import userInterface.Interfaces.PowerState;
 
 public class TestFrame extends Frame implements PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-	private static final String powerOutPropertyName = "powerOut";
-
 	public static void main(String[] args) {
 		TestFrame frame = new TestFrame();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
 
 	private ToggleSwitch toggleSwitch;
 	private Lamp lamp;

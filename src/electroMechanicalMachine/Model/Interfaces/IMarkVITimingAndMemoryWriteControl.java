@@ -50,6 +50,8 @@ public interface IMarkVITimingAndMemoryWriteControl extends ISimulatedCircuit {
 
 	public abstract void setClear(boolean value);
 
+	public abstract void setHalt(boolean value);
+
 	public abstract void setStore(boolean value);
 
 }
