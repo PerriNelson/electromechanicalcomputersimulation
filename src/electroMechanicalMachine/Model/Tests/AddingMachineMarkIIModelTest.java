@@ -19,17 +19,9 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.AddingMachineMarkIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
+import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class AddingMachineMarkIIModelTest {
-	private static final int bit0 = 0x01;
-	private static final int bit1 = 0x02;
-	private static final int bit2 = 0x04;
-	private static final int bit3 = 0x08;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
-	private static final int bit8 = 0x100;
 
 	private IAddingMachineMarkIIModel systemUnderTest;
 	private boolean eventFired = false;

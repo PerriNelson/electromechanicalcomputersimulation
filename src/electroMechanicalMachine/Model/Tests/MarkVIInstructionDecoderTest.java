@@ -16,25 +16,18 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.MarkVIInstructionDecoder;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
+import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class MarkVIInstructionDecoderTest {
-	private static final int bit0 = 0x1;
-	private static final int bit1 = 0x2;
-	private static final int bit2 = 0x4;
-	private static final int bit3 = 0x8;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
 
 	private static final int loadCode = 0x10;
 	private static final int storeCode = 0x11;
 	private static final int addCode = 0x20;
 	private static final int haltCode = 0xff;
 
-	private IMarkVIInstructionDecoder systemUnderTest;
+	protected IMarkVIInstructionDecoder systemUnderTest;
 
-	private void setCode(int code) {
+	protected void setCode(int code) {
 		systemUnderTest.setCI0((code & bit0) == bit0);
 		systemUnderTest.setCI1((code & bit1) == bit1);
 		systemUnderTest.setCI2((code & bit2) == bit2);

@@ -16,26 +16,9 @@ import org.junit.Test;
 import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
+import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class AddingMachineMarkVIModelTest {
-	private static final boolean on = true;
-	private static final boolean off = false;
-	private static final int bit0 = 0x1;
-	private static final int bit1 = 0x2;
-	private static final int bit2 = 0x4;
-	private static final int bit3 = 0x8;
-	private static final int bit4 = 0x10;
-	private static final int bit5 = 0x20;
-	private static final int bit6 = 0x40;
-	private static final int bit7 = 0x80;
-	private static final int bit8 = 0x100;
-	private static final int bit9 = 0x200;
-	private static final int bitA = 0x400;
-	private static final int bitB = 0x800;
-	private static final int bitC = 0x1000;
-	private static final int bitD = 0x2000;
-	private static final int bitE = 0x4000;
-	private static final int bitF = 0x8000;
 
 	private IAddingMachineMarkVIModel systemUnderTest;
 
