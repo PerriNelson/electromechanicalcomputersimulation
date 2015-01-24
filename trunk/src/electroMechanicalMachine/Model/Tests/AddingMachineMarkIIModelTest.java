@@ -8,6 +8,15 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.bit8;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -19,7 +28,6 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.AddingMachineMarkIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class AddingMachineMarkIIModelTest {
 

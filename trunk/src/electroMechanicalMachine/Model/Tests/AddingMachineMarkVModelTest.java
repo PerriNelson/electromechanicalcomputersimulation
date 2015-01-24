@@ -8,6 +8,25 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.bit8;
+import static electroMechanicalLogic.Tests.TestConstants.bit9;
+import static electroMechanicalLogic.Tests.TestConstants.bitA;
+import static electroMechanicalLogic.Tests.TestConstants.bitB;
+import static electroMechanicalLogic.Tests.TestConstants.bitC;
+import static electroMechanicalLogic.Tests.TestConstants.bitD;
+import static electroMechanicalLogic.Tests.TestConstants.bitE;
+import static electroMechanicalLogic.Tests.TestConstants.bitF;
+import static electroMechanicalLogic.Tests.TestConstants.off;
+import static electroMechanicalLogic.Tests.TestConstants.on;
+import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -20,32 +39,10 @@ import org.junit.Test;
 import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class AddingMachineMarkVModelTest {
 	private IAddingMachineMarkVModel systemUnderTest;
 	private boolean eventFired = false;
-
-	private int getDataOut() {
-		int dataOut = 0;
-		if (systemUnderTest.getDO0())
-			dataOut = dataOut | bit0;
-		if (systemUnderTest.getDO1())
-			dataOut = dataOut | bit1;
-		if (systemUnderTest.getDO2())
-			dataOut = dataOut | bit2;
-		if (systemUnderTest.getDO3())
-			dataOut = dataOut | bit3;
-		if (systemUnderTest.getDO4())
-			dataOut = dataOut | bit4;
-		if (systemUnderTest.getDO5())
-			dataOut = dataOut | bit5;
-		if (systemUnderTest.getDO6())
-			dataOut = dataOut | bit6;
-		if (systemUnderTest.getDO7())
-			dataOut = dataOut | bit7;
-		return dataOut;
-	}
 
 	private int getSum() {
 		int sum = 0;
@@ -2512,7 +2509,7 @@ public class AddingMachineMarkVModelTest {
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
-		assertEquals(0, getDataOut());
+		assertEquals(0, getDataOut(systemUnderTest));
 	}
 
 	@Test

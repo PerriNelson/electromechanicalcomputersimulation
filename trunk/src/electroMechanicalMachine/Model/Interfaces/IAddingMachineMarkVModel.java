@@ -8,23 +8,10 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-public interface IAddingMachineMarkVModel extends IMachineModel {
+import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 
-	public abstract boolean getDO0();
-
-	public abstract boolean getDO1();
-
-	public abstract boolean getDO2();
-
-	public abstract boolean getDO3();
-
-	public abstract boolean getDO4();
-
-	public abstract boolean getDO5();
-
-	public abstract boolean getDO6();
-
-	public abstract boolean getDO7();
+public interface IAddingMachineMarkVModel extends IMachineModel,
+		IEightBitDataOut {
 
 	public abstract boolean getS0();
 

@@ -8,6 +8,17 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.off;
+import static electroMechanicalLogic.Tests.TestConstants.on;
+import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -15,22 +26,9 @@ import org.junit.Test;
 
 import electroMechanicalMachine.Model.MarkVIALU;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
+
 public class MarkVIALUTest {
 	private IMarkVIALU systemUnderTest;
-
-	private int getDataOut() {
-		int dataOut = 0;
-		dataOut |= (systemUnderTest.getDO0() ? bit0 : 0);
-		dataOut |= (systemUnderTest.getDO1() ? bit1 : 0);
-		dataOut |= (systemUnderTest.getDO2() ? bit2 : 0);
-		dataOut |= (systemUnderTest.getDO3() ? bit3 : 0);
-		dataOut |= (systemUnderTest.getDO4() ? bit4 : 0);
-		dataOut |= (systemUnderTest.getDO5() ? bit5 : 0);
-		dataOut |= (systemUnderTest.getDO6() ? bit6 : 0);
-		dataOut |= (systemUnderTest.getDO7() ? bit7 : 0);
-		return dataOut;
-	}
 
 	private void performOneClockCycle() {
 		systemUnderTest.setClock(off);
@@ -69,7 +67,7 @@ public class MarkVIALUTest {
 			expectedResult += i;
 			expectedResult &= 0xff;
 
-			assertEquals(expectedResult, getDataOut());
+			assertEquals(expectedResult, getDataOut(systemUnderTest));
 		}
 	}
 
@@ -83,7 +81,7 @@ public class MarkVIALUTest {
 			setDataIn(i);
 			performOneClockCycle();
 
-			assertEquals(expectedResult, getDataOut());
+			assertEquals(expectedResult, getDataOut(systemUnderTest));
 		}
 	}
 
@@ -97,7 +95,7 @@ public class MarkVIALUTest {
 			setDataIn(i);
 			performOneClockCycle();
 
-			assertEquals(expectedResult, getDataOut());
+			assertEquals(expectedResult, getDataOut(systemUnderTest));
 		}
 	}
 
@@ -109,7 +107,7 @@ public class MarkVIALUTest {
 			setDataIn(i);
 			performOneClockCycle();
 
-			assertEquals(i, getDataOut());
+			assertEquals(i, getDataOut(systemUnderTest));
 		}
 	}
 }

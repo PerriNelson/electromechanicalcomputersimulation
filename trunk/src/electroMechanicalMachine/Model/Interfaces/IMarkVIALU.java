@@ -8,25 +8,10 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
+import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface IMarkVIALU extends ISimulatedCircuit {
-
-	public abstract boolean getDO0();
-
-	public abstract boolean getDO1();
-
-	public abstract boolean getDO2();
-
-	public abstract boolean getDO3();
-
-	public abstract boolean getDO4();
-
-	public abstract boolean getDO5();
-
-	public abstract boolean getDO6();
-
-	public abstract boolean getDO7();
+public interface IMarkVIALU extends ISimulatedCircuit, IEightBitDataOut {
 
 	public abstract void setAdd(boolean value);
 

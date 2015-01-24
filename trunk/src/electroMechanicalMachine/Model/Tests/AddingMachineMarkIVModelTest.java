@@ -8,6 +8,14 @@
 
 package electroMechanicalMachine.Model.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -20,7 +28,6 @@ import org.junit.Test;
 import electroMechanicalLogic.EightBitLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
-import static electroMechanicalMachine.Model.Tests.TestConstants.*;
 
 public class AddingMachineMarkIVModelTest {
 	private IAddingMachineMarkIVModel systemUnderTest;
