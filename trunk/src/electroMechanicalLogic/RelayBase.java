@@ -19,12 +19,12 @@ abstract class RelayBase {
 
 	protected byte state;
 
-	public final void setInput(boolean value) {
+	public final void setInput(final boolean value) {
 		state = value ? (byte) (state | InputMaskIn)
 				: (byte) (state & ~InputMaskIn);
 	}
 
-	public final void setPower(boolean value) {
+	public final void setPower(final boolean value) {
 		state = value ? (byte) (state | PowerMaskIn)
 				: (byte) (state & ~PowerMaskIn);
 

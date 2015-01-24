@@ -14,12 +14,12 @@ import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public class SixteenByOneBitRandomAccessMemory implements
-		ISixteenByOneBitRandomAccessMemory {
+ISixteenByOneBitRandomAccessMemory {
 
-	private IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
-	private ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
-	private IEightByOneBitRandomAccessMemory bank0 = new EightByOneBitRandomAccessMemory();
-	private IEightByOneBitRandomAccessMemory bank1 = new EightByOneBitRandomAccessMemory();
+	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
+	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
+	private final IEightByOneBitRandomAccessMemory bank0 = new EightByOneBitRandomAccessMemory();
+	private final IEightByOneBitRandomAccessMemory bank1 = new EightByOneBitRandomAccessMemory();
 
 	@Override
 	public boolean getDO() {
@@ -27,37 +27,37 @@ public class SixteenByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		bank0.setA0(value);
 		bank1.setA0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		bank0.setA1(value);
 		bank1.setA1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		bank0.setA2(value);
 		bank1.setA2(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		decoder.setSelect(value);
 		selector.setSelect(value);
 	}
 
 	@Override
-	public void setDI(boolean value) {
+	public void setDI(final boolean value) {
 		bank0.setDI(value);
 		bank1.setDI(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		decoder.setPower(value);
 		bank0.setPower(value);
 		bank1.setPower(value);
@@ -65,7 +65,7 @@ public class SixteenByOneBitRandomAccessMemory implements
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		decoder.setInput(value);
 	}
 

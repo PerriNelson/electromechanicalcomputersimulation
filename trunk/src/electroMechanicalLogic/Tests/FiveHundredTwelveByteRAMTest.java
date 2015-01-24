@@ -14,18 +14,18 @@ import electroMechanicalLogic.FiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAMTest extends
-		SixtyFourByOneByteRandomAccessMemoryTest {
+SixtyFourByOneByteRandomAccessMemoryTest {
 	protected static final int bit8 = 0x100;
 
 	@Override
-	protected void setA(int value) {
+	protected void setA(final int value) {
 		super.setA(value);
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
-				.setA6((value & bit6) == bit6);
+		.setA6((value & bit6) == bit6);
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
-				.setA7((value & bit7) == bit7);
+		.setA7((value & bit7) == bit7);
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
-				.setA8((value & bit8) == bit8);
+		.setA8((value & bit8) == bit8);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class FiveHundredTwelveByteRAMTest extends
 	}
 
 	@Override
-	protected int translateAddress(int address) {
+	protected int translateAddress(final int address) {
 		return (super.translateAddress(address) << 3) | address;
 	}
 }

@@ -11,7 +11,7 @@ package electroMechanicalMachine.Model.Interfaces;
 import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 
 public interface ISixtyFourKilobyteRamControlPanelModel extends IMachineModel,
-		IEightBitDataOut {
+IEightBitDataOut {
 
 	// Control Panel Inputs
 	public abstract void setCpA0(boolean value);

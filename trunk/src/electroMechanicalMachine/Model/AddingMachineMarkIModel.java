@@ -19,17 +19,17 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 
 	private final EightBitAdder adder = new EightBitAdder();
-	private EventListenerList eventListeners = new EventListenerList();
+	private final EventListenerList eventListeners = new EventListenerList();
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
 	protected void fireOnPropertyChange() {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -37,7 +37,7 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -88,97 +88,98 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		adder.setA0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		adder.setA1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		adder.setA2(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		adder.setA3(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		adder.setA4(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		adder.setA5(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		adder.setA6(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		adder.setA7(value);
 	}
 
 	@Override
-	public void setB0(boolean value) {
+	public void setB0(final boolean value) {
 		adder.setB0(value);
 	}
 
 	@Override
-	public void setB1(boolean value) {
+	public void setB1(final boolean value) {
 		adder.setB1(value);
 	}
 
 	@Override
-	public void setB2(boolean value) {
+	public void setB2(final boolean value) {
 		adder.setB2(value);
 	}
 
 	@Override
-	public void setB3(boolean value) {
+	public void setB3(final boolean value) {
 		adder.setB3(value);
 	}
 
 	@Override
-	public void setB4(boolean value) {
+	public void setB4(final boolean value) {
 		adder.setB4(value);
 	}
 
 	@Override
-	public void setB5(boolean value) {
+	public void setB5(final boolean value) {
 		adder.setB5(value);
 	}
 
 	@Override
-	public void setB6(boolean value) {
+	public void setB6(final boolean value) {
 		adder.setB6(value);
 	}
 
 	@Override
-	public void setB7(boolean value) {
+	public void setB7(final boolean value) {
 		adder.setB7(value);
 	}
 
 	@Override
-	public void setCI(boolean value) {
+	public void setCI(final boolean value) {
 		adder.setCI(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		adder.setPower(value);
 	}
 

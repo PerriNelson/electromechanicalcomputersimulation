@@ -20,22 +20,22 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
 public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	private final IEightBitAdder adder = new EightBitAdder();
-	private IEightBitLatchWithClear latch;
-	private EventListenerList eventListeners = new EventListenerList();
+	private final IEightBitLatchWithClear latch;
+	private final EventListenerList eventListeners = new EventListenerList();
 
-	public AddingMachineMarkIVModel(IEightBitLatchWithClear theLatch) {
+	public AddingMachineMarkIVModel(final IEightBitLatchWithClear theLatch) {
 		latch = theLatch;
 	}
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
 	protected void fireOnPropertyChange() {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -43,7 +43,7 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -89,62 +89,63 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		adder.setA0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		adder.setA1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		adder.setA2(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		adder.setA3(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		adder.setA4(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		adder.setA5(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		adder.setA6(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		adder.setA7(value);
 	}
 
 	@Override
-	public void setAdd(boolean value) {
+	public void setAdd(final boolean value) {
 		latch.setW(value);
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		latch.setClr(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		adder.setPower(value);
 		latch.setPower(value);
 	}

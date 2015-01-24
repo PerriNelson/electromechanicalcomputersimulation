@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.SixtyFourByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class SixtyFourByOneByteRandomAccessMemoryTest extends
-		electroMechanicalLogic.Tests.SixtyFourByOneByteRandomAccessMemoryTest {
+electroMechanicalLogic.Tests.SixtyFourByOneByteRandomAccessMemoryTest {
 
 	@Before
 	@Override
@@ -28,9 +28,9 @@ public class SixtyFourByOneByteRandomAccessMemoryTest extends
 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
-		int maxAddress = ((IRandomAccessMemory) systemUnderTest)
+		final int maxAddress = ((IRandomAccessMemory) systemUnderTest)
 				.getMaxAddress();
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			setDI(0xff);
 			systemUnderTest.step();
@@ -38,7 +38,7 @@ public class SixtyFourByOneByteRandomAccessMemoryTest extends
 
 		systemUnderTest.setPower(false);
 
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			systemUnderTest.step();
 			assertEquals(getDO(), 0);

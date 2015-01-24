@@ -12,12 +12,12 @@ import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class FourInputSingleOutputAndGate implements
-		IFourInputSingleOutputGate {
+IFourInputSingleOutputGate {
 
-	private IRelay relayA = new Buffer();
-	private IRelay relayB = new Buffer();
-	private IRelay relayC = new Buffer();
-	private IRelay relayD = new Buffer();
+	private final IRelay relayA = new Buffer();
+	private final IRelay relayB = new Buffer();
+	private final IRelay relayC = new Buffer();
+	private final IRelay relayD = new Buffer();
 
 	@Override
 	public boolean getOutput() {
@@ -25,27 +25,27 @@ public final class FourInputSingleOutputAndGate implements
 	}
 
 	@Override
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		relayA.setInput(value);
 	}
 
 	@Override
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		relayB.setInput(value);
 	}
 
 	@Override
-	public void setC(boolean value) {
+	public void setC(final boolean value) {
 		relayC.setInput(value);
 	}
 
 	@Override
-	public void setD(boolean value) {
+	public void setD(final boolean value) {
 		relayD.setInput(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		relayA.setPower(value);
 	}
 

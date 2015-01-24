@@ -12,14 +12,14 @@ import electroMechanicalLogic.Interfaces.IEightBitLatch;
 import electroMechanicalLogic.Interfaces.ILatch;
 
 public class EightBitLatch implements IEightBitLatch {
-	private ILatch bit0 = new Latch();
-	private ILatch bit1 = new Latch();
-	private ILatch bit2 = new Latch();
-	private ILatch bit3 = new Latch();
-	private ILatch bit4 = new Latch();
-	private ILatch bit5 = new Latch();
-	private ILatch bit6 = new Latch();
-	private ILatch bit7 = new Latch();
+	private final ILatch bit0 = new Latch();
+	private final ILatch bit1 = new Latch();
+	private final ILatch bit2 = new Latch();
+	private final ILatch bit3 = new Latch();
+	private final ILatch bit4 = new Latch();
+	private final ILatch bit5 = new Latch();
+	private final ILatch bit6 = new Latch();
+	private final ILatch bit7 = new Latch();
 
 	@Override
 	public boolean getDO0() {
@@ -62,47 +62,47 @@ public class EightBitLatch implements IEightBitLatch {
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		bit0.setDI(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		bit1.setDI(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		bit2.setDI(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		bit3.setDI(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		bit4.setDI(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		bit5.setDI(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		bit6.setDI(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		bit7.setDI(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);
@@ -114,7 +114,7 @@ public class EightBitLatch implements IEightBitLatch {
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		bit0.setW(value);
 		bit1.setW(value);
 		bit2.setW(value);

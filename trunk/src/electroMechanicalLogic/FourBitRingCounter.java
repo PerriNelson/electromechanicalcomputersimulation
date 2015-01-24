@@ -13,10 +13,10 @@ import electroMechanicalLogic.Interfaces.IFourBitRingCounter;
 
 public class FourBitRingCounter implements IFourBitRingCounter {
 
-	private IDTypeFlipFlopWithPresetAndClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
-	private IDTypeFlipFlopWithPresetAndClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit0 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit1 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit2 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
+	private final IDTypeFlipFlopWithPresetAndClear bit3 = new EdgeTriggeredDTypeFlipFlopWithPresetAndClear();
 
 	@Override
 	public boolean getQ0() {
@@ -39,7 +39,7 @@ public class FourBitRingCounter implements IFourBitRingCounter {
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		bit0.setClear(value);
 		bit1.setClear(value);
 		bit2.setClear(value);
@@ -47,7 +47,7 @@ public class FourBitRingCounter implements IFourBitRingCounter {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		bit0.setClk(value);
 		bit1.setClk(value);
 		bit2.setClk(value);
@@ -55,7 +55,7 @@ public class FourBitRingCounter implements IFourBitRingCounter {
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);

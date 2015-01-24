@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class SixtyFourKilobyteRAMTest extends
-		electroMechanicalLogic.Tests.SixtyFourKilobyteRAMTest {
+electroMechanicalLogic.Tests.SixtyFourKilobyteRAMTest {
 
 	@Override
 	@Before
@@ -28,9 +28,9 @@ public class SixtyFourKilobyteRAMTest extends
 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
-		int maxAddress = ((IRandomAccessMemory) systemUnderTest)
+		final int maxAddress = ((IRandomAccessMemory) systemUnderTest)
 				.getMaxAddress();
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			setDI(0xff);
 			systemUnderTest.step();
@@ -38,7 +38,7 @@ public class SixtyFourKilobyteRAMTest extends
 
 		systemUnderTest.setPower(false);
 
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			systemUnderTest.step();
 			assertEquals(getDO(), 0);

@@ -8,6 +8,16 @@
 
 package electroMechanicalLogic.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
+import static electroMechanicalLogic.Tests.TestUtilities.setInput;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -18,42 +28,7 @@ import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
 
 public class EightBitOnesComplementTest {
 
-	private static final byte bit0 = 0x01;
-	private static final byte bit1 = 0x02;
-	private static final byte bit2 = 0x04;
-	private static final byte bit3 = 0x08;
-	private static final byte bit4 = 0x10;
-	private static final byte bit5 = 0x20;
-	private static final byte bit6 = 0x40;
-	private static final byte bit7 = (byte) 0x80;
-
 	private IEightBitOnesComplement systemUnderTest;
-
-	private byte getOutput() {
-		byte value = 0;
-
-		value |= systemUnderTest.getO0() ? bit0 : 0;
-		value |= systemUnderTest.getO1() ? bit1 : 0;
-		value |= systemUnderTest.getO2() ? bit2 : 0;
-		value |= systemUnderTest.getO3() ? bit3 : 0;
-		value |= systemUnderTest.getO4() ? bit4 : 0;
-		value |= systemUnderTest.getO5() ? bit5 : 0;
-		value |= systemUnderTest.getO6() ? bit6 : 0;
-		value |= systemUnderTest.getO7() ? bit7 : 0;
-
-		return value;
-	}
-
-	private void setInput(byte value) {
-		systemUnderTest.setI0((value & bit0) == bit0);
-		systemUnderTest.setI1((value & bit1) == bit1);
-		systemUnderTest.setI2((value & bit2) == bit2);
-		systemUnderTest.setI3((value & bit3) == bit3);
-		systemUnderTest.setI4((value & bit4) == bit4);
-		systemUnderTest.setI5((value & bit5) == bit5);
-		systemUnderTest.setI6((value & bit6) == bit6);
-		systemUnderTest.setI7((value & bit7) == bit7);
-	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -63,153 +38,153 @@ public class EightBitOnesComplementTest {
 
 	@Test
 	public void test_OnlyOutputFiveIsOff_WhenOnlyInputFiveIsSetAndInvertIsSet() {
-		setInput(bit5);
+		setInput(systemUnderTest, bit5);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit5);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit5);
 	}
 
 	@Test
 	public void test_OnlyOutputFiveIsOn_WhenOnlyInputFiveIsSetAndInvertIsNotSet() {
-		setInput(bit5);
+		setInput(systemUnderTest, bit5);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit5);
+		assertEquals(getDataOut(systemUnderTest), bit5);
 	}
 
 	@Test
 	public void test_OnlyOutputFourIsOff_WhenOnlyInputFourIsSetAndInvertIsSet() {
-		setInput(bit4);
+		setInput(systemUnderTest, bit4);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit4);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit4);
 	}
 
 	@Test
 	public void test_OnlyOutputFourIsOn_WhenOnlyInputFourIsSetAndInvertIsNotSet() {
-		setInput(bit4);
+		setInput(systemUnderTest, bit4);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit4);
+		assertEquals(getDataOut(systemUnderTest), bit4);
 	}
 
 	@Test
 	public void test_OnlyOutputOneIsOff_WhenOnlyInputOneIsSetAndInvertIsSet() {
-		setInput(bit1);
+		setInput(systemUnderTest, bit1);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit1);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit1);
 	}
 
 	@Test
 	public void test_OnlyOutputOneIsOn_WhenOnlyInputOneIsSetAndInvertIsNotSet() {
-		setInput(bit1);
+		setInput(systemUnderTest, bit1);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit1);
+		assertEquals(getDataOut(systemUnderTest), bit1);
 	}
 
 	@Test
 	public void test_OnlyOutputSevenIsOff_WhenOnlyInputSevenIsSetAndInvertIsSet() {
-		setInput(bit7);
+		setInput(systemUnderTest, bit7);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit7);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit7);
 	}
 
 	@Test
 	public void test_OnlyOutputSevenIsOn_WhenOnlyInputSevenIsSetAndInvertIsNotSet() {
-		setInput(bit7);
+		setInput(systemUnderTest, bit7);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit7);
+		assertEquals(getDataOut(systemUnderTest), bit7);
 	}
 
 	@Test
 	public void test_OnlyOutputSixIsOff_WhenOnlyInputSixIsSetAndInvertIsSet() {
-		setInput(bit6);
+		setInput(systemUnderTest, bit6);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit6);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit6);
 	}
 
 	@Test
 	public void test_OnlyOutputSixIsOn_WhenOnlyInputSixIsSetAndInvertIsNotSet() {
-		setInput(bit6);
+		setInput(systemUnderTest, bit6);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit6);
+		assertEquals(getDataOut(systemUnderTest), bit6);
 	}
 
 	@Test
 	public void test_OnlyOutputThreeIsOff_WhenOnlyInputThreeIsSetAndInvertIsSet() {
-		setInput(bit3);
+		setInput(systemUnderTest, bit3);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit3);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit3);
 	}
 
 	@Test
 	public void test_OnlyOutputThreeIsOn_WhenOnlyInputThreeIsSetAndInvertIsNotSet() {
-		setInput(bit3);
+		setInput(systemUnderTest, bit3);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit3);
+		assertEquals(getDataOut(systemUnderTest), bit3);
 	}
 
 	@Test
 	public void test_OnlyOutputTwoIsOff_WhenOnlyInputTwoIsSetAndInvertIsSet() {
-		setInput(bit2);
+		setInput(systemUnderTest, bit2);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit2);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit2);
 	}
 
 	@Test
 	public void test_OnlyOutputTwoIsOn_WhenOnlyInputTwoIsSetAndInvertIsNotSet() {
-		setInput(bit2);
+		setInput(systemUnderTest, bit2);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit2);
+		assertEquals(getDataOut(systemUnderTest), bit2);
 	}
 
 	@Test
 	public void test_OnlyOutputZeroIsOff_WhenOnlyInputZeroIsSetAndInvertIsSet() {
-		setInput(bit0);
+		setInput(systemUnderTest, bit0);
 
 		systemUnderTest.setInvert(true);
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), ~bit0);
+		assertEquals(getDataOut(systemUnderTest), 0xff & ~bit0);
 	}
 
 	@Test
 	public void test_OnlyOutputZeroIsOn_WhenOnlyInputZeroIsSetAndInvertIsNotSet() {
-		setInput(bit0);
+		setInput(systemUnderTest, bit0);
 
 		systemUnderTest.step();
 
-		assertEquals(getOutput(), bit0);
+		assertEquals(getDataOut(systemUnderTest), bit0);
 	}
 }

@@ -38,7 +38,7 @@ public class MarkVIALUTest {
 		systemUnderTest.step();
 	}
 
-	private void setDataIn(int value) {
+	private void setDataIn(final int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);
@@ -73,7 +73,7 @@ public class MarkVIALUTest {
 
 	@Test
 	public void test_WhenClearIsOnAndAddIsOn_DataOutIsAlwaysZero() {
-		int expectedResult = 0;
+		final int expectedResult = 0;
 		systemUnderTest.setAdd(on);
 		systemUnderTest.setClear(on);
 
@@ -87,7 +87,7 @@ public class MarkVIALUTest {
 
 	@Test
 	public void test_WhenClearIsOnAndLoadIsOn_DataOutIsAlwaysZero() {
-		int expectedResult = 0;
+		final int expectedResult = 0;
 		systemUnderTest.setLoad(on);
 		systemUnderTest.setClear(on);
 

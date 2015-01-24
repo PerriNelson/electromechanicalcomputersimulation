@@ -9,6 +9,6 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface IDTypeFlipFlopWithPresetAndClear extends
-		IDTypeFlipFlopWithClear {
+IDTypeFlipFlopWithClear {
 	public abstract void setPreset(boolean value);
 }

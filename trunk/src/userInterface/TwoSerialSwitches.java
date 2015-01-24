@@ -22,8 +22,8 @@ import javax.swing.JPanel;
 import userInterface.Interfaces.PowerState;
 
 public class TwoSerialSwitches extends Frame implements PropertyChangeListener {
-	public static void main(String[] args) {
-		TwoSerialSwitches frame = new TwoSerialSwitches();
+	public static void main(final String[] args) {
+		final TwoSerialSwitches frame = new TwoSerialSwitches();
 		frame.setVisible(true);
 	}
 
@@ -31,20 +31,20 @@ public class TwoSerialSwitches extends Frame implements PropertyChangeListener {
 
 	private static final String powerOutPropertyName = "powerOut";
 
-	private ToggleSwitch toggleSwitch1;
-	private ToggleSwitch toggleSwitch2;
-	private Lamp lamp;
+	private final ToggleSwitch toggleSwitch1;
+	private final ToggleSwitch toggleSwitch2;
+	private final Lamp lamp;
 
 	public TwoSerialSwitches() {
 		super("Two Serial Switches");
 		setSize(300, 103);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		toggleSwitch1 = new ToggleSwitch();
 		toggleSwitch1.setPowerIn(PowerState.on);
@@ -61,7 +61,7 @@ public class TwoSerialSwitches extends Frame implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitch1) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				toggleSwitch2.setPowerIn((PowerState) evt.getNewValue());

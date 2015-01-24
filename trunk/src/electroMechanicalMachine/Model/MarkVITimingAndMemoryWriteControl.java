@@ -18,15 +18,15 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteControl;
 
 public class MarkVITimingAndMemoryWriteControl implements
-		IMarkVITimingAndMemoryWriteControl {
-	private Oscillator oscillator = new Oscillator();
-	private IRelay clearBar = new Inverter();
-	private IRelay oscillatorBar = new Inverter();
-	private IRelay haltBar = new Inverter();
-	private ITwoInputSingleOutputGate clock = new TwoInputAndGate();
+IMarkVITimingAndMemoryWriteControl {
+	private final Oscillator oscillator = new Oscillator();
+	private final IRelay clearBar = new Inverter();
+	private final IRelay oscillatorBar = new Inverter();
+	private final IRelay haltBar = new Inverter();
+	private final ITwoInputSingleOutputGate clock = new TwoInputAndGate();
 
-	private ITwoInputSingleOutputGate write = new TwoInputAndGate();
-	private ISixteenBitCounterWithClear address = new SixteenBitCounterWithClear();
+	private final ITwoInputSingleOutputGate write = new TwoInputAndGate();
+	private final ISixteenBitCounterWithClear address = new SixteenBitCounterWithClear();
 
 	@Override
 	public boolean getA0() {
@@ -119,18 +119,18 @@ public class MarkVITimingAndMemoryWriteControl implements
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		clearBar.setInput(value);
 		address.setClear(value);
 	}
 
 	@Override
-	public void setHalt(boolean value) {
+	public void setHalt(final boolean value) {
 		haltBar.setInput(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		oscillator.setPower(value);
 		clearBar.setPower(value);
 		haltBar.setPower(value);
@@ -141,7 +141,7 @@ public class MarkVITimingAndMemoryWriteControl implements
 	}
 
 	@Override
-	public void setStore(boolean value) {
+	public void setStore(final boolean value) {
 		write.setA(value);
 	}
 

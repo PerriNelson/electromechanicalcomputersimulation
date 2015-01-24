@@ -12,8 +12,8 @@ import electroMechanicalLogic.TwoInputOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OrGate extends GateDemoFrame {
-	public static void main(String[] args) {
-		OrGate frame = new OrGate();
+	public static void main(final String[] args) {
+		final OrGate frame = new OrGate();
 		frame.setVisible(true);
 	}
 

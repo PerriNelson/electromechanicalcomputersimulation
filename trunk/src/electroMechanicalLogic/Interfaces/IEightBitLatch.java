@@ -8,22 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightBitLatch extends ISimulatedCircuit, IEightBitDataOut {
-	public abstract void setDI0(boolean value);
-
-	public abstract void setDI1(boolean value);
-
-	public abstract void setDI2(boolean value);
-
-	public abstract void setDI3(boolean value);
-
-	public abstract void setDI4(boolean value);
-
-	public abstract void setDI5(boolean value);
-
-	public abstract void setDI6(boolean value);
-
-	public abstract void setDI7(boolean value);
-
+public interface IEightBitLatch extends ISimulatedCircuit, IEightBitDataOut,
+		IEightBitDataIn {
 	public abstract void setW(boolean value);
 }

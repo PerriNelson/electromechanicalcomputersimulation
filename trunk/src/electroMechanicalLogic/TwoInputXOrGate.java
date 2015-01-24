@@ -11,9 +11,9 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
 
-	private ITwoInputSingleOutputGate nAnd = new TwoInputNAndGate();
-	private ITwoInputSingleOutputGate or = new TwoInputOrGate();
-	private ITwoInputSingleOutputGate and = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate nAnd = new TwoInputNAndGate();
+	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate and = new TwoInputAndGate();
 
 	@Override
 	public boolean getOutput() {
@@ -21,19 +21,19 @@ public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
 	}
 
 	@Override
-	public void setA(boolean value) {
+	public void setA(final boolean value) {
 		nAnd.setA(value);
 		or.setA(value);
 	}
 
 	@Override
-	public void setB(boolean value) {
+	public void setB(final boolean value) {
 		nAnd.setB(value);
 		or.setB(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		nAnd.setPower(value);
 		or.setPower(value);
 		and.setPower(value);

@@ -36,7 +36,7 @@ public class LampModelTest {
 
 	@Test
 	public void SetOn_DoesNotFireOnPropertyChanged_WhenCalledWithFalseAfterInitialized() {
-		PropertyChangeListener listener = PropertyChangeExpectation
+		final PropertyChangeListener listener = PropertyChangeExpectation
 				.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
@@ -50,7 +50,7 @@ public class LampModelTest {
 	public void SetOn_DoesNotFireOnPropertyChanged_WhenCalledWithTrueAfterCalledWithTrue() {
 		systemUnderTest.setOn(true);
 
-		PropertyChangeListener listener = PropertyChangeExpectation
+		final PropertyChangeListener listener = PropertyChangeExpectation
 				.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
@@ -64,7 +64,7 @@ public class LampModelTest {
 	public void SetOn_FiresOnPropertyChanged_WhenCalledWithFalseAfterCalledWithTrue() {
 		systemUnderTest.setOn(true);
 
-		PropertyChangeListener listener = PropertyChangeExpectation
+		final PropertyChangeListener listener = PropertyChangeExpectation
 				.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);
@@ -77,7 +77,7 @@ public class LampModelTest {
 	@Test
 	public void SetOn_FiresOnPropertyChanged_WhenCalledWithTrueAfterInitialization() {
 
-		PropertyChangeListener listener = PropertyChangeExpectation
+		final PropertyChangeListener listener = PropertyChangeExpectation
 				.getListener(expectedChanges);
 
 		systemUnderTest.addPropertyChangeListener(listener);

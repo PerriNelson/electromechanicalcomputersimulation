@@ -87,7 +87,7 @@ public class MarkVITimingAndMemoryWriteControlTest {
 	public void test_WhenClearIsOff_ClockStartsOffAndCyclesOnAndOffThroughMultipleSteps() {
 		for (int i = 0; i < 4; i++) {
 			systemUnderTest.step();
-			assertEquals(String.format("i == %d ", i), i % 2 == 0 ? off : on,
+			assertEquals(String.format("i == %d ", i), (i % 2) == 0 ? off : on,
 					systemUnderTest.getClock());
 		}
 	}
@@ -118,7 +118,7 @@ public class MarkVITimingAndMemoryWriteControlTest {
 			systemUnderTest.step();
 			systemUnderTest.step();
 		}
-		int expectedAddress = getAddress();
+		final int expectedAddress = getAddress();
 
 		systemUnderTest.setHalt(on);
 

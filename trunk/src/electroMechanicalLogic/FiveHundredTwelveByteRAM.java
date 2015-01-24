@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
 
 public class FiveHundredTwelveByteRAM extends
-		SixtyFourByOneByteRandomAccessMemory implements
-		IFiveHundredTwelveByteRAM {
+SixtyFourByOneByteRandomAccessMemory implements
+IFiveHundredTwelveByteRAM {
 
 	@Override
 	protected void initializeBanks() {
@@ -28,7 +28,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA3(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA3(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA3(value);
@@ -40,7 +40,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA4(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA4(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA4(value);
@@ -52,7 +52,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		((ISixtyFourByOneByteRandomAccessMemory) bank0).setA5(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank1).setA5(value);
 		((ISixtyFourByOneByteRandomAccessMemory) bank2).setA5(value);
@@ -64,7 +64,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		w.setS0(value);
 		dO0.setS0(value);
 		dO1.setS0(value);
@@ -77,7 +77,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		w.setS1(value);
 		dO0.setS1(value);
 		dO1.setS1(value);
@@ -90,7 +90,7 @@ public class FiveHundredTwelveByteRAM extends
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		w.setS2(value);
 		dO0.setS2(value);
 		dO1.setS2(value);

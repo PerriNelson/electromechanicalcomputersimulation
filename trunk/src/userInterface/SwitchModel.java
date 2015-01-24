@@ -20,7 +20,7 @@ public class SwitchModel implements ISwitchModel {
 	private static final String closedPropertyName = "closed";
 	private static final String powerOutPropertyName = "powerOut";
 
-	private EventListenerList eventListeners = new EventListenerList();
+	private final EventListenerList eventListeners = new EventListenerList();
 	private boolean closed;
 	private PowerState powerState;
 
@@ -28,29 +28,29 @@ public class SwitchModel implements ISwitchModel {
 		this(false, PowerState.off);
 	}
 
-	public SwitchModel(boolean closed) {
+	public SwitchModel(final boolean closed) {
 		this(closed, PowerState.off);
 	}
 
-	public SwitchModel(boolean closed, PowerState powerState) {
+	public SwitchModel(final boolean closed, final PowerState powerState) {
 		this.closed = closed;
 		this.powerState = powerState;
 	}
 
-	public SwitchModel(PowerState powerState) {
+	public SwitchModel(final PowerState powerState) {
 		this(false, powerState);
 	}
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
-	protected void fireOnPropertyChange(String propertyName, Object oldValue,
-			Object newValue) {
+	protected void fireOnPropertyChange(final String propertyName,
+			final Object oldValue, final Object newValue) {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -58,7 +58,7 @@ public class SwitchModel implements ISwitchModel {
 							propertyName, oldValue, newValue);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -74,13 +74,14 @@ public class SwitchModel implements ISwitchModel {
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setClosed(boolean newValue) {
-		boolean oldValue = closed;
+	public void setClosed(final boolean newValue) {
+		final boolean oldValue = closed;
 
 		if (newValue != oldValue) {
 			closed = newValue;
@@ -98,8 +99,8 @@ public class SwitchModel implements ISwitchModel {
 	}
 
 	@Override
-	public void setPowerIn(PowerState newValue) {
-		PowerState oldValue = powerState;
+	public void setPowerIn(final PowerState newValue) {
+		final PowerState oldValue = powerState;
 
 		if (oldValue != newValue) {
 			powerState = newValue;

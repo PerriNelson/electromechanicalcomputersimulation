@@ -21,9 +21,9 @@ import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 public class BasicToggleSwitchUI extends ToggleSwitchUI implements
-		MouseListener {
+MouseListener {
 
-	public static ComponentUI createUI(JComponent component) {
+	public static ComponentUI createUI(final JComponent component) {
 		return new BasicToggleSwitchUI();
 	}
 
@@ -44,7 +44,7 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 
 	private static final int switchTop = 202;
 
-	private BufferedImage toggleSwitches;
+	private final BufferedImage toggleSwitches;
 
 	public BasicToggleSwitchUI() {
 		super();
@@ -52,63 +52,67 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	}
 
 	@Override
-	public void installUI(JComponent component) {
-		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
+	public void installUI(final JComponent component) {
+		final ToggleSwitch toggleSwitch = (ToggleSwitch) component;
 		toggleSwitch.addMouseListener(this);
 	}
 
-	private BufferedImage loadImage(String imagePath) {
+	private BufferedImage loadImage(final String imagePath) {
 		try {
-			URL url = getClass().getResource(imagePath);
-			if (url == null)
+			final URL url = getClass().getResource(imagePath);
+			if (url == null) {
 				return new BufferedImage(imageWidth, imageHeight,
 						BufferedImage.TYPE_4BYTE_ABGR);
+			}
 			return ImageIO.read(url);
-		} catch (IOException ioException) {
+		} catch (final IOException ioException) {
 			return new BufferedImage(imageWidth, imageHeight,
 					BufferedImage.TYPE_4BYTE_ABGR);
 		}
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent mouseEvent) {
-		ToggleSwitch toggleSwitch = (ToggleSwitch) mouseEvent.getComponent();
-		if (toggleSwitch.isClosed())
+	public void mouseClicked(final MouseEvent mouseEvent) {
+		final ToggleSwitch toggleSwitch = (ToggleSwitch) mouseEvent
+				.getComponent();
+		if (toggleSwitch.isClosed()) {
 			toggleSwitch.open();
-		else
+		} else {
 			toggleSwitch.close();
+		}
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(final MouseEvent arg0) {
 
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(final MouseEvent arg0) {
 		// DO NOTHING.
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(final MouseEvent arg0) {
 		// DO NOTHING.
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
+	public void mouseReleased(final MouseEvent arg0) {
 		// DO NOTHING.
 	}
 
 	@Override
-	public void paint(Graphics graphics, JComponent component) {
-		Insets insets = component.getInsets();
+	public void paint(final Graphics graphics, final JComponent component) {
+		final Insets insets = component.getInsets();
 		graphics.translate(insets.left, insets.top);
-		int width = component.getWidth() - insets.left - insets.right;
-		int height = component.getHeight() - insets.top - insets.bottom;
+		final int width = component.getWidth() - insets.left - insets.right;
+		final int height = component.getHeight() - insets.top - insets.bottom;
 
-		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
-		int left = toggleSwitch.isClosed() ? switchClosedLeft : switchOpenLeft;
-		int right = toggleSwitch.isClosed() ? switchClosedRight
+		final ToggleSwitch toggleSwitch = (ToggleSwitch) component;
+		final int left = toggleSwitch.isClosed() ? switchClosedLeft
+				: switchOpenLeft;
+		final int right = toggleSwitch.isClosed() ? switchClosedRight
 				: switchOpenRight;
 
 		graphics.drawImage(toggleSwitches, 0, 0, width, height, left,
@@ -116,8 +120,8 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	}
 
 	@Override
-	public void uninstallUI(JComponent component) {
-		ToggleSwitch toggleSwitch = (ToggleSwitch) component;
+	public void uninstallUI(final JComponent component) {
+		final ToggleSwitch toggleSwitch = (ToggleSwitch) component;
 		toggleSwitch.removeMouseListener(this);
 	}
 }

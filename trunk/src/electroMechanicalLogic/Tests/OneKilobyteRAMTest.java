@@ -21,7 +21,7 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 	protected static final int bit9 = 0x200;
 
 	@Override
-	protected void setA(int value) {
+	protected void setA(final int value) {
 		super.setA(value);
 		((IOneKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
 	}
@@ -55,7 +55,7 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 	}
 
 	@Override
-	protected int translateAddress(int address) {
+	protected int translateAddress(final int address) {
 		return address == 0 ? 0 : 0x3ff;
 	}
 }

@@ -22,8 +22,8 @@ import javax.swing.JPanel;
 import userInterface.Interfaces.PowerState;
 
 public class TestFrame extends Frame implements PropertyChangeListener {
-	public static void main(String[] args) {
-		TestFrame frame = new TestFrame();
+	public static void main(final String[] args) {
+		final TestFrame frame = new TestFrame();
 		frame.setVisible(true);
 	}
 
@@ -31,19 +31,19 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 
 	private static final String powerOutPropertyName = "powerOut";
 
-	private ToggleSwitch toggleSwitch;
-	private Lamp lamp;
+	private final ToggleSwitch toggleSwitch;
+	private final Lamp lamp;
 
 	public TestFrame() {
 		super("UI Components sample");
 		setSize(300, 103);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent event) {
+			public void windowClosing(final WindowEvent event) {
 				System.exit(0);
 			}
 		});
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		toggleSwitch = new ToggleSwitch();
 		toggleSwitch.setPowerIn(PowerState.on);
@@ -56,7 +56,7 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (evt.getSource() == toggleSwitch) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				lamp.setOn(PowerState.on == evt.getNewValue());

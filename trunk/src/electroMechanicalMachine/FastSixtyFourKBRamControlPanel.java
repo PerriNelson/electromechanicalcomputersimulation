@@ -13,8 +13,8 @@ import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 
 public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {
-	public static void main(String[] args) {
-		FastSixtyFourKBRamControlPanel frame = new FastSixtyFourKBRamControlPanel();
+	public static void main(final String[] args) {
+		final FastSixtyFourKBRamControlPanel frame = new FastSixtyFourKBRamControlPanel();
 		frame.setVisible(true);
 	}
 

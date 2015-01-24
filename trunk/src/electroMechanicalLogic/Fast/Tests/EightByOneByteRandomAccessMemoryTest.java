@@ -17,7 +17,7 @@ import electroMechanicalLogic.Fast.EightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 
 public class EightByOneByteRandomAccessMemoryTest extends
-		electroMechanicalLogic.Tests.EightByOneByteRandomAccessMemoryTest {
+electroMechanicalLogic.Tests.EightByOneByteRandomAccessMemoryTest {
 
 	@Before
 	@Override
@@ -29,10 +29,10 @@ public class EightByOneByteRandomAccessMemoryTest extends
 	@Test
 	@Override
 	public void test() {
-		int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
+		final int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
 				.getMaxAddress();
-		for (int i = 0; i < maximumAddress + 1; i++) {
-			for (int a = 0; a < maximumAddress + 1; a++) {
+		for (int i = 0; i < (maximumAddress + 1); i++) {
+			for (int a = 0; a < (maximumAddress + 1); a++) {
 				setA(a);
 				setDI((a == i) ? 0xff : 0);
 				systemUnderTest.setW(true);
@@ -41,7 +41,7 @@ public class EightByOneByteRandomAccessMemoryTest extends
 				systemUnderTest.step();
 			}
 
-			for (int a = 0; a < maximumAddress + 1; a++) {
+			for (int a = 0; a < (maximumAddress + 1); a++) {
 				setA(a);
 				systemUnderTest.step();
 				assertEquals(getDO(), (a == i) ? 0xff : 0);
@@ -51,9 +51,9 @@ public class EightByOneByteRandomAccessMemoryTest extends
 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
-		int maxAddress = ((IRandomAccessMemory) systemUnderTest)
+		final int maxAddress = ((IRandomAccessMemory) systemUnderTest)
 				.getMaxAddress();
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			setDI(0xff);
 			systemUnderTest.step();
@@ -61,7 +61,7 @@ public class EightByOneByteRandomAccessMemoryTest extends
 
 		systemUnderTest.setPower(false);
 
-		for (int address = 0; address < maxAddress + 1; address++) {
+		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			systemUnderTest.step();
 			assertEquals(getDO(), 0);

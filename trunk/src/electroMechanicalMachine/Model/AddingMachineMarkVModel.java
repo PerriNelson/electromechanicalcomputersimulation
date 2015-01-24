@@ -28,20 +28,20 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
-	private EventListenerList eventListeners = new EventListenerList();
-	private ISixtyFourKilobyteRamControlPanelModel controlPanel;
-	private IEightBitLatchWithClear latch;
-	private IEightBitAdder adder;
-	private IOscillator clock;
-	private Inverter clearBar;
-	private Inverter clkBar;
-	private ISixteenBitCounterWithClear counter;
+	private final EventListenerList eventListeners = new EventListenerList();
+	private final ISixtyFourKilobyteRamControlPanelModel controlPanel;
+	private final IEightBitLatchWithClear latch;
+	private final IEightBitAdder adder;
+	private final IOscillator clock;
+	private final Inverter clearBar;
+	private final Inverter clkBar;
+	private final ISixteenBitCounterWithClear counter;
 
 	public AddingMachineMarkVModel() {
 		this(new SixtyFourKilobyteRAM());
 	}
 
-	public AddingMachineMarkVModel(ISixtyFourKilobyteRAM ram) {
+	public AddingMachineMarkVModel(final ISixtyFourKilobyteRAM ram) {
 		controlPanel = new SixtyFourKilobyteRamControlPanelModel(ram);
 		adder = new EightBitAdder();
 		latch = new EightBitEdgeTriggeredLatchWithClear();
@@ -52,14 +52,14 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	}
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
 	protected void fireOnPropertyChange() {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -67,7 +67,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -153,139 +153,140 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		controlPanel.setCpA0(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		controlPanel.setCpA1(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		controlPanel.setCpA2(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		controlPanel.setCpA3(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		controlPanel.setCpA4(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		controlPanel.setCpA5(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		controlPanel.setCpA6(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		controlPanel.setCpA7(value);
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		controlPanel.setCpA8(value);
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		controlPanel.setCpA9(value);
 	}
 
 	@Override
-	public void setAA(boolean value) {
+	public void setAA(final boolean value) {
 		controlPanel.setCpAA(value);
 	}
 
 	@Override
-	public void setAB(boolean value) {
+	public void setAB(final boolean value) {
 		controlPanel.setCpAB(value);
 	}
 
 	@Override
-	public void setAC(boolean value) {
+	public void setAC(final boolean value) {
 		controlPanel.setCpAC(value);
 	}
 
 	@Override
-	public void setAD(boolean value) {
+	public void setAD(final boolean value) {
 		controlPanel.setCpAD(value);
 	}
 
 	@Override
-	public void setAE(boolean value) {
+	public void setAE(final boolean value) {
 		controlPanel.setCpAE(value);
 	}
 
 	@Override
-	public void setAF(boolean value) {
+	public void setAF(final boolean value) {
 		controlPanel.setCpAF(value);
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		latch.setClr(value);
 		counter.setClear(value);
 		clearBar.setInput(value);
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		controlPanel.setCpDI0(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		controlPanel.setCpDI1(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		controlPanel.setCpDI2(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		controlPanel.setCpDI3(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		controlPanel.setCpDI4(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		controlPanel.setCpDI5(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		controlPanel.setCpDI6(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		controlPanel.setCpDI7(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		controlPanel.setPower(value);
 		adder.setPower(value);
 		latch.setPower(value);
@@ -294,12 +295,12 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	}
 
 	@Override
-	public void setTakeover(boolean value) {
+	public void setTakeover(final boolean value) {
 		controlPanel.setCpTakeover(value);
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		controlPanel.setCpW(value);
 	}
 

@@ -12,8 +12,8 @@ import electroMechanicalLogic.TwoInputNOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class NOrGate extends GateDemoFrame {
-	public static void main(String[] args) {
-		NOrGate frame = new NOrGate();
+	public static void main(final String[] args) {
+		final NOrGate frame = new NOrGate();
 		frame.setVisible(true);
 	}
 

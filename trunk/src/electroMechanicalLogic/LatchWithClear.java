@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ILatchWithClear;
 
 public class LatchWithClear implements ILatchWithClear {
-	private IDTypeFlipFlopWithClear flipFlop = new LevelTriggeredDTypeFlipFlopWithClear();
+	private final IDTypeFlipFlopWithClear flipFlop = new LevelTriggeredDTypeFlipFlopWithClear();
 
 	@Override
 	public boolean getDO() {
@@ -20,22 +20,22 @@ public class LatchWithClear implements ILatchWithClear {
 	}
 
 	@Override
-	public void setClr(boolean value) {
+	public void setClr(final boolean value) {
 		flipFlop.setClear(value);
 	}
 
 	@Override
-	public void setDI(boolean value) {
+	public void setDI(final boolean value) {
 		flipFlop.setD(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		flipFlop.setPower(value);
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		flipFlop.setClk(value);
 	}
 

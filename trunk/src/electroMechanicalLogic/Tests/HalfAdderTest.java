@@ -170,7 +170,7 @@ public class HalfAdderTest {
 	@Test
 	public final void test_SetA_WithoutStep_DoesNotAffectCarryOut() {
 		systemUnderTest.setPower(true);
-		boolean originalValue = systemUnderTest.getCO();
+		final boolean originalValue = systemUnderTest.getCO();
 		systemUnderTest.setA(true);
 		assertEquals(originalValue, systemUnderTest.getCO());
 		systemUnderTest.setA(false);
@@ -180,7 +180,7 @@ public class HalfAdderTest {
 	@Test
 	public final void test_SetA_WithoutStep_DoesNotAffectSum() {
 		systemUnderTest.setPower(true);
-		boolean originalValue = systemUnderTest.getS();
+		final boolean originalValue = systemUnderTest.getS();
 		systemUnderTest.setA(true);
 		assertEquals(originalValue, systemUnderTest.getS());
 		systemUnderTest.setA(false);
@@ -190,7 +190,7 @@ public class HalfAdderTest {
 	@Test
 	public final void test_SetB_WithoutStep_DoesNotAffectCarryOut() {
 		systemUnderTest.setPower(true);
-		boolean originalValue = systemUnderTest.getCO();
+		final boolean originalValue = systemUnderTest.getCO();
 		systemUnderTest.setB(true);
 		assertEquals(originalValue, systemUnderTest.getCO());
 		systemUnderTest.setB(false);
@@ -200,7 +200,7 @@ public class HalfAdderTest {
 	@Test
 	public final void test_SetB_WithoutStep_DoesNotAffectSum() {
 		systemUnderTest.setPower(true);
-		boolean originalValue = systemUnderTest.getS();
+		final boolean originalValue = systemUnderTest.getS();
 		systemUnderTest.setB(true);
 		assertEquals(originalValue, systemUnderTest.getS());
 		systemUnderTest.setB(false);

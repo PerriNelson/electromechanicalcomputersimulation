@@ -22,9 +22,9 @@ import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
 public class AddingMachineMarkIV extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		AddingMachineMarkIV frame = new AddingMachineMarkIV();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkIV frame = new AddingMachineMarkIV();
 		frame.setVisible(true);
 	}
 
@@ -74,8 +74,8 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 				new EightBitLatchWithClear()));
 	}
 
-	protected AddingMachineMarkIV(String caption,
-			IAddingMachineMarkIVModel model) {
+	protected AddingMachineMarkIV(final String caption,
+			final IAddingMachineMarkIVModel model) {
 		super(caption);
 		placeControls();
 
@@ -84,7 +84,7 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 		startAutomation();
 	}
 
-	protected void initializeModel(IAddingMachineMarkIVModel theModel) {
+	protected void initializeModel(final IAddingMachineMarkIVModel theModel) {
 		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
@@ -119,16 +119,16 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			boolean powerState = PowerState.on == evt.getNewValue();
+			final boolean powerState = PowerState.on == evt.getNewValue();
 
 			if (evt.getSource() == toggleSwitchA0) {
 				model.setA0(powerState);

@@ -22,9 +22,9 @@ import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 
 public class AddingMachineMarkIII extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		AddingMachineMarkIII frame = new AddingMachineMarkIII();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkIII frame = new AddingMachineMarkIII();
 		frame.setVisible(true);
 	}
 
@@ -83,8 +83,8 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 				new EightBitLatch()));
 	}
 
-	protected AddingMachineMarkIII(String caption,
-			IAddingMachineMarkIIIModel model) {
+	protected AddingMachineMarkIII(final String caption,
+			final IAddingMachineMarkIIIModel model) {
 		super(caption);
 		placeControls();
 
@@ -93,7 +93,7 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 		startAutomation();
 	}
 
-	protected void initializeModel(IAddingMachineMarkIIIModel theModel) {
+	protected void initializeModel(final IAddingMachineMarkIIIModel theModel) {
 		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
@@ -141,16 +141,16 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(final PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			boolean powerState = PowerState.on == evt.getNewValue();
+			final boolean powerState = PowerState.on == evt.getNewValue();
 
 			if (evt.getSource() == toggleSwitchA0) {
 				model.setA0(powerState);

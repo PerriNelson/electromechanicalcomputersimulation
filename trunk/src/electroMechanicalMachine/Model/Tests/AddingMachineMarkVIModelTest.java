@@ -39,7 +39,7 @@ public class AddingMachineMarkVIModelTest {
 
 	private IAddingMachineMarkVIModel systemUnderTest;
 
-	private int add(int a, int b) {
+	private int add(final int a, final int b) {
 		return (a + b) & 0xff;
 	}
 
@@ -61,7 +61,7 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.step();
 	}
 
-	private void setAddress(int address) {
+	private void setAddress(final int address) {
 		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
 		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
 		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
@@ -80,7 +80,7 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	private void setDataIn(int value) {
+	private void setDataIn(final int value) {
 		systemUnderTest.setDI0((value & bit0) == bit0);
 		systemUnderTest.setDI1((value & bit1) == bit1);
 		systemUnderTest.setDI2((value & bit2) == bit2);

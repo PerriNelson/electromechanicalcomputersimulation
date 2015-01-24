@@ -14,9 +14,9 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OneLineToTwoLineDecoder implements IOneLineToTwoLineDecoder {
 
-	private IRelay inverter = new Inverter();
-	private ITwoInputSingleOutputGate and0 = new TwoInputAndGate();
-	private ITwoInputSingleOutputGate and1 = new TwoInputAndGate();
+	private final IRelay inverter = new Inverter();
+	private final ITwoInputSingleOutputGate and0 = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate and1 = new TwoInputAndGate();
 
 	@Override
 	public boolean getO0() {
@@ -29,20 +29,20 @@ public class OneLineToTwoLineDecoder implements IOneLineToTwoLineDecoder {
 	}
 
 	@Override
-	public void setInput(boolean value) {
+	public void setInput(final boolean value) {
 		and0.setA(value);
 		and1.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		inverter.setPower(value);
 		and0.setPower(value);
 		and1.setPower(value);
 	}
 
 	@Override
-	public void setSelect(boolean value) {
+	public void setSelect(final boolean value) {
 		and1.setB(value);
 		inverter.setInput(value);
 	}

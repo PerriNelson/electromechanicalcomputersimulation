@@ -12,13 +12,13 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.IEightBitCounter;
 
 public class EightBitCounter implements IEightBitCounter {
-	private IDTypeFlipFlop bit0 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit1 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit2 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit3 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit4 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit5 = new EdgeTriggeredDTypeFlipFlop();
-	private IDTypeFlipFlop bit6 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit0 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit1 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit2 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit3 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit4 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit5 = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop bit6 = new EdgeTriggeredDTypeFlipFlop();
 	protected final IDTypeFlipFlop bit7 = new EdgeTriggeredDTypeFlipFlop();
 
 	@Override
@@ -62,12 +62,12 @@ public class EightBitCounter implements IEightBitCounter {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		bit0.setClk(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);

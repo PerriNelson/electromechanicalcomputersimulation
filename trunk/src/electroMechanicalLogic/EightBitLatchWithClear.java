@@ -12,14 +12,14 @@ import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.ILatchWithClear;
 
 public class EightBitLatchWithClear implements IEightBitLatchWithClear {
-	private ILatchWithClear bit0 = new LatchWithClear();
-	private ILatchWithClear bit1 = new LatchWithClear();
-	private ILatchWithClear bit2 = new LatchWithClear();
-	private ILatchWithClear bit3 = new LatchWithClear();
-	private ILatchWithClear bit4 = new LatchWithClear();
-	private ILatchWithClear bit5 = new LatchWithClear();
-	private ILatchWithClear bit6 = new LatchWithClear();
-	private ILatchWithClear bit7 = new LatchWithClear();
+	private final ILatchWithClear bit0 = new LatchWithClear();
+	private final ILatchWithClear bit1 = new LatchWithClear();
+	private final ILatchWithClear bit2 = new LatchWithClear();
+	private final ILatchWithClear bit3 = new LatchWithClear();
+	private final ILatchWithClear bit4 = new LatchWithClear();
+	private final ILatchWithClear bit5 = new LatchWithClear();
+	private final ILatchWithClear bit6 = new LatchWithClear();
+	private final ILatchWithClear bit7 = new LatchWithClear();
 
 	@Override
 	public boolean getDO0() {
@@ -62,7 +62,7 @@ public class EightBitLatchWithClear implements IEightBitLatchWithClear {
 	}
 
 	@Override
-	public void setClr(boolean value) {
+	public void setClr(final boolean value) {
 		bit0.setClr(value);
 		bit1.setClr(value);
 		bit2.setClr(value);
@@ -74,47 +74,47 @@ public class EightBitLatchWithClear implements IEightBitLatchWithClear {
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		bit0.setDI(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		bit1.setDI(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		bit2.setDI(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		bit3.setDI(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		bit4.setDI(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		bit5.setDI(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		bit6.setDI(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		bit7.setDI(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		bit0.setPower(value);
 		bit1.setPower(value);
 		bit2.setPower(value);
@@ -126,7 +126,7 @@ public class EightBitLatchWithClear implements IEightBitLatchWithClear {
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		bit0.setW(value);
 		bit1.setW(value);
 		bit2.setW(value);

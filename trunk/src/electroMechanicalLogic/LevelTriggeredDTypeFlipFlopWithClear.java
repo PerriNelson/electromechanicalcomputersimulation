@@ -12,17 +12,17 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class LevelTriggeredDTypeFlipFlopWithClear extends
-		LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlopWithClear {
+LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlopWithClear {
 
-	private ITwoInputSingleOutputGate clear = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate clear = new TwoInputOrGate();
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		clear.setB(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		super.setPower(value);
 		clear.setPower(value);
 	}

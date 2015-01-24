@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
-		IThirtyTwoKilobyteRAM {
+IThirtyTwoKilobyteRAM {
 
 	@Override
 	protected void initializeBanks() {
@@ -27,7 +27,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		((IFourKilobyteRAM) bank0).setA9(value);
 		((IFourKilobyteRAM) bank1).setA9(value);
 		((IFourKilobyteRAM) bank2).setA9(value);
@@ -39,7 +39,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAA(boolean value) {
+	public void setAA(final boolean value) {
 		((IFourKilobyteRAM) bank0).setAA(value);
 		((IFourKilobyteRAM) bank1).setAA(value);
 		((IFourKilobyteRAM) bank2).setAA(value);
@@ -51,7 +51,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAB(boolean value) {
+	public void setAB(final boolean value) {
 		((IFourKilobyteRAM) bank0).setAB(value);
 		((IFourKilobyteRAM) bank1).setAB(value);
 		((IFourKilobyteRAM) bank2).setAB(value);
@@ -63,7 +63,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAC(boolean value) {
+	public void setAC(final boolean value) {
 		w.setS0(value);
 		dO0.setS0(value);
 		dO1.setS0(value);
@@ -76,7 +76,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAD(boolean value) {
+	public void setAD(final boolean value) {
 		w.setS1(value);
 		dO0.setS1(value);
 		dO1.setS1(value);
@@ -89,7 +89,7 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 	}
 
 	@Override
-	public void setAE(boolean value) {
+	public void setAE(final boolean value) {
 		w.setS2(value);
 		dO0.setS2(value);
 		dO1.setS2(value);

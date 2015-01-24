@@ -22,7 +22,7 @@ public class RSFlipFlopTest {
 
 	private IRSFlipFlop systemUnderTest;
 
-	private void assertQDoesNotEqualQBar(boolean Q, boolean QBar) {
+	private void assertQDoesNotEqualQBar(final boolean Q, final boolean QBar) {
 		assertEquals("Q != QBar", Q, !QBar);
 	}
 

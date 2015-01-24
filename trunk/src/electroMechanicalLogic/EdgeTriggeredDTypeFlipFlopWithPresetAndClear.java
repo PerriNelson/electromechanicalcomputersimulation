@@ -13,15 +13,15 @@ import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
 public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
-		IDTypeFlipFlopWithPresetAndClear {
+IDTypeFlipFlopWithPresetAndClear {
 
-	private IRelay clkBar = new Inverter();
-	private IThreeInputSingleOutputGate norD = new ThreeInputNOrGate();
-	private IThreeInputSingleOutputGate norClk = new ThreeInputNOrGate();
-	private IThreeInputSingleOutputGate norPreset = new ThreeInputNOrGate();
-	private IThreeInputSingleOutputGate norClear = new ThreeInputNOrGate();
-	private IThreeInputSingleOutputGate norQ = new ThreeInputNOrGate();
-	private IThreeInputSingleOutputGate norQBar = new ThreeInputNOrGate();
+	private final IRelay clkBar = new Inverter();
+	private final IThreeInputSingleOutputGate norD = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norClk = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norPreset = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norClear = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norQ = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norQBar = new ThreeInputNOrGate();
 
 	@Override
 	public boolean getQ() {
@@ -59,23 +59,23 @@ public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 	}
 
 	@Override
-	public void setClear(boolean value) {
+	public void setClear(final boolean value) {
 		norClear.setC(value);
 		norQ.setC(value);
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		clkBar.setInput(value);
 	}
 
 	@Override
-	public void setD(boolean value) {
+	public void setD(final boolean value) {
 		norD.setA(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		clkBar.setPower(value);
 		norD.setPower(value);
 		norPreset.setPower(value);
@@ -86,7 +86,7 @@ public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 	}
 
 	@Override
-	public void setPreset(boolean value) {
+	public void setPreset(final boolean value) {
 		norPreset.setB(value);
 		norD.setB(value);
 		norQBar.setB(value);

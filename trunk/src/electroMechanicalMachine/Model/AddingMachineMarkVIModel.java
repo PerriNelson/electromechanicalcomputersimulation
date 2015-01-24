@@ -26,52 +26,52 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteCont
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
-	private EventListenerList eventListeners = new EventListenerList();
-	private ISixtyFourKilobyteRamControlPanelModel codeRam;
-	private ISixtyFourKilobyteRamControlPanelModel dataRam;
-	private IOneLineToTwoLineDecoder decodeA0;
-	private IOneLineToTwoLineDecoder decodeA1;
-	private IOneLineToTwoLineDecoder decodeA2;
-	private IOneLineToTwoLineDecoder decodeA3;
-	private IOneLineToTwoLineDecoder decodeA4;
-	private IOneLineToTwoLineDecoder decodeA5;
-	private IOneLineToTwoLineDecoder decodeA6;
-	private IOneLineToTwoLineDecoder decodeA7;
-	private IOneLineToTwoLineDecoder decodeA8;
-	private IOneLineToTwoLineDecoder decodeA9;
-	private IOneLineToTwoLineDecoder decodeAA;
-	private IOneLineToTwoLineDecoder decodeAB;
-	private IOneLineToTwoLineDecoder decodeAC;
-	private IOneLineToTwoLineDecoder decodeAD;
-	private IOneLineToTwoLineDecoder decodeAE;
-	private IOneLineToTwoLineDecoder decodeAF;
-	private IOneLineToTwoLineDecoder decodeDI0;
-	private IOneLineToTwoLineDecoder decodeDI1;
-	private IOneLineToTwoLineDecoder decodeDI2;
-	private IOneLineToTwoLineDecoder decodeDI3;
-	private IOneLineToTwoLineDecoder decodeDI4;
-	private IOneLineToTwoLineDecoder decodeDI5;
-	private IOneLineToTwoLineDecoder decodeDI6;
-	private IOneLineToTwoLineDecoder decodeDI7;
-	private IOneLineToTwoLineDecoder decodeW;
-	private ITwoLineToOneLineSelector selectDO0;
-	private ITwoLineToOneLineSelector selectDO1;
-	private ITwoLineToOneLineSelector selectDO2;
-	private ITwoLineToOneLineSelector selectDO3;
-	private ITwoLineToOneLineSelector selectDO4;
-	private ITwoLineToOneLineSelector selectDO5;
-	private ITwoLineToOneLineSelector selectDO6;
-	private ITwoLineToOneLineSelector selectDO7;
-	private IMarkVIInstructionDecoder instructionDecoder;
-	private IMarkVIALU alu;
-	private IMarkVITimingAndMemoryWriteControl timingAndMemoryWriteControl;
+	private final EventListenerList eventListeners = new EventListenerList();
+	private final ISixtyFourKilobyteRamControlPanelModel codeRam;
+	private final ISixtyFourKilobyteRamControlPanelModel dataRam;
+	private final IOneLineToTwoLineDecoder decodeA0;
+	private final IOneLineToTwoLineDecoder decodeA1;
+	private final IOneLineToTwoLineDecoder decodeA2;
+	private final IOneLineToTwoLineDecoder decodeA3;
+	private final IOneLineToTwoLineDecoder decodeA4;
+	private final IOneLineToTwoLineDecoder decodeA5;
+	private final IOneLineToTwoLineDecoder decodeA6;
+	private final IOneLineToTwoLineDecoder decodeA7;
+	private final IOneLineToTwoLineDecoder decodeA8;
+	private final IOneLineToTwoLineDecoder decodeA9;
+	private final IOneLineToTwoLineDecoder decodeAA;
+	private final IOneLineToTwoLineDecoder decodeAB;
+	private final IOneLineToTwoLineDecoder decodeAC;
+	private final IOneLineToTwoLineDecoder decodeAD;
+	private final IOneLineToTwoLineDecoder decodeAE;
+	private final IOneLineToTwoLineDecoder decodeAF;
+	private final IOneLineToTwoLineDecoder decodeDI0;
+	private final IOneLineToTwoLineDecoder decodeDI1;
+	private final IOneLineToTwoLineDecoder decodeDI2;
+	private final IOneLineToTwoLineDecoder decodeDI3;
+	private final IOneLineToTwoLineDecoder decodeDI4;
+	private final IOneLineToTwoLineDecoder decodeDI5;
+	private final IOneLineToTwoLineDecoder decodeDI6;
+	private final IOneLineToTwoLineDecoder decodeDI7;
+	private final IOneLineToTwoLineDecoder decodeW;
+	private final ITwoLineToOneLineSelector selectDO0;
+	private final ITwoLineToOneLineSelector selectDO1;
+	private final ITwoLineToOneLineSelector selectDO2;
+	private final ITwoLineToOneLineSelector selectDO3;
+	private final ITwoLineToOneLineSelector selectDO4;
+	private final ITwoLineToOneLineSelector selectDO5;
+	private final ITwoLineToOneLineSelector selectDO6;
+	private final ITwoLineToOneLineSelector selectDO7;
+	private final IMarkVIInstructionDecoder instructionDecoder;
+	private final IMarkVIALU alu;
+	private final IMarkVITimingAndMemoryWriteControl timingAndMemoryWriteControl;
 
 	public AddingMachineMarkVIModel() {
 		this(new SixtyFourKilobyteRAM(), new SixtyFourKilobyteRAM());
 	}
 
-	public AddingMachineMarkVIModel(ISixtyFourKilobyteRAM codeRAM,
-			ISixtyFourKilobyteRAM dataRAM) {
+	public AddingMachineMarkVIModel(final ISixtyFourKilobyteRAM codeRAM,
+			final ISixtyFourKilobyteRAM dataRAM) {
 
 		decodeA0 = new OneLineToTwoLineDecoder();
 		decodeA1 = new OneLineToTwoLineDecoder();
@@ -119,14 +119,14 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
 	protected void fireOnPropertyChange() {
 		PropertyChangeEvent propertyChangeEvent = null;
 
-		Object[] listeners = eventListeners.getListenerList();
+		final Object[] listeners = eventListeners.getListenerList();
 		for (int index = listeners.length - 2; index >= 0; index -= 2) {
 			if (listeners[index] == PropertyChangeListener.class) {
 				if (propertyChangeEvent == null) {
@@ -134,7 +134,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -180,132 +180,133 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	@Override
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
 		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
-	public void setA0(boolean value) {
+	public void setA0(final boolean value) {
 		decodeA0.setInput(value);
 	}
 
 	@Override
-	public void setA1(boolean value) {
+	public void setA1(final boolean value) {
 		decodeA1.setInput(value);
 	}
 
 	@Override
-	public void setA2(boolean value) {
+	public void setA2(final boolean value) {
 		decodeA2.setInput(value);
 	}
 
 	@Override
-	public void setA3(boolean value) {
+	public void setA3(final boolean value) {
 		decodeA3.setInput(value);
 	}
 
 	@Override
-	public void setA4(boolean value) {
+	public void setA4(final boolean value) {
 		decodeA4.setInput(value);
 	}
 
 	@Override
-	public void setA5(boolean value) {
+	public void setA5(final boolean value) {
 		decodeA5.setInput(value);
 	}
 
 	@Override
-	public void setA6(boolean value) {
+	public void setA6(final boolean value) {
 		decodeA6.setInput(value);
 	}
 
 	@Override
-	public void setA7(boolean value) {
+	public void setA7(final boolean value) {
 		decodeA7.setInput(value);
 	}
 
 	@Override
-	public void setA8(boolean value) {
+	public void setA8(final boolean value) {
 		decodeA8.setInput(value);
 	}
 
 	@Override
-	public void setA9(boolean value) {
+	public void setA9(final boolean value) {
 		decodeA9.setInput(value);
 	}
 
 	@Override
-	public void setAA(boolean value) {
+	public void setAA(final boolean value) {
 		decodeAA.setInput(value);
 	}
 
 	@Override
-	public void setAB(boolean value) {
+	public void setAB(final boolean value) {
 		decodeAB.setInput(value);
 	}
 
 	@Override
-	public void setAC(boolean value) {
+	public void setAC(final boolean value) {
 		decodeAC.setInput(value);
 	}
 
 	@Override
-	public void setAD(boolean value) {
+	public void setAD(final boolean value) {
 		decodeAD.setInput(value);
 	}
 
 	@Override
-	public void setAE(boolean value) {
+	public void setAE(final boolean value) {
 		decodeAE.setInput(value);
 	}
 
 	@Override
-	public void setAF(boolean value) {
+	public void setAF(final boolean value) {
 		decodeAF.setInput(value);
 	}
 
 	@Override
-	public void setDI0(boolean value) {
+	public void setDI0(final boolean value) {
 		decodeDI0.setInput(value);
 	}
 
 	@Override
-	public void setDI1(boolean value) {
+	public void setDI1(final boolean value) {
 		decodeDI1.setInput(value);
 	}
 
 	@Override
-	public void setDI2(boolean value) {
+	public void setDI2(final boolean value) {
 		decodeDI2.setInput(value);
 	}
 
 	@Override
-	public void setDI3(boolean value) {
+	public void setDI3(final boolean value) {
 		decodeDI3.setInput(value);
 	}
 
 	@Override
-	public void setDI4(boolean value) {
+	public void setDI4(final boolean value) {
 		decodeDI4.setInput(value);
 	}
 
 	@Override
-	public void setDI5(boolean value) {
+	public void setDI5(final boolean value) {
 		decodeDI5.setInput(value);
 	}
 
 	@Override
-	public void setDI6(boolean value) {
+	public void setDI6(final boolean value) {
 		decodeDI6.setInput(value);
 	}
 
 	@Override
-	public void setDI7(boolean value) {
+	public void setDI7(final boolean value) {
 		decodeDI7.setInput(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		codeRam.setPower(value);
 		dataRam.setPower(value);
 
@@ -352,19 +353,19 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	@Override
-	public void setReset(boolean value) {
+	public void setReset(final boolean value) {
 		timingAndMemoryWriteControl.setClear(value);
 		alu.setClear(value);
 	}
 
 	@Override
-	public void setTakeover(boolean value) {
+	public void setTakeover(final boolean value) {
 		codeRam.setCpTakeover(value);
 		dataRam.setCpTakeover(value);
 	}
 
 	@Override
-	public void setUseCodePanel(boolean value) {
+	public void setUseCodePanel(final boolean value) {
 		decodeA0.setSelect(value);
 		decodeA1.setSelect(value);
 		decodeA2.setSelect(value);
@@ -404,7 +405,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	@Override
-	public void setW(boolean value) {
+	public void setW(final boolean value) {
 		decodeW.setInput(value);
 	}
 

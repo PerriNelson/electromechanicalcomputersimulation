@@ -22,9 +22,9 @@ import electroMechanicalMachine.Model.AddingMachineMarkVIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVI extends BasicUIFrame implements
-		PropertyChangeListener {
-	public static void main(String[] args) {
-		AddingMachineMarkVI frame = new AddingMachineMarkVI();
+PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
 		frame.setVisible(true);
 	}
 
@@ -105,8 +105,8 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 
 	}
 
-	public AddingMachineMarkVI(String caption,
-			IAddingMachineMarkVIModel theModel) {
+	public AddingMachineMarkVI(final String caption,
+			final IAddingMachineMarkVIModel theModel) {
 		super(caption);
 		placeControls();
 
@@ -115,7 +115,7 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 		startAutomation();
 	}
 
-	protected void initializeModel(IAddingMachineMarkVIModel theModel) {
+	protected void initializeModel(final IAddingMachineMarkVIModel theModel) {
 		model = theModel;
 		model.addPropertyChangeListener(this);
 		model.setPower(true);
@@ -203,23 +203,24 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row) {
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
 		return placeToggleSwitch(column, row, 1);
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(int column, int row, int columns) {
-		ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row,
+			final int columns) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
 				columns);
 		toggleSwitch.addPropertyChangeListener(this);
 		return toggleSwitch;
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		Object source = evt.getSource();
+	public void propertyChange(final PropertyChangeEvent evt) {
+		final Object source = evt.getSource();
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			Boolean value = PowerState.on == evt.getNewValue();
+			final Boolean value = PowerState.on == evt.getNewValue();
 			if (source == useCodePanelSwitch) {
 				model.setUseCodePanel(value);
 			} else if (source == resetSwitch) {

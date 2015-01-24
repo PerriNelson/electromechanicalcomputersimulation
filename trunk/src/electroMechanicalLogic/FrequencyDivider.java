@@ -12,7 +12,7 @@ import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.IFrequencyDivider;
 
 public class FrequencyDivider implements IFrequencyDivider {
-	private IDTypeFlipFlop flipFlop = new EdgeTriggeredDTypeFlipFlop();
+	private final IDTypeFlipFlop flipFlop = new EdgeTriggeredDTypeFlipFlop();
 
 	@Override
 	public boolean getQ() {
@@ -25,12 +25,12 @@ public class FrequencyDivider implements IFrequencyDivider {
 	}
 
 	@Override
-	public void setClk(boolean value) {
+	public void setClk(final boolean value) {
 		flipFlop.setClk(value);
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		flipFlop.setPower(value);
 	}
 

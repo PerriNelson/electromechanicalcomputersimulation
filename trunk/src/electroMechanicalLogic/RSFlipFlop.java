@@ -35,18 +35,18 @@ public final class RSFlipFlop implements IRSFlipFlop {
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void setPower(final boolean value) {
 		norR.setPower(value);
 		norS.setPower(value);
 	}
 
 	@Override
-	public void setR(boolean value) {
+	public void setR(final boolean value) {
 		norR.setB(value);
 	}
 
 	@Override
-	public void setS(boolean value) {
+	public void setS(final boolean value) {
 		norS.setA(value);
 	}
 
