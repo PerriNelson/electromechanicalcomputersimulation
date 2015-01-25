@@ -9,6 +9,7 @@
 package electroMechanicalMachine.Model;
 
 import electroMechanicalLogic.EightBitAdder;
+import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
@@ -22,12 +23,12 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 
 public class MarkVIALU implements IMarkVIALU {
-	protected final IEightBitAdder adder = new EightBitAdder();
+	private final IEightBitAdder adder = new EightBitAdder();
 	private final ITwoInputSingleOutputGate clockAndLoadOrAdd = new TwoInputAndGate();
 	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
 	private final IRelay loadBar = new Inverter();
 	private final ITwoInputSingleOutputGate loadOrAdd = new TwoInputOrGate();
-	protected final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
+	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
 
 	@Override
 	public boolean getDO0() {
@@ -164,26 +165,12 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	private void stepAdder() {
-		adder.setB0(latch.getDO0());
-		adder.setB1(latch.getDO1());
-		adder.setB2(latch.getDO2());
-		adder.setB3(latch.getDO3());
-		adder.setB4(latch.getDO4());
-		adder.setB5(latch.getDO5());
-		adder.setB6(latch.getDO6());
-		adder.setB7(latch.getDO7());
+		EightBitDataPath.DataOutToBIn(latch, adder);
 		adder.step();
 	}
 
 	private void stepLatch() {
-		latch.setDI0(loadSelector.getDO0());
-		latch.setDI1(loadSelector.getDO1());
-		latch.setDI2(loadSelector.getDO2());
-		latch.setDI3(loadSelector.getDO3());
-		latch.setDI4(loadSelector.getDO4());
-		latch.setDI5(loadSelector.getDO5());
-		latch.setDI6(loadSelector.getDO6());
-		latch.setDI7(loadSelector.getDO7());
+		EightBitDataPath.DataOutToDataIn(loadSelector, latch);
 		latch.setW(clockAndLoadOrAdd.getOutput());
 		latch.step();
 	}

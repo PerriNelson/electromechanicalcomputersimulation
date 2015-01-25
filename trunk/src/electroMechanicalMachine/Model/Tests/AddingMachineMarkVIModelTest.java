@@ -24,18 +24,18 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVIModelTest {
 
-	private IAddingMachineMarkVIModel systemUnderTest;
+	protected IAddingMachineMarkVIModel systemUnderTest;
 
-	private int add(final int a, final int b) {
+	protected int add(final int a, final int b) {
 		return (a + b) & 0xff;
 	}
 
-	private void performOneClockCycle() {
+	protected void performOneClockCycle() {
 		systemUnderTest.step();
 		systemUnderTest.step();
 	}
 
-	private void performWrite() {
+	protected void performWrite() {
 		systemUnderTest.setW(on);
 		systemUnderTest.step();
 
@@ -92,7 +92,7 @@ public class AddingMachineMarkVIModelTest {
 	}
 
 	@Test
-	public void test_ExampleFromBook_ProducesExpectedResults() {
+	public void test_MarkVI_ExampleFromBook_ProducesExpectedResults() {
 		systemUnderTest.setReset(on);
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setUseCodePanel(off);

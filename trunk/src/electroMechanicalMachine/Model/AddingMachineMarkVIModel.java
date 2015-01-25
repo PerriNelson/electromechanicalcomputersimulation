@@ -37,8 +37,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private final IEightBitOneToTwoDecoder dataIn;
 	private final IOneLineToTwoLineDecoder write;
 	private final IEightBitTwoToOneSelector dataOut;
-	private final IMarkVIInstructionDecoder instructionDecoder;
-	private final IMarkVIALU alu;
+	protected IMarkVIInstructionDecoder instructionDecoder;
+	protected IMarkVIALU alu;
 	private final IMarkVITimingAndMemoryWriteControl timingAndMemoryWriteControl;
 
 	public AddingMachineMarkVIModel() {
@@ -59,9 +59,9 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		code = new SixtyFourKilobyteRamControlPanelModel(codeRAM);
 		data = new SixtyFourKilobyteRamControlPanelModel(dataRAM);
 
-		instructionDecoder = new MarkVIInstructionDecoder();
-		alu = new MarkVIALU();
 		timingAndMemoryWriteControl = new MarkVITimingAndMemoryWriteControl();
+		setALU();
+		setInstructionDecoder();
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -211,6 +211,10 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		addressHigh.setDI7(value);
 	}
 
+	protected void setALU() {
+		alu = new MarkVIALU();
+	}
+
 	@Override
 	public void setDI0(final boolean value) {
 		dataIn.setDI0(value);
@@ -249,6 +253,10 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	@Override
 	public void setDI7(final boolean value) {
 		dataIn.setDI7(value);
+	}
+
+	protected void setInstructionDecoder() {
+		instructionDecoder = new MarkVIInstructionDecoder();
 	}
 
 	@Override
@@ -300,8 +308,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	public void step() {
 		stepDecoders();
 
-		stepdata();
-		stepCodeRam();
+		stepData();
+		stepCode();
 
 		stepInstructionDecoder();
 		stepTimingAndMemoryWriteControl();
@@ -312,7 +320,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		fireOnPropertyChange();
 	}
 
-	private void stepALU() {
+	protected void stepALU() {
 		EightBitDataPath.DataOutToDataIn(data, alu);
 		alu.setAdd(instructionDecoder.getAdd());
 		alu.setLoad(instructionDecoder.getLoad());
@@ -320,7 +328,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		alu.step();
 	}
 
-	private void stepCodeRam() {
+	private void stepCode() {
 		code.setCpA0(addressLow.getB0());
 		code.setCpA1(addressLow.getB1());
 		code.setCpA2(addressLow.getB2());
@@ -369,7 +377,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		code.step();
 	}
 
-	private void stepdata() {
+	private void stepData() {
 		data.setCpA0(addressLow.getA0());
 		data.setCpA1(addressLow.getA1());
 		data.setCpA2(addressLow.getA2());

@@ -8,13 +8,86 @@
 
 package electroMechanicalMachine.Model;
 
+import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitDataPath;
+import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitOnesComplement;
+import electroMechanicalLogic.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Inverter;
+import electroMechanicalLogic.ThreeInputOrGate;
+import electroMechanicalLogic.TwoInputAndGate;
+import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
+import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalLogic.Interfaces.IRelay;
+import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
+import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIALU;
 
-public class MarkVIIALU extends MarkVIALU implements IMarkVIIALU {
+public class MarkVIIALU implements IMarkVIIALU {
 	private final IEightBitOnesComplement subtract = new EightBitOnesComplement();
+	private final IEightBitAdder adder = new EightBitAdder();
+	private final ITwoInputSingleOutputGate write = new TwoInputAndGate();
+	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
+	private final IRelay loadBar = new Inverter();
+	private final IThreeInputSingleOutputGate loadAddOrSubtract = new ThreeInputOrGate();
+	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
+
+	@Override
+	public boolean getDO0() {
+		return latch.getDO0();
+	}
+
+	@Override
+	public boolean getDO1() {
+		return latch.getDO1();
+	}
+
+	@Override
+	public boolean getDO2() {
+		return latch.getDO2();
+	}
+
+	@Override
+	public boolean getDO3() {
+		return latch.getDO3();
+	}
+
+	@Override
+	public boolean getDO4() {
+		return latch.getDO4();
+	}
+
+	@Override
+	public boolean getDO5() {
+		return latch.getDO5();
+	}
+
+	@Override
+	public boolean getDO6() {
+		return latch.getDO6();
+	}
+
+	@Override
+	public boolean getDO7() {
+		return latch.getDO7();
+	}
+
+	@Override
+	public void setAdd(final boolean value) {
+		loadAddOrSubtract.setB(value);
+	}
+
+	@Override
+	public void setClear(final boolean value) {
+		latch.setClr(value);
+	}
+
+	@Override
+	public void setClock(final boolean value) {
+		write.setA(value);
+	}
 
 	@Override
 	public void setDI0(final boolean value) {
@@ -65,21 +138,67 @@ public class MarkVIIALU extends MarkVIALU implements IMarkVIIALU {
 	}
 
 	@Override
+	public void setLoad(final boolean value) {
+		loadBar.setInput(value);
+		loadAddOrSubtract.setA(value);
+	}
+
+	@Override
 	public void setPower(final boolean value) {
-		super.setPower(value);
 		subtract.setPower(value);
+		adder.setPower(value);
+		write.setPower(value);
+		latch.setPower(value);
+		loadBar.setPower(value);
+		loadAddOrSubtract.setPower(value);
+		loadSelector.setPower(value);
 	}
 
 	@Override
 	public void setSubtract(final boolean value) {
 		subtract.setInvert(value);
 		adder.setCI(value);
+		loadAddOrSubtract.setC(value);
 	}
 
 	@Override
 	public void step() {
 		subtract.step();
+		stepAdder();
+
+		loadBar.step();
+
+		stepLoadSelector();
+
+		loadAddOrSubtract.step();
+		write.setB(loadAddOrSubtract.getOutput());
+		write.step();
+
+		stepLatch();
+	}
+
+	private void stepAdder() {
 		EightBitDataPath.DataOutToAIn(subtract, adder);
-		super.step();
+		EightBitDataPath.DataOutToBIn(latch, adder);
+		adder.step();
+	}
+
+	private void stepLatch() {
+		EightBitDataPath.DataOutToDataIn(loadSelector, latch);
+		latch.setW(write.getOutput());
+		latch.step();
+	}
+
+	private void stepLoadSelector() {
+		loadSelector.setSelect(loadBar.getOutput());
+		loadSelector.setB0(adder.getS0());
+		loadSelector.setB1(adder.getS1());
+		loadSelector.setB2(adder.getS2());
+		loadSelector.setB3(adder.getS3());
+		loadSelector.setB4(adder.getS4());
+		loadSelector.setB5(adder.getS5());
+		loadSelector.setB6(adder.getS6());
+		loadSelector.setB7(adder.getS7());
+		loadSelector.step();
 	}
 }
