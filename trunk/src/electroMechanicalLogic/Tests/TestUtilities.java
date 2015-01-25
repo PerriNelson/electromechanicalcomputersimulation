@@ -29,51 +29,73 @@ import static electroMechanicalLogic.Tests.TestConstants.on;
 import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
 import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
 
 public class TestUtilities {
-	public static int getDataOut(final IEightBitDataOut systemUnderTest) {
+	public static int getAddress(final ISixteenBitAOutput source) {
+		int address = 0;
+		address |= (source.getA0() ? bit0 : 0);
+		address |= (source.getA1() ? bit1 : 0);
+		address |= (source.getA2() ? bit2 : 0);
+		address |= (source.getA3() ? bit3 : 0);
+		address |= (source.getA4() ? bit4 : 0);
+		address |= (source.getA5() ? bit5 : 0);
+		address |= (source.getA6() ? bit6 : 0);
+		address |= (source.getA7() ? bit7 : 0);
+		address |= (source.getA8() ? bit8 : 0);
+		address |= (source.getA9() ? bit9 : 0);
+		address |= (source.getAA() ? bitA : 0);
+		address |= (source.getAB() ? bitB : 0);
+		address |= (source.getAC() ? bitC : 0);
+		address |= (source.getAD() ? bitD : 0);
+		address |= (source.getAE() ? bitE : 0);
+		address |= (source.getAF() ? bitF : 0);
+		return address;
+	}
+
+	public static int getDataOut(final IEightBitDataOut source) {
 		int dataOut = 0;
-		dataOut |= (systemUnderTest.getDO0() ? bit0 : 0);
-		dataOut |= (systemUnderTest.getDO1() ? bit1 : 0);
-		dataOut |= (systemUnderTest.getDO2() ? bit2 : 0);
-		dataOut |= (systemUnderTest.getDO3() ? bit3 : 0);
-		dataOut |= (systemUnderTest.getDO4() ? bit4 : 0);
-		dataOut |= (systemUnderTest.getDO5() ? bit5 : 0);
-		dataOut |= (systemUnderTest.getDO6() ? bit6 : 0);
-		dataOut |= (systemUnderTest.getDO7() ? bit7 : 0);
+		dataOut |= (source.getDO0() ? bit0 : 0);
+		dataOut |= (source.getDO1() ? bit1 : 0);
+		dataOut |= (source.getDO2() ? bit2 : 0);
+		dataOut |= (source.getDO3() ? bit3 : 0);
+		dataOut |= (source.getDO4() ? bit4 : 0);
+		dataOut |= (source.getDO5() ? bit5 : 0);
+		dataOut |= (source.getDO6() ? bit6 : 0);
+		dataOut |= (source.getDO7() ? bit7 : 0);
 		return dataOut;
 	}
 
-	public static void setAddress(final ISixteenBitAInput systemUnderTest,
+	public static void setAddress(final ISixteenBitAInput target,
 			final int address) {
-		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
-		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
-		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
-		systemUnderTest.setA3((address & bit3) == bit3 ? on : off);
-		systemUnderTest.setA4((address & bit4) == bit4 ? on : off);
-		systemUnderTest.setA5((address & bit5) == bit5 ? on : off);
-		systemUnderTest.setA6((address & bit6) == bit6 ? on : off);
-		systemUnderTest.setA7((address & bit7) == bit7 ? on : off);
-		systemUnderTest.setA8((address & bit8) == bit8 ? on : off);
-		systemUnderTest.setA9((address & bit9) == bit9 ? on : off);
-		systemUnderTest.setAA((address & bitA) == bitA ? on : off);
-		systemUnderTest.setAB((address & bitB) == bitB ? on : off);
-		systemUnderTest.setAC((address & bitC) == bitC ? on : off);
-		systemUnderTest.setAD((address & bitD) == bitD ? on : off);
-		systemUnderTest.setAE((address & bitE) == bitE ? on : off);
-		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
+		target.setA0((address & bit0) == bit0 ? on : off);
+		target.setA1((address & bit1) == bit1 ? on : off);
+		target.setA2((address & bit2) == bit2 ? on : off);
+		target.setA3((address & bit3) == bit3 ? on : off);
+		target.setA4((address & bit4) == bit4 ? on : off);
+		target.setA5((address & bit5) == bit5 ? on : off);
+		target.setA6((address & bit6) == bit6 ? on : off);
+		target.setA7((address & bit7) == bit7 ? on : off);
+		target.setA8((address & bit8) == bit8 ? on : off);
+		target.setA9((address & bit9) == bit9 ? on : off);
+		target.setAA((address & bitA) == bitA ? on : off);
+		target.setAB((address & bitB) == bitB ? on : off);
+		target.setAC((address & bitC) == bitC ? on : off);
+		target.setAD((address & bitD) == bitD ? on : off);
+		target.setAE((address & bitE) == bitE ? on : off);
+		target.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	public static void setDataIn(final IEightBitDataIn systemUnderTest,
+	public static void setDataIn(final IEightBitDataIn target,
 			final int value) {
-		systemUnderTest.setDI0((value & bit0) == bit0);
-		systemUnderTest.setDI1((value & bit1) == bit1);
-		systemUnderTest.setDI2((value & bit2) == bit2);
-		systemUnderTest.setDI3((value & bit3) == bit3);
-		systemUnderTest.setDI4((value & bit4) == bit4);
-		systemUnderTest.setDI5((value & bit5) == bit5);
-		systemUnderTest.setDI6((value & bit6) == bit6);
-		systemUnderTest.setDI7((value & bit7) == bit7);
+		target.setDI0((value & bit0) == bit0);
+		target.setDI1((value & bit1) == bit1);
+		target.setDI2((value & bit2) == bit2);
+		target.setDI3((value & bit3) == bit3);
+		target.setDI4((value & bit4) == bit4);
+		target.setDI5((value & bit5) == bit5);
+		target.setDI6((value & bit6) == bit6);
+		target.setDI7((value & bit7) == bit7);
 	}
 
 }
