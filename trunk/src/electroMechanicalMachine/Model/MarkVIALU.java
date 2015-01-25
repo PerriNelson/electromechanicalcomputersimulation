@@ -176,15 +176,8 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	private void stepLoadSelector() {
+		EightBitDataPath.SumToBIn(adder, loadSelector);
 		loadSelector.setSelect(loadBar.getOutput());
-		loadSelector.setB0(adder.getS0());
-		loadSelector.setB1(adder.getS1());
-		loadSelector.setB2(adder.getS2());
-		loadSelector.setB3(adder.getS3());
-		loadSelector.setB4(adder.getS4());
-		loadSelector.setB5(adder.getS5());
-		loadSelector.setB6(adder.getS6());
-		loadSelector.setB7(adder.getS7());
 		loadSelector.step();
 	}
 }

@@ -14,6 +14,7 @@ import electroMechanicalLogic.Interfaces.IEightBitBInput;
 import electroMechanicalLogic.Interfaces.IEightBitBOut;
 import electroMechanicalLogic.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.IEightBitSum;
 
 public class EightBitDataPath {
 	public static void AOutToDataIn(final IEightBitAOut source,
@@ -74,6 +75,30 @@ public class EightBitDataPath {
 		target.setDI5(source.getDO5());
 		target.setDI6(source.getDO6());
 		target.setDI7(source.getDO7());
+	}
+
+	public static void SumToBIn(final IEightBitSum source,
+			final IEightBitBInput target) {
+		target.setB0(source.getS0());
+		target.setB1(source.getS1());
+		target.setB2(source.getS2());
+		target.setB3(source.getS3());
+		target.setB4(source.getS4());
+		target.setB5(source.getS5());
+		target.setB6(source.getS6());
+		target.setB7(source.getS7());
+	}
+
+	public static void SumToDataIn(final IEightBitSum source,
+			final IEightBitDataIn target) {
+		target.setDI0(source.getS0());
+		target.setDI1(source.getS1());
+		target.setDI2(source.getS2());
+		target.setDI3(source.getS3());
+		target.setDI4(source.getS4());
+		target.setDI5(source.getS5());
+		target.setDI6(source.getS6());
+		target.setDI7(source.getS7());
 	}
 
 }
