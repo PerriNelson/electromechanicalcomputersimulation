@@ -13,14 +13,14 @@ import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 
 public class EightBitTwoToOneSelector implements IEightBitTwoToOneSelector {
 
-	private static final ITwoLineToOneLineSelector bit0 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit1 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit2 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit3 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit4 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit5 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit6 = new TwoLineToOneLineSelector();
-	private static final ITwoLineToOneLineSelector bit7 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit0 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit1 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit2 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit3 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit4 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit5 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit6 = new TwoLineToOneLineSelector();
+	private final ITwoLineToOneLineSelector bit7 = new TwoLineToOneLineSelector();
 
 	@Override
 	public boolean getDO0() {
