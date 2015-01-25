@@ -191,7 +191,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 			if (source == write) {
 				model.setCpW(value);
 			} else if (source == takeOver) {
-				model.setCpTakeover(value);
+				model.setTakeover(value);
 			}
 		} else if (source == model) {
 			lamps[0].setOn(model.getDO0());

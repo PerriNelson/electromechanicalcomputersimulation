@@ -44,7 +44,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setPower(on);
 
 		// Turn everything off.
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setCpA0(off);
 		systemUnderTest.setCpA1(off);
 		systemUnderTest.setCpA2(off);
@@ -101,7 +101,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OffAndCpA0On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -114,7 +114,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA1On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -129,7 +129,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA2On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -144,7 +144,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA3On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -159,7 +159,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA4On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -174,7 +174,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -189,7 +189,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -204,7 +204,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -219,7 +219,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -234,7 +234,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -249,7 +249,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -264,7 +264,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -279,7 +279,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -294,7 +294,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -309,7 +309,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -324,7 +324,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA0OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -339,7 +339,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OffAndCpA1On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -352,7 +352,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA2On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -367,7 +367,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA3On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -382,7 +382,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA4On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -397,7 +397,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -412,7 +412,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -427,7 +427,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -442,7 +442,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -457,7 +457,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -472,7 +472,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -487,7 +487,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -502,7 +502,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -517,7 +517,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -532,7 +532,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -547,7 +547,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA1OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -562,7 +562,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OffAndCpA2On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -575,7 +575,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA3On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -590,7 +590,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA4On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -605,7 +605,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -620,7 +620,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -635,7 +635,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -650,7 +650,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -665,7 +665,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -680,7 +680,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -695,7 +695,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -710,7 +710,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -725,7 +725,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -740,7 +740,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -755,7 +755,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA2OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -770,7 +770,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OffAndCpA3On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -783,7 +783,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA4On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -798,7 +798,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -813,7 +813,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -828,7 +828,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -843,7 +843,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -858,7 +858,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -873,7 +873,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -888,7 +888,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -903,7 +903,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -918,7 +918,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -933,7 +933,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -948,7 +948,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA3OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -963,7 +963,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OffAndCpA4On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -976,7 +976,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -991,7 +991,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1006,7 +1006,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1021,7 +1021,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1036,7 +1036,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1051,7 +1051,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1066,7 +1066,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1081,7 +1081,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1096,7 +1096,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1111,7 +1111,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1126,7 +1126,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA4OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1141,7 +1141,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OffAndCpA5On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1154,7 +1154,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1169,7 +1169,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1184,7 +1184,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1199,7 +1199,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1214,7 +1214,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1229,7 +1229,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1244,7 +1244,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1259,7 +1259,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1274,7 +1274,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1289,7 +1289,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA5OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1304,7 +1304,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OffAndCpA6On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1317,7 +1317,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1332,7 +1332,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1347,7 +1347,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1362,7 +1362,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1377,7 +1377,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1392,7 +1392,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1407,7 +1407,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1422,7 +1422,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1437,7 +1437,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA6OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1452,7 +1452,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OffAndCpA7On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1465,7 +1465,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1480,7 +1480,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1495,7 +1495,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1510,7 +1510,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1525,7 +1525,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1540,7 +1540,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1555,7 +1555,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1570,7 +1570,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA7OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1585,7 +1585,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OffAndCpA8On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1598,7 +1598,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1613,7 +1613,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1628,7 +1628,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1643,7 +1643,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1658,7 +1658,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1673,7 +1673,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1688,7 +1688,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA8OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1703,7 +1703,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OffAndCpA9On_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1716,7 +1716,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1731,7 +1731,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1746,7 +1746,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1761,7 +1761,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1776,7 +1776,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1791,7 +1791,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpA9OnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1806,7 +1806,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOffAndCpAAOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1819,7 +1819,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOnAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1835,7 +1835,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1851,7 +1851,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1867,7 +1867,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1883,7 +1883,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAAOnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1899,7 +1899,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpABOffAndCpABOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1912,7 +1912,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpABOnAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1928,7 +1928,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpABOnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1944,7 +1944,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpABOnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1960,7 +1960,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpABOnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -1976,7 +1976,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpACOffAndCpACOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -1989,7 +1989,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpACOnAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAC(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2005,7 +2005,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpACOnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAC(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2021,7 +2021,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpACOnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAC(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2037,7 +2037,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpADOffAndCpADOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -2050,7 +2050,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpADOnAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAD(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2066,7 +2066,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpADOnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAD(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2082,7 +2082,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAEOffAndCpAEOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -2095,7 +2095,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAEOnAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpAE(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
@@ -2111,7 +2111,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 
 	@Test
 	public void test_CpAFOffAndCpAFOn_RepresentDifferentAddresses() {
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
 		systemUnderTest.step();
@@ -2126,9 +2126,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_DataEnteredUsingControlPanel_IsAvailableToExternalCircuitry() {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2139,9 +2139,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA0(on);
 		systemUnderTest.step();
 
@@ -2153,9 +2153,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA1(on);
 		systemUnderTest.step();
 
@@ -2167,9 +2167,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA2(on);
 		systemUnderTest.step();
 
@@ -2181,9 +2181,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA3(on);
 		systemUnderTest.step();
 
@@ -2195,9 +2195,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA4(on);
 		systemUnderTest.step();
 
@@ -2209,9 +2209,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA5(on);
 		systemUnderTest.step();
 
@@ -2223,9 +2223,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA6(on);
 		systemUnderTest.step();
 
@@ -2237,9 +2237,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA7(on);
 		systemUnderTest.step();
 
@@ -2251,9 +2251,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA8(on);
 		systemUnderTest.step();
 
@@ -2265,9 +2265,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcA9(on);
 		systemUnderTest.step();
 
@@ -2279,9 +2279,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAA(on);
 		systemUnderTest.step();
 
@@ -2293,9 +2293,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAB(on);
 		systemUnderTest.step();
 
@@ -2307,9 +2307,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAC(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAC(on);
 		systemUnderTest.step();
 
@@ -2321,9 +2321,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAD(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAD(on);
 		systemUnderTest.step();
 
@@ -2335,9 +2335,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAE(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAE(on);
 		systemUnderTest.step();
 
@@ -2349,9 +2349,9 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpAF(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(off);
+		systemUnderTest.setTakeover(off);
 		systemUnderTest.setEcAF(on);
 		systemUnderTest.step();
 
@@ -2363,7 +2363,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcDI0(on);
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2376,7 +2376,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA0(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2389,7 +2389,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA1(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2402,7 +2402,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA2(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2415,7 +2415,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA3(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2428,7 +2428,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA4(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2441,7 +2441,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA5(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2454,7 +2454,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA6(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2467,7 +2467,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA7(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2480,7 +2480,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA8(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2493,7 +2493,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA9(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2506,7 +2506,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpAA(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2519,7 +2519,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpAB(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2532,7 +2532,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpAC(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2545,7 +2545,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpAD(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2558,7 +2558,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpA0(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2571,7 +2571,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setEcW(on);
 		systemUnderTest.step();
 		systemUnderTest.setCpAF(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2784,7 +2784,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA0(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2805,7 +2805,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA1(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2826,7 +2826,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA2(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2847,7 +2847,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA3(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2868,7 +2868,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA4(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2889,7 +2889,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA5(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2910,7 +2910,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA6(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2931,7 +2931,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA7(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2952,7 +2952,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA8(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2973,7 +2973,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpA9(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -2994,7 +2994,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAA(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3015,7 +3015,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAB(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3036,7 +3036,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAC(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3057,7 +3057,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAD(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3078,7 +3078,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAE(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3099,7 +3099,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 		systemUnderTest.setCpAF(on);
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3118,7 +3118,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI0OnCpWOnAndcpTakeoverOn_OutputIsBit0() {
 		systemUnderTest.setCpDI0(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit0, getDataOut(systemUnderTest));
@@ -3137,7 +3137,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI1OnCpWOnAndcpTakeoverOn_OutputIsBit1() {
 		systemUnderTest.setCpDI1(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit1, getDataOut(systemUnderTest));
@@ -3156,7 +3156,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI2OnCpWOnAndcpTakeoverOn_OutputIsBit2() {
 		systemUnderTest.setCpDI2(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit2, getDataOut(systemUnderTest));
@@ -3175,7 +3175,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI3OnCpWOnAndcpTakeoverOn_OutputIsBit3() {
 		systemUnderTest.setCpDI3(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit3, getDataOut(systemUnderTest));
@@ -3194,7 +3194,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI4OnCpWOnAndcpTakeoverOn_OutputIsBit4() {
 		systemUnderTest.setCpDI4(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit4, getDataOut(systemUnderTest));
@@ -3213,7 +3213,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI5OnCpWOnAndcpTakeoverOn_OutputIsBit5() {
 		systemUnderTest.setCpDI5(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit5, getDataOut(systemUnderTest));
@@ -3232,7 +3232,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI6OnCpWOnAndcpTakeoverOn_OutputIsBit6() {
 		systemUnderTest.setCpDI6(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit6, getDataOut(systemUnderTest));
@@ -3251,7 +3251,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyCpDI7OnCpWOnAndcpTakeoverOn_OutputIsBit7() {
 		systemUnderTest.setCpDI7(on);
 		systemUnderTest.setCpW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(bit7, getDataOut(systemUnderTest));
@@ -3430,7 +3430,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI0EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI0(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3449,7 +3449,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI1EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI1(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3468,7 +3468,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI2EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI2(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3487,7 +3487,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI3EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI3(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3506,7 +3506,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI4EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI4(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3525,7 +3525,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI5EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI5(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3544,7 +3544,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI6EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI6(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));
@@ -3563,7 +3563,7 @@ public class SixtyFourKilobyteRamControlPanelModelTest {
 	public void test_WithOnlyEcDI7EcWOnAndCpTakeoverOn_OutputIsUnchanged() {
 		systemUnderTest.setEcDI7(on);
 		systemUnderTest.setEcW(on);
-		systemUnderTest.setCpTakeover(on);
+		systemUnderTest.setTakeover(on);
 		systemUnderTest.step();
 
 		assertEquals(0, getDataOut(systemUnderTest));

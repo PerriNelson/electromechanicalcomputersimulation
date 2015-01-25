@@ -12,14 +12,14 @@ import electroMechanicalLogic.Interfaces.IEightBitBuffer;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 public class EightBitBuffer implements IEightBitBuffer {
-	private static final IRelay bit0 = new Buffer();
-	private static final IRelay bit1 = new Buffer();
-	private static final IRelay bit2 = new Buffer();
-	private static final IRelay bit3 = new Buffer();
-	private static final IRelay bit4 = new Buffer();
-	private static final IRelay bit5 = new Buffer();
-	private static final IRelay bit6 = new Buffer();
-	private static final IRelay bit7 = new Buffer();
+	private final IRelay bit0 = new Buffer();
+	private final IRelay bit1 = new Buffer();
+	private final IRelay bit2 = new Buffer();
+	private final IRelay bit3 = new Buffer();
+	private final IRelay bit4 = new Buffer();
+	private final IRelay bit5 = new Buffer();
+	private final IRelay bit6 = new Buffer();
+	private final IRelay bit7 = new Buffer();
 
 	@Override
 	public boolean getDO0() {

@@ -8,11 +8,18 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
 
 public interface ISixtyFourKilobyteRamControlPanelModel extends IMachineModel,
 IEightBitDataOut {
 
+	public abstract ISixteenBitAInput getPanelAddressIn();
+	public abstract IEightBitDataIn getPanelDataIn();
+	public abstract ISixteenBitAInput getExternalAddressIn();
+	public abstract IEightBitDataIn getExternalDataIn();
+	
 	// Control Panel Inputs
 	public abstract void setCpA0(boolean value);
 
@@ -62,7 +69,7 @@ IEightBitDataOut {
 
 	public abstract void setCpDI7(boolean value);
 
-	public abstract void setCpTakeover(boolean value);
+	public abstract void setTakeover(boolean value);
 
 	public abstract void setCpW(boolean value);
 
