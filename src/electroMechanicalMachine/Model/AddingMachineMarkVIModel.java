@@ -14,12 +14,14 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitDataPath;
+import electroMechanicalLogic.EightBitOneToTwoDecoder;
+import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
+import electroMechanicalLogic.Interfaces.IEightBitOneToTwoDecoder;
+import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
 import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
@@ -28,8 +30,8 @@ import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPan
 
 public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private final EventListenerList eventListeners = new EventListenerList();
-	private final ISixtyFourKilobyteRamControlPanelModel codeRam;
-	private final ISixtyFourKilobyteRamControlPanelModel dataRam;
+	private final ISixtyFourKilobyteRamControlPanelModel code;
+	private final ISixtyFourKilobyteRamControlPanelModel data;
 	private final IOneLineToTwoLineDecoder decodeA0;
 	private final IOneLineToTwoLineDecoder decodeA1;
 	private final IOneLineToTwoLineDecoder decodeA2;
@@ -46,23 +48,9 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private final IOneLineToTwoLineDecoder decodeAD;
 	private final IOneLineToTwoLineDecoder decodeAE;
 	private final IOneLineToTwoLineDecoder decodeAF;
-	private final IOneLineToTwoLineDecoder decodeDI0;
-	private final IOneLineToTwoLineDecoder decodeDI1;
-	private final IOneLineToTwoLineDecoder decodeDI2;
-	private final IOneLineToTwoLineDecoder decodeDI3;
-	private final IOneLineToTwoLineDecoder decodeDI4;
-	private final IOneLineToTwoLineDecoder decodeDI5;
-	private final IOneLineToTwoLineDecoder decodeDI6;
-	private final IOneLineToTwoLineDecoder decodeDI7;
-	private final IOneLineToTwoLineDecoder decodeW;
-	private final ITwoLineToOneLineSelector selectDO0;
-	private final ITwoLineToOneLineSelector selectDO1;
-	private final ITwoLineToOneLineSelector selectDO2;
-	private final ITwoLineToOneLineSelector selectDO3;
-	private final ITwoLineToOneLineSelector selectDO4;
-	private final ITwoLineToOneLineSelector selectDO5;
-	private final ITwoLineToOneLineSelector selectDO6;
-	private final ITwoLineToOneLineSelector selectDO7;
+	private final IEightBitOneToTwoDecoder dataIn;
+	private final IOneLineToTwoLineDecoder write;
+	private final IEightBitTwoToOneSelector dataOut;
 	private final IMarkVIInstructionDecoder instructionDecoder;
 	private final IMarkVIALU alu;
 	private final IMarkVITimingAndMemoryWriteControl timingAndMemoryWriteControl;
@@ -91,28 +79,14 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		decodeAE = new OneLineToTwoLineDecoder();
 		decodeAF = new OneLineToTwoLineDecoder();
 
-		decodeDI0 = new OneLineToTwoLineDecoder();
-		decodeDI1 = new OneLineToTwoLineDecoder();
-		decodeDI2 = new OneLineToTwoLineDecoder();
-		decodeDI3 = new OneLineToTwoLineDecoder();
-		decodeDI4 = new OneLineToTwoLineDecoder();
-		decodeDI5 = new OneLineToTwoLineDecoder();
-		decodeDI6 = new OneLineToTwoLineDecoder();
-		decodeDI7 = new OneLineToTwoLineDecoder();
+		dataIn = new EightBitOneToTwoDecoder();
 
-		decodeW = new OneLineToTwoLineDecoder();
+		write = new OneLineToTwoLineDecoder();
 
-		selectDO0 = new TwoLineToOneLineSelector();
-		selectDO1 = new TwoLineToOneLineSelector();
-		selectDO2 = new TwoLineToOneLineSelector();
-		selectDO3 = new TwoLineToOneLineSelector();
-		selectDO4 = new TwoLineToOneLineSelector();
-		selectDO5 = new TwoLineToOneLineSelector();
-		selectDO6 = new TwoLineToOneLineSelector();
-		selectDO7 = new TwoLineToOneLineSelector();
+		dataOut = new EightBitTwoToOneSelector();
 
-		codeRam = new SixtyFourKilobyteRamControlPanelModel(codeRAM);
-		dataRam = new SixtyFourKilobyteRamControlPanelModel(dataRAM);
+		code = new SixtyFourKilobyteRamControlPanelModel(codeRAM);
+		data = new SixtyFourKilobyteRamControlPanelModel(dataRAM);
 
 		instructionDecoder = new MarkVIInstructionDecoder();
 		alu = new MarkVIALU();
@@ -135,49 +109,49 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
 
 	@Override
 	public boolean getDO0() {
-		return selectDO0.getDO();
+		return dataOut.getDO0();
 	}
 
 	@Override
 	public boolean getDO1() {
-		return selectDO1.getDO();
+		return dataOut.getDO1();
 	}
 
 	@Override
 	public boolean getDO2() {
-		return selectDO2.getDO();
+		return dataOut.getDO2();
 	}
 
 	@Override
 	public boolean getDO3() {
-		return selectDO3.getDO();
+		return dataOut.getDO3();
 	}
 
 	@Override
 	public boolean getDO4() {
-		return selectDO4.getDO();
+		return dataOut.getDO4();
 	}
 
 	@Override
 	public boolean getDO5() {
-		return selectDO5.getDO();
+		return dataOut.getDO5();
 	}
 
 	@Override
 	public boolean getDO6() {
-		return selectDO6.getDO();
+		return dataOut.getDO6();
 	}
 
 	@Override
 	public boolean getDO7() {
-		return selectDO7.getDO();
+		return dataOut.getDO7();
 	}
 
 	@Override
@@ -268,48 +242,48 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void setDI0(final boolean value) {
-		decodeDI0.setInput(value);
+		dataIn.setDI0(value);
 	}
 
 	@Override
 	public void setDI1(final boolean value) {
-		decodeDI1.setInput(value);
+		dataIn.setDI1(value);
 	}
 
 	@Override
 	public void setDI2(final boolean value) {
-		decodeDI2.setInput(value);
+		dataIn.setDI2(value);
 	}
 
 	@Override
 	public void setDI3(final boolean value) {
-		decodeDI3.setInput(value);
+		dataIn.setDI3(value);
 	}
 
 	@Override
 	public void setDI4(final boolean value) {
-		decodeDI4.setInput(value);
+		dataIn.setDI4(value);
 	}
 
 	@Override
 	public void setDI5(final boolean value) {
-		decodeDI5.setInput(value);
+		dataIn.setDI5(value);
 	}
 
 	@Override
 	public void setDI6(final boolean value) {
-		decodeDI6.setInput(value);
+		dataIn.setDI6(value);
 	}
 
 	@Override
 	public void setDI7(final boolean value) {
-		decodeDI7.setInput(value);
+		dataIn.setDI7(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		codeRam.setPower(value);
-		dataRam.setPower(value);
+		code.setPower(value);
+		data.setPower(value);
 
 		decodeA0.setPower(value);
 		decodeA1.setPower(value);
@@ -328,25 +302,9 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		decodeAE.setPower(value);
 		decodeAF.setPower(value);
 
-		decodeDI0.setPower(value);
-		decodeDI1.setPower(value);
-		decodeDI2.setPower(value);
-		decodeDI3.setPower(value);
-		decodeDI4.setPower(value);
-		decodeDI5.setPower(value);
-		decodeDI6.setPower(value);
-		decodeDI7.setPower(value);
-
-		decodeW.setPower(value);
-
-		selectDO0.setPower(value);
-		selectDO1.setPower(value);
-		selectDO2.setPower(value);
-		selectDO3.setPower(value);
-		selectDO4.setPower(value);
-		selectDO5.setPower(value);
-		selectDO6.setPower(value);
-		selectDO7.setPower(value);
+		dataIn.setPower(value);
+		write.setPower(value);
+		dataOut.setPower(value);
 
 		instructionDecoder.setPower(value);
 		alu.setPower(value);
@@ -361,8 +319,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void setTakeover(final boolean value) {
-		codeRam.setCpTakeover(value);
-		dataRam.setCpTakeover(value);
+		code.setCpTakeover(value);
+		data.setCpTakeover(value);
 	}
 
 	@Override
@@ -384,57 +342,35 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		decodeAE.setSelect(value);
 		decodeAF.setSelect(value);
 
-		decodeDI0.setSelect(value);
-		decodeDI1.setSelect(value);
-		decodeDI2.setSelect(value);
-		decodeDI3.setSelect(value);
-		decodeDI4.setSelect(value);
-		decodeDI5.setSelect(value);
-		decodeDI6.setSelect(value);
-		decodeDI7.setSelect(value);
+		dataIn.setSelect(value);
+		write.setSelect(value);
 
-		decodeW.setSelect(value);
-
-		selectDO0.setSelect(value);
-		selectDO1.setSelect(value);
-		selectDO2.setSelect(value);
-		selectDO3.setSelect(value);
-		selectDO4.setSelect(value);
-		selectDO5.setSelect(value);
-		selectDO6.setSelect(value);
-		selectDO7.setSelect(value);
+		dataOut.setSelect(value);
 	}
 
 	@Override
 	public void setW(final boolean value) {
-		decodeW.setInput(value);
+		write.setInput(value);
 	}
 
 	@Override
 	public void step() {
 		stepDecoders();
 
-		stepDataRam();
+		stepdata();
 		stepCodeRam();
 
 		stepInstructionDecoder();
 		stepTimingAndMemoryWriteControl();
 		stepALU();
 
-		stepSelectors();
+		stepDataOut();
 
 		fireOnPropertyChange();
 	}
 
 	private void stepALU() {
-		alu.setDI0(dataRam.getDO0());
-		alu.setDI1(dataRam.getDO1());
-		alu.setDI2(dataRam.getDO2());
-		alu.setDI3(dataRam.getDO3());
-		alu.setDI4(dataRam.getDO4());
-		alu.setDI5(dataRam.getDO5());
-		alu.setDI6(dataRam.getDO6());
-		alu.setDI7(dataRam.getDO7());
+		EightBitDataPath.DataOutToDataIn(data, alu);
 		alu.setAdd(instructionDecoder.getAdd());
 		alu.setLoad(instructionDecoder.getLoad());
 		alu.setClock(timingAndMemoryWriteControl.getClock());
@@ -442,111 +378,117 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepCodeRam() {
-		codeRam.setCpA0(decodeA0.getB());
-		codeRam.setCpA1(decodeA1.getB());
-		codeRam.setCpA2(decodeA2.getB());
-		codeRam.setCpA3(decodeA3.getB());
-		codeRam.setCpA4(decodeA4.getB());
-		codeRam.setCpA5(decodeA5.getB());
-		codeRam.setCpA6(decodeA6.getB());
-		codeRam.setCpA7(decodeA7.getB());
-		codeRam.setCpA8(decodeA8.getB());
-		codeRam.setCpA9(decodeA9.getB());
-		codeRam.setCpAA(decodeAA.getB());
-		codeRam.setCpAB(decodeAB.getB());
-		codeRam.setCpAC(decodeAC.getB());
-		codeRam.setCpAD(decodeAD.getB());
-		codeRam.setCpAE(decodeAE.getB());
-		codeRam.setCpAF(decodeAF.getB());
+		code.setCpA0(decodeA0.getB());
+		code.setCpA1(decodeA1.getB());
+		code.setCpA2(decodeA2.getB());
+		code.setCpA3(decodeA3.getB());
+		code.setCpA4(decodeA4.getB());
+		code.setCpA5(decodeA5.getB());
+		code.setCpA6(decodeA6.getB());
+		code.setCpA7(decodeA7.getB());
+		code.setCpA8(decodeA8.getB());
+		code.setCpA9(decodeA9.getB());
+		code.setCpAA(decodeAA.getB());
+		code.setCpAB(decodeAB.getB());
+		code.setCpAC(decodeAC.getB());
+		code.setCpAD(decodeAD.getB());
+		code.setCpAE(decodeAE.getB());
+		code.setCpAF(decodeAF.getB());
 
-		codeRam.setEcA0(timingAndMemoryWriteControl.getA0());
-		codeRam.setEcA1(timingAndMemoryWriteControl.getA1());
-		codeRam.setEcA2(timingAndMemoryWriteControl.getA2());
-		codeRam.setEcA3(timingAndMemoryWriteControl.getA3());
-		codeRam.setEcA4(timingAndMemoryWriteControl.getA4());
-		codeRam.setEcA5(timingAndMemoryWriteControl.getA5());
-		codeRam.setEcA6(timingAndMemoryWriteControl.getA6());
-		codeRam.setEcA7(timingAndMemoryWriteControl.getA7());
-		codeRam.setEcA8(timingAndMemoryWriteControl.getA8());
-		codeRam.setEcA9(timingAndMemoryWriteControl.getA9());
-		codeRam.setEcAA(timingAndMemoryWriteControl.getAA());
-		codeRam.setEcAB(timingAndMemoryWriteControl.getAB());
-		codeRam.setEcAC(timingAndMemoryWriteControl.getAC());
-		codeRam.setEcAD(timingAndMemoryWriteControl.getAD());
-		codeRam.setEcAE(timingAndMemoryWriteControl.getAE());
-		codeRam.setEcAF(timingAndMemoryWriteControl.getAF());
+		code.setEcA0(timingAndMemoryWriteControl.getA0());
+		code.setEcA1(timingAndMemoryWriteControl.getA1());
+		code.setEcA2(timingAndMemoryWriteControl.getA2());
+		code.setEcA3(timingAndMemoryWriteControl.getA3());
+		code.setEcA4(timingAndMemoryWriteControl.getA4());
+		code.setEcA5(timingAndMemoryWriteControl.getA5());
+		code.setEcA6(timingAndMemoryWriteControl.getA6());
+		code.setEcA7(timingAndMemoryWriteControl.getA7());
+		code.setEcA8(timingAndMemoryWriteControl.getA8());
+		code.setEcA9(timingAndMemoryWriteControl.getA9());
+		code.setEcAA(timingAndMemoryWriteControl.getAA());
+		code.setEcAB(timingAndMemoryWriteControl.getAB());
+		code.setEcAC(timingAndMemoryWriteControl.getAC());
+		code.setEcAD(timingAndMemoryWriteControl.getAD());
+		code.setEcAE(timingAndMemoryWriteControl.getAE());
+		code.setEcAF(timingAndMemoryWriteControl.getAF());
 
-		codeRam.setCpDI0(decodeDI0.getB());
-		codeRam.setCpDI1(decodeDI1.getB());
-		codeRam.setCpDI2(decodeDI2.getB());
-		codeRam.setCpDI3(decodeDI3.getB());
-		codeRam.setCpDI4(decodeDI4.getB());
-		codeRam.setCpDI5(decodeDI5.getB());
-		codeRam.setCpDI6(decodeDI6.getB());
-		codeRam.setCpDI7(decodeDI7.getB());
+		code.setCpDI0(dataIn.getB0());
+		code.setCpDI1(dataIn.getB1());
+		code.setCpDI2(dataIn.getB2());
+		code.setCpDI3(dataIn.getB3());
+		code.setCpDI4(dataIn.getB4());
+		code.setCpDI5(dataIn.getB5());
+		code.setCpDI6(dataIn.getB6());
+		code.setCpDI7(dataIn.getB7());
 
-		codeRam.setCpW(decodeW.getB());
+		code.setCpW(write.getB());
 
-		codeRam.step();
+		code.step();
 	}
 
-	private void stepDataRam() {
-		dataRam.setCpA0(decodeA0.getA());
-		dataRam.setCpA1(decodeA1.getA());
-		dataRam.setCpA2(decodeA2.getA());
-		dataRam.setCpA3(decodeA3.getA());
-		dataRam.setCpA4(decodeA4.getA());
-		dataRam.setCpA5(decodeA5.getA());
-		dataRam.setCpA6(decodeA6.getA());
-		dataRam.setCpA7(decodeA7.getA());
-		dataRam.setCpA8(decodeA8.getA());
-		dataRam.setCpA9(decodeA9.getA());
-		dataRam.setCpAA(decodeAA.getA());
-		dataRam.setCpAB(decodeAB.getA());
-		dataRam.setCpAC(decodeAC.getA());
-		dataRam.setCpAD(decodeAD.getA());
-		dataRam.setCpAE(decodeAE.getA());
-		dataRam.setCpAF(decodeAF.getA());
+	private void stepdata() {
+		data.setCpA0(decodeA0.getA());
+		data.setCpA1(decodeA1.getA());
+		data.setCpA2(decodeA2.getA());
+		data.setCpA3(decodeA3.getA());
+		data.setCpA4(decodeA4.getA());
+		data.setCpA5(decodeA5.getA());
+		data.setCpA6(decodeA6.getA());
+		data.setCpA7(decodeA7.getA());
+		data.setCpA8(decodeA8.getA());
+		data.setCpA9(decodeA9.getA());
+		data.setCpAA(decodeAA.getA());
+		data.setCpAB(decodeAB.getA());
+		data.setCpAC(decodeAC.getA());
+		data.setCpAD(decodeAD.getA());
+		data.setCpAE(decodeAE.getA());
+		data.setCpAF(decodeAF.getA());
 
-		dataRam.setEcA0(timingAndMemoryWriteControl.getA0());
-		dataRam.setEcA1(timingAndMemoryWriteControl.getA1());
-		dataRam.setEcA2(timingAndMemoryWriteControl.getA2());
-		dataRam.setEcA3(timingAndMemoryWriteControl.getA3());
-		dataRam.setEcA4(timingAndMemoryWriteControl.getA4());
-		dataRam.setEcA5(timingAndMemoryWriteControl.getA5());
-		dataRam.setEcA6(timingAndMemoryWriteControl.getA6());
-		dataRam.setEcA7(timingAndMemoryWriteControl.getA7());
-		dataRam.setEcA8(timingAndMemoryWriteControl.getA8());
-		dataRam.setEcA9(timingAndMemoryWriteControl.getA9());
-		dataRam.setEcAA(timingAndMemoryWriteControl.getAA());
-		dataRam.setEcAB(timingAndMemoryWriteControl.getAB());
-		dataRam.setEcAC(timingAndMemoryWriteControl.getAC());
-		dataRam.setEcAD(timingAndMemoryWriteControl.getAD());
-		dataRam.setEcAE(timingAndMemoryWriteControl.getAE());
-		dataRam.setEcAF(timingAndMemoryWriteControl.getAF());
+		data.setEcA0(timingAndMemoryWriteControl.getA0());
+		data.setEcA1(timingAndMemoryWriteControl.getA1());
+		data.setEcA2(timingAndMemoryWriteControl.getA2());
+		data.setEcA3(timingAndMemoryWriteControl.getA3());
+		data.setEcA4(timingAndMemoryWriteControl.getA4());
+		data.setEcA5(timingAndMemoryWriteControl.getA5());
+		data.setEcA6(timingAndMemoryWriteControl.getA6());
+		data.setEcA7(timingAndMemoryWriteControl.getA7());
+		data.setEcA8(timingAndMemoryWriteControl.getA8());
+		data.setEcA9(timingAndMemoryWriteControl.getA9());
+		data.setEcAA(timingAndMemoryWriteControl.getAA());
+		data.setEcAB(timingAndMemoryWriteControl.getAB());
+		data.setEcAC(timingAndMemoryWriteControl.getAC());
+		data.setEcAD(timingAndMemoryWriteControl.getAD());
+		data.setEcAE(timingAndMemoryWriteControl.getAE());
+		data.setEcAF(timingAndMemoryWriteControl.getAF());
 
-		dataRam.setCpDI0(decodeDI0.getA());
-		dataRam.setCpDI1(decodeDI1.getA());
-		dataRam.setCpDI2(decodeDI2.getA());
-		dataRam.setCpDI3(decodeDI3.getA());
-		dataRam.setCpDI4(decodeDI4.getA());
-		dataRam.setCpDI5(decodeDI5.getA());
-		dataRam.setCpDI6(decodeDI6.getA());
-		dataRam.setCpDI7(decodeDI7.getA());
+		data.setCpDI0(dataIn.getA0());
+		data.setCpDI1(dataIn.getA1());
+		data.setCpDI2(dataIn.getA2());
+		data.setCpDI3(dataIn.getA3());
+		data.setCpDI4(dataIn.getA4());
+		data.setCpDI5(dataIn.getA5());
+		data.setCpDI6(dataIn.getA6());
+		data.setCpDI7(dataIn.getA7());
 
-		dataRam.setEcDI0(alu.getDO0());
-		dataRam.setEcDI1(alu.getDO1());
-		dataRam.setEcDI2(alu.getDO2());
-		dataRam.setEcDI3(alu.getDO3());
-		dataRam.setEcDI4(alu.getDO4());
-		dataRam.setEcDI5(alu.getDO5());
-		dataRam.setEcDI6(alu.getDO6());
-		dataRam.setEcDI7(alu.getDO7());
+		data.setEcDI0(alu.getDO0());
+		data.setEcDI1(alu.getDO1());
+		data.setEcDI2(alu.getDO2());
+		data.setEcDI3(alu.getDO3());
+		data.setEcDI4(alu.getDO4());
+		data.setEcDI5(alu.getDO5());
+		data.setEcDI6(alu.getDO6());
+		data.setEcDI7(alu.getDO7());
 
-		dataRam.setCpW(decodeW.getA());
-		dataRam.setEcW(timingAndMemoryWriteControl.getWrite());
+		data.setCpW(write.getA());
+		data.setEcW(timingAndMemoryWriteControl.getWrite());
 
-		dataRam.step();
+		data.step();
+	}
+
+	private void stepDataOut() {
+		EightBitDataPath.DataOutToAIn(data, dataOut);
+		EightBitDataPath.DataOutToBIn(code, dataOut);
+		dataOut.step();
 	}
 
 	private void stepDecoders() {
@@ -567,50 +509,13 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		decodeAE.step();
 		decodeAF.step();
 
-		decodeDI0.step();
-		decodeDI1.step();
-		decodeDI2.step();
-		decodeDI3.step();
-		decodeDI4.step();
-		decodeDI5.step();
-		decodeDI6.step();
-		decodeDI7.step();
-
-		decodeW.step();
+		dataIn.step();
+		write.step();
 	}
 
 	private void stepInstructionDecoder() {
-		EightBitDataPath.DataOutToDataIn(codeRam, instructionDecoder);
+		EightBitDataPath.DataOutToDataIn(code, instructionDecoder);
 		instructionDecoder.step();
-	}
-
-	private void stepSelectors() {
-		selectDO0.setA(dataRam.getDO0());
-		selectDO1.setA(dataRam.getDO1());
-		selectDO2.setA(dataRam.getDO2());
-		selectDO3.setA(dataRam.getDO3());
-		selectDO4.setA(dataRam.getDO4());
-		selectDO5.setA(dataRam.getDO5());
-		selectDO6.setA(dataRam.getDO6());
-		selectDO7.setA(dataRam.getDO7());
-
-		selectDO0.setB(codeRam.getDO0());
-		selectDO1.setB(codeRam.getDO1());
-		selectDO2.setB(codeRam.getDO2());
-		selectDO3.setB(codeRam.getDO3());
-		selectDO4.setB(codeRam.getDO4());
-		selectDO5.setB(codeRam.getDO5());
-		selectDO6.setB(codeRam.getDO6());
-		selectDO7.setB(codeRam.getDO7());
-
-		selectDO0.step();
-		selectDO1.step();
-		selectDO2.step();
-		selectDO3.step();
-		selectDO4.step();
-		selectDO5.step();
-		selectDO6.step();
-		selectDO7.step();
 	}
 
 	private void stepTimingAndMemoryWriteControl() {
