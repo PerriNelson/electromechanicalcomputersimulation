@@ -8,6 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM {
-	public abstract void setAF(boolean value);
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
+
+public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM, ISixteenBitAInput {
 }
