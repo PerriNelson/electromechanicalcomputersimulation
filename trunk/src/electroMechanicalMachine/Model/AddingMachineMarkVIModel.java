@@ -32,22 +32,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private final EventListenerList eventListeners = new EventListenerList();
 	private final ISixtyFourKilobyteRamControlPanelModel code;
 	private final ISixtyFourKilobyteRamControlPanelModel data;
-	private final IOneLineToTwoLineDecoder decodeA0;
-	private final IOneLineToTwoLineDecoder decodeA1;
-	private final IOneLineToTwoLineDecoder decodeA2;
-	private final IOneLineToTwoLineDecoder decodeA3;
-	private final IOneLineToTwoLineDecoder decodeA4;
-	private final IOneLineToTwoLineDecoder decodeA5;
-	private final IOneLineToTwoLineDecoder decodeA6;
-	private final IOneLineToTwoLineDecoder decodeA7;
-	private final IOneLineToTwoLineDecoder decodeA8;
-	private final IOneLineToTwoLineDecoder decodeA9;
-	private final IOneLineToTwoLineDecoder decodeAA;
-	private final IOneLineToTwoLineDecoder decodeAB;
-	private final IOneLineToTwoLineDecoder decodeAC;
-	private final IOneLineToTwoLineDecoder decodeAD;
-	private final IOneLineToTwoLineDecoder decodeAE;
-	private final IOneLineToTwoLineDecoder decodeAF;
+	private final IEightBitOneToTwoDecoder addressLow;
+	private final IEightBitOneToTwoDecoder addressHigh;
 	private final IEightBitOneToTwoDecoder dataIn;
 	private final IOneLineToTwoLineDecoder write;
 	private final IEightBitTwoToOneSelector dataOut;
@@ -62,23 +48,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	public AddingMachineMarkVIModel(final ISixtyFourKilobyteRAM codeRAM,
 			final ISixtyFourKilobyteRAM dataRAM) {
 
-		decodeA0 = new OneLineToTwoLineDecoder();
-		decodeA1 = new OneLineToTwoLineDecoder();
-		decodeA2 = new OneLineToTwoLineDecoder();
-		decodeA3 = new OneLineToTwoLineDecoder();
-		decodeA4 = new OneLineToTwoLineDecoder();
-		decodeA5 = new OneLineToTwoLineDecoder();
-		decodeA6 = new OneLineToTwoLineDecoder();
-		decodeA7 = new OneLineToTwoLineDecoder();
-		decodeA8 = new OneLineToTwoLineDecoder();
-		decodeA9 = new OneLineToTwoLineDecoder();
-		decodeAA = new OneLineToTwoLineDecoder();
-		decodeAB = new OneLineToTwoLineDecoder();
-		decodeAC = new OneLineToTwoLineDecoder();
-		decodeAD = new OneLineToTwoLineDecoder();
-		decodeAE = new OneLineToTwoLineDecoder();
-		decodeAF = new OneLineToTwoLineDecoder();
-
+		addressLow = new EightBitOneToTwoDecoder();
+		addressHigh = new EightBitOneToTwoDecoder();
 		dataIn = new EightBitOneToTwoDecoder();
 
 		write = new OneLineToTwoLineDecoder();
@@ -162,82 +133,82 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void setA0(final boolean value) {
-		decodeA0.setInput(value);
+		addressLow.setDI0(value);
 	}
 
 	@Override
 	public void setA1(final boolean value) {
-		decodeA1.setInput(value);
+		addressLow.setDI1(value);
 	}
 
 	@Override
 	public void setA2(final boolean value) {
-		decodeA2.setInput(value);
+		addressLow.setDI2(value);
 	}
 
 	@Override
 	public void setA3(final boolean value) {
-		decodeA3.setInput(value);
+		addressLow.setDI3(value);
 	}
 
 	@Override
 	public void setA4(final boolean value) {
-		decodeA4.setInput(value);
+		addressLow.setDI4(value);
 	}
 
 	@Override
 	public void setA5(final boolean value) {
-		decodeA5.setInput(value);
+		addressLow.setDI5(value);
 	}
 
 	@Override
 	public void setA6(final boolean value) {
-		decodeA6.setInput(value);
+		addressLow.setDI6(value);
 	}
 
 	@Override
 	public void setA7(final boolean value) {
-		decodeA7.setInput(value);
+		addressLow.setDI7(value);
 	}
 
 	@Override
 	public void setA8(final boolean value) {
-		decodeA8.setInput(value);
+		addressHigh.setDI0(value);
 	}
 
 	@Override
 	public void setA9(final boolean value) {
-		decodeA9.setInput(value);
+		addressHigh.setDI1(value);
 	}
 
 	@Override
 	public void setAA(final boolean value) {
-		decodeAA.setInput(value);
+		addressHigh.setDI2(value);
 	}
 
 	@Override
 	public void setAB(final boolean value) {
-		decodeAB.setInput(value);
+		addressHigh.setDI3(value);
 	}
 
 	@Override
 	public void setAC(final boolean value) {
-		decodeAC.setInput(value);
+		addressHigh.setDI4(value);
 	}
 
 	@Override
 	public void setAD(final boolean value) {
-		decodeAD.setInput(value);
+		addressHigh.setDI5(value);
 	}
 
 	@Override
 	public void setAE(final boolean value) {
-		decodeAE.setInput(value);
+		addressHigh.setDI6(value);
 	}
 
 	@Override
 	public void setAF(final boolean value) {
-		decodeAF.setInput(value);
+		addressHigh.setDI7(value);
 	}
 
 	@Override
@@ -285,22 +256,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		code.setPower(value);
 		data.setPower(value);
 
-		decodeA0.setPower(value);
-		decodeA1.setPower(value);
-		decodeA2.setPower(value);
-		decodeA3.setPower(value);
-		decodeA4.setPower(value);
-		decodeA5.setPower(value);
-		decodeA6.setPower(value);
-		decodeA7.setPower(value);
-		decodeA8.setPower(value);
-		decodeA9.setPower(value);
-		decodeAA.setPower(value);
-		decodeAB.setPower(value);
-		decodeAC.setPower(value);
-		decodeAD.setPower(value);
-		decodeAE.setPower(value);
-		decodeAF.setPower(value);
+		addressLow.setPower(value);
+		addressHigh.setPower(value);
 
 		dataIn.setPower(value);
 		write.setPower(value);
@@ -325,22 +282,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void setUseCodePanel(final boolean value) {
-		decodeA0.setSelect(value);
-		decodeA1.setSelect(value);
-		decodeA2.setSelect(value);
-		decodeA3.setSelect(value);
-		decodeA4.setSelect(value);
-		decodeA5.setSelect(value);
-		decodeA6.setSelect(value);
-		decodeA7.setSelect(value);
-		decodeA8.setSelect(value);
-		decodeA9.setSelect(value);
-		decodeAA.setSelect(value);
-		decodeAB.setSelect(value);
-		decodeAC.setSelect(value);
-		decodeAD.setSelect(value);
-		decodeAE.setSelect(value);
-		decodeAF.setSelect(value);
+		addressLow.setSelect(value);
+		addressHigh.setSelect(value);
 
 		dataIn.setSelect(value);
 		write.setSelect(value);
@@ -378,22 +321,22 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepCodeRam() {
-		code.setCpA0(decodeA0.getB());
-		code.setCpA1(decodeA1.getB());
-		code.setCpA2(decodeA2.getB());
-		code.setCpA3(decodeA3.getB());
-		code.setCpA4(decodeA4.getB());
-		code.setCpA5(decodeA5.getB());
-		code.setCpA6(decodeA6.getB());
-		code.setCpA7(decodeA7.getB());
-		code.setCpA8(decodeA8.getB());
-		code.setCpA9(decodeA9.getB());
-		code.setCpAA(decodeAA.getB());
-		code.setCpAB(decodeAB.getB());
-		code.setCpAC(decodeAC.getB());
-		code.setCpAD(decodeAD.getB());
-		code.setCpAE(decodeAE.getB());
-		code.setCpAF(decodeAF.getB());
+		code.setCpA0(addressLow.getB0());
+		code.setCpA1(addressLow.getB1());
+		code.setCpA2(addressLow.getB2());
+		code.setCpA3(addressLow.getB3());
+		code.setCpA4(addressLow.getB4());
+		code.setCpA5(addressLow.getB5());
+		code.setCpA6(addressLow.getB6());
+		code.setCpA7(addressLow.getB7());
+		code.setCpA8(addressHigh.getB0());
+		code.setCpA9(addressHigh.getB1());
+		code.setCpAA(addressHigh.getB2());
+		code.setCpAB(addressHigh.getB3());
+		code.setCpAC(addressHigh.getB4());
+		code.setCpAD(addressHigh.getB5());
+		code.setCpAE(addressHigh.getB6());
+		code.setCpAF(addressHigh.getB7());
 
 		code.setEcA0(timingAndMemoryWriteControl.getA0());
 		code.setEcA1(timingAndMemoryWriteControl.getA1());
@@ -427,22 +370,22 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepdata() {
-		data.setCpA0(decodeA0.getA());
-		data.setCpA1(decodeA1.getA());
-		data.setCpA2(decodeA2.getA());
-		data.setCpA3(decodeA3.getA());
-		data.setCpA4(decodeA4.getA());
-		data.setCpA5(decodeA5.getA());
-		data.setCpA6(decodeA6.getA());
-		data.setCpA7(decodeA7.getA());
-		data.setCpA8(decodeA8.getA());
-		data.setCpA9(decodeA9.getA());
-		data.setCpAA(decodeAA.getA());
-		data.setCpAB(decodeAB.getA());
-		data.setCpAC(decodeAC.getA());
-		data.setCpAD(decodeAD.getA());
-		data.setCpAE(decodeAE.getA());
-		data.setCpAF(decodeAF.getA());
+		data.setCpA0(addressLow.getA0());
+		data.setCpA1(addressLow.getA1());
+		data.setCpA2(addressLow.getA2());
+		data.setCpA3(addressLow.getA3());
+		data.setCpA4(addressLow.getA4());
+		data.setCpA5(addressLow.getA5());
+		data.setCpA6(addressLow.getA6());
+		data.setCpA7(addressLow.getA7());
+		data.setCpA8(addressHigh.getA0());
+		data.setCpA9(addressHigh.getA1());
+		data.setCpAA(addressHigh.getA2());
+		data.setCpAB(addressHigh.getA3());
+		data.setCpAC(addressHigh.getA4());
+		data.setCpAD(addressHigh.getA5());
+		data.setCpAE(addressHigh.getA6());
+		data.setCpAF(addressHigh.getA7());
 
 		data.setEcA0(timingAndMemoryWriteControl.getA0());
 		data.setEcA1(timingAndMemoryWriteControl.getA1());
@@ -492,22 +435,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepDecoders() {
-		decodeA0.step();
-		decodeA1.step();
-		decodeA2.step();
-		decodeA3.step();
-		decodeA4.step();
-		decodeA5.step();
-		decodeA6.step();
-		decodeA7.step();
-		decodeA8.step();
-		decodeA9.step();
-		decodeAA.step();
-		decodeAB.step();
-		decodeAC.step();
-		decodeAD.step();
-		decodeAE.step();
-		decodeAF.step();
+		addressLow.step();
+		addressHigh.step();
 
 		dataIn.step();
 		write.step();
