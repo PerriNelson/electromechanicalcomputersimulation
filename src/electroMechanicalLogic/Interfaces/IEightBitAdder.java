@@ -8,25 +8,9 @@
 package electroMechanicalLogic.Interfaces;
 
 public interface IEightBitAdder extends ISimulatedCircuit, IEightBitAInput,
-		IEightBitBInput {
+		IEightBitBInput, IEightBitSum {
 
 	public abstract boolean getCO();
-
-	public abstract boolean getS0();
-
-	public abstract boolean getS1();
-
-	public abstract boolean getS2();
-
-	public abstract boolean getS3();
-
-	public abstract boolean getS4();
-
-	public abstract boolean getS5();
-
-	public abstract boolean getS6();
-
-	public abstract boolean getS7();
 
 	public abstract void setCI(boolean value);
 }

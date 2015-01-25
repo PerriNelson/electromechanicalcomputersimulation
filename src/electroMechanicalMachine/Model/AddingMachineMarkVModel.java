@@ -68,7 +68,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -331,14 +331,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 		EightBitDataPath.DataOutToBIn(latch, adder);
 		adder.step();
 
-		latch.setDI0(adder.getS0());
-		latch.setDI1(adder.getS1());
-		latch.setDI2(adder.getS2());
-		latch.setDI3(adder.getS3());
-		latch.setDI4(adder.getS4());
-		latch.setDI5(adder.getS5());
-		latch.setDI6(adder.getS6());
-		latch.setDI7(adder.getS7());
+		EightBitDataPath.SumToDataIn(adder, latch);
 
 		clearBar.step();
 		clock.setPower(clearBar.getOutput());

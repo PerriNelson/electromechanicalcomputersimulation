@@ -14,6 +14,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
+import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.TwoInputXOrGate;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
@@ -44,7 +45,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -198,14 +199,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	public void step() {
 		complement.step();
 
-		adder.setB0(complement.getDO0());
-		adder.setB1(complement.getDO1());
-		adder.setB2(complement.getDO2());
-		adder.setB3(complement.getDO3());
-		adder.setB4(complement.getDO4());
-		adder.setB5(complement.getDO5());
-		adder.setB6(complement.getDO6());
-		adder.setB7(complement.getDO7());
+		EightBitDataPath.DataOutToBIn(complement, adder);
 
 		adder.step();
 

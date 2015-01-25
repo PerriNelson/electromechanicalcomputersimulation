@@ -80,7 +80,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
+				.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
