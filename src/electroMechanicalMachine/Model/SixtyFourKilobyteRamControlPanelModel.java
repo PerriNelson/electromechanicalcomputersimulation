@@ -14,8 +14,10 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitBuffer;
+import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
+import electroMechanicalLogic.SixteenBitDataPath;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
@@ -443,93 +445,23 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	private void stepAddressIn() {
-		addressInLow.setA0(externalAddress.getA0());
-		addressInLow.setA1(externalAddress.getA1());
-		addressInLow.setA2(externalAddress.getA2());
-		addressInLow.setA3(externalAddress.getA3());
-		addressInLow.setA4(externalAddress.getA4());
-		addressInLow.setA5(externalAddress.getA5());
-		addressInLow.setA6(externalAddress.getA6());
-		addressInLow.setA7(externalAddress.getA7());
-		addressInHigh.setA0(externalAddress.getA8());
-		addressInHigh.setA1(externalAddress.getA9());
-		addressInHigh.setA2(externalAddress.getAA());
-		addressInHigh.setA3(externalAddress.getAB());
-		addressInHigh.setA4(externalAddress.getAC());
-		addressInHigh.setA5(externalAddress.getAD());
-		addressInHigh.setA6(externalAddress.getAE());
-		addressInHigh.setA7(externalAddress.getAF());
-
-		addressInLow.setB0(panelAddress.getA0());
-		addressInLow.setB1(panelAddress.getA1());
-		addressInLow.setB2(panelAddress.getA2());
-		addressInLow.setB3(panelAddress.getA3());
-		addressInLow.setB4(panelAddress.getA4());
-		addressInLow.setB5(panelAddress.getA5());
-		addressInLow.setB6(panelAddress.getA6());
-		addressInLow.setB7(panelAddress.getA7());
-		addressInHigh.setB0(panelAddress.getA8());
-		addressInHigh.setB1(panelAddress.getA9());
-		addressInHigh.setB2(panelAddress.getAA());
-		addressInHigh.setB3(panelAddress.getAB());
-		addressInHigh.setB4(panelAddress.getAC());
-		addressInHigh.setB5(panelAddress.getAD());
-		addressInHigh.setB6(panelAddress.getAE());
-		addressInHigh.setB7(panelAddress.getAF());
+		SixteenBitDataPath.AOutToAIn(externalAddress, addressInLow, addressInHigh);
+		SixteenBitDataPath.AOutToBIn(panelAddress, addressInLow, addressInHigh);
 
 		addressInLow.step();
 		addressInHigh.step();
 	}
 
 	private void stepDataIn() {
-		dataIn.setA0(externalData.getDO0());
-		dataIn.setA1(externalData.getDO1());
-		dataIn.setA2(externalData.getDO2());
-		dataIn.setA3(externalData.getDO3());
-		dataIn.setA4(externalData.getDO4());
-		dataIn.setA5(externalData.getDO5());
-		dataIn.setA6(externalData.getDO6());
-		dataIn.setA7(externalData.getDO7());
-
-		dataIn.setB0(panelData.getDO0());
-		dataIn.setB1(panelData.getDO1());
-		dataIn.setB2(panelData.getDO2());
-		dataIn.setB3(panelData.getDO3());
-		dataIn.setB4(panelData.getDO4());
-		dataIn.setB5(panelData.getDO5());
-		dataIn.setB6(panelData.getDO6());
-		dataIn.setB7(panelData.getDO7());
+		EightBitDataPath.DataOutToAIn(externalData, dataIn);
+		EightBitDataPath.DataOutToBIn(panelData, dataIn);
 
 		dataIn.step();
 	}
 
 	private void stepRam() {
-		ram.setA0(addressInLow.getDO0());
-		ram.setA1(addressInLow.getDO1());
-		ram.setA2(addressInLow.getDO2());
-		ram.setA3(addressInLow.getDO3());
-		ram.setA4(addressInLow.getDO4());
-		ram.setA5(addressInLow.getDO5());
-		ram.setA6(addressInLow.getDO6());
-		ram.setA7(addressInLow.getDO7());
-
-		ram.setA8(addressInHigh.getDO0());
-		ram.setA9(addressInHigh.getDO1());
-		ram.setAA(addressInHigh.getDO2());
-		ram.setAB(addressInHigh.getDO3());
-		ram.setAC(addressInHigh.getDO4());
-		ram.setAD(addressInHigh.getDO5());
-		ram.setAE(addressInHigh.getDO6());
-		ram.setAF(addressInHigh.getDO7());
-
-		ram.setDI0(dataIn.getDO0());
-		ram.setDI1(dataIn.getDO1());
-		ram.setDI2(dataIn.getDO2());
-		ram.setDI3(dataIn.getDO3());
-		ram.setDI4(dataIn.getDO4());
-		ram.setDI5(dataIn.getDO5());
-		ram.setDI6(dataIn.getDO6());
-		ram.setDI7(dataIn.getDO7());
+		SixteenBitDataPath.DataOutToAIn(addressInLow, addressInHigh, ram);
+		EightBitDataPath.DataOutToDataIn(dataIn, ram);
 
 		ram.setW(writeSelector.getDO());
 
