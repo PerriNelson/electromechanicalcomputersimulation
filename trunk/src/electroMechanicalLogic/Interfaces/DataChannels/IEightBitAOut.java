@@ -6,23 +6,23 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.Interfaces.DataChannels;
 
-public interface IEightBitDataOut {
-	public abstract boolean getDO0();
+public interface IEightBitAOut {
+	public abstract boolean getA0();
 
-	public abstract boolean getDO1();
+	public abstract boolean getA1();
 
-	public abstract boolean getDO2();
+	public abstract boolean getA2();
 
-	public abstract boolean getDO3();
+	public abstract boolean getA3();
 
-	public abstract boolean getDO4();
+	public abstract boolean getA4();
 
-	public abstract boolean getDO5();
+	public abstract boolean getA5();
 
-	public abstract boolean getDO6();
+	public abstract boolean getA6();
 
-	public abstract boolean getDO7();
+	public abstract boolean getA7();
 
 }

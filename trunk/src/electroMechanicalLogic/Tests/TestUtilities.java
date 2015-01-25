@@ -26,9 +26,9 @@ import static electroMechanicalLogic.Tests.TestConstants.bitE;
 import static electroMechanicalLogic.Tests.TestConstants.bitF;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
-import electroMechanicalLogic.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
 
 public class TestUtilities {
 	public static int getDataOut(final IEightBitDataOut systemUnderTest) {

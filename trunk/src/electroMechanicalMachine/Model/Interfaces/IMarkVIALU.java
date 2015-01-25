@@ -8,9 +8,9 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.IEightBitDataOut;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
 
 public interface IMarkVIALU extends ISimulatedCircuit, IEightBitDataOut,
 		IEightBitDataIn {
