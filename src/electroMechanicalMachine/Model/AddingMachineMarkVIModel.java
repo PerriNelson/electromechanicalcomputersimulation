@@ -284,8 +284,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void setTakeover(final boolean value) {
-		code.setCpTakeover(value);
-		data.setCpTakeover(value);
+		code.setTakeover(value);
+		data.setTakeover(value);
 	}
 
 	@Override

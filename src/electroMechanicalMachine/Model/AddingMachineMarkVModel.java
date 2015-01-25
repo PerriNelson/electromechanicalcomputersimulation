@@ -297,7 +297,7 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 
 	@Override
 	public void setTakeover(final boolean value) {
-		controlPanel.setCpTakeover(value);
+		controlPanel.setTakeover(value);
 	}
 
 	@Override
