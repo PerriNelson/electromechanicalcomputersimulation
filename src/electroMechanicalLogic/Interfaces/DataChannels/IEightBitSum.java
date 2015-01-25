@@ -6,23 +6,24 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.Interfaces.DataChannels;
 
-public interface IEightBitBOut {
-	public abstract boolean getB0();
+public interface IEightBitSum {
 
-	public abstract boolean getB1();
+	public abstract boolean getS0();
 
-	public abstract boolean getB2();
+	public abstract boolean getS1();
 
-	public abstract boolean getB3();
+	public abstract boolean getS2();
 
-	public abstract boolean getB4();
+	public abstract boolean getS3();
 
-	public abstract boolean getB5();
+	public abstract boolean getS4();
 
-	public abstract boolean getB6();
+	public abstract boolean getS5();
 
-	public abstract boolean getB7();
+	public abstract boolean getS6();
+
+	public abstract boolean getS7();
 
 }

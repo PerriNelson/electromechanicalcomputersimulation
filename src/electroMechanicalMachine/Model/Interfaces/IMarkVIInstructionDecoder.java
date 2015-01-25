@@ -8,8 +8,8 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
 
 public interface IMarkVIInstructionDecoder extends ISimulatedCircuit,
 IEightBitDataIn {

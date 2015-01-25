@@ -8,13 +8,13 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IEightBitAInput;
-import electroMechanicalLogic.Interfaces.IEightBitAOut;
-import electroMechanicalLogic.Interfaces.IEightBitBInput;
-import electroMechanicalLogic.Interfaces.IEightBitBOut;
-import electroMechanicalLogic.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.IEightBitSum;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAInput;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAOut;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBInput;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBOut;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitSum;
 
 public class EightBitDataPath {
 	public static void AOutToDataIn(final IEightBitAOut source,

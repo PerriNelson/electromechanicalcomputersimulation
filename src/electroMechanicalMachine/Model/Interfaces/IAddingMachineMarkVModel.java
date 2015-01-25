@@ -8,7 +8,7 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
 
 public interface IAddingMachineMarkVModel extends IMachineModel,
 		IEightBitDataOut {

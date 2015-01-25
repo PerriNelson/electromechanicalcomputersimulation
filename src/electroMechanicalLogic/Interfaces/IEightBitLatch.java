@@ -8,6 +8,9 @@
 
 package electroMechanicalLogic.Interfaces;
 
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+
 public interface IEightBitLatch extends ISimulatedCircuit, IEightBitDataOut,
 IEightBitDataIn {
 	public abstract void setW(boolean value);

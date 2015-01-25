@@ -8,9 +8,9 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
 
 public interface IAddingMachineMarkVIModel extends IMachineModel,
 IEightBitDataOut, IEightBitDataIn, ISixteenBitAInput {
