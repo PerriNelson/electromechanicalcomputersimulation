@@ -14,12 +14,15 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitBuffer;
+import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
+import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.ISixteenBitAddressBuffer;
 import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
@@ -34,9 +37,10 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 
 	private final ISixtyFourKilobyteRAM ram;
 
-	private final TwoLineToOneLineSelector[] addressSelectors;
-	private final TwoLineToOneLineSelector[] dataSelectors;
-	private final TwoLineToOneLineSelector writeSelector;
+	private final IEightBitTwoToOneSelector addressInHigh;
+	private final IEightBitTwoToOneSelector addressInLow;
+	private final IEightBitTwoToOneSelector dataIn;
+	private final ITwoLineToOneLineSelector writeSelector;
 
 	private final EventListenerList eventListeners = new EventListenerList();
 
@@ -52,14 +56,9 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		externalData = new EightBitBuffer();
 
 		ram = sixtyFourKilobyteRAM;
-		addressSelectors = new TwoLineToOneLineSelector[16];
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i] = new TwoLineToOneLineSelector();
-		}
-		dataSelectors = new TwoLineToOneLineSelector[8];
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i] = new TwoLineToOneLineSelector();
-		}
+		addressInHigh = new EightBitTwoToOneSelector();
+		addressInLow = new EightBitTwoToOneSelector();
+		dataIn = new EightBitTwoToOneSelector();
 		writeSelector = new TwoLineToOneLineSelector();
 	}
 
@@ -410,24 +409,19 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 
 		ram.setPower(value);
 
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].setPower(value);
-		}
+		addressInHigh.setPower(value);
+		addressInLow.setPower(value);
 
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].setPower(value);
-		}
+		dataIn.setPower(value);
+
 		writeSelector.setPower(value);
 	}
 
 	@Override
 	public void setTakeover(final boolean value) {
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].setSelect(value);
-		}
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].setSelect(value);
-		}
+		addressInHigh.setSelect(value);
+		addressInLow.setSelect(value);
+		dataIn.setSelect(value);
 		writeSelector.setSelect(value);
 	}
 
@@ -438,105 +432,107 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		externalAddress.step();
 		externalData.step();
 
-		stepAddressSelectors();
-		stepDataSelectors();
+		stepAddressIn();
+		stepDataIn();
 
 		writeSelector.step();
 
-		ram.setA0(addressSelectors[0].getDO());
-		ram.setA1(addressSelectors[1].getDO());
-		ram.setA2(addressSelectors[2].getDO());
-		ram.setA3(addressSelectors[3].getDO());
-		ram.setA4(addressSelectors[4].getDO());
-		ram.setA5(addressSelectors[5].getDO());
-		ram.setA6(addressSelectors[6].getDO());
-		ram.setA7(addressSelectors[7].getDO());
-		ram.setA8(addressSelectors[8].getDO());
-		ram.setA9(addressSelectors[9].getDO());
-		ram.setAA(addressSelectors[10].getDO());
-		ram.setAB(addressSelectors[11].getDO());
-		ram.setAC(addressSelectors[12].getDO());
-		ram.setAD(addressSelectors[13].getDO());
-		ram.setAE(addressSelectors[14].getDO());
-		ram.setAF(addressSelectors[15].getDO());
-
-		ram.setDI0(dataSelectors[0].getDO());
-		ram.setDI1(dataSelectors[1].getDO());
-		ram.setDI2(dataSelectors[2].getDO());
-		ram.setDI3(dataSelectors[3].getDO());
-		ram.setDI4(dataSelectors[4].getDO());
-		ram.setDI5(dataSelectors[5].getDO());
-		ram.setDI6(dataSelectors[6].getDO());
-		ram.setDI7(dataSelectors[7].getDO());
-
-		ram.setW(writeSelector.getDO());
-
-		ram.step();
+		stepRam();
 
 		fireOnPropertyChange();
 	}
 
-	private void stepAddressSelectors() {
-		addressSelectors[0].setA(externalAddress.getA0());
-		addressSelectors[1].setA(externalAddress.getA1());
-		addressSelectors[2].setA(externalAddress.getA2());
-		addressSelectors[3].setA(externalAddress.getA3());
-		addressSelectors[4].setA(externalAddress.getA4());
-		addressSelectors[5].setA(externalAddress.getA5());
-		addressSelectors[6].setA(externalAddress.getA6());
-		addressSelectors[7].setA(externalAddress.getA7());
-		addressSelectors[8].setA(externalAddress.getA8());
-		addressSelectors[9].setA(externalAddress.getA9());
-		addressSelectors[10].setA(externalAddress.getAA());
-		addressSelectors[11].setA(externalAddress.getAB());
-		addressSelectors[12].setA(externalAddress.getAC());
-		addressSelectors[13].setA(externalAddress.getAD());
-		addressSelectors[14].setA(externalAddress.getAE());
-		addressSelectors[15].setA(externalAddress.getAF());
+	private void stepAddressIn() {
+		addressInLow.setA0(externalAddress.getA0());
+		addressInLow.setA1(externalAddress.getA1());
+		addressInLow.setA2(externalAddress.getA2());
+		addressInLow.setA3(externalAddress.getA3());
+		addressInLow.setA4(externalAddress.getA4());
+		addressInLow.setA5(externalAddress.getA5());
+		addressInLow.setA6(externalAddress.getA6());
+		addressInLow.setA7(externalAddress.getA7());
+		addressInHigh.setA0(externalAddress.getA8());
+		addressInHigh.setA1(externalAddress.getA9());
+		addressInHigh.setA2(externalAddress.getAA());
+		addressInHigh.setA3(externalAddress.getAB());
+		addressInHigh.setA4(externalAddress.getAC());
+		addressInHigh.setA5(externalAddress.getAD());
+		addressInHigh.setA6(externalAddress.getAE());
+		addressInHigh.setA7(externalAddress.getAF());
 
-		addressSelectors[0].setB(panelAddress.getA0());
-		addressSelectors[1].setB(panelAddress.getA1());
-		addressSelectors[2].setB(panelAddress.getA2());
-		addressSelectors[3].setB(panelAddress.getA3());
-		addressSelectors[4].setB(panelAddress.getA4());
-		addressSelectors[5].setB(panelAddress.getA5());
-		addressSelectors[6].setB(panelAddress.getA6());
-		addressSelectors[7].setB(panelAddress.getA7());
-		addressSelectors[8].setB(panelAddress.getA8());
-		addressSelectors[9].setB(panelAddress.getA9());
-		addressSelectors[10].setB(panelAddress.getAA());
-		addressSelectors[11].setB(panelAddress.getAB());
-		addressSelectors[12].setB(panelAddress.getAC());
-		addressSelectors[13].setB(panelAddress.getAD());
-		addressSelectors[14].setB(panelAddress.getAE());
-		addressSelectors[15].setB(panelAddress.getAF());
+		addressInLow.setB0(panelAddress.getA0());
+		addressInLow.setB1(panelAddress.getA1());
+		addressInLow.setB2(panelAddress.getA2());
+		addressInLow.setB3(panelAddress.getA3());
+		addressInLow.setB4(panelAddress.getA4());
+		addressInLow.setB5(panelAddress.getA5());
+		addressInLow.setB6(panelAddress.getA6());
+		addressInLow.setB7(panelAddress.getA7());
+		addressInHigh.setB0(panelAddress.getA8());
+		addressInHigh.setB1(panelAddress.getA9());
+		addressInHigh.setB2(panelAddress.getAA());
+		addressInHigh.setB3(panelAddress.getAB());
+		addressInHigh.setB4(panelAddress.getAC());
+		addressInHigh.setB5(panelAddress.getAD());
+		addressInHigh.setB6(panelAddress.getAE());
+		addressInHigh.setB7(panelAddress.getAF());
 
-		for (int i = 0; i < 16; i++) {
-			addressSelectors[i].step();
-		}
+		addressInLow.step();
+		addressInHigh.step();
 	}
 
-	private void stepDataSelectors() {
-		dataSelectors[0].setA(externalData.getDO0());
-		dataSelectors[1].setA(externalData.getDO1());
-		dataSelectors[2].setA(externalData.getDO2());
-		dataSelectors[3].setA(externalData.getDO3());
-		dataSelectors[4].setA(externalData.getDO4());
-		dataSelectors[5].setA(externalData.getDO5());
-		dataSelectors[6].setA(externalData.getDO6());
-		dataSelectors[7].setA(externalData.getDO7());
+	private void stepDataIn() {
+		dataIn.setA0(externalData.getDO0());
+		dataIn.setA1(externalData.getDO1());
+		dataIn.setA2(externalData.getDO2());
+		dataIn.setA3(externalData.getDO3());
+		dataIn.setA4(externalData.getDO4());
+		dataIn.setA5(externalData.getDO5());
+		dataIn.setA6(externalData.getDO6());
+		dataIn.setA7(externalData.getDO7());
 
-		dataSelectors[0].setB(panelData.getDO0());
-		dataSelectors[1].setB(panelData.getDO1());
-		dataSelectors[2].setB(panelData.getDO2());
-		dataSelectors[3].setB(panelData.getDO3());
-		dataSelectors[4].setB(panelData.getDO4());
-		dataSelectors[5].setB(panelData.getDO5());
-		dataSelectors[6].setB(panelData.getDO6());
-		dataSelectors[7].setB(panelData.getDO7());
+		dataIn.setB0(panelData.getDO0());
+		dataIn.setB1(panelData.getDO1());
+		dataIn.setB2(panelData.getDO2());
+		dataIn.setB3(panelData.getDO3());
+		dataIn.setB4(panelData.getDO4());
+		dataIn.setB5(panelData.getDO5());
+		dataIn.setB6(panelData.getDO6());
+		dataIn.setB7(panelData.getDO7());
 
-		for (int i = 0; i < 8; i++) {
-			dataSelectors[i].step();
-		}
+		dataIn.step();
+	}
+
+	private void stepRam() {
+		ram.setA0(addressInLow.getDO0());
+		ram.setA1(addressInLow.getDO1());
+		ram.setA2(addressInLow.getDO2());
+		ram.setA3(addressInLow.getDO3());
+		ram.setA4(addressInLow.getDO4());
+		ram.setA5(addressInLow.getDO5());
+		ram.setA6(addressInLow.getDO6());
+		ram.setA7(addressInLow.getDO7());
+
+		ram.setA8(addressInHigh.getDO0());
+		ram.setA9(addressInHigh.getDO1());
+		ram.setAA(addressInHigh.getDO2());
+		ram.setAB(addressInHigh.getDO3());
+		ram.setAC(addressInHigh.getDO4());
+		ram.setAD(addressInHigh.getDO5());
+		ram.setAE(addressInHigh.getDO6());
+		ram.setAF(addressInHigh.getDO7());
+
+		ram.setDI0(dataIn.getDO0());
+		ram.setDI1(dataIn.getDO1());
+		ram.setDI2(dataIn.getDO2());
+		ram.setDI3(dataIn.getDO3());
+		ram.setDI4(dataIn.getDO4());
+		ram.setDI5(dataIn.getDO5());
+		ram.setDI6(dataIn.getDO6());
+		ram.setDI7(dataIn.getDO7());
+
+		ram.setW(writeSelector.getDO());
+
+		ram.step();
 	}
 }
