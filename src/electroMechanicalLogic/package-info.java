@@ -5,12 +5,8 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-package electroMechanicalLogic.Interfaces;
 
-public interface ITwoInputSingleOutputGate extends ISimulatedCircuit {
-	public abstract boolean getOutput();
-
-	public abstract void setA(boolean value);
-
-	public abstract void setB(boolean value);
-}
+/**
+ * Contains basic simulated electromechanical logic components.
+ */
+package electroMechanicalLogic;
