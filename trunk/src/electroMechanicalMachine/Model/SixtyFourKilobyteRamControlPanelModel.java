@@ -14,19 +14,19 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitBuffer;
-import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
-import electroMechanicalLogic.SixteenBitDataPath;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
+import electroMechanicalLogic.DataChannel.EightBitDataPath;
+import electroMechanicalLogic.DataChannel.SixteenBitDataPath;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.ISixteenBitAddressBuffer;
 import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKilobyteRamControlPanelModel implements

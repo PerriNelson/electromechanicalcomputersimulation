@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces.DataChannels;
+package electroMechanicalLogic.DataChannel.Interfaces;
 
 public interface IEightBitAInput {
 

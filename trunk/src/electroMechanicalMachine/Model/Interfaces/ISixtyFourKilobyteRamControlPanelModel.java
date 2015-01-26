@@ -8,9 +8,9 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
 public interface ISixtyFourKilobyteRamControlPanelModel extends IMachineModel,
 IEightBitDataOut {

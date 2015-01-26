@@ -9,12 +9,12 @@
 package electroMechanicalMachine.Model;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.TwoInputAndGate;
 import electroMechanicalLogic.TwoInputOrGate;
+import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;

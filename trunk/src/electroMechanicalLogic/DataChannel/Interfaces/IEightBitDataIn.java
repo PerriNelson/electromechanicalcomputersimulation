@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces.DataChannels;
+package electroMechanicalLogic.DataChannel.Interfaces;
 
 public interface IEightBitDataIn {
 	public abstract void setDI0(boolean value);

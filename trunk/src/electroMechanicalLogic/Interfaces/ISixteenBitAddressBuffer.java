@@ -8,8 +8,8 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 
 public interface ISixteenBitAddressBuffer extends ISixteenBitAInput,
 		ISixteenBitAOutput, ISimulatedCircuit {

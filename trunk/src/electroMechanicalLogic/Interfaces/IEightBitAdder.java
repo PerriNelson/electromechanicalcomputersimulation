@@ -7,9 +7,9 @@
  */
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAInput;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBInput;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitSum;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSum;
 
 public interface IEightBitAdder extends ISimulatedCircuit, IEightBitAInput,
 		IEightBitBInput, IEightBitSum {

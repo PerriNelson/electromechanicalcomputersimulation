@@ -6,10 +6,9 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces.DataChannels;
+package electroMechanicalLogic.DataChannel.Interfaces;
 
-public interface ISixteenBitAOutput {
-	
+public interface IEightBitAOut {
 	public abstract boolean getA0();
 
 	public abstract boolean getA1();
@@ -25,21 +24,5 @@ public interface ISixteenBitAOutput {
 	public abstract boolean getA6();
 
 	public abstract boolean getA7();
-
-	public abstract boolean getA8();
-
-	public abstract boolean getA9();
-
-	public abstract boolean getAA();
-
-	public abstract boolean getAB();
-
-	public abstract boolean getAC();
-
-	public abstract boolean getAD();
-
-	public abstract boolean getAE();
-
-	public abstract boolean getAF();
 
 }

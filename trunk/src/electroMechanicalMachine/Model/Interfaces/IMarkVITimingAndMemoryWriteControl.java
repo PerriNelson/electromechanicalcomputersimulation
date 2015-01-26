@@ -8,8 +8,8 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
 
 public interface IMarkVITimingAndMemoryWriteControl extends ISimulatedCircuit,
 		ISixteenBitAOutput {

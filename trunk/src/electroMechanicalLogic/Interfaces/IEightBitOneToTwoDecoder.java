@@ -8,9 +8,9 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAOut;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBOut;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
 
 public interface IEightBitOneToTwoDecoder extends ISimulatedCircuit,
 		IEightBitAOut, IEightBitBOut, IEightBitDataIn {

@@ -14,9 +14,9 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.TwoInputXOrGate;
+import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
