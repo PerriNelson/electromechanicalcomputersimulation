@@ -26,10 +26,10 @@ import static electroMechanicalLogic.Tests.TestConstants.bitE;
 import static electroMechanicalLogic.Tests.TestConstants.bitF;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 
 public class TestUtilities {
 	public static int getAddress(final ISixteenBitAOutput source) {

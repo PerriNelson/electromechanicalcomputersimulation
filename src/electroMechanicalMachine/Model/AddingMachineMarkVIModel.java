@@ -13,12 +13,12 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitOneToTwoDecoder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
-import electroMechanicalLogic.SixteenBitDataPath;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.DataChannel.EightBitDataPath;
+import electroMechanicalLogic.DataChannel.SixteenBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitOneToTwoDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;

@@ -6,15 +6,15 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.DataChannel;
 
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAInput;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitAOut;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBInput;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitBOut;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 
 public class SixteenBitDataPath {
 	public static void AOutToAIn(final IEightBitAOut sourceLow,

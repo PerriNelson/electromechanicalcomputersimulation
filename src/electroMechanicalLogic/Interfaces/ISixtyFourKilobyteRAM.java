@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
 public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM, ISixteenBitAInput {
 }

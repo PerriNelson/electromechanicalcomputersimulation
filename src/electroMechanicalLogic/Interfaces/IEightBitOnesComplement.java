@@ -8,8 +8,8 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataIn;
-import electroMechanicalLogic.Interfaces.DataChannels.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
 
 public interface IEightBitOnesComplement extends ISimulatedCircuit,
 IEightBitDataOut, IEightBitDataIn {
