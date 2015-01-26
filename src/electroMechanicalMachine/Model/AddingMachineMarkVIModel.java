@@ -17,6 +17,7 @@ import electroMechanicalLogic.EightBitDataPath;
 import electroMechanicalLogic.EightBitOneToTwoDecoder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
+import electroMechanicalLogic.SixteenBitDataPath;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IEightBitOneToTwoDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
@@ -80,7 +81,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -329,106 +330,23 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepCode() {
-		code.setCpA0(addressLow.getB0());
-		code.setCpA1(addressLow.getB1());
-		code.setCpA2(addressLow.getB2());
-		code.setCpA3(addressLow.getB3());
-		code.setCpA4(addressLow.getB4());
-		code.setCpA5(addressLow.getB5());
-		code.setCpA6(addressLow.getB6());
-		code.setCpA7(addressLow.getB7());
-		code.setCpA8(addressHigh.getB0());
-		code.setCpA9(addressHigh.getB1());
-		code.setCpAA(addressHigh.getB2());
-		code.setCpAB(addressHigh.getB3());
-		code.setCpAC(addressHigh.getB4());
-		code.setCpAD(addressHigh.getB5());
-		code.setCpAE(addressHigh.getB6());
-		code.setCpAF(addressHigh.getB7());
-
-		code.setEcA0(timingAndMemoryWriteControl.getA0());
-		code.setEcA1(timingAndMemoryWriteControl.getA1());
-		code.setEcA2(timingAndMemoryWriteControl.getA2());
-		code.setEcA3(timingAndMemoryWriteControl.getA3());
-		code.setEcA4(timingAndMemoryWriteControl.getA4());
-		code.setEcA5(timingAndMemoryWriteControl.getA5());
-		code.setEcA6(timingAndMemoryWriteControl.getA6());
-		code.setEcA7(timingAndMemoryWriteControl.getA7());
-		code.setEcA8(timingAndMemoryWriteControl.getA8());
-		code.setEcA9(timingAndMemoryWriteControl.getA9());
-		code.setEcAA(timingAndMemoryWriteControl.getAA());
-		code.setEcAB(timingAndMemoryWriteControl.getAB());
-		code.setEcAC(timingAndMemoryWriteControl.getAC());
-		code.setEcAD(timingAndMemoryWriteControl.getAD());
-		code.setEcAE(timingAndMemoryWriteControl.getAE());
-		code.setEcAF(timingAndMemoryWriteControl.getAF());
-
-		code.setCpDI0(dataIn.getB0());
-		code.setCpDI1(dataIn.getB1());
-		code.setCpDI2(dataIn.getB2());
-		code.setCpDI3(dataIn.getB3());
-		code.setCpDI4(dataIn.getB4());
-		code.setCpDI5(dataIn.getB5());
-		code.setCpDI6(dataIn.getB6());
-		code.setCpDI7(dataIn.getB7());
+		SixteenBitDataPath.BOutToAIn(addressLow, addressHigh,
+				code.getPanelAddressIn());
+		SixteenBitDataPath.AOutToAIn(timingAndMemoryWriteControl,
+				code.getExternalAddressIn());
+		EightBitDataPath.BOutToDataIn(dataIn, code.getPanelDataIn());
 
 		code.setCpW(write.getB());
-
 		code.step();
 	}
 
 	private void stepData() {
-		data.setCpA0(addressLow.getA0());
-		data.setCpA1(addressLow.getA1());
-		data.setCpA2(addressLow.getA2());
-		data.setCpA3(addressLow.getA3());
-		data.setCpA4(addressLow.getA4());
-		data.setCpA5(addressLow.getA5());
-		data.setCpA6(addressLow.getA6());
-		data.setCpA7(addressLow.getA7());
-		data.setCpA8(addressHigh.getA0());
-		data.setCpA9(addressHigh.getA1());
-		data.setCpAA(addressHigh.getA2());
-		data.setCpAB(addressHigh.getA3());
-		data.setCpAC(addressHigh.getA4());
-		data.setCpAD(addressHigh.getA5());
-		data.setCpAE(addressHigh.getA6());
-		data.setCpAF(addressHigh.getA7());
-
-		data.setEcA0(timingAndMemoryWriteControl.getA0());
-		data.setEcA1(timingAndMemoryWriteControl.getA1());
-		data.setEcA2(timingAndMemoryWriteControl.getA2());
-		data.setEcA3(timingAndMemoryWriteControl.getA3());
-		data.setEcA4(timingAndMemoryWriteControl.getA4());
-		data.setEcA5(timingAndMemoryWriteControl.getA5());
-		data.setEcA6(timingAndMemoryWriteControl.getA6());
-		data.setEcA7(timingAndMemoryWriteControl.getA7());
-		data.setEcA8(timingAndMemoryWriteControl.getA8());
-		data.setEcA9(timingAndMemoryWriteControl.getA9());
-		data.setEcAA(timingAndMemoryWriteControl.getAA());
-		data.setEcAB(timingAndMemoryWriteControl.getAB());
-		data.setEcAC(timingAndMemoryWriteControl.getAC());
-		data.setEcAD(timingAndMemoryWriteControl.getAD());
-		data.setEcAE(timingAndMemoryWriteControl.getAE());
-		data.setEcAF(timingAndMemoryWriteControl.getAF());
-
-		data.setCpDI0(dataIn.getA0());
-		data.setCpDI1(dataIn.getA1());
-		data.setCpDI2(dataIn.getA2());
-		data.setCpDI3(dataIn.getA3());
-		data.setCpDI4(dataIn.getA4());
-		data.setCpDI5(dataIn.getA5());
-		data.setCpDI6(dataIn.getA6());
-		data.setCpDI7(dataIn.getA7());
-
-		data.setEcDI0(alu.getDO0());
-		data.setEcDI1(alu.getDO1());
-		data.setEcDI2(alu.getDO2());
-		data.setEcDI3(alu.getDO3());
-		data.setEcDI4(alu.getDO4());
-		data.setEcDI5(alu.getDO5());
-		data.setEcDI6(alu.getDO6());
-		data.setEcDI7(alu.getDO7());
+		SixteenBitDataPath.AOutToAIn(addressLow, addressHigh,
+				data.getPanelAddressIn());
+		SixteenBitDataPath.AOutToAIn(timingAndMemoryWriteControl,
+				data.getExternalAddressIn());
+		EightBitDataPath.AOutToDataIn(dataIn, data.getPanelDataIn());
+		EightBitDataPath.DataOutToDataIn(alu, data.getExternalDataIn());
 
 		data.setCpW(write.getA());
 		data.setEcW(timingAndMemoryWriteControl.getWrite());

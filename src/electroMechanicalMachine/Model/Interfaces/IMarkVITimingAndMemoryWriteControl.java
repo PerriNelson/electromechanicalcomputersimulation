@@ -9,40 +9,10 @@
 package electroMechanicalMachine.Model.Interfaces;
 
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+import electroMechanicalLogic.Interfaces.DataChannels.ISixteenBitAOutput;
 
-public interface IMarkVITimingAndMemoryWriteControl extends ISimulatedCircuit {
-
-	public abstract boolean getA0();
-
-	public abstract boolean getA1();
-
-	public abstract boolean getA2();
-
-	public abstract boolean getA3();
-
-	public abstract boolean getA4();
-
-	public abstract boolean getA5();
-
-	public abstract boolean getA6();
-
-	public abstract boolean getA7();
-
-	public abstract boolean getA8();
-
-	public abstract boolean getA9();
-
-	public abstract boolean getAA();
-
-	public abstract boolean getAB();
-
-	public abstract boolean getAC();
-
-	public abstract boolean getAD();
-
-	public abstract boolean getAE();
-
-	public abstract boolean getAF();
+public interface IMarkVITimingAndMemoryWriteControl extends ISimulatedCircuit,
+		ISixteenBitAOutput {
 
 	public abstract boolean getClock();
 
