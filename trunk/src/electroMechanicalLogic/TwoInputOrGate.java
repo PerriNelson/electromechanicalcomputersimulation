@@ -18,18 +18,18 @@ public final class TwoInputOrGate extends TwoRelaySingleOutputGate implements
 
 	@Override
 	public boolean getOutput() {
-		return relayA.getOutput() || relayB.getOutput();
+		return a.getOutput() || b.getOutput();
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		relayA.setPower(value);
-		relayB.setPower(value);
+		a.setPower(value);
+		b.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		relayA.step();
-		relayB.step();
+		a.step();
+		b.step();
 	}
 }

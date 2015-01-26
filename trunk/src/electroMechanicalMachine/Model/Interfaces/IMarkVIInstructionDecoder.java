@@ -12,7 +12,7 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
 public interface IMarkVIInstructionDecoder extends ISimulatedCircuit,
-IEightBitDataIn {
+		IEightBitDataIn {
 	public abstract boolean getAdd();
 
 	public abstract boolean getHalt();

@@ -12,6 +12,6 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
 
 public interface IEightBitOnesComplement extends ISimulatedCircuit,
-IEightBitDataOut, IEightBitDataIn {
+		IEightBitDataOut, IEightBitDataIn {
 	public abstract void setInvert(boolean value);
 }

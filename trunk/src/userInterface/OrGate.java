@@ -12,12 +12,12 @@ import electroMechanicalLogic.TwoInputOrGate;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OrGate extends GateDemoFrame {
+	public static final long serialVersionUID = 1l;
+
 	public static void main(final String[] args) {
 		final OrGate frame = new OrGate();
 		frame.setVisible(true);
 	}
-
-	public static final long serialVersionUID = 1l;
 
 	public OrGate() {
 		super("Two Input OR Gate");

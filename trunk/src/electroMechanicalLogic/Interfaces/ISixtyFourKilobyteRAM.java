@@ -10,5 +10,6 @@ package electroMechanicalLogic.Interfaces;
 
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
-public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM, ISixteenBitAInput {
+public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM,
+		ISixteenBitAInput {
 }

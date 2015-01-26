@@ -8,16 +8,16 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputNOrGate;
+import electroMechanicalLogic.TwoInputNOR;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class NOrGate extends GateDemoFrame {
+	public static final long serialVersionUID = 1l;
+
 	public static void main(final String[] args) {
 		final NOrGate frame = new NOrGate();
 		frame.setVisible(true);
 	}
-
-	public static final long serialVersionUID = 1l;
 
 	public NOrGate() {
 		super("Two Input NOR Gate");
@@ -25,6 +25,6 @@ public class NOrGate extends GateDemoFrame {
 
 	@Override
 	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputNOrGate();
+		return new TwoInputNOR();
 	}
 }

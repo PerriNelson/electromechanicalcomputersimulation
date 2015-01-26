@@ -179,7 +179,7 @@ public class MarkVIIALU implements IMarkVIIALU {
 
 	private void stepAdder() {
 		EightBitDataPath.DataOutToAIn(subtract, adder);
-		EightBitDataPath.DataOutToBIn(latch, adder);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 	}
 

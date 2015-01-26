@@ -45,7 +45,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -199,7 +199,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	public void step() {
 		complement.step();
 
-		EightBitDataPath.DataOutToBIn(complement, adder);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(complement, adder);
 
 		adder.step();
 

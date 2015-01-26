@@ -48,7 +48,7 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -205,13 +205,13 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 	public void step() {
 		selector.step();
 
-		EightBitDataPath.DataOutToBIn(selector, adder);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(selector, adder);
 		adder.step();
 
-		EightBitDataPath.SumToDataIn(adder, latch);
+		EightBitDataPath.connectEightBitSumToEightBitDataInput(adder, latch);
 		latch.step();
 
-		EightBitDataPath.DataOutToBIn(latch, selector);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, selector);
 		fireOnPropertyChange();
 	}
 

@@ -53,7 +53,7 @@ public class EightBitDataPath {
 		target.setA7(source.getDO7());
 	}
 
-	public static void DataOutToBIn(final IEightBitDataOut source,
+	public static void connectEightBitDataOutputToEightBitBInput(final IEightBitDataOut source,
 			final IEightBitBInput target) {
 		target.setB0(source.getDO0());
 		target.setB1(source.getDO1());
@@ -89,7 +89,7 @@ public class EightBitDataPath {
 		target.setB7(source.getS7());
 	}
 
-	public static void SumToDataIn(final IEightBitSum source,
+	public static void connectEightBitSumToEightBitDataInput(final IEightBitSum source,
 			final IEightBitDataIn target) {
 		target.setDI0(source.getS0());
 		target.setDI1(source.getS1());

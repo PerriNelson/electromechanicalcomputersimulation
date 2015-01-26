@@ -86,8 +86,7 @@ public class TestUtilities {
 		target.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	public static void setDataIn(final IEightBitDataIn target,
-			final int value) {
+	public static void setDataIn(final IEightBitDataIn target, final int value) {
 		target.setDI0((value & bit0) == bit0);
 		target.setDI1((value & bit1) == bit1);
 		target.setDI2((value & bit2) == bit2);

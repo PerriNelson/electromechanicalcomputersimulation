@@ -445,7 +445,8 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	private void stepAddressIn() {
-		SixteenBitDataPath.AOutToAIn(externalAddress, addressInLow, addressInHigh);
+		SixteenBitDataPath.AOutToAIn(externalAddress, addressInLow,
+				addressInHigh);
 		SixteenBitDataPath.AOutToBIn(panelAddress, addressInLow, addressInHigh);
 
 		addressInLow.step();
@@ -454,7 +455,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 
 	private void stepDataIn() {
 		EightBitDataPath.DataOutToAIn(externalData, dataIn);
-		EightBitDataPath.DataOutToBIn(panelData, dataIn);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(panelData, dataIn);
 
 		dataIn.step();
 	}

@@ -12,6 +12,6 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
 
 public interface IEightBitLatch extends ISimulatedCircuit, IEightBitDataOut,
-IEightBitDataIn {
+		IEightBitDataIn {
 	public abstract void setW(boolean value);
 }

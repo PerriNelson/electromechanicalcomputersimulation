@@ -23,18 +23,14 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
 public class AddingMachineMarkIV extends BasicUIFrame implements
 		PropertyChangeListener {
-	public static void main(final String[] args) {
-		final AddingMachineMarkIV frame = new AddingMachineMarkIV();
-		frame.setVisible(true);
-	}
-
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
+
 	private static final int aRow = 0;
 	private static final int bRow = 1;
-
 	private static final int lampRow = 1;
+
 	private static final int columnControl = 9;
 	private static final int columnLabel = 8;
 	private static final int column0 = 7;
@@ -44,8 +40,12 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	private static final int column4 = 3;
 	private static final int column5 = 2;
 	private static final int column6 = 1;
-
 	private static final int column7 = 0;
+
+	public static void main(final String[] args) {
+		final AddingMachineMarkIV frame = new AddingMachineMarkIV();
+		frame.setVisible(true);
+	}
 
 	private ToggleSwitch toggleSwitchA0;
 	private ToggleSwitch toggleSwitchA1;
