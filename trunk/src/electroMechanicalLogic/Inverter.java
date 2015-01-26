@@ -9,6 +9,11 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.IRelay;
 
+/**
+ * An inverter is a relay wired so that when the power is on and the input is
+ * off the output is on and when the power is off or the input is on the output
+ * is off.
+ */
 public final class Inverter extends RelayBase implements IRelay {
 
 	@Override

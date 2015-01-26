@@ -7,13 +7,25 @@
  */
 package electroMechanicalLogic;
 
-abstract class RelayBase {
+import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+
+/**
+ * Provides basic functionality for all relays in the simulation.
+ */
+abstract class RelayBase implements ISimulatedCircuit {
 
 	private static final byte PowerMaskIn = (byte) 0x80;
 	private static final byte InputMaskIn = (byte) 0x40;
+	/**
+	 * A bit mask that can be applied to the relay's state to determine
+	 * whether power is flowing to the relay's power terminal.
+	 */
 	protected static final byte PowerMaskOut = (byte) 0x08;
+	/**
+	 * A bit mask that can be applied to the relay's state to determine
+	 * whether power is flowing to the relay's input terminal.
+	 */
 	protected static final byte InputMaskOut = (byte) 0x04;
-	protected static final byte OutputMask = (byte) 0x0C;
 	private static final byte StateMaskOut = (byte) 0x0F;
 	private static final byte StateMaskIn = (byte) 0xF0;
 
