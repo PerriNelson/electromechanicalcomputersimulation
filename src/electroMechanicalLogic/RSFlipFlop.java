@@ -13,8 +13,8 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class RSFlipFlop implements IRSFlipFlop {
 
-	public ITwoInputSingleOutputGate norR = new TwoInputNOrGate();
-	public ITwoInputSingleOutputGate norS = new TwoInputNOrGate();
+	public ITwoInputSingleOutputGate norR = new TwoInputNOR();
+	public ITwoInputSingleOutputGate norS = new TwoInputNOR();
 
 	@Override
 	public boolean getQ() {

@@ -13,7 +13,7 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
 public interface IAddingMachineMarkVIModel extends IMachineModel,
-IEightBitDataOut, IEightBitDataIn, ISixteenBitAInput {
+		IEightBitDataOut, IEightBitDataIn, ISixteenBitAInput {
 
 	public abstract void setReset(boolean value);
 

@@ -26,7 +26,7 @@ public interface ISimulatedCircuit {
 
 	/**
 	 * Causes the simulated circuit to process all of its inputs to yield its
-	 * outputs. 
+	 * outputs.
 	 */
 	public abstract void step();
 }

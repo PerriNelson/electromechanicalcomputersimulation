@@ -13,12 +13,12 @@ import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 
 public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {
+	public static final long serialVersionUID = 1l;
+
 	public static void main(final String[] args) {
 		final FastSixtyFourKBRamControlPanel frame = new FastSixtyFourKBRamControlPanel();
 		frame.setVisible(true);
 	}
-
-	public static final long serialVersionUID = 1l;
 
 	public FastSixtyFourKBRamControlPanel() {
 		super("Fast 64KB RAM Control Panel",

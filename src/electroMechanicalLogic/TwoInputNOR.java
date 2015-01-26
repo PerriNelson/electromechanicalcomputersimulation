@@ -9,27 +9,32 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class TwoInputNOrGate extends TwoRelaySingleOutputGate implements
+/**
+ * A two input NOR gate. The output of a NOR gate is on when the power is on and
+ * both the "A" and "B" inputs are off. The output of a NOR gate is off when the
+ * power is off or either the "A" or "B" input is on.
+ */
+public final class TwoInputNOR extends TwoRelaySingleOutputGate implements
 		ITwoInputSingleOutputGate {
 
-	public TwoInputNOrGate() {
+	public TwoInputNOR() {
 		super(new Inverter(), new Inverter());
 	}
 
 	@Override
 	public boolean getOutput() {
-		return relayB.getOutput();
+		return b.getOutput();
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		relayA.setPower(value);
+		a.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		relayA.step();
-		relayB.setPower(relayA.getOutput());
-		relayB.step();
+		a.step();
+		b.setPower(a.getOutput());
+		b.step();
 	}
 }

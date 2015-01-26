@@ -9,7 +9,7 @@
 package electroMechanicalLogic.DataChannel.Interfaces;
 
 public interface ISixteenBitAOutput {
-	
+
 	public abstract boolean getA0();
 
 	public abstract boolean getA1();

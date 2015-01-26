@@ -356,7 +356,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	private void stepDataOut() {
 		EightBitDataPath.DataOutToAIn(data, dataOut);
-		EightBitDataPath.DataOutToBIn(code, dataOut);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(code, dataOut);
 		dataOut.step();
 	}
 

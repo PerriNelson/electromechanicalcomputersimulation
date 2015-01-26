@@ -10,13 +10,13 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IRelay;
 
 /**
- * A buffer is a relay configured so that when both the power and the input
- * are on the output is on, and when either the power or the input is off
- * the output is off.
+ * A buffer is a relay configured so that when both the power and the input are
+ * on the output is on, and when either the power or the input is off the output
+ * is off.
  */
 public final class Buffer extends RelayBase implements IRelay {
 
-	private static final byte OutputMask = (byte) PowerMaskOut | InputMaskOut;
+	private static final byte OutputMask = PowerMaskOut | InputMaskOut;
 
 	@Override
 	public boolean getOutput() {

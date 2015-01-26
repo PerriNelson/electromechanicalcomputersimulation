@@ -165,7 +165,7 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	private void stepAdder() {
-		EightBitDataPath.DataOutToBIn(latch, adder);
+		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 	}
 

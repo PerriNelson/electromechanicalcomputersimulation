@@ -27,23 +27,23 @@ import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.FullAdder;
 
 public class FullAdderDemo extends Frame implements PropertyChangeListener {
-	public static void main(final String[] args) {
-		final FullAdderDemo frame = new FullAdderDemo();
-		frame.setVisible(true);
-	}
-
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
-	private static final int labelRow = 0;
 
+	private static final int labelRow = 0;
 	private static final int controlRow = 1;
+
 	private static final int columnA = 1;
 	private static final int columnB = 2;
 	private static final int columnCI = 0;
 	private static final int columnCO = 3;
-
 	private static final int columnS = 4;
+
+	public static void main(final String[] args) {
+		final FullAdderDemo frame = new FullAdderDemo();
+		frame.setVisible(true);
+	}
 
 	private final JLabel labelCI;
 	private final JLabel labelA;

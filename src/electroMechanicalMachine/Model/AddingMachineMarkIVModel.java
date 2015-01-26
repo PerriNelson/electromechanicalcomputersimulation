@@ -8,13 +8,15 @@
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
@@ -44,7 +46,7 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
@@ -153,10 +155,10 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 
 	@Override
 	public void step() {
-		EightBitDataPath.DataOutToBIn(latch, adder);
+		connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 
-		EightBitDataPath.SumToDataIn(adder, latch);
+		connectEightBitSumToEightBitDataInput(adder, latch);
 		latch.step();
 
 		fireOnPropertyChange();

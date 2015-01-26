@@ -44,11 +44,11 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 		systemUnderTest.setTakeover(on);
 		systemUnderTest.setUseCodePanel(off);
 		systemUnderTest.setW(on);
-		
+
 		setAddress(systemUnderTest, 0);
 		setDataIn(systemUnderTest, 0x56);
 		systemUnderTest.step();
-		
+
 		setAddress(systemUnderTest, 1);
 		setDataIn(systemUnderTest, 0x56);
 		systemUnderTest.step();
@@ -89,8 +89,9 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 		setAddress(systemUnderTest, 2);
 		systemUnderTest.step();
 		assertEquals(0, getDataOut(systemUnderTest));
-		
+
 	}
+
 	@Test
 	public void test_MarkVII_ExampleFromBook_ProducesExpectedResults() {
 		systemUnderTest.setReset(on);

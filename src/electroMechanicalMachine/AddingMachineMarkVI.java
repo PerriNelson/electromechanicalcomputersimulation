@@ -23,24 +23,20 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVI extends BasicUIFrame implements
 		PropertyChangeListener {
-	public static void main(final String[] args) {
-		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
-		frame.setVisible(true);
-	}
-
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
 
 	private static final int titleRow = 0;
+
 	private static final int codeSwitchRow = 1;
 	private static final int codeLabelRow = 2;
 	private static final int addressSwitchRow = 3;
 	private static final int addressLabelRow = 4;
 	private static final int dataSwitchRow = 5;
 	private static final int dataLabelRow = 6;
-
 	private static final int dataLampRow = 7;
+
 	private static final int column0 = 16;
 	private static final int column1 = 15;
 	private static final int column2 = 14;
@@ -56,8 +52,12 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	private static final int columnC = 4;
 	private static final int columnD = 3;
 	private static final int columnE = 2;
-
 	private static final int columnF = 1;
+
+	public static void main(final String[] args) {
+		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
+		frame.setVisible(true);
+	}
 
 	private ToggleSwitch useCodePanelSwitch;
 	private ToggleSwitch resetSwitch;

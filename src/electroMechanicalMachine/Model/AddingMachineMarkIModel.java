@@ -37,7 +37,7 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 							null, null);
 				}
 				((PropertyChangeListener) listeners[index + 1])
-				.propertyChange(propertyChangeEvent);
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}
