@@ -11,6 +11,10 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IFullAdder;
 
+/**
+ * An eight bit adder accepts two eight bit inputs and a carry input bit and
+ * produces an eight bit sum with a carry output bit.
+ */
 public final class EightBitAdder implements IEightBitAdder {
 	private final IFullAdder adder0 = new FullAdder();
 	private final IFullAdder adder1 = new FullAdder();

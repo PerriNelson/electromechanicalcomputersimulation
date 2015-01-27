@@ -11,6 +11,10 @@ import electroMechanicalLogic.Interfaces.IFullAdder;
 import electroMechanicalLogic.Interfaces.IHalfAdder;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
+/**
+ * A full adder is a circuit that accepts two binary inputs and a binary carry
+ * input and produces the result of adding them together, a sum and a carry bit.
+ */
 public final class FullAdder implements IFullAdder {
 
 	private final IHalfAdder bottomHalf = new HalfAdder();
