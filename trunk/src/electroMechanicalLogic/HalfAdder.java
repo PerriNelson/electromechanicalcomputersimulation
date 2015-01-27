@@ -10,6 +10,11 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IHalfAdder;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
+/**
+ * A half adder is a circuit that accepts two binary inputs and produces the
+ * result of adding them together, a sum and a carry bit. Half adders do not
+ * account for an incoming carry bit.
+ */
 public final class HalfAdder implements IHalfAdder {
 
 	private final ITwoInputSingleOutputGate xor = new TwoInputXOR();
