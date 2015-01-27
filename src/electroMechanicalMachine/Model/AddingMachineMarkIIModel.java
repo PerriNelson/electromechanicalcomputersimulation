@@ -8,6 +8,8 @@
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -16,7 +18,6 @@ import javax.swing.event.EventListenerList;
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.TwoInputXOrGate;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
@@ -199,7 +200,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	public void step() {
 		complement.step();
 
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(complement, adder);
+		connectEightBitDataOutputToEightBitBInput(complement, adder);
 
 		adder.step();
 

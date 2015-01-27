@@ -8,6 +8,9 @@ ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Cre
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -15,7 +18,6 @@ import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
@@ -205,13 +207,13 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 	public void step() {
 		selector.step();
 
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(selector, adder);
+		connectEightBitDataOutputToEightBitBInput(selector, adder);
 		adder.step();
 
-		EightBitDataPath.connectEightBitSumToEightBitDataInput(adder, latch);
+		connectEightBitSumToEightBitDataInput(adder, latch);
 		latch.step();
 
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, selector);
+		connectEightBitDataOutputToEightBitBInput(latch, selector);
 		fireOnPropertyChange();
 	}
 

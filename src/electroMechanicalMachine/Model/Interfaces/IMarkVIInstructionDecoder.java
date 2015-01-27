@@ -8,11 +8,11 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
 public interface IMarkVIInstructionDecoder extends ISimulatedCircuit,
-		IEightBitDataIn {
+		IEightBitDataInput {
 	public abstract boolean getAdd();
 
 	public abstract boolean getHalt();

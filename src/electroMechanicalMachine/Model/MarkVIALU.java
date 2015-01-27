@@ -8,13 +8,15 @@
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitBInput;
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.TwoInputAndGate;
 import electroMechanicalLogic.TwoInputOrGate;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
@@ -165,18 +167,18 @@ public class MarkVIALU implements IMarkVIALU {
 	}
 
 	private void stepAdder() {
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, adder);
+		connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 	}
 
 	private void stepLatch() {
-		EightBitDataPath.DataOutToDataIn(loadSelector, latch);
+		connectEightBitDataOutputToEightBitDataInput(loadSelector, latch);
 		latch.setW(clockAndLoadOrAdd.getOutput());
 		latch.step();
 	}
 
 	private void stepLoadSelector() {
-		EightBitDataPath.SumToBIn(adder, loadSelector);
+		connectEightBitSumToEightBitBInput(adder, loadSelector);
 		loadSelector.setSelect(loadBar.getOutput());
 		loadSelector.step();
 	}

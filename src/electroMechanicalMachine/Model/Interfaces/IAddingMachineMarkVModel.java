@@ -8,10 +8,10 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 
 public interface IAddingMachineMarkVModel extends IMachineModel,
-		IEightBitDataOut {
+		IEightBitDataOutput {
 
 	public abstract boolean getS0();
 

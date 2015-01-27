@@ -8,10 +8,10 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 
-public interface IEightBitBuffer extends ISimulatedCircuit, IEightBitDataIn,
-		IEightBitDataOut {
+public interface IEightBitBuffer extends ISimulatedCircuit, IEightBitDataInput,
+		IEightBitDataOutput {
 
 }

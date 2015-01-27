@@ -9,10 +9,10 @@ package electroMechanicalLogic.Interfaces;
 
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSum;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
 
 public interface IEightBitAdder extends ISimulatedCircuit, IEightBitAInput,
-		IEightBitBInput, IEightBitSum {
+		IEightBitBInput, IEightBitSumOutput {
 
 	public abstract boolean getCO();
 

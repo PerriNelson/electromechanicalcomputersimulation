@@ -8,11 +8,11 @@
 
 package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOut;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOut;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 
 public interface IEightBitOneToTwoDecoder extends ISimulatedCircuit,
-		IEightBitAOut, IEightBitBOut, IEightBitDataIn {
+		IEightBitAOutput, IEightBitBOutput, IEightBitDataInput {
 	public abstract void setSelect(boolean value);
 }

@@ -8,12 +8,12 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
 public interface IAddingMachineMarkVIModel extends IMachineModel,
-		IEightBitDataOut, IEightBitDataIn, ISixteenBitAInput {
+		IEightBitDataOutput, IEightBitDataInput, ISixteenBitAInput {
 
 	public abstract void setReset(boolean value);
 

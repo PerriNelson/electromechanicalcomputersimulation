@@ -9,16 +9,28 @@
 package electroMechanicalLogic.DataChannel;
 
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOut;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSum;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
 
+/**
+ * Provides methods to connect eight bit inputs with eight bit outputs.
+ */
 public class EightBitDataPath {
-	public static void AOutToDataIn(final IEightBitAOut source,
-			final IEightBitDataIn target) {
+	/**
+	 * Connects an eight bit "A" output to an eight bit "Data" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitAOutputToEightBitDataInput(
+			final IEightBitAOutput source, final IEightBitDataInput target) {
 		target.setDI0(source.getA0());
 		target.setDI1(source.getA1());
 		target.setDI2(source.getA2());
@@ -29,8 +41,17 @@ public class EightBitDataPath {
 		target.setDI7(source.getA7());
 	}
 
-	public static void BOutToDataIn(final IEightBitBOut source,
-			final IEightBitDataIn target) {
+	/**
+	 * Connects an eight bit "B" output to an eight it "Data" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitBOutputToEightBitDataInput(
+			final IEightBitBOutput source, final IEightBitDataInput target) {
 		target.setDI0(source.getB0());
 		target.setDI1(source.getB1());
 		target.setDI2(source.getB2());
@@ -41,8 +62,17 @@ public class EightBitDataPath {
 		target.setDI7(source.getB7());
 	}
 
-	public static void DataOutToAIn(final IEightBitDataOut source,
-			final IEightBitAInput target) {
+	/**
+	 * Connects an eight bit "Data" output to an eight it "A" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitDataOutputToEightBitAInput(
+			final IEightBitDataOutput source, final IEightBitAInput target) {
 		target.setA0(source.getDO0());
 		target.setA1(source.getDO1());
 		target.setA2(source.getDO2());
@@ -53,8 +83,17 @@ public class EightBitDataPath {
 		target.setA7(source.getDO7());
 	}
 
-	public static void connectEightBitDataOutputToEightBitBInput(final IEightBitDataOut source,
-			final IEightBitBInput target) {
+	/**
+	 * Connects an eight bit "Data" output to an eight it "B" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitDataOutputToEightBitBInput(
+			final IEightBitDataOutput source, final IEightBitBInput target) {
 		target.setB0(source.getDO0());
 		target.setB1(source.getDO1());
 		target.setB2(source.getDO2());
@@ -65,8 +104,17 @@ public class EightBitDataPath {
 		target.setB7(source.getDO7());
 	}
 
-	public static void DataOutToDataIn(final IEightBitDataOut source,
-			final IEightBitDataIn target) {
+	/**
+	 * Connects an eight bit "Data" output to an eight it "Data" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitDataOutputToEightBitDataInput(
+			final IEightBitDataOutput source, final IEightBitDataInput target) {
 		target.setDI0(source.getDO0());
 		target.setDI1(source.getDO1());
 		target.setDI2(source.getDO2());
@@ -77,8 +125,17 @@ public class EightBitDataPath {
 		target.setDI7(source.getDO7());
 	}
 
-	public static void SumToBIn(final IEightBitSum source,
-			final IEightBitBInput target) {
+	/**
+	 * Connects an eight bit "Sum" output to an eight it "B" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitSumToEightBitBInput(
+			final IEightBitSumOutput source, final IEightBitBInput target) {
 		target.setB0(source.getS0());
 		target.setB1(source.getS1());
 		target.setB2(source.getS2());
@@ -89,8 +146,17 @@ public class EightBitDataPath {
 		target.setB7(source.getS7());
 	}
 
-	public static void connectEightBitSumToEightBitDataInput(final IEightBitSum source,
-			final IEightBitDataIn target) {
+	/**
+	 * Connects an eight bit "Sum" output to an eight it "Data" input.
+	 * 
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitSumToEightBitDataInput(
+			final IEightBitSumOutput source, final IEightBitDataInput target) {
 		target.setDI0(source.getS0());
 		target.setDI1(source.getS1());
 		target.setDI2(source.getS2());

@@ -9,9 +9,9 @@
 package electroMechanicalLogic.DataChannel.Interfaces;
 
 /**
- * A sixteen bit wide "A" output generally used for addresses.
+ * An eight bit wide "A" output such as from a decoder.
  */
-public interface ISixteenBitAOutput {
+public interface IEightBitAOutput {
 
 	/**
 	 * Gets a value indicating if bit 0 of the "A" output is on or not.
@@ -68,61 +68,5 @@ public interface ISixteenBitAOutput {
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getA7();
-
-	/**
-	 * Gets a value indicating if bit 8 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getA8();
-
-	/**
-	 * Gets a value indicating if bit 9 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getA9();
-
-	/**
-	 * Gets a value indicating if bit 10 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAA();
-
-	/**
-	 * Gets a value indicating if bit 11 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAB();
-
-	/**
-	 * Gets a value indicating if bit 12 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAC();
-
-	/**
-	 * Gets a value indicating if bit 13 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAD();
-
-	/**
-	 * Gets a value indicating if bit 14 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAE();
-
-	/**
-	 * Gets a value indicating if bit 15 of the "A" output is on or not.
-	 * 
-	 * @return true indicates the bit is on; false indicates it is off.
-	 */
-	public abstract boolean getAF();
 
 }
