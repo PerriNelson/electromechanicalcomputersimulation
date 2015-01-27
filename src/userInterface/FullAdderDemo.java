@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.FullAdder;
+import electroMechanicalLogic.Adders.FullAdder;
 
 public class FullAdderDemo extends Frame implements PropertyChangeListener {
 	public static final long serialVersionUID = 1l;

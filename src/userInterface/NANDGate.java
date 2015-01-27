@@ -8,8 +8,8 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputNAND;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputNAND;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
 public class NANDGate extends GateDemoFrame {
 	public static final long serialVersionUID = 1l;

@@ -13,7 +13,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalLogic.EightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
 public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {

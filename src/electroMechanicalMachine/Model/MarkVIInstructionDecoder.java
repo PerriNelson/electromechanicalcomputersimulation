@@ -8,10 +8,10 @@
 
 package electroMechanicalMachine.Model;
 
-import electroMechanicalLogic.EightInputAND;
-import electroMechanicalLogic.EightInputNOR;
 import electroMechanicalLogic.Inverter;
-import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
+import electroMechanicalLogic.Gates.EightInputAND;
+import electroMechanicalLogic.Gates.EightInputNOR;
+import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
 

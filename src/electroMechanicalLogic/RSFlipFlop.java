@@ -8,8 +8,9 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.TwoInputNOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRSFlipFlop;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class RSFlipFlop implements IRSFlipFlop {
 

@@ -8,8 +8,9 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.TwoInputOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class LevelTriggeredDTypeFlipFlopWithClear extends
 		LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlopWithClear {

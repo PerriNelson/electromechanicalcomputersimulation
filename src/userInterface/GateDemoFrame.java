@@ -20,7 +20,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JPanel;
 
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
 public abstract class GateDemoFrame extends Frame implements
 		PropertyChangeListener {

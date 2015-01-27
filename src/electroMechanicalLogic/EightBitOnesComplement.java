@@ -8,8 +8,9 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.TwoInputXOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class EightBitOnesComplement implements IEightBitOnesComplement {
 

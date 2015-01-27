@@ -11,17 +11,17 @@ package electroMechanicalMachine.Model;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitBInput;
-import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
-import electroMechanicalLogic.TwoInputAND;
-import electroMechanicalLogic.TwoInputOR;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
+import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.TwoInputOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 
 public class MarkVIALU implements IMarkVIALU {

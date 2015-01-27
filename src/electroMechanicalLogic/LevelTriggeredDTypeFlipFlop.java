@@ -8,10 +8,11 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 

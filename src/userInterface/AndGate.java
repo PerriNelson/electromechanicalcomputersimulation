@@ -8,8 +8,8 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputAND;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
 public class AndGate extends GateDemoFrame {
 	public static final long serialVersionUID = 1l;
