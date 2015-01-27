@@ -17,7 +17,7 @@ import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
-import electroMechanicalLogic.ThreeInputOrGate;
+import electroMechanicalLogic.ThreeInputOR;
 import electroMechanicalLogic.TwoInputAND;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
@@ -34,7 +34,7 @@ public class MarkVIIALU implements IMarkVIIALU {
 	private final ITwoInputSingleOutputGate write = new TwoInputAND();
 	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
 	private final IRelay loadBar = new Inverter();
-	private final IThreeInputSingleOutputGate loadAddOrSubtract = new ThreeInputOrGate();
+	private final IThreeInputSingleOutputGate loadAddOrSubtract = new ThreeInputOR();
 	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
 
 	@Override

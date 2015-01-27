@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.ThreeInputNOrGate;
+import electroMechanicalLogic.ThreeInputNOR;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
 public class ThreeInputNOrTest {
@@ -22,7 +22,7 @@ public class ThreeInputNOrTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new ThreeInputNOrGate();
+		systemUnderTest = new ThreeInputNOR();
 		systemUnderTest.setPower(true);
 	}
 

@@ -11,45 +11,50 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
-public class ThreeInputNOrGate implements IThreeInputSingleOutputGate {
+/**
+ * A three input logic gate that performs a logical NOR on all of its inputs. If
+ * the power is on and all of the inputs are off the output is on. If the power
+ * is off or any of the inputs are on the output is off.
+ */
+public class ThreeInputNOR implements IThreeInputSingleOutputGate {
 
-	private final IRelay relayA = new Inverter();
-	private final IRelay relayB = new Inverter();
-	private final IRelay relayC = new Inverter();
+	private final IRelay a = new Inverter();
+	private final IRelay b = new Inverter();
+	private final IRelay c = new Inverter();
 
 	@Override
 	public boolean getOutput() {
-		return relayC.getOutput();
+		return c.getOutput();
 	}
 
 	@Override
 	public void setA(final boolean value) {
-		relayA.setInput(value);
+		a.setInput(value);
 	}
 
 	@Override
 	public void setB(final boolean value) {
-		relayB.setInput(value);
+		b.setInput(value);
 	}
 
 	@Override
 	public void setC(final boolean value) {
-		relayC.setInput(value);
+		c.setInput(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		relayA.setPower(value);
+		a.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		relayA.step();
+		a.step();
 
-		relayB.setPower(relayA.getOutput());
-		relayB.step();
+		b.setPower(a.getOutput());
+		b.step();
 
-		relayC.setPower(relayB.getOutput());
-		relayC.step();
+		c.setPower(b.getOutput());
+		c.step();
 	}
 }
