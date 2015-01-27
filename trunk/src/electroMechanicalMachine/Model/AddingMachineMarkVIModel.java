@@ -8,6 +8,15 @@ ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Cre
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitAOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitBOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToSixteenBitAInput;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitAOutputsToSixteenBitAInput;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitBOutputsToSixteenBitAInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -17,8 +26,6 @@ import electroMechanicalLogic.EightBitOneToTwoDecoder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
-import electroMechanicalLogic.DataChannel.SixteenBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitOneToTwoDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
@@ -322,7 +329,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	protected void stepALU() {
-		EightBitDataPath.DataOutToDataIn(data, alu);
+		connectEightBitDataOutputToEightBitDataInput(data, alu);
 		alu.setAdd(instructionDecoder.getAdd());
 		alu.setLoad(instructionDecoder.getLoad());
 		alu.setClock(timingAndMemoryWriteControl.getClock());
@@ -330,23 +337,24 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepCode() {
-		SixteenBitDataPath.BOutToAIn(addressLow, addressHigh,
+		connectTwoEightBitBOutputsToSixteenBitAInput(addressLow, addressHigh,
 				code.getPanelAddressIn());
-		SixteenBitDataPath.AOutToAIn(timingAndMemoryWriteControl,
+		connectSixteenBitAOutputToSixteenBitAInput(timingAndMemoryWriteControl,
 				code.getExternalAddressIn());
-		EightBitDataPath.BOutToDataIn(dataIn, code.getPanelDataIn());
+		connectEightBitBOutputToEightBitDataInput(dataIn, code.getPanelDataIn());
 
 		code.setCpW(write.getB());
 		code.step();
 	}
 
 	private void stepData() {
-		SixteenBitDataPath.AOutToAIn(addressLow, addressHigh,
+		connectTwoEightBitAOutputsToSixteenBitAInput(addressLow, addressHigh,
 				data.getPanelAddressIn());
-		SixteenBitDataPath.AOutToAIn(timingAndMemoryWriteControl,
+		connectSixteenBitAOutputToSixteenBitAInput(timingAndMemoryWriteControl,
 				data.getExternalAddressIn());
-		EightBitDataPath.AOutToDataIn(dataIn, data.getPanelDataIn());
-		EightBitDataPath.DataOutToDataIn(alu, data.getExternalDataIn());
+		connectEightBitAOutputToEightBitDataInput(dataIn, data.getPanelDataIn());
+		connectEightBitDataOutputToEightBitDataInput(alu,
+				data.getExternalDataIn());
 
 		data.setCpW(write.getA());
 		data.setEcW(timingAndMemoryWriteControl.getWrite());
@@ -355,8 +363,8 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepDataOut() {
-		EightBitDataPath.DataOutToAIn(data, dataOut);
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(code, dataOut);
+		connectEightBitDataOutputToEightBitAInput(data, dataOut);
+		connectEightBitDataOutputToEightBitBInput(code, dataOut);
 		dataOut.step();
 	}
 
@@ -369,7 +377,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	}
 
 	private void stepInstructionDecoder() {
-		EightBitDataPath.DataOutToDataIn(code, instructionDecoder);
+		connectEightBitDataOutputToEightBitDataInput(code, instructionDecoder);
 		instructionDecoder.step();
 	}
 

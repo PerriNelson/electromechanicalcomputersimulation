@@ -8,12 +8,12 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface IMarkVIALU extends ISimulatedCircuit, IEightBitDataOut,
-		IEightBitDataIn {
+public interface IMarkVIALU extends ISimulatedCircuit, IEightBitDataOutput,
+		IEightBitDataInput {
 
 	public abstract void setAdd(boolean value);
 

@@ -10,9 +10,9 @@ package electroMechanicalLogic.Interfaces;
 
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 
 public interface IEightBitTwoToOneSelector extends ISimulatedCircuit,
-		IEightBitAInput, IEightBitBInput, IEightBitDataOut {
+		IEightBitAInput, IEightBitBInput, IEightBitDataOutput {
 	public abstract void setSelect(boolean value);
 }

@@ -8,6 +8,13 @@
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToTwoEightBitAInputs;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToTwoEightBitBInputs;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitDataOutputsToSixteenBitAInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -18,9 +25,7 @@ import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
-import electroMechanicalLogic.DataChannel.SixteenBitDataPath;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
@@ -131,7 +136,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public IEightBitDataIn getExternalDataIn() {
+	public IEightBitDataInput getExternalDataIn() {
 		return externalData;
 	}
 
@@ -141,7 +146,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	@Override
-	public IEightBitDataIn getPanelDataIn() {
+	public IEightBitDataInput getPanelDataIn() {
 		return panelData;
 	}
 
@@ -445,24 +450,26 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	}
 
 	private void stepAddressIn() {
-		SixteenBitDataPath.AOutToAIn(externalAddress, addressInLow,
-				addressInHigh);
-		SixteenBitDataPath.AOutToBIn(panelAddress, addressInLow, addressInHigh);
+		connectSixteenBitAOutputToTwoEightBitAInputs(externalAddress,
+				addressInLow, addressInHigh);
+		connectSixteenBitAOutputToTwoEightBitBInputs(panelAddress,
+				addressInLow, addressInHigh);
 
 		addressInLow.step();
 		addressInHigh.step();
 	}
 
 	private void stepDataIn() {
-		EightBitDataPath.DataOutToAIn(externalData, dataIn);
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(panelData, dataIn);
+		connectEightBitDataOutputToEightBitAInput(externalData, dataIn);
+		connectEightBitDataOutputToEightBitBInput(panelData, dataIn);
 
 		dataIn.step();
 	}
 
 	private void stepRam() {
-		SixteenBitDataPath.DataOutToAIn(addressInLow, addressInHigh, ram);
-		EightBitDataPath.DataOutToDataIn(dataIn, ram);
+		connectTwoEightBitDataOutputsToSixteenBitAInput(addressInLow,
+				addressInHigh, ram);
+		connectEightBitDataOutputToEightBitDataInput(dataIn, ram);
 
 		ram.setW(writeSelector.getDO());
 

@@ -26,8 +26,8 @@ import static electroMechanicalLogic.Tests.TestConstants.bitE;
 import static electroMechanicalLogic.Tests.TestConstants.bitF;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataIn;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOut;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 
@@ -53,7 +53,7 @@ public class TestUtilities {
 		return address;
 	}
 
-	public static int getDataOut(final IEightBitDataOut source) {
+	public static int getDataOut(final IEightBitDataOutput source) {
 		int dataOut = 0;
 		dataOut |= (source.getDO0() ? bit0 : 0);
 		dataOut |= (source.getDO1() ? bit1 : 0);
@@ -86,7 +86,7 @@ public class TestUtilities {
 		target.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	public static void setDataIn(final IEightBitDataIn target, final int value) {
+	public static void setDataIn(final IEightBitDataInput target, final int value) {
 		target.setDI0((value & bit0) == bit0);
 		target.setDI1((value & bit1) == bit1);
 		target.setDI2((value & bit2) == bit2);

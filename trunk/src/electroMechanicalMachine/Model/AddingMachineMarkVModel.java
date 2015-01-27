@@ -8,6 +8,10 @@
 
 package electroMechanicalMachine.Model;
 
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -19,7 +23,6 @@ import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.DataChannel.EightBitDataPath;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IOscillator;
@@ -327,11 +330,11 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 
 		controlPanel.step();
 
-		EightBitDataPath.DataOutToAIn(controlPanel, adder);
-		EightBitDataPath.connectEightBitDataOutputToEightBitBInput(latch, adder);
+		connectEightBitDataOutputToEightBitAInput(controlPanel, adder);
+		connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 
-		EightBitDataPath.connectEightBitSumToEightBitDataInput(adder, latch);
+		connectEightBitSumToEightBitDataInput(adder, latch);
 
 		clearBar.step();
 		clock.setPower(clearBar.getOutput());
