@@ -16,9 +16,9 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
+import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;

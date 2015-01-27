@@ -17,13 +17,13 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
+import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IOscillator;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;

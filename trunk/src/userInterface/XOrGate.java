@@ -8,8 +8,8 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputXOR;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputXOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
 public class XOrGate extends GateDemoFrame {
 	public static final long serialVersionUID = 1l;

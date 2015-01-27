@@ -12,20 +12,20 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitBInput;
-import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
-import electroMechanicalLogic.ThreeInputOR;
-import electroMechanicalLogic.TwoInputAND;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
+import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Gates.ThreeInputOR;
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIALU;
 
 public class MarkVIIALU implements IMarkVIIALU {

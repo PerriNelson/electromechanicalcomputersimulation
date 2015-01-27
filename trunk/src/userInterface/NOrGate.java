@@ -8,8 +8,8 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputNOR;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputNOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
 public class NOrGate extends GateDemoFrame {
 	public static final long serialVersionUID = 1l;

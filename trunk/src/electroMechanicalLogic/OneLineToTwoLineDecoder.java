@@ -8,9 +8,10 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OneLineToTwoLineDecoder implements IOneLineToTwoLineDecoder {
 

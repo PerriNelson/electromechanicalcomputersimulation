@@ -8,8 +8,8 @@
 
 package electroMechanicalMachine.Model;
 
-import electroMechanicalLogic.EightInputNOR;
-import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
+import electroMechanicalLogic.Gates.EightInputNOR;
+import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIInstructionDecoder;
 
 public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder

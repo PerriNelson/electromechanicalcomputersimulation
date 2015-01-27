@@ -8,9 +8,10 @@
 
 package electroMechanicalLogic;
 
+import electroMechanicalLogic.Gates.ThreeInputNOR;
+import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
 public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 		IDTypeFlipFlopWithPresetAndClear {

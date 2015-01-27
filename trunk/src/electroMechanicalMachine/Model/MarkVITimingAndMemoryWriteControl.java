@@ -11,10 +11,10 @@ package electroMechanicalMachine.Model;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
-import electroMechanicalLogic.TwoInputAND;
+import electroMechanicalLogic.Gates.TwoInputAND;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteControl;
 
 public class MarkVITimingAndMemoryWriteControl implements

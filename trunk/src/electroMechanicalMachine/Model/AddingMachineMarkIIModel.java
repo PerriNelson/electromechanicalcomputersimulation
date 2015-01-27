@@ -15,12 +15,12 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitOnesComplement;
-import electroMechanicalLogic.TwoInputXOR;
-import electroMechanicalLogic.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Adders.EightBitAdder;
+import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Gates.TwoInputXOR;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
-import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
 
 public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
