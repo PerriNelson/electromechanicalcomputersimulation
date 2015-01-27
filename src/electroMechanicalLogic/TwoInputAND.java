@@ -9,10 +9,15 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class TwoInputAndGate extends TwoRelaySingleOutputGate implements
+/**
+ * A two input AND gate. The output of an AND gate is on when the power is on
+ * and both the "A" and "B" inputs are on. The output of an AND gate is off when
+ * the power is off or either or both of the "A" and "B" inputs is off.
+ */
+public final class TwoInputAND extends TwoRelaySingleOutputGate implements
 		ITwoInputSingleOutputGate {
 
-	public TwoInputAndGate() {
+	public TwoInputAND() {
 		super(new Buffer(), new Buffer());
 	}
 

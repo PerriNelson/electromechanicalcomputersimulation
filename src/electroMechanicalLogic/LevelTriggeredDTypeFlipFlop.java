@@ -16,8 +16,8 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 
 	protected final IRSFlipFlop flipFlop = new RSFlipFlop();
-	protected final ITwoInputSingleOutputGate sAnd = new TwoInputAndGate();
-	protected final ITwoInputSingleOutputGate rAnd = new TwoInputAndGate();
+	protected final ITwoInputSingleOutputGate sAnd = new TwoInputAND();
+	protected final ITwoInputSingleOutputGate rAnd = new TwoInputAND();
 	protected final IRelay dBar = new Inverter();
 
 	@Override

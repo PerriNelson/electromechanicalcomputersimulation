@@ -16,9 +16,9 @@ public final class TwoLineToOneLineSelector implements
 		ITwoLineToOneLineSelector {
 
 	private final IRelay selectInverter = new Inverter();
-	private final ITwoInputSingleOutputGate andA = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate andB = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate andA = new TwoInputAND();
+	private final ITwoInputSingleOutputGate andB = new TwoInputAND();
+	private final ITwoInputSingleOutputGate or = new TwoInputOR();
 
 	@Override
 	public boolean getDO() {

@@ -9,10 +9,15 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class TwoInputOrGate extends TwoRelaySingleOutputGate implements
+/**
+ * A two input OR gate. The output of an OR gate is on when the power is on and
+ * either of the "A" and "B" inputs is on. The output of an OR gate is off when
+ * the power is off or both of the "A" and "B" inputs are off.
+ */
+public final class TwoInputOR extends TwoRelaySingleOutputGate implements
 		ITwoInputSingleOutputGate {
 
-	public TwoInputOrGate() {
+	public TwoInputOR() {
 		super(new Buffer(), new Buffer());
 	}
 

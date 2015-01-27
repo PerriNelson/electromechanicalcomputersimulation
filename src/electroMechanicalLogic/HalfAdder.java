@@ -12,8 +12,8 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public final class HalfAdder implements IHalfAdder {
 
-	private final ITwoInputSingleOutputGate xor = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate and = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate xor = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate and = new TwoInputAND();
 
 	@Override
 	public boolean getCO() {

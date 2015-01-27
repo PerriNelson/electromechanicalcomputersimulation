@@ -22,7 +22,7 @@ public class TwoInputXorGateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new electroMechanicalLogic.TwoInputXOrGate();
+		systemUnderTest = new electroMechanicalLogic.TwoInputXOR();
 	}
 
 	@Test

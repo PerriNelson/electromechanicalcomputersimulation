@@ -14,7 +14,7 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public final class LevelTriggeredDTypeFlipFlopWithClear extends
 		LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlopWithClear {
 
-	private final ITwoInputSingleOutputGate clear = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate clear = new TwoInputOR();
 
 	@Override
 	public void setClear(final boolean value) {

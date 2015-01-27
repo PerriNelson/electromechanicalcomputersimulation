@@ -13,14 +13,14 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class EightBitOnesComplement implements IEightBitOnesComplement {
 
-	private final ITwoInputSingleOutputGate bit0 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit1 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit2 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit3 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit4 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit5 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit6 = new TwoInputXOrGate();
-	private final ITwoInputSingleOutputGate bit7 = new TwoInputXOrGate();
+	private final ITwoInputSingleOutputGate bit0 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit1 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit2 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit3 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit4 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit5 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit6 = new TwoInputXOR();
+	private final ITwoInputSingleOutputGate bit7 = new TwoInputXOR();
 
 	@Override
 	public boolean getDO0() {
