@@ -16,12 +16,12 @@ public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 		IDTypeFlipFlopWithPresetAndClear {
 
 	private final IRelay clkBar = new Inverter();
-	private final IThreeInputSingleOutputGate norD = new ThreeInputNOrGate();
-	private final IThreeInputSingleOutputGate norClk = new ThreeInputNOrGate();
-	private final IThreeInputSingleOutputGate norPreset = new ThreeInputNOrGate();
-	private final IThreeInputSingleOutputGate norClear = new ThreeInputNOrGate();
-	private final IThreeInputSingleOutputGate norQ = new ThreeInputNOrGate();
-	private final IThreeInputSingleOutputGate norQBar = new ThreeInputNOrGate();
+	private final IThreeInputSingleOutputGate norD = new ThreeInputNOR();
+	private final IThreeInputSingleOutputGate norClk = new ThreeInputNOR();
+	private final IThreeInputSingleOutputGate norPreset = new ThreeInputNOR();
+	private final IThreeInputSingleOutputGate norClear = new ThreeInputNOR();
+	private final IThreeInputSingleOutputGate norQ = new ThreeInputNOR();
+	private final IThreeInputSingleOutputGate norQBar = new ThreeInputNOR();
 
 	@Override
 	public boolean getQ() {

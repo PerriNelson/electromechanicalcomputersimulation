@@ -10,42 +10,47 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeInputSingleOutputGate;
 
-public final class ThreeInputOrGate implements IThreeInputSingleOutputGate {
-	private final IRelay A = new Buffer();
-	private final IRelay B = new Buffer();
-	private final IRelay C = new Buffer();
+/**
+ * A three input logic gate that performs a logical OR on all of its inputs. If
+ * the power is on and any of the inputs is on the output is on. If the power is
+ * off or none of the inputs are on the output is off.
+ */
+public final class ThreeInputOR implements IThreeInputSingleOutputGate {
+	private final IRelay a = new Buffer();
+	private final IRelay b = new Buffer();
+	private final IRelay c = new Buffer();
 
 	@Override
 	public boolean getOutput() {
-		return A.getOutput() || B.getOutput() || C.getOutput();
+		return a.getOutput() || b.getOutput() || c.getOutput();
 	}
 
 	@Override
 	public void setA(final boolean value) {
-		A.setInput(value);
+		a.setInput(value);
 	}
 
 	@Override
 	public void setB(final boolean value) {
-		B.setInput(value);
+		b.setInput(value);
 	}
 
 	@Override
 	public void setC(final boolean value) {
-		C.setInput(value);
+		c.setInput(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		A.setPower(value);
-		B.setPower(value);
-		C.setPower(value);
+		a.setPower(value);
+		b.setPower(value);
+		c.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		A.step();
-		B.step();
-		C.step();
+		a.step();
+		b.step();
+		c.step();
 	}
 }
