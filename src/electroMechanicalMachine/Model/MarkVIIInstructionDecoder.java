@@ -8,7 +8,7 @@
 
 package electroMechanicalMachine.Model;
 
-import electroMechanicalLogic.EightInputNORGate;
+import electroMechanicalLogic.EightInputNOR;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIInstructionDecoder;
 
@@ -18,7 +18,7 @@ public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder
 
 	public MarkVIIInstructionDecoder() {
 		super();
-		subtract = new EightInputNORGate();
+		subtract = new EightInputNOR();
 	}
 
 	@Override
@@ -29,37 +29,37 @@ public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder
 	@Override
 	public void setDI1(final boolean value) {
 		super.setDI1(value);
-		subtract.setI1(value);
+		subtract.setDI1(value);
 	}
 
 	@Override
 	public void setDI2(final boolean value) {
 		super.setDI2(value);
-		subtract.setI2(value);
+		subtract.setDI2(value);
 	}
 
 	@Override
 	public void setDI3(final boolean value) {
 		super.setDI3(value);
-		subtract.setI3(value);
+		subtract.setDI3(value);
 	}
 
 	@Override
 	public void setDI4(final boolean value) {
 		super.setDI4(value);
-		subtract.setI4(value);
+		subtract.setDI4(value);
 	}
 
 	@Override
 	public void setDI6(final boolean value) {
 		super.setDI6(value);
-		subtract.setI6(value);
+		subtract.setDI6(value);
 	}
 
 	@Override
 	public void setDI7(final boolean value) {
 		super.setDI7(value);
-		subtract.setI7(value);
+		subtract.setDI7(value);
 	}
 
 	@Override
@@ -71,8 +71,8 @@ public class MarkVIIInstructionDecoder extends MarkVIInstructionDecoder
 	@Override
 	public void step() {
 		super.step();
-		subtract.setI0(ci0Bar.getOutput());
-		subtract.setI5(ci5Bar.getOutput());
+		subtract.setDI0(ci0Bar.getOutput());
+		subtract.setDI5(ci5Bar.getOutput());
 		subtract.step();
 	}
 }

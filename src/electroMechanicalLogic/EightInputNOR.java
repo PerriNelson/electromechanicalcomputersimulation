@@ -11,7 +11,12 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public class EightInputNORGate implements IEightInputSingleOutputGate {
+/**
+ * An eight input logic gate that performs a logical NOR on all of its inputs.
+ * If the power is on and all of the inputs are off the output is on. If the
+ * power is off or any of the inputs are on the output is off.
+ */
+public class EightInputNOR implements IEightInputSingleOutputGate {
 	private final IRelay bit0 = new Inverter();
 	private final IRelay bit1 = new Inverter();
 	private final IRelay bit2 = new Inverter();
@@ -27,42 +32,42 @@ public class EightInputNORGate implements IEightInputSingleOutputGate {
 	}
 
 	@Override
-	public void setI0(final boolean value) {
+	public void setDI0(final boolean value) {
 		bit0.setInput(value);
 	}
 
 	@Override
-	public void setI1(final boolean value) {
+	public void setDI1(final boolean value) {
 		bit1.setInput(value);
 	}
 
 	@Override
-	public void setI2(final boolean value) {
+	public void setDI2(final boolean value) {
 		bit2.setInput(value);
 	}
 
 	@Override
-	public void setI3(final boolean value) {
+	public void setDI3(final boolean value) {
 		bit3.setInput(value);
 	}
 
 	@Override
-	public void setI4(final boolean value) {
+	public void setDI4(final boolean value) {
 		bit4.setInput(value);
 	}
 
 	@Override
-	public void setI5(final boolean value) {
+	public void setDI5(final boolean value) {
 		bit5.setInput(value);
 	}
 
 	@Override
-	public void setI6(final boolean value) {
+	public void setDI6(final boolean value) {
 		bit6.setInput(value);
 	}
 
 	@Override
-	public void setI7(final boolean value) {
+	public void setDI7(final boolean value) {
 		bit7.setInput(value);
 	}
 
