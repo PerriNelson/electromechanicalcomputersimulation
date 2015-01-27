@@ -1,5 +1,5 @@
 /*
-  ElectroMechancialComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
+  ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
   Attribution-ShareAlike 3.0 Unported License.
   To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
@@ -7,23 +7,20 @@
  */
 package electroMechanicalLogic.Interfaces;
 
-public interface IEightInputSingleOutputGate extends ISimulatedCircuit {
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 
+/**
+ * A logic gate with eight inputs and one output.
+ */
+public interface IEightInputSingleOutputGate extends ISimulatedCircuit,
+		IEightBitDataInput {
+	/**
+	 * Retrieves a value indicating the result of the logical operation
+	 * implemented by this gate upon its inputs.
+	 * 
+	 * @return true indicating that power is flowing from the output terminal of
+	 *         the gate; false indicating that power is not flowing from the
+	 *         output terminal of the gate.
+	 */
 	public abstract boolean getOutput();
-
-	public abstract void setI0(boolean value);
-
-	public abstract void setI1(boolean value);
-
-	public abstract void setI2(boolean value);
-
-	public abstract void setI3(boolean value);
-
-	public abstract void setI4(boolean value);
-
-	public abstract void setI5(boolean value);
-
-	public abstract void setI6(boolean value);
-
-	public abstract void setI7(boolean value);
 }

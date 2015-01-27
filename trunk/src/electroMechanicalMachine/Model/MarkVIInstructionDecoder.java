@@ -8,8 +8,8 @@
 
 package electroMechanicalMachine.Model;
 
-import electroMechanicalLogic.EightInputANDGate;
-import electroMechanicalLogic.EightInputNORGate;
+import electroMechanicalLogic.EightInputAND;
+import electroMechanicalLogic.EightInputNOR;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
@@ -28,10 +28,10 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 		ci0Bar = new Inverter();
 		ci4Bar = new Inverter();
 		ci5Bar = new Inverter();
-		add = new EightInputNORGate();
-		halt = new EightInputANDGate();
-		load = new EightInputNORGate();
-		store = new EightInputNORGate();
+		add = new EightInputNOR();
+		halt = new EightInputAND();
+		load = new EightInputNOR();
+		store = new EightInputNOR();
 	}
 
 	@Override
@@ -57,64 +57,64 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 	@Override
 	public void setDI0(final boolean value) {
 		ci0Bar.setInput(value);
-		add.setI0(value);
-		load.setI0(value);
-		halt.setI0(value);
+		add.setDI0(value);
+		load.setDI0(value);
+		halt.setDI0(value);
 	}
 
 	@Override
 	public void setDI1(final boolean value) {
-		add.setI1(value);
-		halt.setI1(value);
-		load.setI1(value);
-		store.setI1(value);
+		add.setDI1(value);
+		halt.setDI1(value);
+		load.setDI1(value);
+		store.setDI1(value);
 	}
 
 	@Override
 	public void setDI2(final boolean value) {
-		add.setI2(value);
-		halt.setI2(value);
-		load.setI2(value);
-		store.setI2(value);
+		add.setDI2(value);
+		halt.setDI2(value);
+		load.setDI2(value);
+		store.setDI2(value);
 	}
 
 	@Override
 	public void setDI3(final boolean value) {
-		add.setI3(value);
-		halt.setI3(value);
-		load.setI3(value);
-		store.setI3(value);
+		add.setDI3(value);
+		halt.setDI3(value);
+		load.setDI3(value);
+		store.setDI3(value);
 	}
 
 	@Override
 	public void setDI4(final boolean value) {
 		ci4Bar.setInput(value);
-		add.setI4(value);
-		halt.setI4(value);
+		add.setDI4(value);
+		halt.setDI4(value);
 	}
 
 	@Override
 	public void setDI5(final boolean value) {
 		ci5Bar.setInput(value);
-		halt.setI5(value);
-		load.setI5(value);
-		store.setI5(value);
+		halt.setDI5(value);
+		load.setDI5(value);
+		store.setDI5(value);
 	}
 
 	@Override
 	public void setDI6(final boolean value) {
-		add.setI6(value);
-		halt.setI6(value);
-		load.setI6(value);
-		store.setI6(value);
+		add.setDI6(value);
+		halt.setDI6(value);
+		load.setDI6(value);
+		store.setDI6(value);
 	}
 
 	@Override
 	public void setDI7(final boolean value) {
-		add.setI7(value);
-		halt.setI7(value);
-		load.setI7(value);
-		store.setI7(value);
+		add.setDI7(value);
+		halt.setDI7(value);
+		load.setDI7(value);
+		store.setDI7(value);
 	}
 
 	@Override
@@ -134,16 +134,16 @@ public class MarkVIInstructionDecoder implements IMarkVIInstructionDecoder {
 		ci4Bar.step();
 		ci5Bar.step();
 
-		add.setI5(ci5Bar.getOutput());
+		add.setDI5(ci5Bar.getOutput());
 		add.step();
 
 		halt.step();
 
-		load.setI4(ci4Bar.getOutput());
+		load.setDI4(ci4Bar.getOutput());
 		load.step();
 
-		store.setI0(ci0Bar.getOutput());
-		store.setI4(ci4Bar.getOutput());
+		store.setDI0(ci0Bar.getOutput());
+		store.setDI4(ci4Bar.getOutput());
 		store.step();
 	}
 

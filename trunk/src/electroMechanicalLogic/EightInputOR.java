@@ -5,13 +5,18 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-
 package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public class EightInputANDGate implements IEightInputSingleOutputGate {
+/**
+ * An eight input logic gate that performs a logical OR on all of its inputs. If
+ * the power is on and any of the inputs is on the output is on. If the power is
+ * off or none of the inputs are on the output is off.
+ */
+public final class EightInputOR implements IEightInputSingleOutputGate {
+
 	private final IRelay bit0 = new Buffer();
 	private final IRelay bit1 = new Buffer();
 	private final IRelay bit2 = new Buffer();
@@ -23,77 +28,76 @@ public class EightInputANDGate implements IEightInputSingleOutputGate {
 
 	@Override
 	public boolean getOutput() {
-		return bit7.getOutput();
+		return bit0.getOutput() || bit1.getOutput() || bit2.getOutput()
+				|| bit3.getOutput() || bit4.getOutput() || bit5.getOutput()
+				|| bit6.getOutput() || bit7.getOutput();
 	}
 
 	@Override
-	public void setI0(final boolean value) {
+	public void setDI0(final boolean value) {
 		bit0.setInput(value);
 	}
 
 	@Override
-	public void setI1(final boolean value) {
+	public void setDI1(final boolean value) {
 		bit1.setInput(value);
 	}
 
 	@Override
-	public void setI2(final boolean value) {
+	public void setDI2(final boolean value) {
 		bit2.setInput(value);
 	}
 
 	@Override
-	public void setI3(final boolean value) {
+	public void setDI3(final boolean value) {
 		bit3.setInput(value);
 	}
 
 	@Override
-	public void setI4(final boolean value) {
+	public void setDI4(final boolean value) {
 		bit4.setInput(value);
 	}
 
 	@Override
-	public void setI5(final boolean value) {
+	public void setDI5(final boolean value) {
 		bit5.setInput(value);
 	}
 
 	@Override
-	public void setI6(final boolean value) {
+	public void setDI6(final boolean value) {
 		bit6.setInput(value);
+
 	}
 
 	@Override
-	public void setI7(final boolean value) {
+	public void setDI7(final boolean value) {
 		bit7.setInput(value);
+
 	}
 
 	@Override
 	public void setPower(final boolean value) {
 		bit0.setPower(value);
+		bit1.setPower(value);
+		bit2.setPower(value);
+		bit3.setPower(value);
+		bit4.setPower(value);
+		bit5.setPower(value);
+		bit6.setPower(value);
+		bit7.setPower(value);
+
 	}
 
 	@Override
 	public void step() {
 		bit0.step();
-
-		bit1.setPower(bit0.getOutput());
 		bit1.step();
-
-		bit2.setPower(bit1.getOutput());
 		bit2.step();
-
-		bit3.setPower(bit2.getOutput());
 		bit3.step();
-
-		bit4.setPower(bit3.getOutput());
 		bit4.step();
-
-		bit5.setPower(bit4.getOutput());
 		bit5.step();
-
-		bit6.setPower(bit5.getOutput());
 		bit6.step();
-
-		bit7.setPower(bit6.getOutput());
 		bit7.step();
 	}
+
 }

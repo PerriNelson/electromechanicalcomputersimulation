@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightInputSingleOutputOrGate;
+import electroMechanicalLogic.EightInputOR;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 
 public class EightInputSingleOutputOrGateTest {
@@ -21,16 +21,16 @@ public class EightInputSingleOutputOrGateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new EightInputSingleOutputOrGate();
+		systemUnderTest = new EightInputOR();
 		systemUnderTest.setPower(true);
-		systemUnderTest.setI0(false);
-		systemUnderTest.setI1(false);
-		systemUnderTest.setI2(false);
-		systemUnderTest.setI3(false);
-		systemUnderTest.setI4(false);
-		systemUnderTest.setI5(false);
-		systemUnderTest.setI6(false);
-		systemUnderTest.setI7(false);
+		systemUnderTest.setDI0(false);
+		systemUnderTest.setDI1(false);
+		systemUnderTest.setDI2(false);
+		systemUnderTest.setDI3(false);
+		systemUnderTest.setDI4(false);
+		systemUnderTest.setDI5(false);
+		systemUnderTest.setDI6(false);
+		systemUnderTest.setDI7(false);
 	}
 
 	@Test
@@ -41,56 +41,56 @@ public class EightInputSingleOutputOrGateTest {
 
 	@Test
 	public void test_GetOutput_WhenI0IsOn_ReturnsOn() {
-		systemUnderTest.setI0(true);
+		systemUnderTest.setDI0(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI1IsOn_ReturnsOn() {
-		systemUnderTest.setI1(true);
+		systemUnderTest.setDI1(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI2IsOn_ReturnsOn() {
-		systemUnderTest.setI2(true);
+		systemUnderTest.setDI2(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI3IsOn_ReturnsOn() {
-		systemUnderTest.setI3(true);
+		systemUnderTest.setDI3(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI4IsOn_ReturnsOn() {
-		systemUnderTest.setI4(true);
+		systemUnderTest.setDI4(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI5IsOn_ReturnsOn() {
-		systemUnderTest.setI5(true);
+		systemUnderTest.setDI5(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI6IsOn_ReturnsOn() {
-		systemUnderTest.setI6(true);
+		systemUnderTest.setDI6(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}
 
 	@Test
 	public void test_GetOutput_WhenI7IsOn_ReturnsOn() {
-		systemUnderTest.setI7(true);
+		systemUnderTest.setDI7(true);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getOutput());
 	}

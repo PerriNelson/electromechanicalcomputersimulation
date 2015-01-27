@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightInputNORGate;
+import electroMechanicalLogic.EightInputNOR;
 import electroMechanicalLogic.Interfaces.IEightInputSingleOutputGate;
 
 public class EightInputNORGateTest {
@@ -30,19 +30,19 @@ public class EightInputNORGateTest {
 	private IEightInputSingleOutputGate systemUnderTest;
 
 	private void setInput(final int input) {
-		systemUnderTest.setI0((input & bit0) == bit0);
-		systemUnderTest.setI1((input & bit1) == bit1);
-		systemUnderTest.setI2((input & bit2) == bit2);
-		systemUnderTest.setI3((input & bit3) == bit3);
-		systemUnderTest.setI4((input & bit4) == bit4);
-		systemUnderTest.setI5((input & bit5) == bit5);
-		systemUnderTest.setI6((input & bit6) == bit6);
-		systemUnderTest.setI7((input & bit7) == bit7);
+		systemUnderTest.setDI0((input & bit0) == bit0);
+		systemUnderTest.setDI1((input & bit1) == bit1);
+		systemUnderTest.setDI2((input & bit2) == bit2);
+		systemUnderTest.setDI3((input & bit3) == bit3);
+		systemUnderTest.setDI4((input & bit4) == bit4);
+		systemUnderTest.setDI5((input & bit5) == bit5);
+		systemUnderTest.setDI6((input & bit6) == bit6);
+		systemUnderTest.setDI7((input & bit7) == bit7);
 	}
 
 	@Before
 	public void Setup() {
-		systemUnderTest = new EightInputNORGate();
+		systemUnderTest = new EightInputNOR();
 		systemUnderTest.setPower(true);
 	}
 

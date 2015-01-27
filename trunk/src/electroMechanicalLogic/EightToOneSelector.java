@@ -15,7 +15,7 @@ import electroMechanicalLogic.Interfaces.IRelay;
 
 public final class EightToOneSelector implements IEightToOneSelector {
 
-	private final IEightInputSingleOutputGate or = new EightInputSingleOutputOrGate();
+	private final IEightInputSingleOutputGate or = new EightInputOR();
 	private final IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
 	private final IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
 	private final IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
@@ -154,14 +154,14 @@ public final class EightToOneSelector implements IEightToOneSelector {
 		and6.step();
 		and7.step();
 
-		or.setI0(and0.getOutput());
-		or.setI1(and1.getOutput());
-		or.setI2(and2.getOutput());
-		or.setI3(and3.getOutput());
-		or.setI4(and4.getOutput());
-		or.setI5(and5.getOutput());
-		or.setI6(and6.getOutput());
-		or.setI7(and7.getOutput());
+		or.setDI0(and0.getOutput());
+		or.setDI1(and1.getOutput());
+		or.setDI2(and2.getOutput());
+		or.setDI3(and3.getOutput());
+		or.setDI4(and4.getOutput());
+		or.setDI5(and5.getOutput());
+		or.setDI6(and6.getOutput());
+		or.setDI7(and7.getOutput());
 
 		or.step();
 	}
