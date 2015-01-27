@@ -22,7 +22,7 @@ public class TwoInputAndGateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new electroMechanicalLogic.TwoInputAndGate();
+		systemUnderTest = new electroMechanicalLogic.TwoInputAND();
 	}
 
 	@Test

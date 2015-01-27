@@ -9,11 +9,17 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class TwoInputXOrGate implements ITwoInputSingleOutputGate {
+/**
+ * A two input XOR gate. The output of an XOR gate is on when the power is on
+ * and either of the "A" and "B" inputs is on but not both. The output of an XOR
+ * gate is off when the power is off or both of the "A" and "B" inputs are off
+ * or both of the "A" and "B" inputs are on.
+ */
+public final class TwoInputXOR implements ITwoInputSingleOutputGate {
 
-	private final ITwoInputSingleOutputGate nAnd = new TwoInputNAndGate();
-	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
-	private final ITwoInputSingleOutputGate and = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate nAnd = new TwoInputNAND();
+	private final ITwoInputSingleOutputGate or = new TwoInputOR();
+	private final ITwoInputSingleOutputGate and = new TwoInputAND();
 
 	@Override
 	public boolean getOutput() {

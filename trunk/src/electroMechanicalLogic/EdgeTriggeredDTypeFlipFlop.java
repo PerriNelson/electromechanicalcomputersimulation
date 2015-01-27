@@ -16,10 +16,10 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public final class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	private final IRSFlipFlop stage1 = new RSFlipFlop();
 	private final IRSFlipFlop stage2 = new RSFlipFlop();
-	private final ITwoInputSingleOutputGate sAnd1 = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate rAnd1 = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate sAnd2 = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate rAnd2 = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate sAnd1 = new TwoInputAND();
+	private final ITwoInputSingleOutputGate rAnd1 = new TwoInputAND();
+	private final ITwoInputSingleOutputGate sAnd2 = new TwoInputAND();
+	private final ITwoInputSingleOutputGate rAnd2 = new TwoInputAND();
 	private final IRelay dBar = new Inverter();
 	private final IRelay clkBar = new Inverter();
 

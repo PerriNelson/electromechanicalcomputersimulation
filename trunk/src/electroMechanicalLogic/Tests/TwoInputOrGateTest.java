@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.TwoInputOrGate;
+import electroMechanicalLogic.TwoInputOR;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class TwoInputOrGateTest {
@@ -23,7 +23,7 @@ public class TwoInputOrGateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new TwoInputOrGate();
+		systemUnderTest = new TwoInputOR();
 	}
 
 	@Test

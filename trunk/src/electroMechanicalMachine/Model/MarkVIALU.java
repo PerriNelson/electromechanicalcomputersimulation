@@ -15,8 +15,8 @@ import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
-import electroMechanicalLogic.TwoInputAndGate;
-import electroMechanicalLogic.TwoInputOrGate;
+import electroMechanicalLogic.TwoInputAND;
+import electroMechanicalLogic.TwoInputOR;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
@@ -26,10 +26,10 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 
 public class MarkVIALU implements IMarkVIALU {
 	private final IEightBitAdder adder = new EightBitAdder();
-	private final ITwoInputSingleOutputGate clockAndLoadOrAdd = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate clockAndLoadOrAdd = new TwoInputAND();
 	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
 	private final IRelay loadBar = new Inverter();
-	private final ITwoInputSingleOutputGate loadOrAdd = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate loadOrAdd = new TwoInputOR();
 	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
 
 	@Override

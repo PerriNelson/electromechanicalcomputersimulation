@@ -11,7 +11,7 @@ package electroMechanicalMachine.Model;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
-import electroMechanicalLogic.TwoInputAndGate;
+import electroMechanicalLogic.TwoInputAND;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
@@ -23,9 +23,9 @@ public class MarkVITimingAndMemoryWriteControl implements
 	private final IRelay clearBar = new Inverter();
 	private final IRelay oscillatorBar = new Inverter();
 	private final IRelay haltBar = new Inverter();
-	private final ITwoInputSingleOutputGate clock = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate clock = new TwoInputAND();
 
-	private final ITwoInputSingleOutputGate write = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate write = new TwoInputAND();
 	private final ISixteenBitCounterWithClear address = new SixteenBitCounterWithClear();
 
 	@Override

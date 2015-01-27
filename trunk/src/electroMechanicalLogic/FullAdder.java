@@ -15,7 +15,7 @@ public final class FullAdder implements IFullAdder {
 
 	private final IHalfAdder bottomHalf = new HalfAdder();
 	private final IHalfAdder topHalf = new HalfAdder();
-	private final ITwoInputSingleOutputGate or = new TwoInputOrGate();
+	private final ITwoInputSingleOutputGate or = new TwoInputOR();
 
 	@Override
 	public boolean getCO() {

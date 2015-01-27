@@ -9,10 +9,15 @@ package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
-public final class TwoInputNAndGate extends TwoRelaySingleOutputGate implements
+/**
+ * A two input NAND gate. The output of a NAND gate is on when the power is on
+ * and one or both of the "A" and "B" inputs are off. The output of a NAND gate
+ * is off when the power is off or both the "A" and "B" input are on.
+ */
+public final class TwoInputNAND extends TwoRelaySingleOutputGate implements
 		ITwoInputSingleOutputGate {
 
-	public TwoInputNAndGate() {
+	public TwoInputNAND() {
 		super(new Inverter(), new Inverter());
 	}
 

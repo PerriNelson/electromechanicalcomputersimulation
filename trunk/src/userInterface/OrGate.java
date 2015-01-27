@@ -8,7 +8,7 @@
 
 package userInterface;
 
-import electroMechanicalLogic.TwoInputOrGate;
+import electroMechanicalLogic.TwoInputOR;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 
 public class OrGate extends GateDemoFrame {
@@ -25,6 +25,6 @@ public class OrGate extends GateDemoFrame {
 
 	@Override
 	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputOrGate();
+		return new TwoInputOR();
 	}
 }

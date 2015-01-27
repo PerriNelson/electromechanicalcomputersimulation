@@ -17,7 +17,7 @@ import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitAdder;
 import electroMechanicalLogic.EightBitOnesComplement;
-import electroMechanicalLogic.TwoInputXOrGate;
+import electroMechanicalLogic.TwoInputXOR;
 import electroMechanicalLogic.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
 import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
@@ -27,7 +27,7 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 
 	private final IEightBitAdder adder = new EightBitAdder();
 	private final IEightBitOnesComplement complement = new EightBitOnesComplement();
-	private final ITwoInputSingleOutputGate overflowUnderflow = new TwoInputXOrGate();
+	private final ITwoInputSingleOutputGate overflowUnderflow = new TwoInputXOR();
 	private final EventListenerList eventListeners = new EventListenerList();
 
 	@Override

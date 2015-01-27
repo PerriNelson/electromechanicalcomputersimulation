@@ -11,6 +11,10 @@ package electroMechanicalLogic;
 import electroMechanicalLogic.Interfaces.IOscillator;
 import electroMechanicalLogic.Interfaces.IRelay;
 
+/**
+ * An oscillator is a circuit where the output alternates between on and off as
+ * long as power is flowing to it.
+ */
 public final class Oscillator implements IOscillator {
 	private final IRelay inverter = new Inverter();
 

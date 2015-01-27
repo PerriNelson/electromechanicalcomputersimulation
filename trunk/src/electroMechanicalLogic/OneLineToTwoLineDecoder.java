@@ -15,8 +15,8 @@ import electroMechanicalLogic.Interfaces.ITwoInputSingleOutputGate;
 public class OneLineToTwoLineDecoder implements IOneLineToTwoLineDecoder {
 
 	private final IRelay select = new Inverter();
-	private final ITwoInputSingleOutputGate a = new TwoInputAndGate();
-	private final ITwoInputSingleOutputGate b = new TwoInputAndGate();
+	private final ITwoInputSingleOutputGate a = new TwoInputAND();
+	private final ITwoInputSingleOutputGate b = new TwoInputAND();
 
 	@Override
 	public boolean getA() {
