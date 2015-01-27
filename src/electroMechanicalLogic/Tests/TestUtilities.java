@@ -26,8 +26,11 @@ import static electroMechanicalLogic.Tests.TestConstants.bitE;
 import static electroMechanicalLogic.Tests.TestConstants.bitF;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
 
@@ -66,6 +69,19 @@ public class TestUtilities {
 		return dataOut;
 	}
 
+	public static int getSum(final IEightBitSumOutput source) {
+		int sum = 0;
+		sum |= (source.getS0() ? bit0 : 0);
+		sum |= (source.getS1() ? bit1 : 0);
+		sum |= (source.getS2() ? bit2 : 0);
+		sum |= (source.getS3() ? bit3 : 0);
+		sum |= (source.getS4() ? bit4 : 0);
+		sum |= (source.getS5() ? bit5 : 0);
+		sum |= (source.getS6() ? bit6 : 0);
+		sum |= (source.getS7() ? bit7 : 0);
+		return sum;
+	}
+
 	public static void setAddress(final ISixteenBitAInput target,
 			final int address) {
 		target.setA0((address & bit0) == bit0 ? on : off);
@@ -86,7 +102,8 @@ public class TestUtilities {
 		target.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	public static void setDataIn(final IEightBitDataInput target, final int value) {
+	public static void setDataIn(final IEightBitDataInput target,
+			final int value) {
 		target.setDI0((value & bit0) == bit0);
 		target.setDI1((value & bit1) == bit1);
 		target.setDI2((value & bit2) == bit2);
@@ -95,6 +112,28 @@ public class TestUtilities {
 		target.setDI5((value & bit5) == bit5);
 		target.setDI6((value & bit6) == bit6);
 		target.setDI7((value & bit7) == bit7);
+	}
+
+	public static void setAIn(final IEightBitAInput target, final int value) {
+		target.setA0((value & bit0) == bit0);
+		target.setA1((value & bit1) == bit1);
+		target.setA2((value & bit2) == bit2);
+		target.setA3((value & bit3) == bit3);
+		target.setA4((value & bit4) == bit4);
+		target.setA5((value & bit5) == bit5);
+		target.setA6((value & bit6) == bit6);
+		target.setA7((value & bit7) == bit7);
+	}
+
+	public static void setBIn(final IEightBitBInput target, final int value) {
+		target.setB0((value & bit0) == bit0);
+		target.setB1((value & bit1) == bit1);
+		target.setB2((value & bit2) == bit2);
+		target.setB3((value & bit3) == bit3);
+		target.setB4((value & bit4) == bit4);
+		target.setB5((value & bit5) == bit5);
+		target.setB6((value & bit6) == bit6);
+		target.setB7((value & bit7) == bit7);
 	}
 
 }
