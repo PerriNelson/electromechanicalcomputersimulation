@@ -8,14 +8,17 @@
 
 package electroMechanicalLogic.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
+import static electroMechanicalLogic.Tests.TestConstants.bit8;
+
 import org.junit.Before;
 
 import electroMechanicalLogic.FiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+import electroMechanicalLogic.RAM.Tests.TestSixtyFourByteRAM;
 
-public class FiveHundredTwelveByteRAMTest extends
-		SixtyFourByOneByteRandomAccessMemoryTest {
-	protected static final int bit8 = 0x100;
+public class FiveHundredTwelveByteRAMTest extends TestSixtyFourByteRAM {
 
 	@Override
 	protected void setA(final int value) {

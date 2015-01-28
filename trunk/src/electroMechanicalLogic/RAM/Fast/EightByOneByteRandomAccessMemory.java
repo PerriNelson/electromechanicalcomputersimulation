@@ -6,13 +6,13 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast;
+package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
 
 public class EightByOneByteRandomAccessMemory implements
-		IEightByOneByteRandomAccessMemory, IRandomAccessMemory {
+		IEightByteRAM, IRandomAccessMemory {
 	protected int addressIn;
 	protected int addressOut;
 	protected byte dataIn;

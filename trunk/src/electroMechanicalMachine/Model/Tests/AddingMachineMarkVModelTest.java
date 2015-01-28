@@ -36,7 +36,7 @@ import java.beans.PropertyChangeListener;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 

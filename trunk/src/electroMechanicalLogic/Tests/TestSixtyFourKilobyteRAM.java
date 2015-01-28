@@ -16,7 +16,7 @@ import org.junit.Test;
 import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 
-public class SixtyFourKilobyteRAMTest extends ThirtyTwoKilobyteRAMTest {
+public class TestSixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAMTest {
 	protected static final int bitF = 0x8000;
 
 	@Override

@@ -6,26 +6,26 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
 
+import static electroMechanicalLogic.Tests.TestConstants.bit0;
+import static electroMechanicalLogic.Tests.TestConstants.bit1;
+import static electroMechanicalLogic.Tests.TestConstants.bit2;
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
+import static electroMechanicalLogic.Tests.TestConstants.bit6;
+import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightByOneByteRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
+import electroMechanicalLogic.RAM.EightByteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
 
-public class EightByOneByteRandomAccessMemoryTest {
-	protected IEightByOneByteRandomAccessMemory systemUnderTest;
-	protected static final int bit0 = 0x01;
-	protected static final int bit1 = 0x02;
-	protected static final int bit2 = 0x04;
-	protected static final int bit3 = 0x08;
-	protected static final int bit4 = 0x10;
-	protected static final int bit5 = 0x20;
-	protected static final int bit6 = 0x40;
-	protected static final int bit7 = 0x80;
+public class TestEightByteRAM {
+	protected IEightByteRAM systemUnderTest;
 
 	protected final int getDO() {
 		int result = 0;
@@ -61,7 +61,7 @@ public class EightByOneByteRandomAccessMemoryTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new EightByOneByteRandomAccessMemory();
+		systemUnderTest = new EightByteRAM();
 		systemUnderTest.setPower(true);
 	}
 

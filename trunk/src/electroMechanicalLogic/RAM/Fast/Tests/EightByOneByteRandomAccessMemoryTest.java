@@ -6,24 +6,47 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast.Tests;
+package electroMechanicalLogic.RAM.Fast.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.OneKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.EightByOneByteRandomAccessMemory;
 
-public class OneKilobyteRAMTest extends
-		electroMechanicalLogic.Tests.OneKilobyteRAMTest {
+public class EightByOneByteRandomAccessMemoryTest extends
+		electroMechanicalLogic.RAM.Tests.TestEightByteRAM {
 
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new OneKilobyteRAM();
+		systemUnderTest = new EightByOneByteRandomAccessMemory();
 		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	@Override
+	public void test() {
+		final int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
+				.getMaxAddress();
+		for (int i = 0; i < (maximumAddress + 1); i++) {
+			for (int a = 0; a < (maximumAddress + 1); a++) {
+				setA(a);
+				setDI((a == i) ? 0xff : 0);
+				systemUnderTest.setW(true);
+				systemUnderTest.step();
+				systemUnderTest.setW(false);
+				systemUnderTest.step();
+			}
+
+			for (int a = 0; a < (maximumAddress + 1); a++) {
+				setA(a);
+				systemUnderTest.step();
+				assertEquals(getDO(), (a == i) ? 0xff : 0);
+			}
+		}
 	}
 
 	@Test
@@ -44,5 +67,4 @@ public class OneKilobyteRAMTest extends
 			assertEquals(getDO(), 0);
 		}
 	}
-
 }

@@ -28,7 +28,7 @@ import java.beans.PropertyChangeListener;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 

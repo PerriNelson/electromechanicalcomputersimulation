@@ -17,7 +17,7 @@ import userInterface.Lamp;
 import userInterface.ToggleSwitch;
 import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 

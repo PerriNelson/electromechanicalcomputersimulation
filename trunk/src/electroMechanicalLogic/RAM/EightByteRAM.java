@@ -6,15 +6,20 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
+import electroMechanicalLogic.EightBitLatch;
+import electroMechanicalLogic.EightToOneSelector;
+import electroMechanicalLogic.ThreeToEightDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
-import electroMechanicalLogic.Interfaces.IEightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
+import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
 
-public class EightByOneByteRandomAccessMemory implements
-		IEightByOneByteRandomAccessMemory {
+/**
+ * An eight byte Random Access Memory.
+ */
+public class EightByteRAM implements IEightByteRAM {
 
 	protected IThreeToEightDecoder w = new ThreeToEightDecoder();
 	protected IEightToOneSelector dO0 = new EightToOneSelector();
@@ -35,7 +40,7 @@ public class EightByOneByteRandomAccessMemory implements
 	protected IEightBitLatch bank6;
 	protected IEightBitLatch bank7;
 
-	public EightByOneByteRandomAccessMemory() {
+	public EightByteRAM() {
 		initializeBanks();
 	}
 
@@ -78,17 +83,6 @@ public class EightByOneByteRandomAccessMemory implements
 	@Override
 	public boolean getDO7() {
 		return dO7.getOutput();
-	}
-
-	protected void initializeBanks() {
-		bank0 = new EightBitLatch();
-		bank1 = new EightBitLatch();
-		bank2 = new EightBitLatch();
-		bank3 = new EightBitLatch();
-		bank4 = new EightBitLatch();
-		bank5 = new EightBitLatch();
-		bank6 = new EightBitLatch();
-		bank7 = new EightBitLatch();
 	}
 
 	@Override
@@ -359,6 +353,17 @@ public class EightByOneByteRandomAccessMemory implements
 		dO7.setD6(bank6.getDO7());
 		dO7.setD7(bank7.getDO7());
 		dO7.step();
+	}
+
+	protected void initializeBanks() {
+		bank0 = new EightBitLatch();
+		bank1 = new EightBitLatch();
+		bank2 = new EightBitLatch();
+		bank3 = new EightBitLatch();
+		bank4 = new EightBitLatch();
+		bank5 = new EightBitLatch();
+		bank6 = new EightBitLatch();
+		bank7 = new EightBitLatch();
 	}
 
 }

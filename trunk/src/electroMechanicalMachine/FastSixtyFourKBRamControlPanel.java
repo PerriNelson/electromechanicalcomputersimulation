@@ -9,7 +9,7 @@
 package electroMechanicalMachine;
 
 import userInterface.AutomationDriver;
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 
 public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {

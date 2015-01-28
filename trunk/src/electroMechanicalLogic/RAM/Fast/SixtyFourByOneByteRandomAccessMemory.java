@@ -6,13 +6,13 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast;
+package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
 public class SixtyFourByOneByteRandomAccessMemory extends
 		EightByOneByteRandomAccessMemory implements
-		ISixtyFourByOneByteRandomAccessMemory {
+		ISixtyFourByteRAM {
 	@Override
 	public int getMaxAddress() {
 		return 0x3f;
