@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 import electroMechanicalLogic.RAM.Fast.OneKilobyteRAM;
 
 public class OneKilobyteRAMTest extends
@@ -28,8 +27,7 @@ public class OneKilobyteRAMTest extends
 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
-		final int maxAddress = ((IRandomAccessMemory) systemUnderTest)
-				.getMaxAddress();
+		final int maxAddress = 1023;
 		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			setDI(0xff);

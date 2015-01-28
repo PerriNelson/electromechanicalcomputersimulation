@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 import electroMechanicalLogic.RAM.Fast.EightByteRAM;
 
 public class EightByOneByteRandomAccessMemoryTest extends
@@ -29,8 +28,7 @@ public class EightByOneByteRandomAccessMemoryTest extends
 	@Test
 	@Override
 	public void test() {
-		final int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
-				.getMaxAddress();
+		final int maximumAddress = 7;
 		for (int i = 0; i < (maximumAddress + 1); i++) {
 			for (int a = 0; a < (maximumAddress + 1); a++) {
 				setA(a);
@@ -51,8 +49,7 @@ public class EightByOneByteRandomAccessMemoryTest extends
 
 	@Test
 	public void test_SetPowerOff_WithStep_ClearsAllAddresses() {
-		final int maxAddress = ((IRandomAccessMemory) systemUnderTest)
-				.getMaxAddress();
+		final int maxAddress = 7;
 		for (int address = 0; address < (maxAddress + 1); address++) {
 			setA(address);
 			setDI(0xff);
