@@ -6,15 +6,18 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
-import electroMechanicalLogic.Interfaces.IEightByOneBitRandomAccessMemory;
+import electroMechanicalLogic.EightToOneSelector;
+import electroMechanicalLogic.Latch;
+import electroMechanicalLogic.ThreeToEightDecoder;
 import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
+import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 
-public final class EightByOneBitRandomAccessMemory implements
-		IEightByOneBitRandomAccessMemory {
+public final class EightBitRAM implements
+		IEightBitRAM {
 	private final IThreeToEightDecoder decoder = new ThreeToEightDecoder();
 	private final ILatch bit0 = new Latch();
 	private final ILatch bit1 = new Latch();

@@ -8,7 +8,9 @@
 
 package electroMechanicalLogic.Interfaces;
 
+import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
+
 public interface ISixteenByOneBitRandomAccessMemory extends
-		IEightByOneBitRandomAccessMemory {
+		IEightBitRAM {
 	public abstract void setA3(boolean value);
 }
