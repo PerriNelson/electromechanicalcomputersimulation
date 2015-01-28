@@ -8,7 +8,8 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
+import electroMechanicalLogic.FlipFlops.LevelTriggeredDTypeFlipFlopWithClear;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ILatchWithClear;
 
 public class LatchWithClear implements ILatchWithClear {

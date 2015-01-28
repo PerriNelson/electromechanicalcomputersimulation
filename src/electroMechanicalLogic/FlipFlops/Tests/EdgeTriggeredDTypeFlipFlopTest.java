@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.FlipFlops.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EdgeTriggeredDTypeFlipFlop;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.EdgeTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
 
 public class EdgeTriggeredDTypeFlipFlopTest {
 

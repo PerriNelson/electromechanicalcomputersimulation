@@ -6,15 +6,15 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.FlipFlops.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EdgeTriggeredDTypeFlipFlopWithPresetAndClear;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
+import electroMechanicalLogic.FlipFlops.EdgeTriggeredDTypeFlipFlopWithPresetAndClear;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 
 public class EdgeTriggeredDTypeFlipFlopWithPresetAndClearTest {
 	private static final boolean on = true;

@@ -6,19 +6,24 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.FlipFlops;
 
+import electroMechanicalLogic.Inverter;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Gates.TwoInputAND;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
-import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Interfaces.IRelay;
 
+/**
+ * A Level-Triggered D-Type flip-flop is a flip-flop used to store one bit of
+ * data whenever the clock signal is on.
+ */
 public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 
 	protected final IRSFlipFlop flipFlop = new RSFlipFlop();
-	protected final ITwoInputSingleOutputGate sAnd = new TwoInputAND();
-	protected final ITwoInputSingleOutputGate rAnd = new TwoInputAND();
+	protected final ITwoInputSingleOutputGate set = new TwoInputAND();
+	protected final ITwoInputSingleOutputGate reset = new TwoInputAND();
 	protected final IRelay dBar = new Inverter();
 
 	@Override
@@ -33,21 +38,21 @@ public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 
 	@Override
 	public void setClk(final boolean value) {
-		sAnd.setB(value);
-		rAnd.setA(value);
+		set.setB(value);
+		reset.setA(value);
 	}
 
 	@Override
 	public void setD(final boolean value) {
 		dBar.setInput(value);
-		sAnd.setA(value);
+		set.setA(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
 		dBar.setPower(value);
-		sAnd.setPower(value);
-		rAnd.setPower(value);
+		set.setPower(value);
+		reset.setPower(value);
 		flipFlop.setPower(value);
 	}
 
@@ -55,13 +60,13 @@ public class LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	public void step() {
 		dBar.step();
 
-		rAnd.setB(dBar.getOutput());
-		rAnd.step();
+		reset.setB(dBar.getOutput());
+		reset.step();
 
-		sAnd.step();
+		set.step();
 
-		flipFlop.setS(sAnd.getOutput());
-		flipFlop.setR(rAnd.getOutput());
+		flipFlop.setS(set.getOutput());
+		flipFlop.setR(reset.getOutput());
 		flipFlop.step();
 	}
 

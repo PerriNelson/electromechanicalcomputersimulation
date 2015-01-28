@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.FlipFlops.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,15 +14,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.LevelTriggeredDTypeFlipFlopWithClear;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
+import electroMechanicalLogic.FlipFlops.LevelTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
 
-public class LevelTriggeredDTypeFlipFlopWithClearTest {
-	private IDTypeFlipFlopWithClear systemUnderTest;
+public class LevelTriggeredDTypeFlipFlopTest {
+	private IDTypeFlipFlop systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new LevelTriggeredDTypeFlipFlopWithClear();
+		systemUnderTest = new LevelTriggeredDTypeFlipFlop();
 		systemUnderTest.setPower(true);
 	}
 
@@ -42,16 +42,6 @@ public class LevelTriggeredDTypeFlipFlopWithClearTest {
 		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getQ());
-	}
-
-	@Test
-	public final void test_GetQ_WhenClockIsOnAndDataIsOnAndClearIsOn_ReturnsOff() {
-		systemUnderTest.setD(true);
-		systemUnderTest.setClk(true);
-		systemUnderTest.setClear(true);
-		systemUnderTest.step();
-
-		assertFalse(systemUnderTest.getQ());
 	}
 
 	@Test

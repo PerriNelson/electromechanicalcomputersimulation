@@ -6,49 +6,57 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.FlipFlops;
 
+import electroMechanicalLogic.FlipFlops.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Gates.TwoInputNOR;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 
+/**
+ * A simple set/reset flip-flop circuit. A flip-flop circuit "remembers" which
+ * of its inputs was last on when both inputs are off. The outputs of an RS type
+ * flip-flop are invalid when both inputs are or were on simultaneously. For an
+ * RS type flip-flop the "Q" output is on when the "R" input was the last input
+ * turned on. It is off when the "S" input was the last input turned on (or when
+ * power to the entire circuit is off).
+ */
 public final class RSFlipFlop implements IRSFlipFlop {
 
-	public ITwoInputSingleOutputGate norR = new TwoInputNOR();
-	public ITwoInputSingleOutputGate norS = new TwoInputNOR();
+	private final ITwoInputSingleOutputGate r = new TwoInputNOR();
+	private final ITwoInputSingleOutputGate s = new TwoInputNOR();
 
 	@Override
 	public boolean getQ() {
-		return norR.getOutput();
+		return r.getOutput();
 	}
 
 	@Override
 	public boolean getQBar() {
-		return norS.getOutput();
+		return s.getOutput();
 	}
 
 	private void halfStep() {
-		norR.setA(norS.getOutput());
-		norS.setB(norR.getOutput());
+		r.setA(s.getOutput());
+		s.setB(r.getOutput());
 
-		norR.step();
-		norS.step();
+		r.step();
+		s.step();
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		norR.setPower(value);
-		norS.setPower(value);
+		r.setPower(value);
+		s.setPower(value);
 	}
 
 	@Override
 	public void setR(final boolean value) {
-		norR.setB(value);
+		r.setB(value);
 	}
 
 	@Override
 	public void setS(final boolean value) {
-		norS.setA(value);
+		s.setA(value);
 	}
 
 	@Override

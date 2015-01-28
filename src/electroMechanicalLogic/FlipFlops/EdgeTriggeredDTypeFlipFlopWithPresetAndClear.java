@@ -6,13 +6,22 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.FlipFlops;
 
+import electroMechanicalLogic.Inverter;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Gates.ThreeInputNOR;
 import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IRelay;
 
+/**
+ * An Edge-Triggered D-Type Flip-Flop with Preset and Clear. The "Preset" signal
+ * forces the flip-flop to store an "on" value regardless of the other inputs or
+ * the clock state. the "Clear" signal forces the flip-flop to store an "off"
+ * value regardless of he other inputs or the clock state. Setting both the
+ * "Preset" and the "Clear" inputs at the same time results in an invalid state
+ * for the flip-flop.
+ */
 public final class EdgeTriggeredDTypeFlipFlopWithPresetAndClear implements
 		IDTypeFlipFlopWithPresetAndClear {
 
