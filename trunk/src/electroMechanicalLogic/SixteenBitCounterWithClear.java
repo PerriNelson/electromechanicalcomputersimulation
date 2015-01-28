@@ -8,7 +8,8 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
+import electroMechanicalLogic.FlipFlops.EdgeTriggeredDTypeFlipFlopWithPresetAndClear;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
 
 public class SixteenBitCounterWithClear implements ISixteenBitCounterWithClear {

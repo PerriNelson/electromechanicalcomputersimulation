@@ -6,14 +6,27 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.FlipFlops;
 
+import electroMechanicalLogic.Inverter;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Gates.TwoInputAND;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
-import electroMechanicalLogic.Interfaces.IRSFlipFlop;
 import electroMechanicalLogic.Interfaces.IRelay;
 
+/**
+ * An Edge-Triggered D-Type flip-flop is a flip-flop used to store one bit of
+ * data when the clock signal transitions from off to on. The value present at
+ * the "D" input when the clock signal is off will be stored in the flip-flop at
+ * the moment the clock signal transitions to on.
+ * 
+ * For this simulation's purposes that means that you must set the "D" input
+ * with the "Clk" input off and make sure that the circuit is stepped before
+ * setting the "Clk" input on and stepping the circuit. If the "D" value is
+ * changed at the same time the "Clk" input is changed the "D" value that was
+ * present when the "Clk" input was off will be stored in the flip-flop.
+ */
 public final class EdgeTriggeredDTypeFlipFlop implements IDTypeFlipFlop {
 	private final IRSFlipFlop stage1 = new RSFlipFlop();
 	private final IRSFlipFlop stage2 = new RSFlipFlop();

@@ -8,7 +8,8 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.EdgeTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.IFrequencyDivider;
 
 public class FrequencyDivider implements IFrequencyDivider {

@@ -6,12 +6,16 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.FlipFlops;
 
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Gates.TwoInputOR;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithClear;
 
+/**
+ * A Level-Triggered D-Type flip-flop with a "Clear" input that clears any value
+ * stored in the flip-flop when it is on.
+ */
 public final class LevelTriggeredDTypeFlipFlopWithClear extends
 		LevelTriggeredDTypeFlipFlop implements IDTypeFlipFlopWithClear {
 
@@ -32,15 +36,15 @@ public final class LevelTriggeredDTypeFlipFlopWithClear extends
 	public void step() {
 		dBar.step();
 
-		rAnd.setB(dBar.getOutput());
-		rAnd.step();
+		reset.setB(dBar.getOutput());
+		reset.step();
 
-		clear.setA(rAnd.getOutput());
+		clear.setA(reset.getOutput());
 		clear.step();
 
-		sAnd.step();
+		set.step();
 
-		flipFlop.setS(sAnd.getOutput());
+		flipFlop.setS(set.getOutput());
 		flipFlop.setR(clear.getOutput());
 		flipFlop.step();
 	}

@@ -8,7 +8,8 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlopWithPresetAndClear;
+import electroMechanicalLogic.FlipFlops.EdgeTriggeredDTypeFlipFlopWithPresetAndClear;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithPresetAndClear;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 
 public class EightBitEdgeTriggeredLatchWithClear implements

@@ -8,7 +8,8 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.LevelTriggeredDTypeFlipFlop;
+import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlop;
 import electroMechanicalLogic.Interfaces.ILatch;
 
 public final class Latch implements ILatch {
