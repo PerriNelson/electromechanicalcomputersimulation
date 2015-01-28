@@ -6,22 +6,21 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast;
+package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
+import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 
-public class OneKilobyteRAM extends FiveHundredTwelveByteRAM implements
-		IOneKilobyteRAM {
-	protected static final int bit8 = 0x100;
-	protected static final int bit9 = 0x200;
+public class SixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAM implements
+		ISixtyFourKilobyteRAM {
+	protected static final int bitF = 0x8000;
 
 	@Override
 	public int getMaxAddress() {
-		return 0x3ff;
+		return 0xffff;
 	}
 
 	@Override
-	public void setA9(final boolean value) {
-		addressIn = value ? addressIn | bit9 : addressIn & ~bit9;
+	public void setAF(final boolean value) {
+		addressIn = value ? addressIn | bitF : addressIn & ~bitF;
 	}
 }

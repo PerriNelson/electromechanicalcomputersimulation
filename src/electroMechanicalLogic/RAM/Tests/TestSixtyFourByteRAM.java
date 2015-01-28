@@ -6,31 +6,31 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
+
+import static electroMechanicalLogic.Tests.TestConstants.bit3;
+import static electroMechanicalLogic.Tests.TestConstants.bit4;
+import static electroMechanicalLogic.Tests.TestConstants.bit5;
 
 import org.junit.Before;
 
-import electroMechanicalLogic.SixtyFourByOneByteRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.ISixtyFourByOneByteRandomAccessMemory;
+import electroMechanicalLogic.RAM.SixtyFourByteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
-public class SixtyFourByOneByteRandomAccessMemoryTest extends
-		EightByOneByteRandomAccessMemoryTest {
+public class TestSixtyFourByteRAM extends TestEightByteRAM {
 
 	@Override
 	protected void setA(final int value) {
 		super.setA(value);
-		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-				.setA3((value & bit3) == bit3);
-		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-				.setA4((value & bit4) == bit4);
-		((ISixtyFourByOneByteRandomAccessMemory) systemUnderTest)
-				.setA5((value & bit5) == bit5);
+		((ISixtyFourByteRAM) systemUnderTest).setA3((value & bit3) == bit3);
+		((ISixtyFourByteRAM) systemUnderTest).setA4((value & bit4) == bit4);
+		((ISixtyFourByteRAM) systemUnderTest).setA5((value & bit5) == bit5);
 	}
 
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new SixtyFourByOneByteRandomAccessMemory();
+		systemUnderTest = new SixtyFourByteRAM();
 		systemUnderTest.setPower(true);
 	}
 

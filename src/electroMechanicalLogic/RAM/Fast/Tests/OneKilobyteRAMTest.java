@@ -6,23 +6,23 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast.Tests;
+package electroMechanicalLogic.RAM.Fast.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.FourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.OneKilobyteRAM;
 
-public class FourKilobyteRAMTest extends
-		electroMechanicalLogic.Tests.FourKilobyteRAMTest {
+public class OneKilobyteRAMTest extends
+		electroMechanicalLogic.Tests.OneKilobyteRAMTest {
 
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new FourKilobyteRAM();
+		systemUnderTest = new OneKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
 

@@ -6,18 +6,18 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast.Tests;
+package electroMechanicalLogic.RAM.Fast.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 
 public class SixtyFourKilobyteRAMTest extends
-		electroMechanicalLogic.Tests.SixtyFourKilobyteRAMTest {
+		electroMechanicalLogic.Tests.TestSixtyFourKilobyteRAM {
 
 	@Override
 	@Before

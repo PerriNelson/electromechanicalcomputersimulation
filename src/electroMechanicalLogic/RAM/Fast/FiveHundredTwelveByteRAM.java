@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast;
+package electroMechanicalLogic.RAM.Fast;
 
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 

@@ -13,4 +13,4 @@
  * this package should require less memory and time to run than the relay based
  * implementations.
  */
-package electroMechanicalLogic.Fast;
+package electroMechanicalLogic.RAM.Fast;

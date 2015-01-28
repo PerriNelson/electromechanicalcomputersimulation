@@ -6,23 +6,23 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast.Tests;
+package electroMechanicalLogic.RAM.Fast.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.FiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.FourKilobyteRAM;
 
-public class FiveHundredTwelveByteRAMTest extends
-		electroMechanicalLogic.Tests.FiveHundredTwelveByteRAMTest {
+public class FourKilobyteRAMTest extends
+		electroMechanicalLogic.Tests.FourKilobyteRAMTest {
 
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new FiveHundredTwelveByteRAM();
+		systemUnderTest = new FourKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
 
@@ -44,4 +44,5 @@ public class FiveHundredTwelveByteRAMTest extends
 			assertEquals(getDO(), 0);
 		}
 	}
+
 }

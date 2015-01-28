@@ -6,47 +6,24 @@
   USA.
  */
 
-package electroMechanicalLogic.Fast.Tests;
+package electroMechanicalLogic.RAM.Fast.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.Fast.EightByOneByteRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.SixtyFourByOneByteRandomAccessMemory;
 
-public class EightByOneByteRandomAccessMemoryTest extends
-		electroMechanicalLogic.Tests.EightByOneByteRandomAccessMemoryTest {
+public class SixtyFourByOneByteRandomAccessMemoryTest extends
+		electroMechanicalLogic.RAM.Tests.TestSixtyFourByteRAM {
 
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new EightByOneByteRandomAccessMemory();
+		systemUnderTest = new SixtyFourByOneByteRandomAccessMemory();
 		systemUnderTest.setPower(true);
-	}
-
-	@Test
-	@Override
-	public void test() {
-		final int maximumAddress = ((IRandomAccessMemory) systemUnderTest)
-				.getMaxAddress();
-		for (int i = 0; i < (maximumAddress + 1); i++) {
-			for (int a = 0; a < (maximumAddress + 1); a++) {
-				setA(a);
-				setDI((a == i) ? 0xff : 0);
-				systemUnderTest.setW(true);
-				systemUnderTest.step();
-				systemUnderTest.setW(false);
-				systemUnderTest.step();
-			}
-
-			for (int a = 0; a < (maximumAddress + 1); a++) {
-				setA(a);
-				systemUnderTest.step();
-				assertEquals(getDO(), (a == i) ? 0xff : 0);
-			}
-		}
 	}
 
 	@Test
@@ -67,4 +44,5 @@ public class EightByOneByteRandomAccessMemoryTest extends
 			assertEquals(getDO(), 0);
 		}
 	}
+
 }
