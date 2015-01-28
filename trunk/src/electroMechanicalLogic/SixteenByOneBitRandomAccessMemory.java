@@ -9,13 +9,13 @@
 package electroMechanicalLogic;
 
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
-import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
+import electroMechanicalLogic.Interfaces.ISixteenBitRAM;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.RAM.EightBitRAM;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 
 public class SixteenByOneBitRandomAccessMemory implements
-		ISixteenByOneBitRandomAccessMemory {
+		ISixteenBitRAM {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
 	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();

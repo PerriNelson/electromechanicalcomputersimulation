@@ -35,42 +35,42 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	}
 
 	@Override
-	public void setD0(final boolean value) {
+	public void setDI0(final boolean value) {
 		and0.setD(value);
 	}
 
 	@Override
-	public void setD1(final boolean value) {
+	public void setDI1(final boolean value) {
 		and1.setD(value);
 	}
 
 	@Override
-	public void setD2(final boolean value) {
+	public void setDI2(final boolean value) {
 		and2.setD(value);
 	}
 
 	@Override
-	public void setD3(final boolean value) {
+	public void setDI3(final boolean value) {
 		and3.setD(value);
 	}
 
 	@Override
-	public void setD4(final boolean value) {
+	public void setDI4(final boolean value) {
 		and4.setD(value);
 	}
 
 	@Override
-	public void setD5(final boolean value) {
+	public void setDI5(final boolean value) {
 		and5.setD(value);
 	}
 
 	@Override
-	public void setD6(final boolean value) {
+	public void setDI6(final boolean value) {
 		and6.setD(value);
 	}
 
 	@Override
-	public void setD7(final boolean value) {
+	public void setDI7(final boolean value) {
 		and7.setD(value);
 	}
 

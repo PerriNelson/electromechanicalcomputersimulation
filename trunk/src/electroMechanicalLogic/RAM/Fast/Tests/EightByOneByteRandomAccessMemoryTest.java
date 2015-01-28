@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
-import electroMechanicalLogic.RAM.Fast.EightByOneByteRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.EightByteRAM;
 
 public class EightByOneByteRandomAccessMemoryTest extends
 		electroMechanicalLogic.RAM.Tests.TestEightByteRAM {
@@ -22,7 +22,7 @@ public class EightByOneByteRandomAccessMemoryTest extends
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new EightByOneByteRandomAccessMemory();
+		systemUnderTest = new EightByteRAM();
 		systemUnderTest.setPower(true);
 	}
 

@@ -105,14 +105,14 @@ public final class EightBitRAM implements
 		bit6.step();
 		bit7.step();
 
-		selector.setD0(bit0.getDO());
-		selector.setD1(bit1.getDO());
-		selector.setD2(bit2.getDO());
-		selector.setD3(bit3.getDO());
-		selector.setD4(bit4.getDO());
-		selector.setD5(bit5.getDO());
-		selector.setD6(bit6.getDO());
-		selector.setD7(bit7.getDO());
+		selector.setDI0(bit0.getDO());
+		selector.setDI1(bit1.getDO());
+		selector.setDI2(bit2.getDO());
+		selector.setDI3(bit3.getDO());
+		selector.setDI4(bit4.getDO());
+		selector.setDI5(bit5.getDO());
+		selector.setDI6(bit6.getDO());
+		selector.setDI7(bit7.getDO());
 
 		selector.step();
 	}
