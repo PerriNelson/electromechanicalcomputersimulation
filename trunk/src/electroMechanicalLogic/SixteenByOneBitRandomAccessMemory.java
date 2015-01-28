@@ -8,18 +8,19 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IEightByOneBitRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
 import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.RAM.EightBitRAM;
+import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 
 public class SixteenByOneBitRandomAccessMemory implements
 		ISixteenByOneBitRandomAccessMemory {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
 	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
-	private final IEightByOneBitRandomAccessMemory bank0 = new EightByOneBitRandomAccessMemory();
-	private final IEightByOneBitRandomAccessMemory bank1 = new EightByOneBitRandomAccessMemory();
+	private final IEightBitRAM bank0 = new EightBitRAM();
+	private final IEightBitRAM bank1 = new EightBitRAM();
 
 	@Override
 	public boolean getDO() {
