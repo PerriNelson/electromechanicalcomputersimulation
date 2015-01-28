@@ -8,11 +8,9 @@
 
 package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IRandomAccessMemory;
 import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
 
-public class EightByOneByteRandomAccessMemory implements
-		IEightByteRAM, IRandomAccessMemory {
+public class EightByteRAM implements IEightByteRAM {
 	protected int addressIn;
 	protected int addressOut;
 	protected byte dataIn;
@@ -21,7 +19,7 @@ public class EightByOneByteRandomAccessMemory implements
 	protected boolean writeOut;
 	protected boolean powerIn;
 	protected boolean powerOut;
-	protected byte[] randomAccessMemory;
+	protected byte[] ram;
 
 	protected static final int bit0 = 0x1;
 	protected static final int bit1 = 0x2;
@@ -32,16 +30,16 @@ public class EightByOneByteRandomAccessMemory implements
 	protected static final int bit6 = 0x40;
 	protected static final int bit7 = 0x80;
 
-	public EightByOneByteRandomAccessMemory() {
+	public EightByteRAM() {
 		final int maxAddress = getMaxAddress();
-		randomAccessMemory = new byte[maxAddress + 1];
+		ram = new byte[maxAddress + 1];
 		clearRandomAccessMemory();
 	}
 
 	private void clearRandomAccessMemory() {
 		final int maxAddress = getMaxAddress();
 		for (int address = 0; address < (maxAddress + 1); address++) {
-			randomAccessMemory[address] = 0;
+			ram[address] = 0;
 		}
 	}
 
@@ -85,8 +83,7 @@ public class EightByOneByteRandomAccessMemory implements
 		return (dataOut & bit7) == bit7;
 	}
 
-	@Override
-	public int getMaxAddress() {
+	protected int getMaxAddress() {
 		return 0x7;
 	}
 
@@ -166,9 +163,9 @@ public class EightByOneByteRandomAccessMemory implements
 			addressOut = addressIn;
 			writeOut = writeIn;
 			if (writeOut) {
-				randomAccessMemory[addressOut] = dataIn;
+				ram[addressOut] = dataIn;
 			}
-			dataOut = randomAccessMemory[addressOut];
+			dataOut = ram[addressOut];
 		} else {
 			writeOut = false;
 			addressOut = 0;

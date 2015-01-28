@@ -14,10 +14,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.SixteenByOneBitRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.ISixteenByOneBitRandomAccessMemory;
+import electroMechanicalLogic.Interfaces.ISixteenBitRAM;
 
 public class SixteenByOneBitRandomAccessMemoryTest {
-	private static ISixteenByOneBitRandomAccessMemory systemUnderTest;
+	private static ISixteenBitRAM systemUnderTest;
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
 	private static final int bit2 = 0x04;

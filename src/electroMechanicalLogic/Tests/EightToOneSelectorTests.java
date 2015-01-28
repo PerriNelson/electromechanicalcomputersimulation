@@ -33,14 +33,14 @@ public class EightToOneSelectorTests {
 			0x10, 0x20, 0x40, 0x80 };
 
 	private void setD(final int value) {
-		systemUnderTest.setD0((value & bit0) == bit0);
-		systemUnderTest.setD1((value & bit1) == bit1);
-		systemUnderTest.setD2((value & bit2) == bit2);
-		systemUnderTest.setD3((value & bit3) == bit3);
-		systemUnderTest.setD4((value & bit4) == bit4);
-		systemUnderTest.setD5((value & bit5) == bit5);
-		systemUnderTest.setD6((value & bit6) == bit6);
-		systemUnderTest.setD7((value & bit7) == bit7);
+		systemUnderTest.setDI0((value & bit0) == bit0);
+		systemUnderTest.setDI1((value & bit1) == bit1);
+		systemUnderTest.setDI2((value & bit2) == bit2);
+		systemUnderTest.setDI3((value & bit3) == bit3);
+		systemUnderTest.setDI4((value & bit4) == bit4);
+		systemUnderTest.setDI5((value & bit5) == bit5);
+		systemUnderTest.setDI6((value & bit6) == bit6);
+		systemUnderTest.setDI7((value & bit7) == bit7);
 	}
 
 	@Before
