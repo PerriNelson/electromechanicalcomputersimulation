@@ -11,17 +11,14 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
-public class AddingMachineMarkVII extends BasicUIFrame implements
+public class AddingMachineMarkVII extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -97,7 +94,6 @@ public class AddingMachineMarkVII extends BasicUIFrame implements
 	private ToggleSwitch takeOver;
 
 	protected IAddingMachineMarkVIModel model;
-	protected IAutomationDriver automationDriver;
 
 	public AddingMachineMarkVII() {
 		this("AddingMachineMark VII", new AddingMachineMarkVIIModel(
@@ -112,19 +108,18 @@ public class AddingMachineMarkVII extends BasicUIFrame implements
 
 		initializeModel(theModel);
 
-		startAutomation();
+		runSimulation(theModel, 10);
 	}
 
 	protected void initializeModel(final IAddingMachineMarkVIModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
 	private void placeControls() {
 		setSize(950, 500);
-		placeLabel("Labels/AddingMachineMarkVIILabel.jpg",
-				" Adding Machine Mark VII ", columnF, titleRow, 16);
+		placeTitleLabel(" Adding Machine Mark VII ",
+				"Labels/AddingMachineMarkVIILabel.jpg");
 
 		useCodePanelSwitch = placeToggleSwitch(column3, codeSwitchRow, 4);
 		placeLabel("Labels/UseCodeRAMLabel.jpg", " Use Code RAM ", column3,
@@ -200,6 +195,10 @@ public class AddingMachineMarkVII extends BasicUIFrame implements
 		dataLamp5 = placeLamp(columnD, dataLampRow);
 		dataLamp6 = placeLamp(columnE, dataLampRow);
 		dataLamp7 = placeLamp(columnF, dataLampRow);
+	}
+
+	protected void placeTitleLabel(String labelText, String imagePath) {
+		placeLabel(imagePath, labelText, columnF, titleRow, 255);
 	}
 
 	@Override
@@ -278,20 +277,18 @@ public class AddingMachineMarkVII extends BasicUIFrame implements
 			} else if (source == takeOver) {
 				model.setTakeover(value);
 			}
-		} else if (source == model) {
-			dataLamp0.setOn(model.getDO0());
-			dataLamp1.setOn(model.getDO1());
-			dataLamp2.setOn(model.getDO2());
-			dataLamp3.setOn(model.getDO3());
-			dataLamp4.setOn(model.getDO4());
-			dataLamp5.setOn(model.getDO5());
-			dataLamp6.setOn(model.getDO6());
-			dataLamp7.setOn(model.getDO7());
 		}
 	}
 
-	protected void startAutomation() {
-		automationDriver = new AutomationDriver(model, 10);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		dataLamp0.setOn(model.getDO0());
+		dataLamp1.setOn(model.getDO1());
+		dataLamp2.setOn(model.getDO2());
+		dataLamp3.setOn(model.getDO3());
+		dataLamp4.setOn(model.getDO4());
+		dataLamp5.setOn(model.getDO5());
+		dataLamp6.setOn(model.getDO6());
+		dataLamp7.setOn(model.getDO7());
 	}
 }

@@ -9,12 +9,6 @@
 package electroMechanicalMachine.Model;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
@@ -28,28 +22,6 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	private final IEightBitAdder adder = new EightBitAdder();
 	private final IEightBitOnesComplement complement = new EightBitOnesComplement();
 	private final ITwoInputSingleOutputGate overflowUnderflow = new TwoInputXOR();
-	private final EventListenerList eventListeners = new EventListenerList();
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
-	}
 
 	@Override
 	public boolean getOverflow() {
@@ -94,12 +66,6 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 	@Override
 	public boolean getS7() {
 		return adder.getS7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -206,7 +172,5 @@ public class AddingMachineMarkIIModel implements IAddingMachineMarkIIModel {
 
 		overflowUnderflow.setA(adder.getCO());
 		overflowUnderflow.step();
-
-		fireOnPropertyChange();
 	}
 }

@@ -6,25 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
-import electroMechanicalLogic.Gates.TwoInputXOR;
-import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputNAND;
 
-public class XOrGate extends GateDemoFrame {
+public class NANDGate extends GateDemoPanel {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final XOrGate frame = new XOrGate();
+		final NANDGate frame = new NANDGate();
 		frame.setVisible(true);
 	}
 
-	public XOrGate() {
-		super("Two Input XOR Gate");
-	}
-
-	@Override
-	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputXOR();
+	public NANDGate() {
+		super("NAND Gate", new TwoInputNAND());
 	}
 }

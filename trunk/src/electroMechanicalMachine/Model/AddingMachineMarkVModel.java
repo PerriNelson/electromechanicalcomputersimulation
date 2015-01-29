@@ -11,12 +11,6 @@ package electroMechanicalMachine.Model;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
@@ -32,7 +26,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
-	private final EventListenerList eventListeners = new EventListenerList();
 	private final ISixtyFourKilobyteRamControlPanelModel controlPanel;
 	private final IEightBitLatchWithClear latch;
 	private final IEightBitAdder adder;
@@ -53,27 +46,6 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 		counter = new SixteenBitCounterWithClear();
 		clearBar = new Inverter();
 		clkBar = new Inverter();
-	}
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
 	}
 
 	@Override
@@ -154,12 +126,6 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 	@Override
 	public boolean getS7() {
 		return latch.getDO7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -350,8 +316,5 @@ public class AddingMachineMarkVModel implements IAddingMachineMarkVModel {
 
 		counter.setClk(clkBar.getOutput());
 		counter.step();
-
-		fireOnPropertyChange();
 	}
-
 }

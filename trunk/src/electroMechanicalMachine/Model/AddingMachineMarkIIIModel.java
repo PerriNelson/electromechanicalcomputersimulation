@@ -10,12 +10,6 @@ package electroMechanicalMachine.Model;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
@@ -28,31 +22,9 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 	private final IEightBitAdder adder = new EightBitAdder();
 	private final IEightBitLatch latch;
 	private final IEightBitTwoToOneSelector selector = new EightBitTwoToOneSelector();
-	private final EventListenerList eventListeners = new EventListenerList();
 
 	public AddingMachineMarkIIIModel(final IEightBitLatch eightBitLatch) {
 		latch = eightBitLatch;
-	}
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
 	}
 
 	@Override
@@ -98,12 +70,6 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 	@Override
 	public boolean getS7() {
 		return adder.getS7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -214,7 +180,6 @@ public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {
 		latch.step();
 
 		connectEightBitDataOutputToEightBitBInput(latch, selector);
-		fireOnPropertyChange();
 	}
 
 }

@@ -11,8 +11,9 @@ package electroMechanicalMachine.Model.Interfaces;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
+import electroMechanicalMachine.Interfaces.ISimulatedCircuitWithPropertyChangeEvents;
 
-public interface ISixtyFourKilobyteRamControlPanelModel extends IMachineModel,
+public interface ISixtyFourKilobyteRamControlPanelModel extends ISimulatedCircuitWithPropertyChangeEvents,
 		IEightBitDataOutput {
 
 	public abstract ISixteenBitAInput getExternalAddressIn();

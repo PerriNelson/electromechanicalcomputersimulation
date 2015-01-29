@@ -11,17 +11,14 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 
-public class AddingMachineMarkV extends BasicUIFrame implements
+public class AddingMachineMarkV extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -65,7 +62,6 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 	private ToggleSwitch clear;
 
 	protected IAddingMachineMarkVModel model;
-	protected IAutomationDriver automationDriver;
 
 	public AddingMachineMarkV() {
 		this("AddingMachineMark V", new AddingMachineMarkVModel(
@@ -80,12 +76,11 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 
 		initializeModel(theModel);
 
-		startAutomation();
+		runSimulation(theModel, 10);
 	}
 
 	protected void initializeModel(final IAddingMachineMarkVModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -208,23 +203,6 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 			} else if (source == clear) {
 				model.setClear(value);
 			}
-		} else if (source == model) {
-			lamps[0].setOn(model.getDO0());
-			lamps[1].setOn(model.getDO1());
-			lamps[2].setOn(model.getDO2());
-			lamps[3].setOn(model.getDO3());
-			lamps[4].setOn(model.getDO4());
-			lamps[5].setOn(model.getDO5());
-			lamps[6].setOn(model.getDO6());
-			lamps[7].setOn(model.getDO7());
-			lamps[8].setOn(model.getS0());
-			lamps[9].setOn(model.getS1());
-			lamps[10].setOn(model.getS2());
-			lamps[11].setOn(model.getS3());
-			lamps[12].setOn(model.getS4());
-			lamps[13].setOn(model.getS5());
-			lamps[14].setOn(model.getS6());
-			lamps[15].setOn(model.getS7());
 		}
 	}
 
@@ -310,8 +288,23 @@ public class AddingMachineMarkV extends BasicUIFrame implements
 		}
 	}
 
-	protected void startAutomation() {
-		automationDriver = new AutomationDriver(model, 1);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lamps[0].setOn(model.getDO0());
+		lamps[1].setOn(model.getDO1());
+		lamps[2].setOn(model.getDO2());
+		lamps[3].setOn(model.getDO3());
+		lamps[4].setOn(model.getDO4());
+		lamps[5].setOn(model.getDO5());
+		lamps[6].setOn(model.getDO6());
+		lamps[7].setOn(model.getDO7());
+		lamps[8].setOn(model.getS0());
+		lamps[9].setOn(model.getS1());
+		lamps[10].setOn(model.getS2());
+		lamps[11].setOn(model.getS3());
+		lamps[12].setOn(model.getS4());
+		lamps[13].setOn(model.getS5());
+		lamps[14].setOn(model.getS6());
+		lamps[15].setOn(model.getS7());
 	}
 }

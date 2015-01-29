@@ -8,7 +8,9 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-public interface IAddingMachineMarkIIModel extends IMachineModel {
+import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+
+public interface IAddingMachineMarkIIModel extends ISimulatedCircuit {
 	public abstract boolean getOverflow();
 
 	public abstract boolean getS0();

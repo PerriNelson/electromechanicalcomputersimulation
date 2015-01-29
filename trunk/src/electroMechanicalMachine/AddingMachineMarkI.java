@@ -11,16 +11,13 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalMachine.Model.AddingMachineMarkIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
-public class AddingMachineMarkI extends BasicUIFrame implements
+public class AddingMachineMarkI extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -41,7 +38,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	private static final int column7 = 1;
 
 	public static void main(final String[] args) {
-		final AddingMachineMarkI frame = new AddingMachineMarkI();
+		final ControlPanel frame = new AddingMachineMarkI();
 		frame.setVisible(true);
 	}
 
@@ -70,8 +67,7 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 	private Lamp lampS5;
 	private Lamp lampS6;
 	private Lamp lampS7;
-	private IAddingMachineMarkIModel model;
-	private IAutomationDriver automationDriver;
+	IAddingMachineMarkIModel model;
 
 	public AddingMachineMarkI() {
 		super("Adding Machine Mark I");
@@ -79,12 +75,11 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 		placeControls();
 		initializeModel();
 
-		startAutomation();
+		runSimulation(model, 10);
 	}
 
 	private void initializeModel() {
 		model = new AddingMachineMarkIModel();
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -167,21 +162,19 @@ public class AddingMachineMarkI extends BasicUIFrame implements
 			} else if (evt.getSource() == toggleSwitchB7) {
 				model.setB7(powerState);
 			}
-		} else if (evt.getSource() == model) {
-			lampCO.setOn(model.getCO());
-			lampS0.setOn(model.getS0());
-			lampS1.setOn(model.getS1());
-			lampS2.setOn(model.getS2());
-			lampS3.setOn(model.getS3());
-			lampS4.setOn(model.getS4());
-			lampS5.setOn(model.getS5());
-			lampS6.setOn(model.getS6());
-			lampS7.setOn(model.getS7());
 		}
 	}
 
-	public void startAutomation() {
-		automationDriver = new AutomationDriver(model);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lampCO.setOn(model.getCO());
+		lampS0.setOn(model.getS0());
+		lampS1.setOn(model.getS1());
+		lampS2.setOn(model.getS2());
+		lampS3.setOn(model.getS3());
+		lampS4.setOn(model.getS4());
+		lampS5.setOn(model.getS5());
+		lampS6.setOn(model.getS6());
+		lampS7.setOn(model.getS7());
 	}
 }

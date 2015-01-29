@@ -11,16 +11,17 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
+import electroMechanicalMachine.Interfaces.ISimulationDriver;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
-public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
+/**
+ *
+ */
+public class SixtyFourKBRamControlPanel extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -62,7 +63,7 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 	private ToggleSwitch takeOver;
 
 	protected ISixtyFourKilobyteRamControlPanelModel model;
-	protected IAutomationDriver automationDriver;
+	protected ISimulationDriver automationDriver;
 
 	public SixtyFourKBRamControlPanel() {
 		this("64KB RAM Control Panel",
@@ -77,13 +78,12 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 
 		initializeModel(theModel);
 
-		startAutomation();
+		runSimulation(theModel, 10);
 	}
 
 	protected void initializeModel(
 			final ISixtyFourKilobyteRamControlPanelModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -193,15 +193,6 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 			} else if (source == takeOver) {
 				model.setTakeover(value);
 			}
-		} else if (source == model) {
-			lamps[0].setOn(model.getDO0());
-			lamps[1].setOn(model.getDO1());
-			lamps[2].setOn(model.getDO2());
-			lamps[3].setOn(model.getDO3());
-			lamps[4].setOn(model.getDO4());
-			lamps[5].setOn(model.getDO5());
-			lamps[6].setOn(model.getDO6());
-			lamps[7].setOn(model.getDO7());
 		}
 	}
 
@@ -287,11 +278,15 @@ public class SixtyFourKBRamControlPanel extends BasicUIFrame implements
 		}
 	}
 
-	protected void startAutomation() {
-		// The slow RAM takes a while to step so we give the
-		// host machine's thread time to do other things by
-		// driving the automation a bit more slowly.
-		automationDriver = new AutomationDriver(model, 250);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lamps[0].setOn(model.getDO0());
+		lamps[1].setOn(model.getDO1());
+		lamps[2].setOn(model.getDO2());
+		lamps[3].setOn(model.getDO3());
+		lamps[4].setOn(model.getDO4());
+		lamps[5].setOn(model.getDO5());
+		lamps[6].setOn(model.getDO6());
+		lamps[7].setOn(model.getDO7());
 	}
 }

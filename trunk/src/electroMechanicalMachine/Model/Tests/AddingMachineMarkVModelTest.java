@@ -28,10 +28,6 @@ import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +38,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 
 public class AddingMachineMarkVModelTest {
 	private IAddingMachineMarkVModel systemUnderTest;
-	private boolean eventFired = false;
 
 	private int getSum() {
 		int sum = 0;
@@ -2436,18 +2431,6 @@ public class AddingMachineMarkVModelTest {
 		systemUnderTest.step();
 
 		assertEquals(on, systemUnderTest.getDO0());
-	}
-
-	@Test
-	public void test_Step_FiresPropertyChangeEvent() {
-		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
-			@Override
-			public void propertyChange(final PropertyChangeEvent evt) {
-				eventFired = true;
-			}
-		});
-		systemUnderTest.step();
-		assertTrue(eventFired);
 	}
 
 	@Test

@@ -6,25 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
-import electroMechanicalLogic.Gates.TwoInputNAND;
-import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputAND;
 
-public class NANDGate extends GateDemoFrame {
+public class ANDGate extends GateDemoPanel {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final NANDGate frame = new NANDGate();
+		final ANDGate frame = new ANDGate();
 		frame.setVisible(true);
 	}
 
-	public NANDGate() {
-		super("Two Input NAND Gate");
-	}
-
-	@Override
-	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputNAND();
+	public ANDGate() {
+		super("AND Gate", new TwoInputAND());
 	}
 }

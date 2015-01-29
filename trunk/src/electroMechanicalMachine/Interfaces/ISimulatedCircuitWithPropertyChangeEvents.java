@@ -6,13 +6,13 @@
   USA.
  */
 
-package electroMechanicalMachine.Model.Interfaces;
+package electroMechanicalMachine.Interfaces;
 
 import java.beans.PropertyChangeListener;
 
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface IMachineModel extends ISimulatedCircuit {
+public interface ISimulatedCircuitWithPropertyChangeEvents extends ISimulatedCircuit {
 
 	public abstract void addPropertyChangeListener(
 			PropertyChangeListener listener);

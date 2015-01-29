@@ -11,17 +11,14 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 
-public class AddingMachineMarkIV extends BasicUIFrame implements
+public class AddingMachineMarkIV extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -67,7 +64,6 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 	private Lamp lampS7;
 
 	private IAddingMachineMarkIVModel model;
-	private IAutomationDriver automationDriver;
 
 	public AddingMachineMarkIV() {
 		this("Adding Machine Mark IV", new AddingMachineMarkIVModel(
@@ -81,12 +77,11 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 
 		initializeModel(model);
 
-		startAutomation();
+		runSimulation(model, 10);
 	}
 
 	protected void initializeModel(final IAddingMachineMarkIVModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -151,21 +146,18 @@ public class AddingMachineMarkIV extends BasicUIFrame implements
 			} else if (evt.getSource() == toggleSwitchClear) {
 				model.setClear(powerState);
 			}
-		} else if (evt.getSource() == model) {
-			lampS0.setOn(model.getS0());
-			lampS1.setOn(model.getS1());
-			lampS2.setOn(model.getS2());
-			lampS3.setOn(model.getS3());
-			lampS4.setOn(model.getS4());
-			lampS5.setOn(model.getS5());
-			lampS6.setOn(model.getS6());
-			lampS7.setOn(model.getS7());
-
 		}
 	}
 
-	public void startAutomation() {
-		automationDriver = new AutomationDriver(model);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lampS0.setOn(model.getS0());
+		lampS1.setOn(model.getS1());
+		lampS2.setOn(model.getS2());
+		lampS3.setOn(model.getS3());
+		lampS4.setOn(model.getS4());
+		lampS5.setOn(model.getS5());
+		lampS6.setOn(model.getS6());
+		lampS7.setOn(model.getS7());
 	}
 }

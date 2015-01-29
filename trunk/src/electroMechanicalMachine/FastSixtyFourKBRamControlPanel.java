@@ -8,7 +8,6 @@
 
 package electroMechanicalMachine;
 
-import userInterface.AutomationDriver;
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 
@@ -24,11 +23,5 @@ public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {
 		super("Fast 64KB RAM Control Panel",
 				new SixtyFourKilobyteRamControlPanelModel(
 						new SixtyFourKilobyteRAM()));
-	}
-
-	@Override
-	protected void startAutomation() {
-		automationDriver = new AutomationDriver(model);
-		automationDriver.start();
 	}
 }

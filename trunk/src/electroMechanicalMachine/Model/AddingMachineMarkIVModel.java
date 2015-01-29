@@ -10,12 +10,6 @@ package electroMechanicalMachine.Model;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
@@ -24,31 +18,9 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	private final IEightBitAdder adder = new EightBitAdder();
 	private final IEightBitLatchWithClear latch;
-	private final EventListenerList eventListeners = new EventListenerList();
 
 	public AddingMachineMarkIVModel(final IEightBitLatchWithClear theLatch) {
 		latch = theLatch;
-	}
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
 	}
 
 	@Override
@@ -89,12 +61,6 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 	@Override
 	public boolean getS7() {
 		return latch.getDO7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -160,8 +126,5 @@ public class AddingMachineMarkIVModel implements IAddingMachineMarkIVModel {
 
 		connectEightBitSumToEightBitDataInput(adder, latch);
 		latch.step();
-
-		fireOnPropertyChange();
 	}
-
 }
