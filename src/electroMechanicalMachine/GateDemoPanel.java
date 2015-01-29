@@ -11,10 +11,10 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.Lamp;
-import userInterface.ToggleSwitch;
-import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalMachine.UserInterfaceComponents.Lamp;
+import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
 
 public class GateDemoPanel extends ControlPanel implements
 		PropertyChangeListener {

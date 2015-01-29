@@ -6,10 +6,8 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.UserInterfaceComponents.Interfaces;
 
-import javax.swing.plaf.ComponentUI;
-
-public abstract class LampUI extends ComponentUI {
-	public static final String UI_CLASS_ID = "LampUI";
+public enum PowerState {
+	off, on
 }

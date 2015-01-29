@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -23,8 +23,10 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.Adders.FullAdder;
+import electroMechanicalMachine.UserInterfaceComponents.Lamp;
+import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
 
 public class FullAdderDemo extends Frame implements PropertyChangeListener {
 	public static final long serialVersionUID = 1l;

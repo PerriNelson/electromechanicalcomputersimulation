@@ -6,14 +6,14 @@
   USA.
  */
 
-package userInterface;
+package userinterface.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import userInterface.Interfaces.ILampModel;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.ILampModel;
 
 public class LampModel implements ILampModel {
 	protected transient PropertyChangeEvent propertyChangeEvent = null;
