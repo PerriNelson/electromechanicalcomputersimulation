@@ -6,17 +6,17 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.SixteenByOneBitRandomAccessMemory;
-import electroMechanicalLogic.Interfaces.ISixteenBitRAM;
+import electroMechanicalLogic.RAM.SixteenBitRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixteenBitRAM;
 
-public class SixteenByOneBitRandomAccessMemoryTest {
+public class TestSixteenBitRAM {
 	private static ISixteenBitRAM systemUnderTest;
 	private static final int bit0 = 0x01;
 	private static final int bit1 = 0x02;
@@ -32,7 +32,7 @@ public class SixteenByOneBitRandomAccessMemoryTest {
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new SixteenByOneBitRandomAccessMemory();
+		systemUnderTest = new SixteenBitRAM();
 		systemUnderTest.setPower(true);
 	}
 

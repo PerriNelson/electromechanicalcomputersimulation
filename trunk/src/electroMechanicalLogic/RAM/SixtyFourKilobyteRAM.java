@@ -6,10 +6,10 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
-import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
-import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class SixtyFourKilobyteRAM extends OneKilobyteRAM implements
 		ISixtyFourKilobyteRAM {

@@ -6,10 +6,9 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
-import electroMechanicalLogic.RAM.SixtyFourByteRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
 public class FiveHundredTwelveByteRAM extends

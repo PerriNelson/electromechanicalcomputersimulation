@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IThirtyTwoKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IThirtyTwoKilobyteRAM;
 
 public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 		IThirtyTwoKilobyteRAM {

@@ -6,10 +6,10 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.RAM.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 
-public interface ISixtyFourKilobyteRAM extends IThirtyTwoKilobyteRAM,
-		ISixteenBitAInput {
+public interface ISixteenBitRAM extends
+		IEightBitRAM {
+	public abstract void setA3(boolean value);
 }

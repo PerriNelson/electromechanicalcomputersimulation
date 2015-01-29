@@ -5,16 +5,11 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-package electroMechanicalLogic.Interfaces;
 
-public interface IFourInputSingleOutputGate extends ISimulatedCircuit {
-	public abstract boolean getOutput();
+package electroMechanicalLogic.RAM.Interfaces;
 
-	public abstract void setA(boolean value);
+import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
-	public abstract void setB(boolean value);
-
-	public abstract void setC(boolean value);
-
-	public abstract void setD(boolean value);
+public interface IOneKilobyteRAM extends IFiveHundredTwelveByteRAM {
+	public abstract void setA9(boolean value);
 }

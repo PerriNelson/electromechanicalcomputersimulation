@@ -23,15 +23,15 @@ import javax.swing.event.EventListenerList;
 import electroMechanicalLogic.EightBitBuffer;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
-import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.ISixteenBitAddressBuffer;
-import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKilobyteRamControlPanelModel implements

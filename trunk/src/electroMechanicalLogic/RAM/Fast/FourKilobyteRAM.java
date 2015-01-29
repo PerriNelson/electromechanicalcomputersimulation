@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IFourKilobyteRAM;
 
 public class FourKilobyteRAM extends OneKilobyteRAM implements IFourKilobyteRAM {
 	protected static final int bitA = 0x400;

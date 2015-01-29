@@ -6,61 +6,61 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Gates;
 
-import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
+import electroMechanicalLogic.Buffer;
+import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 
-public final class FourInputSingleOutputAndGate implements
-		IFourInputSingleOutputGate {
+public final class FourInputAND implements IFourInputSingleOutputGate {
 
-	private final IRelay relayA = new Buffer();
-	private final IRelay relayB = new Buffer();
-	private final IRelay relayC = new Buffer();
-	private final IRelay relayD = new Buffer();
+	private final IRelay a = new Buffer();
+	private final IRelay b = new Buffer();
+	private final IRelay c = new Buffer();
+	private final IRelay d = new Buffer();
 
 	@Override
 	public boolean getOutput() {
-		return relayD.getOutput();
+		return d.getOutput();
 	}
 
 	@Override
 	public void setA(final boolean value) {
-		relayA.setInput(value);
+		a.setInput(value);
 	}
 
 	@Override
 	public void setB(final boolean value) {
-		relayB.setInput(value);
+		b.setInput(value);
 	}
 
 	@Override
 	public void setC(final boolean value) {
-		relayC.setInput(value);
+		c.setInput(value);
 	}
 
 	@Override
 	public void setD(final boolean value) {
-		relayD.setInput(value);
+		d.setInput(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
-		relayA.setPower(value);
+		a.setPower(value);
 	}
 
 	@Override
 	public void step() {
-		relayA.step();
+		a.step();
 
-		relayB.setPower(relayA.getOutput());
-		relayB.step();
+		b.setPower(a.getOutput());
+		b.step();
 
-		relayC.setPower(relayB.getOutput());
-		relayC.step();
+		c.setPower(b.getOutput());
+		c.step();
 
-		relayD.setPower(relayC.getOutput());
-		relayD.step();
+		d.setPower(c.getOutput());
+		d.step();
 	}
 
 }

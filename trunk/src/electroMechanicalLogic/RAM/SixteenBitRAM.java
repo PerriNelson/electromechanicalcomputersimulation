@@ -6,15 +6,16 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
+import electroMechanicalLogic.OneLineToTwoLineDecoder;
+import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
-import electroMechanicalLogic.Interfaces.ISixteenBitRAM;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
-import electroMechanicalLogic.RAM.EightBitRAM;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixteenBitRAM;
 
-public class SixteenByOneBitRandomAccessMemory implements
+public class SixteenBitRAM implements
 		ISixteenBitRAM {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();

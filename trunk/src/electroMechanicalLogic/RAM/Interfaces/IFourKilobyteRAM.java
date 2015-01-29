@@ -6,8 +6,14 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.RAM.Interfaces;
 
-public interface IRandomAccessMemory {
-	public abstract int getMaxAddress();
+import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+
+public interface IFourKilobyteRAM extends IFiveHundredTwelveByteRAM {
+	public abstract void setA9(boolean value);
+
+	public abstract void setAA(boolean value);
+
+	public abstract void setAB(boolean value);
 }
