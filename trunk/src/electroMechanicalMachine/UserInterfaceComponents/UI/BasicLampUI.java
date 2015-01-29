@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.UserInterfaceComponents.UI;
 
 import java.awt.Graphics;
 import java.awt.Insets;
@@ -17,6 +17,8 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
+
+import electroMechanicalMachine.UserInterfaceComponents.Lamp;
 
 public class BasicLampUI extends ToggleSwitchUI {
 

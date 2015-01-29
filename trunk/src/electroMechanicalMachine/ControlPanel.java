@@ -11,7 +11,6 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.BasicUIFrame;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 import electroMechanicalMachine.Interfaces.ISimulatedCircuitWithPropertyChangeEvents;
 import electroMechanicalMachine.Interfaces.ISimulationDriver;

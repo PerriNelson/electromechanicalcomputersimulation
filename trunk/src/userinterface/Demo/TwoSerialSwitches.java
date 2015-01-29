@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package userinterface.Demo;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,23 +19,26 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
 
-import userInterface.Interfaces.PowerState;
+import electroMechanicalMachine.UserInterfaceComponents.Lamp;
+import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
 
-public class TestFrame extends Frame implements PropertyChangeListener {
+public class TwoSerialSwitches extends Frame implements PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
 
 	public static void main(final String[] args) {
-		final TestFrame frame = new TestFrame();
+		final TwoSerialSwitches frame = new TwoSerialSwitches();
 		frame.setVisible(true);
 	}
 
-	private final ToggleSwitch toggleSwitch;
+	private final ToggleSwitch toggleSwitch1;
+	private final ToggleSwitch toggleSwitch2;
 	private final Lamp lamp;
 
-	public TestFrame() {
-		super("UI Components sample");
+	public TwoSerialSwitches() {
+		super("Two Serial Switches");
 		setSize(300, 103);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -45,10 +48,14 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 		});
 		final JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		toggleSwitch = new ToggleSwitch();
-		toggleSwitch.setPowerIn(PowerState.on);
-		toggleSwitch.addPropertyChangeListener(this);
-		panel.add(toggleSwitch);
+		toggleSwitch1 = new ToggleSwitch();
+		toggleSwitch1.setPowerIn(PowerState.on);
+		toggleSwitch1.addPropertyChangeListener(this);
+		panel.add(toggleSwitch1);
+		toggleSwitch2 = new ToggleSwitch();
+		toggleSwitch2.setPowerIn(PowerState.off);
+		toggleSwitch2.addPropertyChangeListener(this);
+		panel.add(toggleSwitch2);
 		lamp = new Lamp();
 		panel.add(lamp);
 		panel.setBackground(new Color(60, 60, 60));
@@ -57,7 +64,12 @@ public class TestFrame extends Frame implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(final PropertyChangeEvent evt) {
-		if (evt.getSource() == toggleSwitch) {
+		if (evt.getSource() == toggleSwitch1) {
+			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+				toggleSwitch2.setPowerIn((PowerState) evt.getNewValue());
+			}
+		}
+		if (evt.getSource() == toggleSwitch2) {
 			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 				lamp.setOn(PowerState.on == evt.getNewValue());
 			}

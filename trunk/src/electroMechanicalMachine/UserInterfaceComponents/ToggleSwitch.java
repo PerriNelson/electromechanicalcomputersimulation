@@ -6,7 +6,7 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine.UserInterfaceComponents;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -16,8 +16,11 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
 
-import userInterface.Interfaces.ISwitchModel;
-import userInterface.Interfaces.PowerState;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.ISwitchModel;
+import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UserInterfaceComponents.UI.BasicToggleSwitchUI;
+import electroMechanicalMachine.UserInterfaceComponents.UI.ToggleSwitchUI;
+import userinterface.Model.SwitchModel;
 
 public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
