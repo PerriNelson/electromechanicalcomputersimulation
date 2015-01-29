@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IOneKilobyteRAM;
 
 public class OneKilobyteRAM extends FiveHundredTwelveByteRAM implements
 		IOneKilobyteRAM {

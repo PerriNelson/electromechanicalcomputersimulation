@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Gates.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,15 +14,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.FourInputSingleOutputAndGate;
-import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
+import electroMechanicalLogic.Gates.FourInputAND;
+import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 
-public class FourInputSIngleOutputAndGateTest {
+public class TestFourInputAND {
 	private IFourInputSingleOutputGate systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new FourInputSingleOutputAndGate();
+		systemUnderTest = new FourInputAND();
 		systemUnderTest.setPower(true);
 	}
 

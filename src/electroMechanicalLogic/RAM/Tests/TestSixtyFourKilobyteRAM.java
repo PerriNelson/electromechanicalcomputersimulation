@@ -6,30 +6,30 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.OneKilobyteRAM;
-import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
+import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.Tests.ThirtyTwoKilobyteRAMTest;
 
-public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
-
-	protected static final int bit9 = 0x200;
+public class TestSixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAMTest {
+	protected static final int bitF = 0x8000;
 
 	@Override
 	protected void setA(final int value) {
 		super.setA(value);
-		((IOneKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
+		((ISixtyFourKilobyteRAM) systemUnderTest).setAF((value & bitF) == bitF);
 	}
 
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new OneKilobyteRAM();
+		systemUnderTest = new SixtyFourKilobyteRAM();
 		systemUnderTest.setPower(true);
 	}
 
@@ -56,6 +56,6 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 
 	@Override
 	protected int translateAddress(final int address) {
-		return address == 0 ? 0 : 0x3ff;
+		return address == 0 ? 0 : 0xffff;
 	}
 }

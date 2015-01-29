@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.RAM.Fast.SixtyFourByOneByteRandomAccessMemory;
+import electroMechanicalLogic.RAM.Fast.SixtyFourByteRAM;
 
 public class SixtyFourByOneByteRandomAccessMemoryTest extends
 		electroMechanicalLogic.RAM.Tests.TestSixtyFourByteRAM {
@@ -21,7 +21,7 @@ public class SixtyFourByOneByteRandomAccessMemoryTest extends
 	@Before
 	@Override
 	public void setUp() throws Exception {
-		systemUnderTest = new SixtyFourByOneByteRandomAccessMemory();
+		systemUnderTest = new SixtyFourByteRAM();
 		systemUnderTest.setPower(true);
 	}
 

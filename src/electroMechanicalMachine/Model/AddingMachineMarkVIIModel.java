@@ -8,8 +8,8 @@ ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Cre
 
 package electroMechanicalMachine.Model;
 
-import electroMechanicalLogic.SixtyFourKilobyteRAM;
-import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIALU;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIInstructionDecoder;
 

@@ -10,7 +10,7 @@ package electroMechanicalLogic.RAM.Fast;
 
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
-public class SixtyFourByOneByteRandomAccessMemory extends
+public class SixtyFourByteRAM extends
 		EightByteRAM implements
 		ISixtyFourByteRAM {
 	@Override

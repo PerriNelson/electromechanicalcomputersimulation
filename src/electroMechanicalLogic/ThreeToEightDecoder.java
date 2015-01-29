@@ -8,20 +8,21 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IFourInputSingleOutputGate;
+import electroMechanicalLogic.Gates.FourInputAND;
+import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 
 public final class ThreeToEightDecoder implements IThreeToEightDecoder {
 
-	private final IFourInputSingleOutputGate and0 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and1 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and2 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and3 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and4 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and5 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and6 = new FourInputSingleOutputAndGate();
-	private final IFourInputSingleOutputGate and7 = new FourInputSingleOutputAndGate();
+	private final IFourInputSingleOutputGate and0 = new FourInputAND();
+	private final IFourInputSingleOutputGate and1 = new FourInputAND();
+	private final IFourInputSingleOutputGate and2 = new FourInputAND();
+	private final IFourInputSingleOutputGate and3 = new FourInputAND();
+	private final IFourInputSingleOutputGate and4 = new FourInputAND();
+	private final IFourInputSingleOutputGate and5 = new FourInputAND();
+	private final IFourInputSingleOutputGate and6 = new FourInputAND();
+	private final IFourInputSingleOutputGate and7 = new FourInputAND();
 	private final IRelay inverter0 = new Inverter();
 	private final IRelay inverter1 = new Inverter();
 	private final IRelay inverter2 = new Inverter();

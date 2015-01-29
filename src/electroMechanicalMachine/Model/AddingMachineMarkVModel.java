@@ -21,13 +21,13 @@ import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
-import electroMechanicalLogic.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IOscillator;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
-import electroMechanicalLogic.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
+import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 

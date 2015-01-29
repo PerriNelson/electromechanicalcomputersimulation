@@ -5,13 +5,10 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
+package electroMechanicalLogic.Gates.Interfaces;
 
-package electroMechanicalLogic.Interfaces;
 
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
-import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
+public interface IFourInputSingleOutputGate extends IThreeInputSingleOutputGate {
 
-public interface IEightBitBuffer extends ISimulatedCircuit, IEightBitDataInput,
-		IEightBitDataOutput {
-
+	public abstract void setD(boolean value);
 }

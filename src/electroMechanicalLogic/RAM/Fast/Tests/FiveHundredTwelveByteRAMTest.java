@@ -16,7 +16,7 @@ import org.junit.Test;
 import electroMechanicalLogic.RAM.Fast.FiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAMTest extends
-		electroMechanicalLogic.Tests.FiveHundredTwelveByteRAMTest {
+		electroMechanicalLogic.RAM.Tests.FiveHundredTwelveByteRAMTest {
 
 	@Before
 	@Override

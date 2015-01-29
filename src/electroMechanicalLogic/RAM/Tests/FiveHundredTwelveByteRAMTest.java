@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
 
 import static electroMechanicalLogic.Tests.TestConstants.bit6;
 import static electroMechanicalLogic.Tests.TestConstants.bit7;
@@ -14,9 +14,8 @@ import static electroMechanicalLogic.Tests.TestConstants.bit8;
 
 import org.junit.Before;
 
-import electroMechanicalLogic.FiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
-import electroMechanicalLogic.RAM.Tests.TestSixtyFourByteRAM;
+import electroMechanicalLogic.RAM.FiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAMTest extends TestSixtyFourByteRAM {
 

@@ -6,12 +6,14 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.RAM;
 
+import electroMechanicalLogic.OneLineToTwoLineDecoder;
+import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
-import electroMechanicalLogic.Interfaces.IOneKilobyteRAM;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
 import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.RAM.Interfaces.IOneKilobyteRAM;
 
 public class OneKilobyteRAM implements IOneKilobyteRAM {
 
