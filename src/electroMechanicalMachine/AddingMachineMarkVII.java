@@ -14,9 +14,9 @@ import java.beans.PropertyChangeListener;
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkVII extends ControlPanel implements
 		PropertyChangeListener {

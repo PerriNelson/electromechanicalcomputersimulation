@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.UserInterfaceComponents.Model.Tests;
+package electroMechanicalMachine.UIComponents.Model.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,7 +16,7 @@ import java.beans.PropertyChangeListener;
 import org.junit.Before;
 import org.junit.Test;
 
-import userinterface.Model.LampModel;
+import electroMechanicalMachine.UIComponents.Model.LampModel;
 
 public class LampModelTest {
 

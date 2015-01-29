@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.UserInterfaceComponents.UI;
+package electroMechanicalMachine.UIComponents.UI;
 
 import javax.swing.plaf.ComponentUI;
 

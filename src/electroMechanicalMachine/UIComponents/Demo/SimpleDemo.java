@@ -6,7 +6,7 @@
   USA.
  */
 
-package userinterface.Demo;
+package electroMechanicalMachine.UIComponents.Demo;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,9 +19,9 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
 
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class SimpleDemo extends Frame implements PropertyChangeListener {
 	public static final long serialVersionUID = 1l;

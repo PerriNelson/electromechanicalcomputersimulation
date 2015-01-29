@@ -6,15 +6,15 @@
   USA.
  */
 
-package userinterface.Model;
+package electroMechanicalMachine.UIComponents.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.event.EventListenerList;
 
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.ISwitchModel;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Interfaces.ISwitchModel;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class SwitchModel implements ISwitchModel {
 	private static final String closedPropertyName = "closed";

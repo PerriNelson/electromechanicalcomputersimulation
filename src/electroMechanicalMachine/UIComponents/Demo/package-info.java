@@ -9,4 +9,4 @@
 /**
  *
  */
-package userinterface.Model;
+package electroMechanicalMachine.UIComponents.Demo;

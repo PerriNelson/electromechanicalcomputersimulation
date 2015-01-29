@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.UserInterfaceComponents;
+package electroMechanicalMachine.UIComponents;
 
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -15,10 +15,10 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
 
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.ILampModel;
-import electroMechanicalMachine.UserInterfaceComponents.UI.BasicLampUI;
-import electroMechanicalMachine.UserInterfaceComponents.UI.LampUI;
-import userinterface.Model.LampModel;
+import electroMechanicalMachine.UIComponents.Interfaces.ILampModel;
+import electroMechanicalMachine.UIComponents.Model.LampModel;
+import electroMechanicalMachine.UIComponents.UI.BasicLampUI;
+import electroMechanicalMachine.UIComponents.UI.LampUI;
 
 public class Lamp extends JComponent implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;

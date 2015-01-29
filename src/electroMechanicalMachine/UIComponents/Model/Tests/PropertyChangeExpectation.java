@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.UserInterfaceComponents.Model.Tests;
+package electroMechanicalMachine.UIComponents.Model.Tests;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
