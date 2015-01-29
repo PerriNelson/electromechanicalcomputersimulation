@@ -21,9 +21,9 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class BasicUIFrame extends Frame {
 	public static final long serialVersionUID = 1l;

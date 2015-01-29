@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalMachine.UserInterfaceComponents.Model.Tests;
+package electroMechanicalMachine.UIComponents.Model.Tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -16,8 +16,8 @@ import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
 
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
-import userinterface.Model.SwitchModel;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Model.SwitchModel;
 
 public class SwitchModelTest {
 

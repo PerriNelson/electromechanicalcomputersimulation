@@ -13,9 +13,9 @@ import java.beans.PropertyChangeListener;
 
 import electroMechanicalMachine.Model.AddingMachineMarkIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkII extends ControlPanel implements
 		PropertyChangeListener {

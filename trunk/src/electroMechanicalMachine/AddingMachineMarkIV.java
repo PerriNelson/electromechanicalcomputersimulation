@@ -14,9 +14,9 @@ import java.beans.PropertyChangeListener;
 import electroMechanicalLogic.EightBitLatchWithClear;
 import electroMechanicalMachine.Model.AddingMachineMarkIVModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkIV extends ControlPanel implements
 		PropertyChangeListener {

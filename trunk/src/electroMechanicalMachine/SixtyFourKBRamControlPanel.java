@@ -14,9 +14,9 @@ import java.beans.PropertyChangeListener;
 import electroMechanicalMachine.Interfaces.ISimulationDriver;
 import electroMechanicalMachine.Model.SixtyFourKilobyteRamControlPanelModel;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
-import electroMechanicalMachine.UserInterfaceComponents.Lamp;
-import electroMechanicalMachine.UserInterfaceComponents.ToggleSwitch;
-import electroMechanicalMachine.UserInterfaceComponents.Interfaces.PowerState;
+import electroMechanicalMachine.UIComponents.Lamp;
+import electroMechanicalMachine.UIComponents.ToggleSwitch;
+import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 /**
  *
