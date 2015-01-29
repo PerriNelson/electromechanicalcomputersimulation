@@ -6,25 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
 import electroMechanicalLogic.Gates.TwoInputOR;
-import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 
-public class OrGate extends GateDemoFrame {
+public class ORGate extends GateDemoPanel {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final OrGate frame = new OrGate();
+		final ORGate frame = new ORGate();
 		frame.setVisible(true);
 	}
 
-	public OrGate() {
-		super("Two Input OR Gate");
-	}
-
-	@Override
-	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputOR();
+	public ORGate() {
+		super("OR Gate", new TwoInputOR());
 	}
 }

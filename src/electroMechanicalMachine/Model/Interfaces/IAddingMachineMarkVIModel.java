@@ -11,8 +11,9 @@ package electroMechanicalMachine.Model.Interfaces;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
+import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface IAddingMachineMarkVIModel extends IMachineModel,
+public interface IAddingMachineMarkVIModel extends ISimulatedCircuit,
 		IEightBitDataOutput, IEightBitDataInput, ISixteenBitAInput {
 
 	public abstract void setReset(boolean value);

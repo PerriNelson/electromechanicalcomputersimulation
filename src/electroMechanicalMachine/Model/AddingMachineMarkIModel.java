@@ -8,39 +8,12 @@
 
 package electroMechanicalMachine.Model;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 
 public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 
 	private final EightBitAdder adder = new EightBitAdder();
-	private final EventListenerList eventListeners = new EventListenerList();
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
-	}
 
 	@Override
 	public boolean getCO() {
@@ -85,12 +58,6 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 	@Override
 	public boolean getS7() {
 		return adder.getS7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -186,6 +153,5 @@ public class AddingMachineMarkIModel implements IAddingMachineMarkIModel {
 	@Override
 	public void step() {
 		adder.step();
-		fireOnPropertyChange();
 	}
 }

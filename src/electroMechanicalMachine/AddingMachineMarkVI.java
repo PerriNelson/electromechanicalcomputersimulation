@@ -11,17 +11,14 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.AddingMachineMarkVIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
-public class AddingMachineMarkVI extends BasicUIFrame implements
+public class AddingMachineMarkVI extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -97,7 +94,6 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 	private ToggleSwitch takeOver;
 
 	protected IAddingMachineMarkVIModel model;
-	protected IAutomationDriver automationDriver;
 
 	public AddingMachineMarkVI() {
 		this("AddingMachineMark VI", new AddingMachineMarkVIModel(
@@ -112,12 +108,11 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 
 		initializeModel(theModel);
 
-		startAutomation();
+		runSimulation(theModel, 10);
 	}
 
 	protected void initializeModel(final IAddingMachineMarkVIModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -278,20 +273,18 @@ public class AddingMachineMarkVI extends BasicUIFrame implements
 			} else if (source == takeOver) {
 				model.setTakeover(value);
 			}
-		} else if (source == model) {
-			dataLamp0.setOn(model.getDO0());
-			dataLamp1.setOn(model.getDO1());
-			dataLamp2.setOn(model.getDO2());
-			dataLamp3.setOn(model.getDO3());
-			dataLamp4.setOn(model.getDO4());
-			dataLamp5.setOn(model.getDO5());
-			dataLamp6.setOn(model.getDO6());
-			dataLamp7.setOn(model.getDO7());
 		}
 	}
 
-	protected void startAutomation() {
-		automationDriver = new AutomationDriver(model, 10);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		dataLamp0.setOn(model.getDO0());
+		dataLamp1.setOn(model.getDO1());
+		dataLamp2.setOn(model.getDO2());
+		dataLamp3.setOn(model.getDO3());
+		dataLamp4.setOn(model.getDO4());
+		dataLamp5.setOn(model.getDO5());
+		dataLamp6.setOn(model.getDO6());
+		dataLamp7.setOn(model.getDO7());
 	}
 }

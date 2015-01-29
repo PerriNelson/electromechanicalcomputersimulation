@@ -16,12 +16,6 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToSixteenBitAInput;
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitAOutputsToSixteenBitAInput;
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitBOutputsToSixteenBitAInput;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.event.EventListenerList;
-
 import electroMechanicalLogic.EightBitOneToTwoDecoder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
@@ -37,7 +31,6 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteCont
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
-	private final EventListenerList eventListeners = new EventListenerList();
 	private final ISixtyFourKilobyteRamControlPanelModel code;
 	private final ISixtyFourKilobyteRamControlPanelModel data;
 	private final IEightBitOneToTwoDecoder addressLow;
@@ -70,27 +63,6 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		timingAndMemoryWriteControl = new MarkVITimingAndMemoryWriteControl();
 		setALU();
 		setInstructionDecoder();
-	}
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
 	}
 
 	@Override
@@ -131,12 +103,6 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	@Override
 	public boolean getDO7() {
 		return dataOut.getDO7();
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 
 	@Override
@@ -324,8 +290,6 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 		stepALU();
 
 		stepDataOut();
-
-		fireOnPropertyChange();
 	}
 
 	protected void stepALU() {

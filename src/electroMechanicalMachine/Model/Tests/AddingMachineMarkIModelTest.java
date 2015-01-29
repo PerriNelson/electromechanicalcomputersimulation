@@ -18,10 +18,6 @@ import static electroMechanicalLogic.Tests.TestConstants.bit6;
 import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static electroMechanicalLogic.Tests.TestConstants.bit8;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +28,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIModel;
 public class AddingMachineMarkIModelTest {
 
 	private IAddingMachineMarkIModel systemUnderTest;
-	private boolean eventFired = false;
 
 	private int getSum() {
 		int sum = 0;
@@ -117,17 +112,5 @@ public class AddingMachineMarkIModelTest {
 				assertEquals(a + b, getSum());
 			}
 		}
-	}
-
-	@Test
-	public void test_WhenStepped_FiresPropertyChangeEvent() {
-		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
-			@Override
-			public void propertyChange(final PropertyChangeEvent evt) {
-				eventFired = true;
-			}
-		});
-		systemUnderTest.step();
-		assertTrue(eventFired);
 	}
 }

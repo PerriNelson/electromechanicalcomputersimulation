@@ -19,9 +19,6 @@ import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +29,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 public class AddingMachineMarkIIIaModelTest {
 
 	private IAddingMachineMarkIIIModel systemUnderTest;
-	private boolean eventFired = false;
 
 	private void clearLatch() {
 		// Clear the latch
@@ -187,18 +183,6 @@ public class AddingMachineMarkIIIaModelTest {
 				assertEquals(message, a, getSum());
 			}
 		}
-	}
-
-	@Test
-	public void test_WhenStepped_FiresPropertyChangeEvent() {
-		systemUnderTest.addPropertyChangeListener(new PropertyChangeListener() {
-			@Override
-			public void propertyChange(final PropertyChangeEvent evt) {
-				eventFired = true;
-			}
-		});
-		systemUnderTest.step();
-		assertTrue(eventFired);
 	}
 
 	private void toggleSaveOffAndOn() {

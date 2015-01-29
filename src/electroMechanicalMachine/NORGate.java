@@ -6,25 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
-import electroMechanicalLogic.Gates.TwoInputAND;
-import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputNOR;
 
-public class AndGate extends GateDemoFrame {
+public class NORGate extends GateDemoPanel {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final AndGate frame = new AndGate();
+		final NORGate frame = new NORGate();
 		frame.setVisible(true);
 	}
 
-	public AndGate() {
-		super("Two Input AND Gate");
-	}
-
-	@Override
-	public ITwoInputSingleOutputGate getGate() {
-		return new TwoInputAND();
+	public NORGate() {
+		super("NOR Gate", new TwoInputNOR());
 	}
 }

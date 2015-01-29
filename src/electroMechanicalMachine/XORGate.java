@@ -6,25 +6,19 @@
   USA.
  */
 
-package userInterface;
+package electroMechanicalMachine;
 
-import electroMechanicalLogic.Gates.TwoInputNOR;
-import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
+import electroMechanicalLogic.Gates.TwoInputXOR;
 
-public class NOrGate extends GateDemoFrame {
+public class XORGate extends GateDemoPanel {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final NOrGate frame = new NOrGate();
+		final XORGate frame = new XORGate();
 		frame.setVisible(true);
 	}
 
-	public NOrGate() {
-		super("Two Input NOR Gate");
-	}
-
-	@Override
-	protected ITwoInputSingleOutputGate getGate() {
-		return new TwoInputNOR();
+	public XORGate() {
+		super("Two Input XOR Gate", new TwoInputXOR());
 	}
 }

@@ -10,6 +10,6 @@ package electroMechanicalMachine.Model.Interfaces;
 
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 
-public interface IAddingMachineMarkIModel extends IMachineModel, IEightBitAdder {
+public interface IAddingMachineMarkIModel extends IEightBitAdder {
 
 }

@@ -8,38 +8,12 @@
 
 package electroMechanicalMachine.Model.Interfaces;
 
-public interface IAddingMachineMarkIVModel extends IMachineModel {
-	public abstract boolean getS0();
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
+import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-	public abstract boolean getS1();
-
-	public abstract boolean getS2();
-
-	public abstract boolean getS3();
-
-	public abstract boolean getS4();
-
-	public abstract boolean getS5();
-
-	public abstract boolean getS6();
-
-	public abstract boolean getS7();
-
-	public abstract void setA0(boolean value);
-
-	public abstract void setA1(boolean value);
-
-	public abstract void setA2(boolean value);
-
-	public abstract void setA3(boolean value);
-
-	public abstract void setA4(boolean value);
-
-	public abstract void setA5(boolean value);
-
-	public abstract void setA6(boolean value);
-
-	public abstract void setA7(boolean value);
+public interface IAddingMachineMarkIVModel extends ISimulatedCircuit,
+		IEightBitSumOutput, IEightBitAInput {
 
 	public abstract void setAdd(boolean value);
 

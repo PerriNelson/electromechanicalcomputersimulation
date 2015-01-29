@@ -11,16 +11,13 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalMachine.Model.AddingMachineMarkIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIModel;
 
-public class AddingMachineMarkII extends BasicUIFrame implements
+public class AddingMachineMarkII extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -76,7 +73,6 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 	private Lamp lampS6;
 	private Lamp lampS7;
 	private IAddingMachineMarkIIModel model;
-	private IAutomationDriver automationDriver;
 
 	public AddingMachineMarkII() {
 		super("Adding Machine Mark II");
@@ -84,12 +80,11 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 
 		initializeModel();
 
-		startAutomation();
+		runSimulation(model, 10);
 	}
 
 	private void initializeModel() {
 		model = new AddingMachineMarkIIModel();
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -178,22 +173,20 @@ public class AddingMachineMarkII extends BasicUIFrame implements
 			} else if (evt.getSource() == toggleSwitchAddSubtract) {
 				model.setSubtract(powerState);
 			}
-		} else if (evt.getSource() == model) {
-			lampCO.setOn(model.getOverflow());
-
-			lampS0.setOn(model.getS0());
-			lampS1.setOn(model.getS1());
-			lampS2.setOn(model.getS2());
-			lampS3.setOn(model.getS3());
-			lampS4.setOn(model.getS4());
-			lampS5.setOn(model.getS5());
-			lampS6.setOn(model.getS6());
-			lampS7.setOn(model.getS7());
 		}
 	}
 
-	public void startAutomation() {
-		automationDriver = new AutomationDriver(model);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lampCO.setOn(model.getOverflow());
+
+		lampS0.setOn(model.getS0());
+		lampS1.setOn(model.getS1());
+		lampS2.setOn(model.getS2());
+		lampS3.setOn(model.getS3());
+		lampS4.setOn(model.getS4());
+		lampS5.setOn(model.getS5());
+		lampS6.setOn(model.getS6());
+		lampS7.setOn(model.getS7());
 	}
 }

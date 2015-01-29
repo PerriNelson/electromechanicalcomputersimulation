@@ -11,17 +11,14 @@ package electroMechanicalMachine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import userInterface.AutomationDriver;
-import userInterface.BasicUIFrame;
 import userInterface.Lamp;
 import userInterface.ToggleSwitch;
-import userInterface.Interfaces.IAutomationDriver;
 import userInterface.Interfaces.PowerState;
 import electroMechanicalLogic.EightBitLatch;
 import electroMechanicalMachine.Model.AddingMachineMarkIIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 
-public class AddingMachineMarkIII extends BasicUIFrame implements
+public class AddingMachineMarkIII extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -76,7 +73,6 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 	private Lamp lampS6;
 	private Lamp lampS7;
 	private IAddingMachineMarkIIIModel model;
-	private IAutomationDriver automationDriver;
 
 	public AddingMachineMarkIII() {
 		this("Adding Machine Mark III", new AddingMachineMarkIIIModel(
@@ -90,12 +86,11 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 
 		initializeModel(model);
 
-		startAutomation();
+		runSimulation(model, 10);
 	}
 
 	protected void initializeModel(final IAddingMachineMarkIIIModel theModel) {
 		model = theModel;
-		model.addPropertyChangeListener(this);
 		model.setPower(true);
 	}
 
@@ -189,21 +184,19 @@ public class AddingMachineMarkIII extends BasicUIFrame implements
 			} else if (evt.getSource() == toggleSwitchFromLatch) {
 				model.setFromLatch(powerState);
 			}
-		} else if (evt.getSource() == model) {
-			lampCO.setOn(model.getCO());
-			lampS0.setOn(model.getS0());
-			lampS1.setOn(model.getS1());
-			lampS2.setOn(model.getS2());
-			lampS3.setOn(model.getS3());
-			lampS4.setOn(model.getS4());
-			lampS5.setOn(model.getS5());
-			lampS6.setOn(model.getS6());
-			lampS7.setOn(model.getS7());
 		}
 	}
 
-	public void startAutomation() {
-		automationDriver = new AutomationDriver(model);
-		automationDriver.start();
+	@Override
+	protected void onModelUpdated() {
+		lampCO.setOn(model.getCO());
+		lampS0.setOn(model.getS0());
+		lampS1.setOn(model.getS1());
+		lampS2.setOn(model.getS2());
+		lampS3.setOn(model.getS3());
+		lampS4.setOn(model.getS4());
+		lampS5.setOn(model.getS5());
+		lampS6.setOn(model.getS6());
+		lampS7.setOn(model.getS7());
 	}
 }
