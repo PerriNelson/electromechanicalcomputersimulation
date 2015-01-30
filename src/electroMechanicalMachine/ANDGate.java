@@ -21,4 +21,9 @@ public class ANDGate extends GateDemoPanel {
 	public ANDGate() {
 		super("AND Gate", new TwoInputAND());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" AND Gate Demo ", "Labels/AndGateDemoLabel.jpg");
+	}
 }

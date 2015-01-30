@@ -21,4 +21,9 @@ public class XORGate extends GateDemoPanel {
 	public XORGate() {
 		super("Two Input XOR Gate", new TwoInputXOR());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" XOR Gate Demo ", "Labels/XorGateDemoLabel.jpg");
+	}
 }

@@ -21,4 +21,9 @@ public class NANDGate extends GateDemoPanel {
 	public NANDGate() {
 		super("NAND Gate", new TwoInputNAND());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" NAND Gate Demo ", "Labels/NandGateDemoLabel.jpg");
+	}
 }

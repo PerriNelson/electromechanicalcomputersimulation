@@ -21,4 +21,9 @@ public class ORGate extends GateDemoPanel {
 	public ORGate() {
 		super("OR Gate", new TwoInputOR());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" OR Gate Demo ", "Labels/OrGateDemoLabel.jpg");
+	}
 }

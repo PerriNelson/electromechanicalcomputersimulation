@@ -24,13 +24,12 @@ public class AddingMachineMarkV extends ControlPanel implements
 
 	private static final String powerOutPropertyName = "powerOut";
 
-	private static final int titleRow = 0;
-	private static final int addressSwitchRow = 1;
-	private static final int addressLabelRow = 2;
-	private static final int dataSwitchRow = 3;
-	private static final int dataLabelRow = 4;
-	private static final int dataLampRow = 5;
-	private static final int sumLampRow = 6;
+	private static final int addressSwitchRow = 0;
+	private static final int addressLabelRow = 1;
+	private static final int dataSwitchRow = 2;
+	private static final int dataLabelRow = 3;
+	private static final int dataLampRow = 4;
+	private static final int sumLampRow = 5;
 
 	private static final int column0 = 15;
 	private static final int column1 = 14;
@@ -86,8 +85,6 @@ public class AddingMachineMarkV extends ControlPanel implements
 
 	private void placeControls() {
 		setSize(925, 450);
-		placeLabel("Labels/AddingMachineMarkVLabel.jpg",
-				"Adding Machine Mark V", columnF, titleRow, 16);
 
 		addressSwitches = new ToggleSwitch[16];
 		addressSwitches[0] = placeToggleSwitch(column0, addressSwitchRow);
@@ -306,5 +303,11 @@ public class AddingMachineMarkV extends ControlPanel implements
 		lamps[13].setOn(model.getS5());
 		lamps[14].setOn(model.getS6());
 		lamps[15].setOn(model.getS7());
+	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark V ",
+				"Labels/AddingMachineMarkVLabel.jpg");
 	}
 }

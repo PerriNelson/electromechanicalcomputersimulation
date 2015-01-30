@@ -30,6 +30,7 @@ public abstract class ControlPanel extends BasicUIFrame {
 	 */
 	public ControlPanel(String caption) {
 		super(caption);
+		setTitle();
 	}
 
 	private final ISimulatedCircuit attachEventsToCircuit(
@@ -46,6 +47,8 @@ public abstract class ControlPanel extends BasicUIFrame {
 				});
 		return simulatedCircuit;
 	}
+
+	protected abstract void setTitle();
 
 	/**
 	 * Handles notification that the model has been updated.

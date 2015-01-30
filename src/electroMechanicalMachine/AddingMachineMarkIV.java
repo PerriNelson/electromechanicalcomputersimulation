@@ -86,7 +86,7 @@ public class AddingMachineMarkIV extends ControlPanel implements
 	}
 
 	private void placeControls() {
-		setSize(595, 200);
+		setSize(620, 240);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -159,5 +159,11 @@ public class AddingMachineMarkIV extends ControlPanel implements
 		lampS5.setOn(model.getS5());
 		lampS6.setOn(model.getS6());
 		lampS7.setOn(model.getS7());
+	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark IV ",
+				"Labels/AddingMachineMarkIVLabel.jpg");
 	}
 }
