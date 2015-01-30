@@ -27,12 +27,11 @@ public class SixtyFourKBRamControlPanel extends ControlPanel implements
 
 	private static final String powerOutPropertyName = "powerOut";
 
-	private static final int titleRow = 0;
-	private static final int addressSwitchRow = 1;
-	private static final int addressLabelRow = 2;
-	private static final int dataSwitchRow = 3;
-	private static final int dataLabelRow = 4;
-	private static final int dataLampRow = 5;
+	private static final int addressSwitchRow = 0;
+	private static final int addressLabelRow = 1;
+	private static final int dataSwitchRow = 2;
+	private static final int dataLabelRow = 3;
+	private static final int dataLampRow = 4;
 
 	private static final int column0 = 15;
 	private static final int column1 = 14;
@@ -89,8 +88,6 @@ public class SixtyFourKBRamControlPanel extends ControlPanel implements
 
 	private void placeControls() {
 		setSize(925, 370);
-		placeLabel("Labels/64KbRamControlPanelLabel.jpg",
-				"64KB RAM Control Panel", columnF, titleRow, 16);
 
 		addressSwitches = new ToggleSwitch[16];
 		addressSwitches[0] = placeToggleSwitch(column0, addressSwitchRow);
@@ -288,5 +285,11 @@ public class SixtyFourKBRamControlPanel extends ControlPanel implements
 		lamps[5].setOn(model.getDO5());
 		lamps[6].setOn(model.getDO6());
 		lamps[7].setOn(model.getDO7());
+	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel("64KB RAM Control Panel",
+				"Labels/64KbRamControlPanelLabel.jpg");
 	}
 }

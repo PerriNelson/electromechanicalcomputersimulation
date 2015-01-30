@@ -95,7 +95,7 @@ public class AddingMachineMarkIII extends ControlPanel implements
 	}
 
 	private void placeControls() {
-		setSize(650, 300);
+		setSize(670, 300);
 
 		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
 		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
@@ -198,5 +198,11 @@ public class AddingMachineMarkIII extends ControlPanel implements
 		lampS5.setOn(model.getS5());
 		lampS6.setOn(model.getS6());
 		lampS7.setOn(model.getS7());
+	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark III",
+				"Labels/AddingMachineMarkIIILabel.jpg");
 	}
 }

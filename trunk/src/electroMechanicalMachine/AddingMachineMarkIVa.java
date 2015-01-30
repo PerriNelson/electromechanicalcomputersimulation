@@ -23,4 +23,11 @@ public class AddingMachineMarkIVa extends AddingMachineMarkIV {
 		super("Adding Machine Mark IVa", new AddingMachineMarkIVModel(
 				new EightBitEdgeTriggeredLatchWithClear()));
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark IVa ",
+				"Labels/AddingMachineMarkIVaLabel.jpg");
+	}
+
 }

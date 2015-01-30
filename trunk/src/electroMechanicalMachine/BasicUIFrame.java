@@ -28,6 +28,7 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 public class BasicUIFrame extends Frame {
 	public static final long serialVersionUID = 1l;
 
+	private final JPanel outerPanel;
 	private final JPanel panel;
 
 	public BasicUIFrame(final String caption) {
@@ -39,11 +40,51 @@ public class BasicUIFrame extends Frame {
 			}
 		});
 
+		outerPanel = new JPanel();
+		outerPanel.setLayout(new GridBagLayout());
+		outerPanel.setBackground(new Color(60, 60, 60));
+		add(outerPanel);
+
 		panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		panel.setBackground(new Color(60, 60, 60));
 
-		add(panel);
+		final GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.CENTER;
+		constraints.gridx = 1;
+		constraints.gridwidth = 1;
+		constraints.gridy = 1;
+		constraints.weightx = .1;
+		constraints.weighty = .1;
+		outerPanel.add(panel, constraints);
+	}
+
+	protected final void placeTitleLabel(String labelText, String imagePath) {
+
+		final JLabel label = generateLabel(labelText, imagePath);
+
+		final GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.CENTER;
+		constraints.gridx = 0;
+		constraints.gridwidth = 3;
+		constraints.gridy = 0;
+		constraints.weightx = .1;
+		constraints.weighty = .1;
+		outerPanel.add(label, constraints);
+	}
+
+	private JLabel generateLabel(String labelText, String imagePath) {
+		final JLabel label = new JLabel();
+		try {
+			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
+					.getResource(imagePath))));
+		} catch (final Exception exception) {
+			label.setText(labelText);
+			label.setForeground(Color.white);
+			label.setBackground(Color.black);
+			label.setOpaque(true);
+		}
+		return label;
 	}
 
 	protected void placeComponent(final JComponent component, final int column,
@@ -61,16 +102,7 @@ public class BasicUIFrame extends Frame {
 	protected void placeLabel(final String imagePath,
 			final String alternateText, final int column, final int row,
 			final int columns) {
-		final JLabel label = new JLabel();
-		try {
-			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
-					.getResource(imagePath))));
-		} catch (final Exception exception) {
-			label.setText(alternateText);
-			label.setForeground(Color.white);
-			label.setBackground(Color.black);
-			label.setOpaque(true);
-		}
+		final JLabel label = generateLabel(alternateText, imagePath);
 		placeComponent(label, column, row, columns);
 	}
 

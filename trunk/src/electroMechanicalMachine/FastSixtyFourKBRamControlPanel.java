@@ -24,4 +24,10 @@ public class FastSixtyFourKBRamControlPanel extends SixtyFourKBRamControlPanel {
 				new SixtyFourKilobyteRamControlPanelModel(
 						new SixtyFourKilobyteRAM()));
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Fast 64KB Control Panel ",
+				"Labels/Fast64KBControlPanelLabel.jpg");
+	}
 }

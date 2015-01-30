@@ -16,7 +16,7 @@ import electroMechanicalMachine.UIComponents.Lamp;
 import electroMechanicalMachine.UIComponents.ToggleSwitch;
 import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
-public class GateDemoPanel extends ControlPanel implements
+public abstract class GateDemoPanel extends ControlPanel implements
 		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
@@ -44,7 +44,7 @@ public class GateDemoPanel extends ControlPanel implements
 	}
 
 	private void placeControls() {
-		setSize(300, 103);
+		setSize(300, 155);
 
 		toggleSwitchA = placeToggleSwitch(0, 0);
 		toggleSwitchB = placeToggleSwitch(1, 0);

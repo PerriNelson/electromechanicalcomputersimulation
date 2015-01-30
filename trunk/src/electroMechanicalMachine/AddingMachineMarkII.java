@@ -189,4 +189,10 @@ public class AddingMachineMarkII extends ControlPanel implements
 		lampS6.setOn(model.getS6());
 		lampS7.setOn(model.getS7());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark II ",
+				"Labels/AddingMachineMarkIILabel.jpg");
+	}
 }

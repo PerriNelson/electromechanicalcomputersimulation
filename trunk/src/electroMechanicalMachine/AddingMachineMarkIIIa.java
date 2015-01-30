@@ -23,4 +23,10 @@ public class AddingMachineMarkIIIa extends AddingMachineMarkIII {
 		super("Adding Machine Mark IIIa", new AddingMachineMarkIIIModel(
 				new EightBitEdgeTriggeredLatchWithClear()));
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Adding Machine Mark IIIa",
+				"Labels/AddingMachineMarkIIIaLabel.jpg");
+	}
 }

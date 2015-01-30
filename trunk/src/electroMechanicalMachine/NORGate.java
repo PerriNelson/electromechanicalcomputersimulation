@@ -21,4 +21,9 @@ public class NORGate extends GateDemoPanel {
 	public NORGate() {
 		super("NOR Gate", new TwoInputNOR());
 	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" NOR Gate Demo ", "Labels/NorGateDemoLabel.jpg");
+	}
 }
