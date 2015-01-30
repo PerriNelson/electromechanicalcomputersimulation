@@ -8,33 +8,22 @@
 
 package electroMechanicalMachine;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import electroMechanicalLogic.Adders.FullAdder;
 import electroMechanicalMachine.UIComponents.Lamp;
 import electroMechanicalMachine.UIComponents.ToggleSwitch;
 import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
-public class FullAdderDemo extends Frame implements PropertyChangeListener {
+public class FullAdderDemo extends ControlPanel implements
+		PropertyChangeListener {
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
 
-	private static final int labelRow = 0;
-	private static final int controlRow = 1;
+	private static final int labelRow = 1;
+	private static final int controlRow = 0;
 
 	private static final int columnA = 1;
 	private static final int columnB = 2;
@@ -47,11 +36,6 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 		frame.setVisible(true);
 	}
 
-	private final JLabel labelCI;
-	private final JLabel labelA;
-	private final JLabel labelB;
-	private final JLabel labelCO;
-	private final JLabel labelS;
 	private final ToggleSwitch toggleSwitchCI;
 	private final ToggleSwitch toggleSwitchA;
 	private final ToggleSwitch toggleSwitchB;
@@ -62,106 +46,55 @@ public class FullAdderDemo extends Frame implements PropertyChangeListener {
 	public FullAdderDemo() {
 		super("Full Adder");
 		setSize(350, 170);
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(final WindowEvent event) {
-				System.exit(0);
-			}
-		});
+
 		fullAdder = new FullAdder();
 		fullAdder.setPower(true);
 
-		final JPanel panel = new JPanel();
-		panel.setLayout(new GridBagLayout());
-		panel.setBackground(new Color(60, 60, 60));
+		placeLabel("Labels/CILabel.jpg", " CI ", columnCI, labelRow, 1);
+		placeLabel("Labels/ALabel.jpg", " A ", columnA, labelRow, 1);
+		placeLabel("Labels/BLabel.jpg", " B ", columnB, labelRow, 1);
+		placeLabel("Labels/COLabel.jpg", " CO ", columnCO, labelRow, 1);
+		placeLabel("Labels/SLabel.jpg", " S ", columnS, labelRow, 1);
 
-		labelCI = new JLabel();
-		setLabel(labelCI, "images/CILabel.jpg", " CI ");
-		placeComponent(panel, labelCI, columnCI, labelRow);
+		toggleSwitchCI = placeToggleSwitch(columnCI, controlRow);
+		toggleSwitchA = placeToggleSwitch(columnA, controlRow);
+		toggleSwitchB = placeToggleSwitch(columnB, controlRow);
 
-		toggleSwitchCI = new ToggleSwitch();
-		toggleSwitchCI.setPowerIn(PowerState.on);
-		toggleSwitchCI.addPropertyChangeListener(this);
-		placeComponent(panel, toggleSwitchCI, columnCI, controlRow);
+		lampCO = placeLamp(columnCO, controlRow);
+		lampS = placeLamp(columnS, controlRow);
 
-		labelA = new JLabel();
-		setLabel(labelA, "images/ALabel.jpg", " A ");
-		placeComponent(panel, labelA, columnA, labelRow);
-
-		toggleSwitchA = new ToggleSwitch();
-		toggleSwitchA.setPowerIn(PowerState.on);
-		toggleSwitchA.addPropertyChangeListener(this);
-		placeComponent(panel, toggleSwitchA, columnA, controlRow);
-
-		labelB = new JLabel();
-		setLabel(labelB, "images/BLabel.jpg", " B ");
-		placeComponent(panel, labelB, columnB, labelRow);
-
-		toggleSwitchB = new ToggleSwitch();
-		toggleSwitchB.setPowerIn(PowerState.on);
-		toggleSwitchB.addPropertyChangeListener(this);
-		placeComponent(panel, toggleSwitchB, columnB, controlRow);
-
-		labelCO = new JLabel();
-		setLabel(labelCO, "images/COLabel.jpg", " CO ");
-		placeComponent(panel, labelCO, columnCO, labelRow);
-
-		lampCO = new Lamp();
-		placeComponent(panel, lampCO, columnCO, controlRow);
-
-		labelS = new JLabel();
-		setLabel(labelS, "images/SLabel.jpg", " S ");
-		placeComponent(panel, labelS, columnS, labelRow);
-
-		lampS = new Lamp();
-		placeComponent(panel, lampS, columnS, controlRow);
-
-		add(panel);
+		runSimulation(fullAdder, 10);
 	}
 
-	private void placeComponent(final JPanel panel, final JComponent component,
-			final int column, final int row) {
-		final GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.CENTER;
-		constraints.gridx = column;
-		constraints.gridy = row;
-		constraints.weightx = .1;
-		constraints.weighty = .1;
-		panel.add(component, constraints);
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override
 	public void propertyChange(final PropertyChangeEvent evt) {
-		if (evt.getSource() == toggleSwitchCI) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			if (evt.getSource() == toggleSwitchCI) {
 				fullAdder.setCI(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchA) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			} else if (evt.getSource() == toggleSwitchA) {
 				fullAdder.setA(PowerState.on == evt.getNewValue());
-			}
-		}
-		if (evt.getSource() == toggleSwitchB) {
-			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			} else if (evt.getSource() == toggleSwitchB) {
 				fullAdder.setB(PowerState.on == evt.getNewValue());
 			}
 		}
-		fullAdder.step();
-		lampCO.setOn(fullAdder.getCO());
-		lampS.setOn(fullAdder.getS());
 	}
 
-	private void setLabel(final JLabel label, final String imagePath,
-			final String alternateText) {
-		try {
-			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
-					.getResource(imagePath))));
-		} catch (final Exception exception) {
-			label.setText(alternateText);
-			label.setForeground(Color.white);
-			label.setBackground(Color.black);
-			label.setOpaque(true);
-		}
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Full Adder Demo ", "Labels/FullAdderDemoLabel.jpg");
+
+	}
+
+	@Override
+	protected void onModelUpdated() {
+		lampCO.setOn(fullAdder.getCO());
+		lampS.setOn(fullAdder.getS());
 	}
 }
