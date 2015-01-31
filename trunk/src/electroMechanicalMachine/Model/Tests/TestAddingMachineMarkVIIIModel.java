@@ -8,11 +8,15 @@
 
 package electroMechanicalMachine.Model.Tests;
 
-import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
-import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
-import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.ADC;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.SBB;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.SUB;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -35,51 +39,12 @@ public class TestAddingMachineMarkVIIIModel extends
 		systemUnderTest.setReset(on);
 	}
 
-	protected void loadCode(final int[] input) {
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(on);
-		copyInputToRAM(input);
-		systemUnderTest.setTakeover(off);
-	}
-
-	protected void loadData(final int[] input) {
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(off);
-		copyInputToRAM(input);
-		systemUnderTest.setTakeover(off);
-	}
-
-	private void copyInputToRAM(final int[] input) {
-		systemUnderTest.setW(on);
-		for (int address = 0; address < input.length; address++) {
-			setAddress(systemUnderTest, address);
-			setDataIn(systemUnderTest, input[address]);
-			systemUnderTest.step();
-		}
-		systemUnderTest.setW(off);
-	}
-
-	private void runProgram() {
-		systemUnderTest.setTakeover(off);
-		systemUnderTest.setUseCodePanel(on);
-		systemUnderTest.setReset(off);
-		while (0xff != getDataOut(systemUnderTest)) {
-			performOneClockCycle();
-		}
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-	}
-
-	private int readData(int address) {
-		systemUnderTest.setUseCodePanel(off);
-		setAddress(systemUnderTest, address);
-		systemUnderTest.step();
-		return getDataOut(systemUnderTest);
-	}
-
+	/**
+	 * Adds 0x76ab (30379) and 0x232c (9004). Expected result is 0x99d7 (39383).
+	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forFirstExampleFromBook() {
-		int[] code = { 0x10, 0x20, 0x11, 0x10, 0x22, 0x11, 0xff };
+		int[] code = { LOD, ADD, STO, LOD, ADC, STO, HALT };
 		int[] data = { 0xab, 0x2c, 0x00, 0x76, 0x23 };
 
 		loadCode(code);
@@ -90,10 +55,14 @@ public class TestAddingMachineMarkVIIIModel extends
 		assertEquals(0x99, readData(5));
 	}
 
+	/**
+	 * Adds 0x7a892bcd (2055809997) and 0x65a872ff (1705538303). Expected result
+	 * is 0xE0319ECC (3761348300).
+	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forSecondExampleFromBook() {
-		int[] code = { 0x10, 0x20, 0x11, 0x10, 0x22, 0x11, 0x10, 0x22, 0x11,
-				0x10, 0x22, 0x11, 0xff };
+		int[] code = { LOD, ADD, STO, LOD, ADC, STO, LOD, ADC, STO, LOD, ADC,
+				STO, HALT };
 		int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8, 0x00,
 				0x7a, 0x65 };
 
@@ -105,5 +74,26 @@ public class TestAddingMachineMarkVIIIModel extends
 		assertEquals(0x9e, readData(5));
 		assertEquals(0x31, readData(8));
 		assertEquals(0xe0, readData(11));
+	}
+
+	/**
+	 * Subtracts 0x65a872ff (1705538303) from 0x7a892bcd (2055809997). Expected
+	 * result is 0x14E0B8CE (350271694).
+	 */
+	@Test
+	public void testAddingMachine_shouldProvideCorrectResults_forSubtraction() {
+		int[] code = { LOD, SUB, STO, LOD, SBB, STO, LOD, SBB, STO, LOD, SBB,
+				STO, HALT };
+		int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8, 0x00,
+				0x7a, 0x65 };
+
+		loadCode(code);
+		loadData(data);
+		runProgram();
+
+		assertEquals(0xce, readData(2));
+		assertEquals(0xb8, readData(5));
+		assertEquals(0xe0, readData(8));
+		assertEquals(0x14, readData(11));
 	}
 }
