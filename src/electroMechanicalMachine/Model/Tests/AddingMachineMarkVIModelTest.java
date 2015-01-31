@@ -13,6 +13,10 @@ import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -25,23 +29,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 public class AddingMachineMarkVIModelTest {
 
 	protected IAddingMachineMarkVIModel systemUnderTest;
-
-	protected int add(final int a, final int b) {
-		return (a + b) & 0xff;
-	}
-
-	protected void performOneClockCycle() {
-		systemUnderTest.step();
-		systemUnderTest.step();
-	}
-
-	protected void performWrite() {
-		systemUnderTest.setW(on);
-		systemUnderTest.step();
-
-		systemUnderTest.setW(off);
-		systemUnderTest.step();
-	}
 
 	@Before
 	public void Setup() {
@@ -93,114 +80,18 @@ public class AddingMachineMarkVIModelTest {
 
 	@Test
 	public void test_MarkVI_ExampleFromBook_ProducesExpectedResults() {
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(off);
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x27);
-		systemUnderTest.setW(on);
-		systemUnderTest.step();
+		int[] code = { LOD, ADD, ADD, STO, LOD, ADD, STO, LOD, ADD, ADD, STO,
+				HALT };
+		int[] data = { 0x27, 0xA2, 0x18, 0x00, 0x1f, 0x89, 0x00, 0x33, 0x2A,
+				0x55 };
 
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0xA2);
-		systemUnderTest.step();
+		loadCode(code);
+		loadData(data);
+		runProgram();
 
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0x18);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 4);
-		setDataIn(systemUnderTest, 0x1f);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 5);
-		setDataIn(systemUnderTest, 0x89);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 7);
-		setDataIn(systemUnderTest, 0x33);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 8);
-		setDataIn(systemUnderTest, 0x2A);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 9);
-		setDataIn(systemUnderTest, 0x55);
-		systemUnderTest.step();
-
-		systemUnderTest.setUseCodePanel(on);
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x10);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 3);
-		setDataIn(systemUnderTest, 0x11);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 4);
-		setDataIn(systemUnderTest, 0x10);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 5);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 6);
-		setDataIn(systemUnderTest, 0x11);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 7);
-		setDataIn(systemUnderTest, 0x10);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 8);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 9);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 10);
-		setDataIn(systemUnderTest, 0x11);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 11);
-		setDataIn(systemUnderTest, 0xff);
-		systemUnderTest.step();
-
-		systemUnderTest.setReset(off);
-		systemUnderTest.setTakeover(off);
-
-		for (int i = 0; i < 12; i++) {
-			performOneClockCycle();
-		}
-
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setW(off);
-		systemUnderTest.setUseCodePanel(off);
-
-		setAddress(systemUnderTest, 3);
-		systemUnderTest.step();
-		assertEquals(add(add(0x27, 0xa2), 0x18), getDataOut(systemUnderTest));
-
-		setAddress(systemUnderTest, 6);
-		systemUnderTest.step();
-		assertEquals(add(0x1f, 0x89), getDataOut(systemUnderTest));
-
-		setAddress(systemUnderTest, 10);
-		systemUnderTest.step();
-		assertEquals(add(add(0x33, 0x2a), 0x55), getDataOut(systemUnderTest));
+		assertEquals(add(add(0x27, 0xa2), 0x18), readData(3));
+		assertEquals(add(0x1f, 0x89), readData(6));
+		assertEquals(add(add(0x33, 0x2a), 0x55), readData(10));
 	}
 
 	@Test
@@ -4320,5 +4211,64 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.step();
 
 		assertEquals(off, systemUnderTest.getDO0());
+	}
+
+	protected void copyInputToRAM(final int[] input) {
+		systemUnderTest.setW(on);
+		for (int address = 0; address < input.length; address++) {
+			setAddress(systemUnderTest, address);
+			setDataIn(systemUnderTest, input[address]);
+			systemUnderTest.step();
+		}
+		systemUnderTest.setW(off);
+	}
+
+	protected int add(final int a, final int b) {
+		return (a + b) & 0xff;
+	}
+
+	protected void loadCode(final int[] input) {
+		systemUnderTest.setTakeover(on);
+		systemUnderTest.setUseCodePanel(on);
+		copyInputToRAM(input);
+		systemUnderTest.setTakeover(off);
+	}
+
+	protected void loadData(final int[] input) {
+		systemUnderTest.setTakeover(on);
+		systemUnderTest.setUseCodePanel(off);
+		copyInputToRAM(input);
+		systemUnderTest.setTakeover(off);
+	}
+
+	protected void performOneClockCycle() {
+		systemUnderTest.step();
+		systemUnderTest.step();
+	}
+
+	protected void performWrite() {
+		systemUnderTest.setW(on);
+		systemUnderTest.step();
+
+		systemUnderTest.setW(off);
+		systemUnderTest.step();
+	}
+
+	protected int readData(final int address) {
+		systemUnderTest.setUseCodePanel(off);
+		setAddress(systemUnderTest, address);
+		systemUnderTest.step();
+		return getDataOut(systemUnderTest);
+	}
+
+	protected void runProgram() {
+		systemUnderTest.setTakeover(off);
+		systemUnderTest.setUseCodePanel(on);
+		systemUnderTest.setReset(off);
+		while (HALT != getDataOut(systemUnderTest)) {
+			performOneClockCycle();
+		}
+		systemUnderTest.setReset(on);
+		systemUnderTest.setTakeover(on);
 	}
 }

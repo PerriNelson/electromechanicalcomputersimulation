@@ -8,11 +8,13 @@
 
 package electroMechanicalMachine.Model.Tests;
 
-import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
-import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
-import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.SUB;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -40,113 +42,25 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 
 	@Test
 	public void test_LoadANumberSubtractItStoreResult_ResultIsZero() {
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(off);
-		systemUnderTest.setW(on);
+		int[] code = { LOD, SUB, STO, HALT };
+		int[] data = { 0x56, 0x56, 0xAA };
 
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x56);
-		systemUnderTest.step();
+		loadCode(code);
+		loadData(data);
+		runProgram();
 
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0x56);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0xAA);
-		systemUnderTest.step();
-
-		systemUnderTest.setUseCodePanel(on);
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x10);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0x21);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0x11);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 3);
-		setDataIn(systemUnderTest, 0xFF);
-		systemUnderTest.step();
-
-		systemUnderTest.setW(off);
-		systemUnderTest.setReset(off);
-		systemUnderTest.setTakeover(off);
-
-		for (int i = 0; i < 5; i++) {
-			performOneClockCycle();
-		}
-
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(off);
-
-		setAddress(systemUnderTest, 2);
-		systemUnderTest.step();
-		assertEquals(0, getDataOut(systemUnderTest));
-
+		assertEquals(0, readData(2));
 	}
 
 	@Test
 	public void test_MarkVII_ExampleFromBook_ProducesExpectedResults() {
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setUseCodePanel(off);
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x56);
-		systemUnderTest.setW(on);
-		systemUnderTest.step();
+		int[] code = { LOD, ADD, SUB, STO, HALT };
+		int[] data = { 0x56, 0x2A, 0x38 };
 
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0x2A);
-		systemUnderTest.step();
+		loadCode(code);
+		loadData(data);
+		runProgram();
 
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0x38);
-		systemUnderTest.step();
-
-		systemUnderTest.setUseCodePanel(on);
-		setAddress(systemUnderTest, 0);
-		setDataIn(systemUnderTest, 0x10);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 1);
-		setDataIn(systemUnderTest, 0x20);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 2);
-		setDataIn(systemUnderTest, 0x21);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 3);
-		setDataIn(systemUnderTest, 0x11);
-		systemUnderTest.step();
-
-		setAddress(systemUnderTest, 4);
-		setDataIn(systemUnderTest, 0xFF);
-		systemUnderTest.step();
-
-		systemUnderTest.setW(off);
-		systemUnderTest.setReset(off);
-		systemUnderTest.setTakeover(off);
-
-		for (int i = 0; i < 5; i++) {
-			performOneClockCycle();
-		}
-
-		systemUnderTest.setReset(on);
-		systemUnderTest.setTakeover(on);
-		systemUnderTest.setW(off);
-		systemUnderTest.setUseCodePanel(off);
-
-		setAddress(systemUnderTest, 3);
-		systemUnderTest.step();
-		assertEquals(subtract(add(0x56, 0x2A), 0x38),
-				getDataOut(systemUnderTest));
+		assertEquals(subtract(add(0x56, 0x2A), 0x38), readData(3));
 	}
 }
