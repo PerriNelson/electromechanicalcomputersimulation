@@ -28,7 +28,7 @@ public class MarkVIIALUTest extends MarkVIALUTest {
 	}
 
 	@Test
-	public void test_WhenSubtractIsOn_AfterOneClockCycle_DataOutReflectsAddition() {
+	public void test_WhenSubtractIsOn_AfterOneClockCycle_DataOutReflectsSubtraction() {
 		((MarkVIIALU) systemUnderTest).setSubtract(on);
 
 		int expectedResult = 0;

@@ -9,31 +9,31 @@
 package electroMechanicalMachine;
 
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
-import electroMechanicalMachine.Model.AddingMachineMarkVIIModel;
+import electroMechanicalMachine.Model.AddingMachineMarkVIIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
-public class AddingMachineMarkVII extends AddingMachineMarkVI {
+public class AddingMachineMarkVIII extends AddingMachineMarkVI {
 	public static final long serialVersionUID = 1l;
 
 	public static void main(final String[] args) {
-		final AddingMachineMarkVII frame = new AddingMachineMarkVII();
+		final AddingMachineMarkVIII frame = new AddingMachineMarkVIII();
 		frame.setVisible(true);
 	}
 
-	public AddingMachineMarkVII() {
-		this("AddingMachineMark VII", new AddingMachineMarkVIIModel(
+	public AddingMachineMarkVIII() {
+		this("AddingMachineMark VIII", new AddingMachineMarkVIIIModel(
 				new SixtyFourKilobyteRAM(), new SixtyFourKilobyteRAM()));
 
 	}
 
-	public AddingMachineMarkVII(final String caption,
+	public AddingMachineMarkVIII(final String caption,
 			final IAddingMachineMarkVIModel theModel) {
 		super(caption, theModel);
 	}
 
 	@Override
 	protected void setTitle() {
-		placeTitleLabel(" Adding Machine Mark VII ",
-				"Labels/AddingMachineMarkVIILabel.jpg");
+		placeTitleLabel(" Adding Machine Mark VIII ",
+				"Labels/AddingMachineMarkVIIILabel.jpg");
 	}
 }
