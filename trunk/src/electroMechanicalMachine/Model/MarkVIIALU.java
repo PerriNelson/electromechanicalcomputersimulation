@@ -29,13 +29,13 @@ import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIALU;
 
 public class MarkVIIALU implements IMarkVIIALU {
-	private final IEightBitOnesComplement subtract = new EightBitOnesComplement();
-	private final IEightBitAdder adder = new EightBitAdder();
-	private final ITwoInputSingleOutputGate write = new TwoInputAND();
-	private final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
-	private final IRelay loadBar = new Inverter();
-	private final IThreeInputSingleOutputGate loadAddOrSubtract = new ThreeInputOR();
-	private final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
+	protected final IEightBitOnesComplement subtract = new EightBitOnesComplement();
+	protected final IEightBitAdder adder = new EightBitAdder();
+	protected final ITwoInputSingleOutputGate write = new TwoInputAND();
+	protected final IEightBitLatchWithClear latch = new EightBitEdgeTriggeredLatchWithClear();
+	protected final IRelay loadBar = new Inverter();
+	protected final IThreeInputSingleOutputGate loadAddOrSubtract = new ThreeInputOR();
+	protected final IEightBitTwoToOneSelector loadSelector = new EightBitTwoToOneSelector();
 
 	@Override
 	public boolean getDO0() {
@@ -180,19 +180,19 @@ public class MarkVIIALU implements IMarkVIIALU {
 		stepLatch();
 	}
 
-	private void stepAdder() {
+	protected void stepAdder() {
 		connectEightBitDataOutputToEightBitAInput(subtract, adder);
 		connectEightBitDataOutputToEightBitBInput(latch, adder);
 		adder.step();
 	}
 
-	private void stepLatch() {
+	protected void stepLatch() {
 		connectEightBitDataOutputToEightBitDataInput(loadSelector, latch);
 		latch.setW(write.getOutput());
 		latch.step();
 	}
 
-	private void stepLoadSelector() {
+	protected void stepLoadSelector() {
 		connectEightBitSumToEightBitBInput(adder, loadSelector);
 		loadSelector.setSelect(loadBar.getOutput());
 		loadSelector.step();

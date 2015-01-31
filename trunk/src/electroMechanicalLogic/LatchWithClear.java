@@ -13,7 +13,15 @@ import electroMechanicalLogic.FlipFlops.Interfaces.IDTypeFlipFlopWithClear;
 import electroMechanicalLogic.Interfaces.ILatchWithClear;
 
 public class LatchWithClear implements ILatchWithClear {
-	private final IDTypeFlipFlopWithClear flipFlop = new LevelTriggeredDTypeFlipFlopWithClear();
+	private final IDTypeFlipFlopWithClear flipFlop;
+
+	public LatchWithClear() {
+		this(new LevelTriggeredDTypeFlipFlopWithClear());
+	}
+
+	public LatchWithClear(IDTypeFlipFlopWithClear flipflop) {
+		flipFlop = flipflop;
+	}
 
 	@Override
 	public boolean getDO() {
