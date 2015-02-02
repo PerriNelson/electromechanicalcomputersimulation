@@ -11,12 +11,12 @@ package electroMechanicalMachine;
 import electroMechanicalLogic.Gates.TwoInputNOR;
 
 public class NORGate extends GateDemoPanel {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(final String[] args) {
 		final NORGate frame = new NORGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public NORGate() {
 		super("NOR Gate", new TwoInputNOR());

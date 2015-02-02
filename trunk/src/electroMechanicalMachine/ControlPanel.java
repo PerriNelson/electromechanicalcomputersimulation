@@ -24,11 +24,11 @@ public abstract class ControlPanel extends BasicUIFrame {
 
 	/**
 	 * Constructs the control panel.
-	 * 
+	 *
 	 * @param caption
 	 *            the window caption for the control panel.
 	 */
-	public ControlPanel(String caption) {
+	public ControlPanel(final String caption) {
 		super(caption);
 		setTitle();
 	}
@@ -41,14 +41,12 @@ public abstract class ControlPanel extends BasicUIFrame {
 		simulatedCircuit
 				.addPropertyChangeListener(new PropertyChangeListener() {
 					@Override
-					public void propertyChange(PropertyChangeEvent arg0) {
+					public void propertyChange(final PropertyChangeEvent arg0) {
 						onModelUpdated();
 					}
 				});
 		return simulatedCircuit;
 	}
-
-	protected abstract void setTitle();
 
 	/**
 	 * Handles notification that the model has been updated.
@@ -58,18 +56,20 @@ public abstract class ControlPanel extends BasicUIFrame {
 	/**
 	 * Runs the simulation by stepping the simulated circuit at regular
 	 * intervals.
-	 * 
+	 *
 	 * @param circuit
 	 *            the circuit to be stepped.
-	 * 
+	 *
 	 * @param cycleTimeInMilliseconds
 	 *            the interval to wait between each step of the circuit.
 	 */
 	protected final void runSimulation(final ISimulatedCircuit circuit,
-			int cycleTimeInMilliseconds) {
+			final int cycleTimeInMilliseconds) {
 
 		automationDriver = new SimulationDriver(attachEventsToCircuit(circuit),
 				cycleTimeInMilliseconds);
 		automationDriver.runSimulation();
 	}
+
+	protected abstract void setTitle();
 }

@@ -28,6 +28,25 @@ public class EightBitLatchTest {
 
 	protected IEightBitLatch systemUnderTest;
 
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new EightBitLatch();
+		systemUnderTest.setPower(true);
+		systemUnderTest.step();
+	}
+
+	@Test
+	public void test() {
+		for (int testValue = 0; testValue < 0x100; testValue++) {
+			setDI(testValue);
+			systemUnderTest.setW(true);
+			systemUnderTest.step();
+			systemUnderTest.setW(false);
+			systemUnderTest.step();
+			assertEquals(testValue, getDO());
+		}
+	}
+
 	protected int getDO() {
 		int result = 0;
 
@@ -68,24 +87,5 @@ public class EightBitLatchTest {
 		systemUnderTest.setDI5((value & bit5) == bit5);
 		systemUnderTest.setDI6((value & bit6) == bit6);
 		systemUnderTest.setDI7((value & bit7) == bit7);
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new EightBitLatch();
-		systemUnderTest.setPower(true);
-		systemUnderTest.step();
-	}
-
-	@Test
-	public void test() {
-		for (int testValue = 0; testValue < 0x100; testValue++) {
-			setDI(testValue);
-			systemUnderTest.setW(true);
-			systemUnderTest.step();
-			systemUnderTest.setW(false);
-			systemUnderTest.step();
-			assertEquals(testValue, getDO());
-		}
 	}
 }

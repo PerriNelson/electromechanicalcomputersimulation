@@ -17,18 +17,6 @@ import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 public class SixtyFourByteRAM extends EightByteRAM implements ISixtyFourByteRAM {
 
 	@Override
-	protected void initializeBanks() {
-		bank0 = new EightByteRAM();
-		bank1 = new EightByteRAM();
-		bank2 = new EightByteRAM();
-		bank3 = new EightByteRAM();
-		bank4 = new EightByteRAM();
-		bank5 = new EightByteRAM();
-		bank6 = new EightByteRAM();
-		bank7 = new EightByteRAM();
-	}
-
-	@Override
 	public void setA0(final boolean value) {
 		((IEightByteRAM) bank0).setA0(value);
 		((IEightByteRAM) bank1).setA0(value);
@@ -101,6 +89,18 @@ public class SixtyFourByteRAM extends EightByteRAM implements ISixtyFourByteRAM 
 		dO5.setS2(value);
 		dO6.setS2(value);
 		dO7.setS2(value);
+	}
+
+	@Override
+	protected void initializeBanks() {
+		bank0 = new EightByteRAM();
+		bank1 = new EightByteRAM();
+		bank2 = new EightByteRAM();
+		bank3 = new EightByteRAM();
+		bank4 = new EightByteRAM();
+		bank5 = new EightByteRAM();
+		bank6 = new EightByteRAM();
+		bank7 = new EightByteRAM();
 	}
 
 }

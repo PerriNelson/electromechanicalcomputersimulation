@@ -24,14 +24,14 @@ import electroMechanicalMachine.UIComponents.ToggleSwitch;
 import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class SimpleDemo extends Frame implements PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-
-	private static final String powerOutPropertyName = "powerOut";
-
 	public static void main(final String[] args) {
 		final SimpleDemo frame = new SimpleDemo();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
 
 	private final ToggleSwitch toggleSwitch;
 	private final Lamp lamp;

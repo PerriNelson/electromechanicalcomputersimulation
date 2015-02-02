@@ -38,6 +38,37 @@ public class TestMarkIXInstructionDecoder {
 	}
 
 	@Test
+	public void test_addressShouldBe55AA_andGetSubtractShouldBeTrue_afterFullInstructionCycleWithDataInIsSUBThen55ThenAA() {
+		setDataIn(systemUnderTest, SUB);
+		transitionFetchCodeOffToOn();
+
+		setDataIn(systemUnderTest, 0x55);
+		transitionFetchHighAddressOffToOn();
+
+		setDataIn(systemUnderTest, 0xAA);
+		transitionFetchLowAddressOffToOn();
+
+		assertTrue(systemUnderTest.getSubtract());
+		assertEquals(0x55AA, getAddress(systemUnderTest));
+	}
+
+	@Test
+	public void testAddress_shouldBe00AA_whenDataInIsAAAndFetchLowAddressTransitionsToOn() {
+		setDataIn(systemUnderTest, 0xAA);
+		transitionFetchLowAddressOffToOn();
+
+		assertEquals(0x00AA, getAddress(systemUnderTest));
+	}
+
+	@Test
+	public void testAddress_shouldBe5500_whenDataInIs55AndFetchHighAddressTransitionsToOn() {
+		setDataIn(systemUnderTest, 0x55);
+		transitionFetchHighAddressOffToOn();
+
+		assertEquals(0x5500, getAddress(systemUnderTest));
+	}
+
+	@Test
 	public void testGetAdd_shouldReturnFalse_whenDataInIsNotADDAndfetchCodeTransitionsToOn() {
 		for (int code = 0; code < 256; code++) {
 			if (code == ADD) {
@@ -56,6 +87,48 @@ public class TestMarkIXInstructionDecoder {
 		transitionFetchCodeOffToOn();
 
 		assertTrue(systemUnderTest.getAdd());
+	}
+
+	@Test
+	public void testGetAddWithCarry_shouldReturnFalse_whenDataInIsNotADCAndfetchCodeTransitionsToOn() {
+		for (int code = 0; code < 256; code++) {
+			if (code == ADC) {
+				continue;
+			}
+			setDataIn(systemUnderTest, code);
+			transitionFetchCodeOffToOn();
+
+			assertFalse(systemUnderTest.getAddWithCarry());
+		}
+	}
+
+	@Test
+	public void testGetAddWithCarry_shouldReturnTrue_whenDataInIsADCAndfetchCodeTransitionsToOn() {
+		setDataIn(systemUnderTest, ADC);
+		transitionFetchCodeOffToOn();
+
+		assertTrue(systemUnderTest.getAddWithCarry());
+	}
+
+	@Test
+	public void testGetHalt_shouldReturnFalse_whenDataInIsNotHALTAndfetchCodeTransitionsToOn() {
+		for (int code = 0; code < 256; code++) {
+			if (code == HALT) {
+				continue;
+			}
+			setDataIn(systemUnderTest, code);
+			transitionFetchCodeOffToOn();
+
+			assertFalse(systemUnderTest.getHalt());
+		}
+	}
+
+	@Test
+	public void testGetHalt_shouldReturnTrue_whenDataInIsHALTAndfetchCodeTransitionsToOn() {
+		setDataIn(systemUnderTest, HALT);
+		transitionFetchCodeOffToOn();
+
+		assertTrue(systemUnderTest.getHalt());
 	}
 
 	@Test
@@ -101,48 +174,6 @@ public class TestMarkIXInstructionDecoder {
 	}
 
 	@Test
-	public void testGetHalt_shouldReturnFalse_whenDataInIsNotHALTAndfetchCodeTransitionsToOn() {
-		for (int code = 0; code < 256; code++) {
-			if (code == HALT) {
-				continue;
-			}
-			setDataIn(systemUnderTest, code);
-			transitionFetchCodeOffToOn();
-
-			assertFalse(systemUnderTest.getHalt());
-		}
-	}
-
-	@Test
-	public void testGetHalt_shouldReturnTrue_whenDataInIsHALTAndfetchCodeTransitionsToOn() {
-		setDataIn(systemUnderTest, HALT);
-		transitionFetchCodeOffToOn();
-
-		assertTrue(systemUnderTest.getHalt());
-	}
-
-	@Test
-	public void testGetAddWithCarry_shouldReturnFalse_whenDataInIsNotADCAndfetchCodeTransitionsToOn() {
-		for (int code = 0; code < 256; code++) {
-			if (code == ADC) {
-				continue;
-			}
-			setDataIn(systemUnderTest, code);
-			transitionFetchCodeOffToOn();
-
-			assertFalse(systemUnderTest.getAddWithCarry());
-		}
-	}
-
-	@Test
-	public void testGetAddWithCarry_shouldReturnTrue_whenDataInIsADCAndfetchCodeTransitionsToOn() {
-		setDataIn(systemUnderTest, ADC);
-		transitionFetchCodeOffToOn();
-
-		assertTrue(systemUnderTest.getAddWithCarry());
-	}
-
-	@Test
 	public void testGetSubtract_shouldReturnFalse_whenDataInIsNotSUBAndfetchCodeTransitionsToOn() {
 		for (int code = 0; code < 256; code++) {
 			if (code == SUB) {
@@ -182,37 +213,6 @@ public class TestMarkIXInstructionDecoder {
 		transitionFetchCodeOffToOn();
 
 		assertTrue(systemUnderTest.getSubtractWithBorrow());
-	}
-
-	@Test
-	public void testAddress_shouldBe00AA_whenDataInIsAAAndFetchLowAddressTransitionsToOn() {
-		setDataIn(systemUnderTest, 0xAA);
-		transitionFetchLowAddressOffToOn();
-
-		assertEquals(0x00AA, getAddress(systemUnderTest));
-	}
-
-	@Test
-	public void testAddress_shouldBe5500_whenDataInIs55AndFetchHighAddressTransitionsToOn() {
-		setDataIn(systemUnderTest, 0x55);
-		transitionFetchHighAddressOffToOn();
-
-		assertEquals(0x5500, getAddress(systemUnderTest));
-	}
-
-	@Test
-	public void test_addressShouldBe55AA_andGetSubtractShouldBeTrue_afterFullInstructionCycleWithDataInIsSUBThen55ThenAA() {
-		setDataIn(systemUnderTest, SUB);
-		transitionFetchCodeOffToOn();
-
-		setDataIn(systemUnderTest, 0x55);
-		transitionFetchHighAddressOffToOn();
-
-		setDataIn(systemUnderTest, 0xAA);
-		transitionFetchLowAddressOffToOn();
-
-		assertTrue(systemUnderTest.getSubtract());
-		assertEquals(0x55AA, getAddress(systemUnderTest));
 	}
 
 	private void transitionFetchCodeOffToOn() {

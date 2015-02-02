@@ -14,7 +14,7 @@ public interface IRelay extends ISimulatedCircuit {
 	/**
 	 * Retrieves a value indicating whether power is flowing from the relay's
 	 * output terminal or not.
-	 * 
+	 *
 	 * @return true indicates that power is flowing from the relay's output
 	 *         terminal; false indicates that it is not.
 	 */
@@ -23,7 +23,7 @@ public interface IRelay extends ISimulatedCircuit {
 	/**
 	 * Sets a value indicating whether power is flowing into the relay's input
 	 * terminal.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing into the relay's input
 	 *            terminal; false to indicate that it is not.

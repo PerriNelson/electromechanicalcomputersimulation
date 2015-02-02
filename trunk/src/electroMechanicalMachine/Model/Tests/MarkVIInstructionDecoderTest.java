@@ -34,17 +34,6 @@ public class MarkVIInstructionDecoderTest {
 
 	protected IMarkVIInstructionDecoder systemUnderTest;
 
-	protected void setCode(final int code) {
-		systemUnderTest.setDI0((code & bit0) == bit0);
-		systemUnderTest.setDI1((code & bit1) == bit1);
-		systemUnderTest.setDI2((code & bit2) == bit2);
-		systemUnderTest.setDI3((code & bit3) == bit3);
-		systemUnderTest.setDI4((code & bit4) == bit4);
-		systemUnderTest.setDI5((code & bit5) == bit5);
-		systemUnderTest.setDI6((code & bit6) == bit6);
-		systemUnderTest.setDI7((code & bit7) == bit7);
-	}
-
 	@Before
 	public void Setup() {
 		systemUnderTest = new MarkVIInstructionDecoder();
@@ -141,5 +130,16 @@ public class MarkVIInstructionDecoderTest {
 		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getStore());
+	}
+
+	protected void setCode(final int code) {
+		systemUnderTest.setDI0((code & bit0) == bit0);
+		systemUnderTest.setDI1((code & bit1) == bit1);
+		systemUnderTest.setDI2((code & bit2) == bit2);
+		systemUnderTest.setDI3((code & bit3) == bit3);
+		systemUnderTest.setDI4((code & bit4) == bit4);
+		systemUnderTest.setDI5((code & bit5) == bit5);
+		systemUnderTest.setDI6((code & bit6) == bit6);
+		systemUnderTest.setDI7((code & bit7) == bit7);
 	}
 }

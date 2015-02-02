@@ -19,7 +19,7 @@ public interface IEightByteRAM extends IEightBitLatch {
 	 * Sets a value indicating whether power is flowing to the "A0" terminal of
 	 * the circuit or not. The "A0" terminal represents bit 0 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -30,7 +30,7 @@ public interface IEightByteRAM extends IEightBitLatch {
 	 * Sets a value indicating whether power is flowing to the "A1" terminal of
 	 * the circuit or not. The "A1" terminal represents bit 1 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -41,7 +41,7 @@ public interface IEightByteRAM extends IEightBitLatch {
 	 * Sets a value indicating whether power is flowing to the "A2" terminal of
 	 * the circuit or not. The "A2" terminal represents bit 2 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.

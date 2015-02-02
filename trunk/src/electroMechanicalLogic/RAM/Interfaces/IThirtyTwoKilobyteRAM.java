@@ -8,7 +8,6 @@
 
 package electroMechanicalLogic.RAM.Interfaces;
 
-
 public interface IThirtyTwoKilobyteRAM extends IFourKilobyteRAM {
 
 	public abstract void setAC(boolean value);

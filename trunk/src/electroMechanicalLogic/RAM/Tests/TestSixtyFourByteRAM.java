@@ -20,18 +20,18 @@ import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 public class TestSixtyFourByteRAM extends TestEightByteRAM {
 
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new SixtyFourByteRAM();
+		systemUnderTest.setPower(true);
+	}
+
+	@Override
 	protected void setA(final int value) {
 		super.setA(value);
 		((ISixtyFourByteRAM) systemUnderTest).setA3((value & bit3) == bit3);
 		((ISixtyFourByteRAM) systemUnderTest).setA4((value & bit4) == bit4);
 		((ISixtyFourByteRAM) systemUnderTest).setA5((value & bit5) == bit5);
-	}
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new SixtyFourByteRAM();
-		systemUnderTest.setPower(true);
 	}
 
 	@Override

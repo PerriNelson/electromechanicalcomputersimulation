@@ -15,18 +15,6 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 		IThirtyTwoKilobyteRAM {
 
 	@Override
-	protected void initializeBanks() {
-		bank0 = new FourKilobyteRAM();
-		bank1 = new FourKilobyteRAM();
-		bank2 = new FourKilobyteRAM();
-		bank3 = new FourKilobyteRAM();
-		bank4 = new FourKilobyteRAM();
-		bank5 = new FourKilobyteRAM();
-		bank6 = new FourKilobyteRAM();
-		bank7 = new FourKilobyteRAM();
-	}
-
-	@Override
 	public void setA9(final boolean value) {
 		((IFourKilobyteRAM) bank0).setA9(value);
 		((IFourKilobyteRAM) bank1).setA9(value);
@@ -99,6 +87,18 @@ public class ThirtyTwoKilobyteRAM extends FourKilobyteRAM implements
 		dO5.setS2(value);
 		dO6.setS2(value);
 		dO7.setS2(value);
+	}
+
+	@Override
+	protected void initializeBanks() {
+		bank0 = new FourKilobyteRAM();
+		bank1 = new FourKilobyteRAM();
+		bank2 = new FourKilobyteRAM();
+		bank3 = new FourKilobyteRAM();
+		bank4 = new FourKilobyteRAM();
+		bank5 = new FourKilobyteRAM();
+		bank6 = new FourKilobyteRAM();
+		bank7 = new FourKilobyteRAM();
 	}
 
 }

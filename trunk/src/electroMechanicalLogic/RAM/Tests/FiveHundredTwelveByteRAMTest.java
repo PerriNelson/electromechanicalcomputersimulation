@@ -20,6 +20,13 @@ import electroMechanicalLogic.RAM.FiveHundredTwelveByteRAM;
 public class FiveHundredTwelveByteRAMTest extends TestSixtyFourByteRAM {
 
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new FiveHundredTwelveByteRAM();
+		systemUnderTest.setPower(true);
+	}
+
+	@Override
 	protected void setA(final int value) {
 		super.setA(value);
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
@@ -28,13 +35,6 @@ public class FiveHundredTwelveByteRAMTest extends TestSixtyFourByteRAM {
 				.setA7((value & bit7) == bit7);
 		((IFiveHundredTwelveByteRAM) systemUnderTest)
 				.setA8((value & bit8) == bit8);
-	}
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new FiveHundredTwelveByteRAM();
-		systemUnderTest.setPower(true);
 	}
 
 	@Override

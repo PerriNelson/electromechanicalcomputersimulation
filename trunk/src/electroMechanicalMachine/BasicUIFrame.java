@@ -59,21 +59,7 @@ public class BasicUIFrame extends Frame {
 		outerPanel.add(panel, constraints);
 	}
 
-	protected final void placeTitleLabel(String labelText, String imagePath) {
-
-		final JLabel label = generateLabel(labelText, imagePath);
-
-		final GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.CENTER;
-		constraints.gridx = 0;
-		constraints.gridwidth = 3;
-		constraints.gridy = 0;
-		constraints.weightx = .1;
-		constraints.weighty = .1;
-		outerPanel.add(label, constraints);
-	}
-
-	private JLabel generateLabel(String labelText, String imagePath) {
+	private JLabel generateLabel(final String labelText, final String imagePath) {
 		final JLabel label = new JLabel();
 		try {
 			label.setIcon(new ImageIcon(ImageIO.read(this.getClass()
@@ -110,6 +96,21 @@ public class BasicUIFrame extends Frame {
 		final Lamp lamp = new Lamp();
 		placeComponent(lamp, column, row, 1);
 		return lamp;
+	}
+
+	protected final void placeTitleLabel(final String labelText,
+			final String imagePath) {
+
+		final JLabel label = generateLabel(labelText, imagePath);
+
+		final GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.CENTER;
+		constraints.gridx = 0;
+		constraints.gridwidth = 3;
+		constraints.gridy = 0;
+		constraints.weightx = .1;
+		constraints.weighty = .1;
+		outerPanel.add(label, constraints);
 	}
 
 	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {

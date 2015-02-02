@@ -20,17 +20,21 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkV extends ControlPanel implements
 		PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkV frame = new AddingMachineMarkV();
+		frame.setVisible(true);
+	}
+
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
-
 	private static final int addressSwitchRow = 0;
 	private static final int addressLabelRow = 1;
 	private static final int dataSwitchRow = 2;
 	private static final int dataLabelRow = 3;
 	private static final int dataLampRow = 4;
-	private static final int sumLampRow = 5;
 
+	private static final int sumLampRow = 5;
 	private static final int column0 = 15;
 	private static final int column1 = 14;
 	private static final int column2 = 13;
@@ -46,12 +50,8 @@ public class AddingMachineMarkV extends ControlPanel implements
 	private static final int columnC = 3;
 	private static final int columnD = 2;
 	private static final int columnE = 1;
-	private static final int columnF = 0;
 
-	public static void main(final String[] args) {
-		final AddingMachineMarkV frame = new AddingMachineMarkV();
-		frame.setVisible(true);
-	}
+	private static final int columnF = 0;
 
 	private ToggleSwitch[] addressSwitches;
 	private ToggleSwitch[] dataSwitches;
@@ -78,9 +78,32 @@ public class AddingMachineMarkV extends ControlPanel implements
 		runSimulation(theModel, 10);
 	}
 
-	protected void initializeModel(final IAddingMachineMarkVModel theModel) {
-		model = theModel;
-		model.setPower(true);
+	@Override
+	public void propertyChange(final PropertyChangeEvent evt) {
+		final Object source = evt.getSource();
+		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			final Boolean value = PowerState.on == evt.getNewValue();
+			for (int i = 0; i < 16; i++) {
+
+				if (source == addressSwitches[i]) {
+					setAddress(i, value);
+					return;
+				}
+			}
+			for (int i = 0; i < 8; i++) {
+				if (source == dataSwitches[i]) {
+					setData(i, value);
+					return;
+				}
+			}
+			if (source == write) {
+				model.setW(value);
+			} else if (source == takeOver) {
+				model.setTakeover(value);
+			} else if (source == clear) {
+				model.setClear(value);
+			}
+		}
 	}
 
 	private void placeControls() {
@@ -168,41 +191,6 @@ public class AddingMachineMarkV extends ControlPanel implements
 		lamps[15] = placeLamp(columnF, sumLampRow);
 	}
 
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
-	}
-
-	@Override
-	public void propertyChange(final PropertyChangeEvent evt) {
-		final Object source = evt.getSource();
-		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			final Boolean value = PowerState.on == evt.getNewValue();
-			for (int i = 0; i < 16; i++) {
-
-				if (source == addressSwitches[i]) {
-					setAddress(i, value);
-					return;
-				}
-			}
-			for (int i = 0; i < 8; i++) {
-				if (source == dataSwitches[i]) {
-					setData(i, value);
-					return;
-				}
-			}
-			if (source == write) {
-				model.setW(value);
-			} else if (source == takeOver) {
-				model.setTakeover(value);
-			} else if (source == clear) {
-				model.setClear(value);
-			}
-		}
-	}
-
 	private void setAddress(final int bit, final Boolean value) {
 		switch (bit) {
 		case 0:
@@ -285,6 +273,11 @@ public class AddingMachineMarkV extends ControlPanel implements
 		}
 	}
 
+	protected void initializeModel(final IAddingMachineMarkVModel theModel) {
+		model = theModel;
+		model.setPower(true);
+	}
+
 	@Override
 	protected void onModelUpdated() {
 		lamps[0].setOn(model.getDO0());
@@ -303,6 +296,13 @@ public class AddingMachineMarkV extends ControlPanel implements
 		lamps[13].setOn(model.getS5());
 		lamps[14].setOn(model.getS6());
 		lamps[15].setOn(model.getS7());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override

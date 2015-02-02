@@ -21,12 +21,6 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 	protected static final int bit9 = 0x200;
 
 	@Override
-	protected void setA(final int value) {
-		super.setA(value);
-		((IOneKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
-	}
-
-	@Override
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new OneKilobyteRAM();
@@ -52,6 +46,12 @@ public class OneKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 				assertEquals(getDO(), (a == i) ? 0xff : 0);
 			}
 		}
+	}
+
+	@Override
+	protected void setA(final int value) {
+		super.setA(value);
+		((IOneKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
 	}
 
 	@Override

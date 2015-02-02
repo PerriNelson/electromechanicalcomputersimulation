@@ -74,11 +74,6 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 		return dO7.getDO();
 	}
 
-	protected void initializeBanks() {
-		bank0 = new FiveHundredTwelveByteRAM();
-		bank1 = new FiveHundredTwelveByteRAM();
-	}
-
 	@Override
 	public void setA0(final boolean value) {
 		bank0.setA0(value);
@@ -257,5 +252,10 @@ public class OneKilobyteRAM implements IOneKilobyteRAM {
 		dO7.setA(bank0.getDO7());
 		dO7.setB(bank1.getDO7());
 		dO7.step();
+	}
+
+	protected void initializeBanks() {
+		bank0 = new FiveHundredTwelveByteRAM();
+		bank1 = new FiveHundredTwelveByteRAM();
 	}
 }

@@ -19,14 +19,18 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkI extends ControlPanel implements
 		PropertyChangeListener {
+	public static void main(final String[] args) {
+		final ControlPanel frame = new AddingMachineMarkI();
+		frame.setVisible(true);
+	}
+
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
-
 	private static final int aRow = 0;
 	private static final int bRow = 1;
-	private static final int lampRow = 2;
 
+	private static final int lampRow = 2;
 	private static final int columnCO = 0;
 	private static final int column0 = 8;
 	private static final int column1 = 7;
@@ -35,12 +39,8 @@ public class AddingMachineMarkI extends ControlPanel implements
 	private static final int column4 = 4;
 	private static final int column5 = 3;
 	private static final int column6 = 2;
-	private static final int column7 = 1;
 
-	public static void main(final String[] args) {
-		final ControlPanel frame = new AddingMachineMarkI();
-		frame.setVisible(true);
-	}
+	private static final int column7 = 1;
 
 	private ToggleSwitch toggleSwitchA0;
 	private ToggleSwitch toggleSwitchB0;
@@ -76,52 +76,6 @@ public class AddingMachineMarkI extends ControlPanel implements
 		initializeModel();
 
 		runSimulation(model, 10);
-	}
-
-	private void initializeModel() {
-		model = new AddingMachineMarkIModel();
-		model.setPower(true);
-	}
-
-	private void placeControls() {
-		setSize(550, 320);
-
-		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
-		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
-		toggleSwitchA2 = placeToggleSwitch(column2, aRow);
-		toggleSwitchA3 = placeToggleSwitch(column3, aRow);
-		toggleSwitchA4 = placeToggleSwitch(column4, aRow);
-		toggleSwitchA5 = placeToggleSwitch(column5, aRow);
-		toggleSwitchA6 = placeToggleSwitch(column6, aRow);
-		toggleSwitchA7 = placeToggleSwitch(column7, aRow);
-
-		toggleSwitchB0 = placeToggleSwitch(column0, bRow);
-		toggleSwitchB1 = placeToggleSwitch(column1, bRow);
-		toggleSwitchB2 = placeToggleSwitch(column2, bRow);
-		toggleSwitchB3 = placeToggleSwitch(column3, bRow);
-		toggleSwitchB4 = placeToggleSwitch(column4, bRow);
-		toggleSwitchB5 = placeToggleSwitch(column5, bRow);
-		toggleSwitchB6 = placeToggleSwitch(column6, bRow);
-		toggleSwitchB7 = placeToggleSwitch(column7, bRow);
-
-		lampCO = placeLamp(columnCO, lampRow);
-		lampS0 = placeLamp(column0, lampRow);
-		lampS1 = placeLamp(column1, lampRow);
-		lampS2 = placeLamp(column2, lampRow);
-		lampS3 = placeLamp(column3, lampRow);
-		lampS4 = placeLamp(column4, lampRow);
-		lampS5 = placeLamp(column5, lampRow);
-		lampS6 = placeLamp(column6, lampRow);
-		lampS7 = placeLamp(column7, lampRow);
-
-		placeLabel("Labels/PlusLabel.jpg", " + ", columnCO, bRow, 1);
-	}
-
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
 	}
 
 	@Override
@@ -165,6 +119,45 @@ public class AddingMachineMarkI extends ControlPanel implements
 		}
 	}
 
+	private void initializeModel() {
+		model = new AddingMachineMarkIModel();
+		model.setPower(true);
+	}
+
+	private void placeControls() {
+		setSize(550, 320);
+
+		toggleSwitchA0 = placeToggleSwitch(column0, aRow);
+		toggleSwitchA1 = placeToggleSwitch(column1, aRow);
+		toggleSwitchA2 = placeToggleSwitch(column2, aRow);
+		toggleSwitchA3 = placeToggleSwitch(column3, aRow);
+		toggleSwitchA4 = placeToggleSwitch(column4, aRow);
+		toggleSwitchA5 = placeToggleSwitch(column5, aRow);
+		toggleSwitchA6 = placeToggleSwitch(column6, aRow);
+		toggleSwitchA7 = placeToggleSwitch(column7, aRow);
+
+		toggleSwitchB0 = placeToggleSwitch(column0, bRow);
+		toggleSwitchB1 = placeToggleSwitch(column1, bRow);
+		toggleSwitchB2 = placeToggleSwitch(column2, bRow);
+		toggleSwitchB3 = placeToggleSwitch(column3, bRow);
+		toggleSwitchB4 = placeToggleSwitch(column4, bRow);
+		toggleSwitchB5 = placeToggleSwitch(column5, bRow);
+		toggleSwitchB6 = placeToggleSwitch(column6, bRow);
+		toggleSwitchB7 = placeToggleSwitch(column7, bRow);
+
+		lampCO = placeLamp(columnCO, lampRow);
+		lampS0 = placeLamp(column0, lampRow);
+		lampS1 = placeLamp(column1, lampRow);
+		lampS2 = placeLamp(column2, lampRow);
+		lampS3 = placeLamp(column3, lampRow);
+		lampS4 = placeLamp(column4, lampRow);
+		lampS5 = placeLamp(column5, lampRow);
+		lampS6 = placeLamp(column6, lampRow);
+		lampS7 = placeLamp(column7, lampRow);
+
+		placeLabel("Labels/PlusLabel.jpg", " + ", columnCO, bRow, 1);
+	}
+
 	@Override
 	protected void onModelUpdated() {
 		lampCO.setOn(model.getCO());
@@ -176,6 +169,13 @@ public class AddingMachineMarkI extends ControlPanel implements
 		lampS5.setOn(model.getS5());
 		lampS6.setOn(model.getS6());
 		lampS7.setOn(model.getS7());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override

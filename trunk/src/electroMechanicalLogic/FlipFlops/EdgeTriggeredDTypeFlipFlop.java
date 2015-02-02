@@ -20,7 +20,7 @@ import electroMechanicalLogic.Interfaces.IRelay;
  * data when the clock signal transitions from off to on. The value present at
  * the "D" input when the clock signal is off will be stored in the flip-flop at
  * the moment the clock signal transitions to on.
- * 
+ *
  * For this simulation's purposes that means that you must set the "D" input
  * with the "Clk" input off and make sure that the circuit is stepped before
  * setting the "Clk" input on and stepping the circuit. If the "D" value is

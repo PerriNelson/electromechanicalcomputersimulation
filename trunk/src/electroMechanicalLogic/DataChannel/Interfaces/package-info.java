@@ -8,6 +8,6 @@
 
 /**
  * Contains eight and sixteen bit wide input and output interfaces. Implementing these interfaces
- * makes the use of eight and sixteen bit data paths possible. 
+ * makes the use of eight and sixteen bit data paths possible.
  */
 package electroMechanicalLogic.DataChannel.Interfaces;

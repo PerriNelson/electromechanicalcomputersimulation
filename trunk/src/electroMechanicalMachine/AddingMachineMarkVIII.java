@@ -13,12 +13,12 @@ import electroMechanicalMachine.Model.AddingMachineMarkVIIIModel;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
 
 public class AddingMachineMarkVIII extends AddingMachineMarkVI {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(final String[] args) {
 		final AddingMachineMarkVIII frame = new AddingMachineMarkVIII();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public AddingMachineMarkVIII() {
 		this("AddingMachineMark VIII", new AddingMachineMarkVIIIModel(

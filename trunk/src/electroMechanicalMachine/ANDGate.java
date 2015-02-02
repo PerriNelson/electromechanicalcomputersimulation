@@ -11,12 +11,12 @@ package electroMechanicalMachine;
 import electroMechanicalLogic.Gates.TwoInputAND;
 
 public class ANDGate extends GateDemoPanel {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(final String[] args) {
 		final ANDGate frame = new ANDGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public ANDGate() {
 		super("AND Gate", new TwoInputAND());

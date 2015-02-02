@@ -18,7 +18,7 @@ public interface IEightInputSingleOutputGate extends ISimulatedCircuit,
 	/**
 	 * Retrieves a value indicating the result of the logical operation
 	 * implemented by this gate upon its inputs.
-	 * 
+	 *
 	 * @return true indicating that power is flowing from the output terminal of
 	 *         the gate; false indicating that power is not flowing from the
 	 *         output terminal of the gate.

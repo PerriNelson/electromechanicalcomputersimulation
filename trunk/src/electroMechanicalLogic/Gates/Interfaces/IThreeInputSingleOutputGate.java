@@ -8,7 +8,6 @@
 
 package electroMechanicalLogic.Gates.Interfaces;
 
-
 /**
  * A logic gate with three inputs and one output.
  */
@@ -17,7 +16,7 @@ public interface IThreeInputSingleOutputGate extends ITwoInputSingleOutputGate {
 	/**
 	 * Sets a value indicating whether power is flowing to the "C" terminal of
 	 * the gate or not.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the "C" terminal of
 	 *            the gate; false to indicate that it is not.

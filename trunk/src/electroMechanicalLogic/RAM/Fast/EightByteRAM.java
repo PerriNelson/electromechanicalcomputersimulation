@@ -36,13 +36,6 @@ public class EightByteRAM implements IEightByteRAM {
 		clearRandomAccessMemory();
 	}
 
-	private void clearRandomAccessMemory() {
-		final int maxAddress = getMaxAddress();
-		for (int address = 0; address < (maxAddress + 1); address++) {
-			ram[address] = 0;
-		}
-	}
-
 	@Override
 	public boolean getDO0() {
 		return (dataOut & bit0) == bit0;
@@ -81,10 +74,6 @@ public class EightByteRAM implements IEightByteRAM {
 	@Override
 	public boolean getDO7() {
 		return (dataOut & bit7) == bit7;
-	}
-
-	protected int getMaxAddress() {
-		return 0x7;
 	}
 
 	@Override
@@ -171,5 +160,16 @@ public class EightByteRAM implements IEightByteRAM {
 			addressOut = 0;
 			dataOut = 0;
 		}
+	}
+
+	private void clearRandomAccessMemory() {
+		final int maxAddress = getMaxAddress();
+		for (int address = 0; address < (maxAddress + 1); address++) {
+			ram[address] = 0;
+		}
+	}
+
+	protected int getMaxAddress() {
+		return 0x7;
 	}
 }

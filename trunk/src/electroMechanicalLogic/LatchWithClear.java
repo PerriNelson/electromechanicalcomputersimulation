@@ -19,7 +19,7 @@ public class LatchWithClear implements ILatchWithClear {
 		this(new LevelTriggeredDTypeFlipFlopWithClear());
 	}
 
-	public LatchWithClear(IDTypeFlipFlopWithClear flipflop) {
+	public LatchWithClear(final IDTypeFlipFlopWithClear flipflop) {
 		flipFlop = flipflop;
 	}
 

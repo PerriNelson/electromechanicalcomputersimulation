@@ -28,7 +28,8 @@ public abstract class GateDemoPanel extends ControlPanel implements
 
 	private ITwoInputSingleOutputGate model;
 
-	public GateDemoPanel(String caption, ITwoInputSingleOutputGate gate) {
+	public GateDemoPanel(final String caption,
+			final ITwoInputSingleOutputGate gate) {
 		super(caption);
 
 		placeControls();
@@ -36,19 +37,6 @@ public abstract class GateDemoPanel extends ControlPanel implements
 		initializeModel(gate);
 
 		runSimulation(model, 10);
-	}
-
-	private void initializeModel(ITwoInputSingleOutputGate gate) {
-		model = gate;
-		model.setPower(true);
-	}
-
-	private void placeControls() {
-		setSize(300, 155);
-
-		toggleSwitchA = placeToggleSwitch(0, 0);
-		toggleSwitchB = placeToggleSwitch(1, 0);
-		lamp = placeLamp(2, 0);
 	}
 
 	@Override
@@ -64,15 +52,28 @@ public abstract class GateDemoPanel extends ControlPanel implements
 		}
 	}
 
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
+	private void initializeModel(final ITwoInputSingleOutputGate gate) {
+		model = gate;
+		model.setPower(true);
+	}
+
+	private void placeControls() {
+		setSize(300, 155);
+
+		toggleSwitchA = placeToggleSwitch(0, 0);
+		toggleSwitchB = placeToggleSwitch(1, 0);
+		lamp = placeLamp(2, 0);
 	}
 
 	@Override
 	protected void onModelUpdated() {
 		lamp.setOn(model.getOutput());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 }

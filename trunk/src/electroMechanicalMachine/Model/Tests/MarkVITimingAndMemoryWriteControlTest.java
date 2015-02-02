@@ -37,27 +37,6 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteCont
 public class MarkVITimingAndMemoryWriteControlTest {
 	private IMarkVITimingAndMemoryWriteControl systemUnderTest;
 
-	private int getAddress() {
-		int address = 0;
-		address |= (systemUnderTest.getA0() ? bit0 : 0);
-		address |= (systemUnderTest.getA1() ? bit1 : 0);
-		address |= (systemUnderTest.getA2() ? bit2 : 0);
-		address |= (systemUnderTest.getA3() ? bit3 : 0);
-		address |= (systemUnderTest.getA4() ? bit4 : 0);
-		address |= (systemUnderTest.getA5() ? bit5 : 0);
-		address |= (systemUnderTest.getA6() ? bit6 : 0);
-		address |= (systemUnderTest.getA7() ? bit7 : 0);
-		address |= (systemUnderTest.getA8() ? bit8 : 0);
-		address |= (systemUnderTest.getA9() ? bit9 : 0);
-		address |= (systemUnderTest.getAA() ? bitA : 0);
-		address |= (systemUnderTest.getAB() ? bitB : 0);
-		address |= (systemUnderTest.getAC() ? bitC : 0);
-		address |= (systemUnderTest.getAD() ? bitD : 0);
-		address |= (systemUnderTest.getAE() ? bitE : 0);
-		address |= (systemUnderTest.getAF() ? bitF : 0);
-		return address;
-	}
-
 	@Before
 	public void Setup() {
 		systemUnderTest = new MarkVITimingAndMemoryWriteControl();
@@ -160,5 +139,26 @@ public class MarkVITimingAndMemoryWriteControlTest {
 						systemUnderTest.getWrite());
 			}
 		}
+	}
+
+	private int getAddress() {
+		int address = 0;
+		address |= (systemUnderTest.getA0() ? bit0 : 0);
+		address |= (systemUnderTest.getA1() ? bit1 : 0);
+		address |= (systemUnderTest.getA2() ? bit2 : 0);
+		address |= (systemUnderTest.getA3() ? bit3 : 0);
+		address |= (systemUnderTest.getA4() ? bit4 : 0);
+		address |= (systemUnderTest.getA5() ? bit5 : 0);
+		address |= (systemUnderTest.getA6() ? bit6 : 0);
+		address |= (systemUnderTest.getA7() ? bit7 : 0);
+		address |= (systemUnderTest.getA8() ? bit8 : 0);
+		address |= (systemUnderTest.getA9() ? bit9 : 0);
+		address |= (systemUnderTest.getAA() ? bitA : 0);
+		address |= (systemUnderTest.getAB() ? bitB : 0);
+		address |= (systemUnderTest.getAC() ? bitC : 0);
+		address |= (systemUnderTest.getAD() ? bitD : 0);
+		address |= (systemUnderTest.getAE() ? bitE : 0);
+		address |= (systemUnderTest.getAF() ? bitF : 0);
+		return address;
 	}
 }

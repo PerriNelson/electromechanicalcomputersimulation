@@ -19,18 +19,18 @@ public class FourKilobyteRAMTest extends FiveHundredTwelveByteRAMTest {
 	private static final int bitB = 0x800;
 
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new FourKilobyteRAM();
+		systemUnderTest.setPower(true);
+	}
+
+	@Override
 	protected void setA(final int value) {
 		super.setA(value);
 		((IFourKilobyteRAM) systemUnderTest).setA9((value & bit9) == bit9);
 		((IFourKilobyteRAM) systemUnderTest).setAA((value & bitA) == bitA);
 		((IFourKilobyteRAM) systemUnderTest).setAB((value & bitB) == bitB);
-	}
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new FourKilobyteRAM();
-		systemUnderTest.setPower(true);
 	}
 
 	@Override

@@ -36,14 +36,10 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 		systemUnderTest.setReset(on);
 	}
 
-	protected int subtract(final int a, final int b) {
-		return (a - b) & 0xff;
-	}
-
 	@Test
 	public void test_LoadANumberSubtractItStoreResult_ResultIsZero() {
-		int[] code = { LOD, SUB, STO, HALT };
-		int[] data = { 0x56, 0x56, 0xAA };
+		final int[] code = { LOD, SUB, STO, HALT };
+		final int[] data = { 0x56, 0x56, 0xAA };
 
 		loadCode(code);
 		loadData(data);
@@ -54,13 +50,17 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 
 	@Test
 	public void test_MarkVII_ExampleFromBook_ProducesExpectedResults() {
-		int[] code = { LOD, ADD, SUB, STO, HALT };
-		int[] data = { 0x56, 0x2A, 0x38 };
+		final int[] code = { LOD, ADD, SUB, STO, HALT };
+		final int[] data = { 0x56, 0x2A, 0x38 };
 
 		loadCode(code);
 		loadData(data);
 		runProgram();
 
 		assertEquals(subtract(add(0x56, 0x2A), 0x38), readData(3));
+	}
+
+	protected int subtract(final int a, final int b) {
+		return (a - b) & 0xff;
 	}
 }

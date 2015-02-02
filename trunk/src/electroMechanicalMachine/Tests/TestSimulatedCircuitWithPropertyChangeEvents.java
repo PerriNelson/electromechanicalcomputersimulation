@@ -28,12 +28,17 @@ public class TestSimulatedCircuitWithPropertyChangeEvents implements
 	private boolean powerOn;
 	private boolean stepCalled;
 
+	@Override
+	public void propertyChange(final PropertyChangeEvent evt) {
+		notified = true;
+	}
+
 	@Before
 	public void setUp() {
 		systemUnderTest = new SimulatedCircuitWithPropertyChangeEvents(
 				new ISimulatedCircuit() {
 					@Override
-					public void setPower(boolean value) {
+					public void setPower(final boolean value) {
 						powerOn = value;
 					}
 
@@ -46,6 +51,24 @@ public class TestSimulatedCircuitWithPropertyChangeEvents implements
 		notified = false;
 		powerOn = false;
 		stepCalled = false;
+	}
+
+	@Test
+	public void testSimulatedCircuitWithPropertyChangeEvents_shouldNotifyListener_whenStepCalled() {
+		systemUnderTest.addPropertyChangeListener(this);
+		systemUnderTest.step();
+
+		assertTrue(notified);
+	}
+
+	@Test
+	public void testSimulatedCircuitWithPropertyChangeEvents_shouldNotNotifyRemovedListener_whenStepCalled() {
+		systemUnderTest.addPropertyChangeListener(this);
+		systemUnderTest.removePropertyChangeListener(this);
+
+		systemUnderTest.step();
+
+		assertFalse(notified);
 	}
 
 	@Test
@@ -68,28 +91,5 @@ public class TestSimulatedCircuitWithPropertyChangeEvents implements
 		systemUnderTest.setPower(true);
 
 		assertTrue(powerOn);
-	}
-
-	@Test
-	public void testSimulatedCircuitWithPropertyChangeEvents_shouldNotifyListener_whenStepCalled() {
-		systemUnderTest.addPropertyChangeListener(this);
-		systemUnderTest.step();
-
-		assertTrue(notified);
-	}
-
-	@Test
-	public void testSimulatedCircuitWithPropertyChangeEvents_shouldNotNotifyRemovedListener_whenStepCalled() {
-		systemUnderTest.addPropertyChangeListener(this);
-		systemUnderTest.removePropertyChangeListener(this);
-
-		systemUnderTest.step();
-
-		assertFalse(notified);
-	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		notified = true;
 	}
 }

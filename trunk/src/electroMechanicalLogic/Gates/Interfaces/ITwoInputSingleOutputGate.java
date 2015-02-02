@@ -16,7 +16,7 @@ public interface ITwoInputSingleOutputGate extends ISimulatedCircuit {
 	/**
 	 * Retrieves a value indicating the result of the logical operation
 	 * implemented by this gate upon its inputs.
-	 * 
+	 *
 	 * @return true indicating that power is flowing from the output terminal of
 	 *         the gate; false indicating that power is not flowing from the
 	 *         output terminal of the gate.
@@ -26,7 +26,7 @@ public interface ITwoInputSingleOutputGate extends ISimulatedCircuit {
 	/**
 	 * Sets a value indicating whether power is flowing to the "A" terminal of
 	 * the gate or not.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the "A" terminal of
 	 *            the gate; false to indicate that it is not.
@@ -36,7 +36,7 @@ public interface ITwoInputSingleOutputGate extends ISimulatedCircuit {
 	/**
 	 * Sets a value indicating whether power is flowing to the "B" terminal of
 	 * the gate or not.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the "B" terminal of
 	 *            the gate; false to indicate that it is not.

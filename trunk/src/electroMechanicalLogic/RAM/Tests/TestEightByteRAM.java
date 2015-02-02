@@ -27,6 +27,32 @@ import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
 public class TestEightByteRAM {
 	protected IEightByteRAM systemUnderTest;
 
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new EightByteRAM();
+		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public void test() {
+		for (int i = 0; i < 8; i++) {
+			for (int a = 0; a < 8; a++) {
+				setA(translateAddress(a));
+				setDI((a == i) ? 0xff : 0);
+				systemUnderTest.setW(true);
+				systemUnderTest.step();
+				systemUnderTest.setW(false);
+				systemUnderTest.step();
+			}
+
+			for (int a = 0; a < 8; a++) {
+				setA(translateAddress(a));
+				systemUnderTest.step();
+				assertEquals(getDO(), (a == i) ? 0xff : 0);
+			}
+		}
+	}
+
 	protected final int getDO() {
 		int result = 0;
 
@@ -57,32 +83,6 @@ public class TestEightByteRAM {
 		systemUnderTest.setDI5((value & bit5) == bit5);
 		systemUnderTest.setDI6((value & bit6) == bit6);
 		systemUnderTest.setDI7((value & bit7) == bit7);
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new EightByteRAM();
-		systemUnderTest.setPower(true);
-	}
-
-	@Test
-	public void test() {
-		for (int i = 0; i < 8; i++) {
-			for (int a = 0; a < 8; a++) {
-				setA(translateAddress(a));
-				setDI((a == i) ? 0xff : 0);
-				systemUnderTest.setW(true);
-				systemUnderTest.step();
-				systemUnderTest.setW(false);
-				systemUnderTest.step();
-			}
-
-			for (int a = 0; a < 8; a++) {
-				setA(translateAddress(a));
-				systemUnderTest.step();
-				assertEquals(getDO(), (a == i) ? 0xff : 0);
-			}
-		}
 	}
 
 	protected int translateAddress(final int address) {

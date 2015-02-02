@@ -29,43 +29,6 @@ public class EightBitTwoToOneSelectorTest {
 
 	IEightBitTwoToOneSelector systemUnderTest;
 
-	private byte getOutput() {
-		byte value = 0;
-
-		value |= systemUnderTest.getDO0() ? bit0 : 0;
-		value |= systemUnderTest.getDO1() ? bit1 : 0;
-		value |= systemUnderTest.getDO2() ? bit2 : 0;
-		value |= systemUnderTest.getDO3() ? bit3 : 0;
-		value |= systemUnderTest.getDO4() ? bit4 : 0;
-		value |= systemUnderTest.getDO5() ? bit5 : 0;
-		value |= systemUnderTest.getDO6() ? bit6 : 0;
-		value |= systemUnderTest.getDO7() ? bit7 : 0;
-
-		return value;
-	}
-
-	private void setA(final int value) {
-		systemUnderTest.setA0((value & bit0) == bit0);
-		systemUnderTest.setA1((value & bit1) == bit1);
-		systemUnderTest.setA2((value & bit2) == bit2);
-		systemUnderTest.setA3((value & bit3) == bit3);
-		systemUnderTest.setA4((value & bit4) == bit4);
-		systemUnderTest.setA5((value & bit5) == bit5);
-		systemUnderTest.setA6((value & bit6) == bit6);
-		systemUnderTest.setA7((value & bit7) == bit7);
-	}
-
-	private void setB(final int value) {
-		systemUnderTest.setB0((value & bit0) == bit0);
-		systemUnderTest.setB1((value & bit1) == bit1);
-		systemUnderTest.setB2((value & bit2) == bit2);
-		systemUnderTest.setB3((value & bit3) == bit3);
-		systemUnderTest.setB4((value & bit4) == bit4);
-		systemUnderTest.setB5((value & bit5) == bit5);
-		systemUnderTest.setB6((value & bit6) == bit6);
-		systemUnderTest.setB7((value & bit7) == bit7);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EightBitTwoToOneSelector();
@@ -422,5 +385,42 @@ public class EightBitTwoToOneSelectorTest {
 		systemUnderTest.step();
 
 		assertEquals(getOutput(), bit7);
+	}
+
+	private byte getOutput() {
+		byte value = 0;
+
+		value |= systemUnderTest.getDO0() ? bit0 : 0;
+		value |= systemUnderTest.getDO1() ? bit1 : 0;
+		value |= systemUnderTest.getDO2() ? bit2 : 0;
+		value |= systemUnderTest.getDO3() ? bit3 : 0;
+		value |= systemUnderTest.getDO4() ? bit4 : 0;
+		value |= systemUnderTest.getDO5() ? bit5 : 0;
+		value |= systemUnderTest.getDO6() ? bit6 : 0;
+		value |= systemUnderTest.getDO7() ? bit7 : 0;
+
+		return value;
+	}
+
+	private void setA(final int value) {
+		systemUnderTest.setA0((value & bit0) == bit0);
+		systemUnderTest.setA1((value & bit1) == bit1);
+		systemUnderTest.setA2((value & bit2) == bit2);
+		systemUnderTest.setA3((value & bit3) == bit3);
+		systemUnderTest.setA4((value & bit4) == bit4);
+		systemUnderTest.setA5((value & bit5) == bit5);
+		systemUnderTest.setA6((value & bit6) == bit6);
+		systemUnderTest.setA7((value & bit7) == bit7);
+	}
+
+	private void setB(final int value) {
+		systemUnderTest.setB0((value & bit0) == bit0);
+		systemUnderTest.setB1((value & bit1) == bit1);
+		systemUnderTest.setB2((value & bit2) == bit2);
+		systemUnderTest.setB3((value & bit3) == bit3);
+		systemUnderTest.setB4((value & bit4) == bit4);
+		systemUnderTest.setB5((value & bit5) == bit5);
+		systemUnderTest.setB6((value & bit6) == bit6);
+		systemUnderTest.setB7((value & bit7) == bit7);
 	}
 }

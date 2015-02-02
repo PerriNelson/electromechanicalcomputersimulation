@@ -22,7 +22,7 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
 public class EightBitDataPath {
 	/**
 	 * Connects an eight bit "A" output to an eight bit "Data" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -43,7 +43,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "B" output to an eight it "Data" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -64,7 +64,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "Data" output to an eight it "A" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -85,7 +85,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "Data" output to an eight it "B" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -106,7 +106,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "Data" output to an eight it "Data" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -127,7 +127,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "Sum" output to an eight it "B" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.
@@ -148,7 +148,7 @@ public class EightBitDataPath {
 
 	/**
 	 * Connects an eight bit "Sum" output to an eight it "Data" input.
-	 * 
+	 *
 	 * @param source
 	 *            the eight bit source of the data to be transferred to the
 	 *            target.

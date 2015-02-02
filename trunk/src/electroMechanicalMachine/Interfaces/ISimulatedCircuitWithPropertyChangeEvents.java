@@ -12,7 +12,8 @@ import java.beans.PropertyChangeListener;
 
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
-public interface ISimulatedCircuitWithPropertyChangeEvents extends ISimulatedCircuit {
+public interface ISimulatedCircuitWithPropertyChangeEvents extends
+		ISimulatedCircuit {
 
 	public abstract void addPropertyChangeListener(
 			PropertyChangeListener listener);

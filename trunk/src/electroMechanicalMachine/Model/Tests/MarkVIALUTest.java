@@ -23,14 +23,6 @@ import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
 public class MarkVIALUTest {
 	protected IMarkVIALU systemUnderTest;
 
-	protected void performOneClockCycle() {
-		systemUnderTest.setClock(off);
-		systemUnderTest.step();
-
-		systemUnderTest.setClock(on);
-		systemUnderTest.step();
-	}
-
 	@Before
 	public void Setup() {
 		systemUnderTest = new MarkVIALU();
@@ -91,5 +83,13 @@ public class MarkVIALUTest {
 
 			assertEquals(i, getDataOut(systemUnderTest));
 		}
+	}
+
+	protected void performOneClockCycle() {
+		systemUnderTest.setClock(off);
+		systemUnderTest.step();
+
+		systemUnderTest.setClock(on);
+		systemUnderTest.step();
 	}
 }

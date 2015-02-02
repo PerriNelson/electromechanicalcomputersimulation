@@ -20,7 +20,7 @@ public interface IDTypeFlipFlopWithPresetAndClear extends
 	/**
 	 * Sets a value indicating the state of the "Preset" input. This is done by
 	 * turning power to the "Preset" terminal on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.

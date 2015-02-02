@@ -26,21 +26,6 @@ public class LampModel implements ILampModel {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
-	protected void fireOnPropertyChange(final String propertyName,
-			final boolean oldValue, final boolean newValue) {
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this,
-							propertyName, oldValue, newValue);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
-	}
-
 	@Override
 	public boolean isOn() {
 		return on;
@@ -57,6 +42,21 @@ public class LampModel implements ILampModel {
 		if (value != on) {
 			on = value;
 			fireOnPropertyChange("on", !on, on);
+		}
+	}
+
+	protected void fireOnPropertyChange(final String propertyName,
+			final boolean oldValue, final boolean newValue) {
+		final Object[] listeners = eventListeners.getListenerList();
+		for (int index = listeners.length - 2; index >= 0; index -= 2) {
+			if (listeners[index] == PropertyChangeListener.class) {
+				if (propertyChangeEvent == null) {
+					propertyChangeEvent = new PropertyChangeEvent(this,
+							propertyName, oldValue, newValue);
+				}
+				((PropertyChangeListener) listeners[index + 1])
+						.propertyChange(propertyChangeEvent);
+			}
 		}
 	}
 }

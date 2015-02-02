@@ -25,7 +25,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects a sixteen bit "A" output to a sixteen bit "A" input.
-	 * 
+	 *
 	 * @param source
 	 *            the sixteen bit source of the data to be transferred to the
 	 *            sixteen bit input.
@@ -55,7 +55,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects a sixteen bit "A" output to two eight bit "A" inputs.
-	 * 
+	 *
 	 * @param source
 	 *            the sixteen bit source of the data to be transferred to the
 	 *            eight bit inputs.
@@ -90,7 +90,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects a sixteen bit "A" output to two eight bit "B" inputs.
-	 * 
+	 *
 	 * @param source
 	 *            the sixteen bit source of the data to be transferred to the
 	 *            eight bit inputs.
@@ -125,7 +125,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects two eight bit "A" outputs to a sixteen bit "A" input.
-	 * 
+	 *
 	 * @param sourceLow
 	 *            the eight bit source of the low order eight bits to be
 	 *            transferred to the sixteen bit input.
@@ -159,7 +159,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects two eight bit "B" outputs to a sixteen bit "A" input.
-	 * 
+	 *
 	 * @param sourceLow
 	 *            the eight bit source of the low order eight bits to be
 	 *            transferred to the sixteen bit input.
@@ -193,7 +193,7 @@ public class SixteenBitDataPath {
 
 	/**
 	 * Connects two eight bit "Data" outputs to a sixteen bit "A" input.
-	 * 
+	 *
 	 * @param sourceLow
 	 *            the eight bit source of the low order eight bits to be
 	 *            transferred to the sixteen bit input.

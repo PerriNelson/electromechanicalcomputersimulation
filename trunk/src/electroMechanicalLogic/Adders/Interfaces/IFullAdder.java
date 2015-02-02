@@ -15,7 +15,7 @@ public interface IFullAdder extends IHalfAdder {
 
 	/**
 	 * Sets a value representing the carry input to the addition.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that the carry input is a one; false to
 	 *            indicate that it is a zero.

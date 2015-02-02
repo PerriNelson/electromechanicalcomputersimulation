@@ -11,12 +11,12 @@ package electroMechanicalMachine;
 import electroMechanicalLogic.Gates.TwoInputOR;
 
 public class ORGate extends GateDemoPanel {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(final String[] args) {
 		final ORGate frame = new ORGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public ORGate() {
 		super("OR Gate", new TwoInputOR());

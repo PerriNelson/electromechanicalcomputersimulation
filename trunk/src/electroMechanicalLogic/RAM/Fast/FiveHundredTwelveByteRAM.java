@@ -10,8 +10,7 @@ package electroMechanicalLogic.RAM.Fast;
 
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
-public class FiveHundredTwelveByteRAM extends
-		SixtyFourByteRAM implements
+public class FiveHundredTwelveByteRAM extends SixtyFourByteRAM implements
 		IFiveHundredTwelveByteRAM {
 	protected static final int bit8 = 0x100;
 

@@ -7,7 +7,6 @@
  */
 package electroMechanicalLogic.Gates.Interfaces;
 
-
 public interface IFourInputSingleOutputGate extends IThreeInputSingleOutputGate {
 
 	public abstract void setD(boolean value);

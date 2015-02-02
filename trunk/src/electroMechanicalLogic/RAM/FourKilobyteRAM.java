@@ -15,18 +15,6 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 		IFourKilobyteRAM {
 
 	@Override
-	protected void initializeBanks() {
-		bank0 = new FiveHundredTwelveByteRAM();
-		bank1 = new FiveHundredTwelveByteRAM();
-		bank2 = new FiveHundredTwelveByteRAM();
-		bank3 = new FiveHundredTwelveByteRAM();
-		bank4 = new FiveHundredTwelveByteRAM();
-		bank5 = new FiveHundredTwelveByteRAM();
-		bank6 = new FiveHundredTwelveByteRAM();
-		bank7 = new FiveHundredTwelveByteRAM();
-	}
-
-	@Override
 	public void setA6(final boolean value) {
 		((IFiveHundredTwelveByteRAM) bank0).setA6(value);
 		((IFiveHundredTwelveByteRAM) bank1).setA6(value);
@@ -99,5 +87,17 @@ public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
 		dO5.setS2(value);
 		dO6.setS2(value);
 		dO7.setS2(value);
+	}
+
+	@Override
+	protected void initializeBanks() {
+		bank0 = new FiveHundredTwelveByteRAM();
+		bank1 = new FiveHundredTwelveByteRAM();
+		bank2 = new FiveHundredTwelveByteRAM();
+		bank3 = new FiveHundredTwelveByteRAM();
+		bank4 = new FiveHundredTwelveByteRAM();
+		bank5 = new FiveHundredTwelveByteRAM();
+		bank6 = new FiveHundredTwelveByteRAM();
+		bank7 = new FiveHundredTwelveByteRAM();
 	}
 }

@@ -23,13 +23,6 @@ public class TestSixteenBitRAM {
 	private static final int bit2 = 0x04;
 	private static final int bit3 = 0x08;
 
-	private void setA(final int value) {
-		systemUnderTest.setA0((value & bit0) == bit0);
-		systemUnderTest.setA1((value & bit1) == bit1);
-		systemUnderTest.setA2((value & bit2) == bit2);
-		systemUnderTest.setA3((value & bit3) == bit3);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new SixteenBitRAM();
@@ -55,6 +48,13 @@ public class TestSixteenBitRAM {
 				assertEquals(systemUnderTest.getDO(), a == i);
 			}
 		}
+	}
+
+	private void setA(final int value) {
+		systemUnderTest.setA0((value & bit0) == bit0);
+		systemUnderTest.setA1((value & bit1) == bit1);
+		systemUnderTest.setA2((value & bit2) == bit2);
+		systemUnderTest.setA3((value & bit3) == bit3);
 	}
 
 }

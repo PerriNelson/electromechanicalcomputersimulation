@@ -11,21 +11,8 @@ package electroMechanicalLogic.RAM;
 import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
-public class FiveHundredTwelveByteRAM extends
-		SixtyFourByteRAM implements
+public class FiveHundredTwelveByteRAM extends SixtyFourByteRAM implements
 		IFiveHundredTwelveByteRAM {
-
-	@Override
-	protected void initializeBanks() {
-		bank0 = new SixtyFourByteRAM();
-		bank1 = new SixtyFourByteRAM();
-		bank2 = new SixtyFourByteRAM();
-		bank3 = new SixtyFourByteRAM();
-		bank4 = new SixtyFourByteRAM();
-		bank5 = new SixtyFourByteRAM();
-		bank6 = new SixtyFourByteRAM();
-		bank7 = new SixtyFourByteRAM();
-	}
 
 	@Override
 	public void setA3(final boolean value) {
@@ -100,5 +87,17 @@ public class FiveHundredTwelveByteRAM extends
 		dO5.setS2(value);
 		dO6.setS2(value);
 		dO7.setS2(value);
+	}
+
+	@Override
+	protected void initializeBanks() {
+		bank0 = new SixtyFourByteRAM();
+		bank1 = new SixtyFourByteRAM();
+		bank2 = new SixtyFourByteRAM();
+		bank3 = new SixtyFourByteRAM();
+		bank4 = new SixtyFourByteRAM();
+		bank5 = new SixtyFourByteRAM();
+		bank6 = new SixtyFourByteRAM();
+		bank7 = new SixtyFourByteRAM();
 	}
 }

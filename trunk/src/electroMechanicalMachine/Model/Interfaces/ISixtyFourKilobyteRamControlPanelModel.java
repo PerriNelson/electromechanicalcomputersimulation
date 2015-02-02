@@ -13,8 +13,8 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalMachine.Interfaces.ISimulatedCircuitWithPropertyChangeEvents;
 
-public interface ISixtyFourKilobyteRamControlPanelModel extends ISimulatedCircuitWithPropertyChangeEvents,
-		IEightBitDataOutput {
+public interface ISixtyFourKilobyteRamControlPanelModel extends
+		ISimulatedCircuitWithPropertyChangeEvents, IEightBitDataOutput {
 
 	public abstract ISixteenBitAInput getExternalAddressIn();
 

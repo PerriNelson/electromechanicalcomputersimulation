@@ -29,6 +29,20 @@ public class EightBitCounterTest {
 
 	private IEightBitCounter systemUnderTest;
 
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new EightBitCounter();
+		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public final void test_clockCycle_incrementsCounter_throughAllEightBits() {
+		for (int i = 0; i < 256; i++) {
+			clockCycle();
+			assertEquals(getValue(), i);
+		}
+	}
+
 	private void clockCycle() {
 		systemUnderTest.setClk(false);
 		systemUnderTest.step();
@@ -64,19 +78,5 @@ public class EightBitCounterTest {
 		}
 
 		return result;
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new EightBitCounter();
-		systemUnderTest.setPower(true);
-	}
-
-	@Test
-	public final void test_clockCycle_incrementsCounter_throughAllEightBits() {
-		for (int i = 0; i < 256; i++) {
-			clockCycle();
-			assertEquals(getValue(), i);
-		}
 	}
 }

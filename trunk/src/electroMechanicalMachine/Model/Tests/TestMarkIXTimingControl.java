@@ -256,13 +256,14 @@ public class TestMarkIXTimingControl {
 	}
 
 	@Test
-	public void testGetWrite_shouldReturnTrue_afterFourClockCyclesAndStoreIsOn() {
+	public void testGetWrite_shouldReturnTrue_afterThreeAndAHalfClockCyclesAndStoreIsOn() {
 		systemUnderTest.setClear(off);
 		systemUnderTest.setStore(on);
 		performOneClockCycle();
 		performOneClockCycle();
 		performOneClockCycle();
-		performOneClockCycle();
+		systemUnderTest.setClock(true);
+		systemUnderTest.step();
 		assertTrue(systemUnderTest.getWrite());
 	}
 

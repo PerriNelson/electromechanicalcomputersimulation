@@ -70,11 +70,6 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 		return ToggleSwitchUI.UI_CLASS_ID;
 	}
 
-	private void init(final ISwitchModel newModel) {
-		setModel(newModel);
-		updateUI();
-	}
-
 	public boolean isClosed() {
 		return model.isClosed();
 	}
@@ -133,5 +128,10 @@ public class ToggleSwitch extends JComponent implements PropertyChangeListener {
 			setUI(new BasicToggleSwitchUI());
 		}
 		invalidate();
+	}
+
+	private void init(final ISwitchModel newModel) {
+		setModel(newModel);
+		updateUI();
 	}
 }
