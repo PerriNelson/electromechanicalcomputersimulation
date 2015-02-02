@@ -80,10 +80,10 @@ public class AddingMachineMarkVIModelTest {
 
 	@Test
 	public void test_MarkVI_ExampleFromBook_ProducesExpectedResults() {
-		int[] code = { LOD, ADD, ADD, STO, LOD, ADD, STO, LOD, ADD, ADD, STO,
-				HALT };
-		int[] data = { 0x27, 0xA2, 0x18, 0x00, 0x1f, 0x89, 0x00, 0x33, 0x2A,
-				0x55 };
+		final int[] code = { LOD, ADD, ADD, STO, LOD, ADD, STO, LOD, ADD, ADD,
+				STO, HALT };
+		final int[] data = { 0x27, 0xA2, 0x18, 0x00, 0x1f, 0x89, 0x00, 0x33,
+				0x2A, 0x55 };
 
 		loadCode(code);
 		loadData(data);
@@ -4213,6 +4213,10 @@ public class AddingMachineMarkVIModelTest {
 		assertEquals(off, systemUnderTest.getDO0());
 	}
 
+	protected int add(final int a, final int b) {
+		return (a + b) & 0xff;
+	}
+
 	protected void copyInputToRAM(final int[] input) {
 		systemUnderTest.setW(on);
 		for (int address = 0; address < input.length; address++) {
@@ -4221,10 +4225,6 @@ public class AddingMachineMarkVIModelTest {
 			systemUnderTest.step();
 		}
 		systemUnderTest.setW(off);
-	}
-
-	protected int add(final int a, final int b) {
-		return (a + b) & 0xff;
 	}
 
 	protected void loadCode(final int[] input) {

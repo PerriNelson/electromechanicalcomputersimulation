@@ -32,17 +32,6 @@ public class EightToOneSelectorTests {
 	private static final int[] OnValues = new int[] { 0x01, 0x02, 0x04, 0x08,
 			0x10, 0x20, 0x40, 0x80 };
 
-	private void setD(final int value) {
-		systemUnderTest.setDI0((value & bit0) == bit0);
-		systemUnderTest.setDI1((value & bit1) == bit1);
-		systemUnderTest.setDI2((value & bit2) == bit2);
-		systemUnderTest.setDI3((value & bit3) == bit3);
-		systemUnderTest.setDI4((value & bit4) == bit4);
-		systemUnderTest.setDI5((value & bit5) == bit5);
-		systemUnderTest.setDI6((value & bit6) == bit6);
-		systemUnderTest.setDI7((value & bit7) == bit7);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EightToOneSelector();
@@ -183,5 +172,16 @@ public class EightToOneSelectorTests {
 		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getOutput());
+	}
+
+	private void setD(final int value) {
+		systemUnderTest.setDI0((value & bit0) == bit0);
+		systemUnderTest.setDI1((value & bit1) == bit1);
+		systemUnderTest.setDI2((value & bit2) == bit2);
+		systemUnderTest.setDI3((value & bit3) == bit3);
+		systemUnderTest.setDI4((value & bit4) == bit4);
+		systemUnderTest.setDI5((value & bit5) == bit5);
+		systemUnderTest.setDI6((value & bit6) == bit6);
+		systemUnderTest.setDI7((value & bit7) == bit7);
 	}
 }

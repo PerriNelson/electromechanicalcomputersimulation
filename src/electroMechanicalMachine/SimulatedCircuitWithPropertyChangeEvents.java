@@ -22,12 +22,23 @@ public class SimulatedCircuitWithPropertyChangeEvents implements
 	private final EventListenerList eventListeners = new EventListenerList();
 
 	public SimulatedCircuitWithPropertyChangeEvents(
-			ISimulatedCircuit simulatedCircuit) {
+			final ISimulatedCircuit simulatedCircuit) {
 		circuit = simulatedCircuit;
 	}
 
 	@Override
-	public void setPower(boolean value) {
+	public void addPropertyChangeListener(final PropertyChangeListener listener) {
+		eventListeners.add(PropertyChangeListener.class, listener);
+	}
+
+	@Override
+	public void removePropertyChangeListener(
+			final PropertyChangeListener listener) {
+		eventListeners.remove(PropertyChangeListener.class, listener);
+	}
+
+	@Override
+	public void setPower(final boolean value) {
 		circuit.setPower(value);
 	}
 
@@ -51,16 +62,5 @@ public class SimulatedCircuitWithPropertyChangeEvents implements
 						.propertyChange(propertyChangeEvent);
 			}
 		}
-	}
-
-	@Override
-	public void addPropertyChangeListener(final PropertyChangeListener listener) {
-		eventListeners.add(PropertyChangeListener.class, listener);
-	}
-
-	@Override
-	public void removePropertyChangeListener(
-			final PropertyChangeListener listener) {
-		eventListeners.remove(PropertyChangeListener.class, listener);
 	}
 }

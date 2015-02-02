@@ -20,18 +20,18 @@ public class ThirtyTwoKilobyteRAMTest extends FourKilobyteRAMTest {
 	protected static final int bitE = 0x4000;
 
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new ThirtyTwoKilobyteRAM();
+		systemUnderTest.setPower(true);
+	}
+
+	@Override
 	protected void setA(final int value) {
 		super.setA(value);
 		((IThirtyTwoKilobyteRAM) systemUnderTest).setAC((value & bitC) == bitC);
 		((IThirtyTwoKilobyteRAM) systemUnderTest).setAD((value & bitD) == bitD);
 		((IThirtyTwoKilobyteRAM) systemUnderTest).setAE((value & bitE) == bitE);
-	}
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new ThirtyTwoKilobyteRAM();
-		systemUnderTest.setPower(true);
 	}
 
 	@Override

@@ -15,12 +15,6 @@ public class SixtyFourKilobyteRAM extends OneKilobyteRAM implements
 		ISixtyFourKilobyteRAM {
 
 	@Override
-	protected void initializeBanks() {
-		bank0 = new ThirtyTwoKilobyteRAM();
-		bank1 = new ThirtyTwoKilobyteRAM();
-	}
-
-	@Override
 	public void setA9(final boolean value) {
 		((IThirtyTwoKilobyteRAM) bank0).setA9(value);
 		((IThirtyTwoKilobyteRAM) bank1).setA9(value);
@@ -67,5 +61,11 @@ public class SixtyFourKilobyteRAM extends OneKilobyteRAM implements
 		dO5.setSelect(value);
 		dO6.setSelect(value);
 		dO7.setSelect(value);
+	}
+
+	@Override
+	protected void initializeBanks() {
+		bank0 = new ThirtyTwoKilobyteRAM();
+		bank1 = new ThirtyTwoKilobyteRAM();
 	}
 }

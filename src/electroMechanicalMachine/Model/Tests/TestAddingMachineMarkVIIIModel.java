@@ -44,8 +44,8 @@ public class TestAddingMachineMarkVIIIModel extends
 	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forFirstExampleFromBook() {
-		int[] code = { LOD, ADD, STO, LOD, ADC, STO, HALT };
-		int[] data = { 0xab, 0x2c, 0x00, 0x76, 0x23 };
+		final int[] code = { LOD, ADD, STO, LOD, ADC, STO, HALT };
+		final int[] data = { 0xab, 0x2c, 0x00, 0x76, 0x23 };
 
 		loadCode(code);
 		loadData(data);
@@ -61,10 +61,10 @@ public class TestAddingMachineMarkVIIIModel extends
 	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forSecondExampleFromBook() {
-		int[] code = { LOD, ADD, STO, LOD, ADC, STO, LOD, ADC, STO, LOD, ADC,
-				STO, HALT };
-		int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8, 0x00,
-				0x7a, 0x65 };
+		final int[] code = { LOD, ADD, STO, LOD, ADC, STO, LOD, ADC, STO, LOD,
+				ADC, STO, HALT };
+		final int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8,
+				0x00, 0x7a, 0x65 };
 
 		loadCode(code);
 		loadData(data);
@@ -82,10 +82,10 @@ public class TestAddingMachineMarkVIIIModel extends
 	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forSubtraction() {
-		int[] code = { LOD, SUB, STO, LOD, SBB, STO, LOD, SBB, STO, LOD, SBB,
-				STO, HALT };
-		int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8, 0x00,
-				0x7a, 0x65 };
+		final int[] code = { LOD, SUB, STO, LOD, SBB, STO, LOD, SBB, STO, LOD,
+				SBB, STO, HALT };
+		final int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8,
+				0x00, 0x7a, 0x65 };
 
 		loadCode(code);
 		loadData(data);

@@ -15,7 +15,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 0 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -23,7 +23,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 1 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -31,7 +31,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 2 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -39,7 +39,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 3 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -47,7 +47,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 4 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -55,7 +55,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 5 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -63,7 +63,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 6 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */
@@ -71,7 +71,7 @@ public interface IEightBitDataInput {
 
 	/**
 	 * Sets a value that turns bit 7 of the "Data" input on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the bit on; false to turn it off.
 	 */

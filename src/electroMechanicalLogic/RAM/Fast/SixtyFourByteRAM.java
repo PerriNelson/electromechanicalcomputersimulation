@@ -10,9 +10,7 @@ package electroMechanicalLogic.RAM.Fast;
 
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
-public class SixtyFourByteRAM extends
-		EightByteRAM implements
-		ISixtyFourByteRAM {
+public class SixtyFourByteRAM extends EightByteRAM implements ISixtyFourByteRAM {
 	@Override
 	public int getMaxAddress() {
 		return 0x3f;

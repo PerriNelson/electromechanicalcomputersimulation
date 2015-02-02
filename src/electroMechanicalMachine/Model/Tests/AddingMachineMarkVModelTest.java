@@ -39,70 +39,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVModel;
 public class AddingMachineMarkVModelTest {
 	private IAddingMachineMarkVModel systemUnderTest;
 
-	private int getSum() {
-		int sum = 0;
-		if (systemUnderTest.getS0()) {
-			sum = sum | bit0;
-		}
-		if (systemUnderTest.getS1()) {
-			sum = sum | bit1;
-		}
-		if (systemUnderTest.getS2()) {
-			sum = sum | bit2;
-		}
-		if (systemUnderTest.getS3()) {
-			sum = sum | bit3;
-		}
-		if (systemUnderTest.getS4()) {
-			sum = sum | bit4;
-		}
-		if (systemUnderTest.getS5()) {
-			sum = sum | bit5;
-		}
-		if (systemUnderTest.getS6()) {
-			sum = sum | bit6;
-		}
-		if (systemUnderTest.getS7()) {
-			sum = sum | bit7;
-		}
-		return sum;
-	}
-
-	private void performOneClockCycle() {
-		systemUnderTest.step();
-		systemUnderTest.step();
-	}
-
-	private void setAddress(final int address) {
-		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
-		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
-		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
-		systemUnderTest.setA3((address & bit3) == bit3 ? on : off);
-		systemUnderTest.setA4((address & bit4) == bit4 ? on : off);
-		systemUnderTest.setA5((address & bit5) == bit5 ? on : off);
-		systemUnderTest.setA6((address & bit6) == bit6 ? on : off);
-		systemUnderTest.setA7((address & bit7) == bit7 ? on : off);
-		systemUnderTest.setA8((address & bit8) == bit8 ? on : off);
-		systemUnderTest.setA9((address & bit9) == bit9 ? on : off);
-		systemUnderTest.setAA((address & bitA) == bitA ? on : off);
-		systemUnderTest.setAB((address & bitB) == bitB ? on : off);
-		systemUnderTest.setAC((address & bitC) == bitC ? on : off);
-		systemUnderTest.setAD((address & bitD) == bitD ? on : off);
-		systemUnderTest.setAE((address & bitE) == bitE ? on : off);
-		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
-	}
-
-	private void setDataIn(final int value) {
-		systemUnderTest.setDI0(((value & bit0) == bit0) ? on : off);
-		systemUnderTest.setDI1(((value & bit1) == bit1) ? on : off);
-		systemUnderTest.setDI2(((value & bit2) == bit2) ? on : off);
-		systemUnderTest.setDI3(((value & bit3) == bit3) ? on : off);
-		systemUnderTest.setDI4(((value & bit4) == bit4) ? on : off);
-		systemUnderTest.setDI5(((value & bit5) == bit5) ? on : off);
-		systemUnderTest.setDI6(((value & bit6) == bit6) ? on : off);
-		systemUnderTest.setDI7(((value & bit7) == bit7) ? on : off);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new AddingMachineMarkVModel(
@@ -3264,5 +3200,69 @@ public class AddingMachineMarkVModelTest {
 		systemUnderTest.step();
 
 		assertEquals(off, systemUnderTest.getDO6());
+	}
+
+	private int getSum() {
+		int sum = 0;
+		if (systemUnderTest.getS0()) {
+			sum = sum | bit0;
+		}
+		if (systemUnderTest.getS1()) {
+			sum = sum | bit1;
+		}
+		if (systemUnderTest.getS2()) {
+			sum = sum | bit2;
+		}
+		if (systemUnderTest.getS3()) {
+			sum = sum | bit3;
+		}
+		if (systemUnderTest.getS4()) {
+			sum = sum | bit4;
+		}
+		if (systemUnderTest.getS5()) {
+			sum = sum | bit5;
+		}
+		if (systemUnderTest.getS6()) {
+			sum = sum | bit6;
+		}
+		if (systemUnderTest.getS7()) {
+			sum = sum | bit7;
+		}
+		return sum;
+	}
+
+	private void performOneClockCycle() {
+		systemUnderTest.step();
+		systemUnderTest.step();
+	}
+
+	private void setAddress(final int address) {
+		systemUnderTest.setA0((address & bit0) == bit0 ? on : off);
+		systemUnderTest.setA1((address & bit1) == bit1 ? on : off);
+		systemUnderTest.setA2((address & bit2) == bit2 ? on : off);
+		systemUnderTest.setA3((address & bit3) == bit3 ? on : off);
+		systemUnderTest.setA4((address & bit4) == bit4 ? on : off);
+		systemUnderTest.setA5((address & bit5) == bit5 ? on : off);
+		systemUnderTest.setA6((address & bit6) == bit6 ? on : off);
+		systemUnderTest.setA7((address & bit7) == bit7 ? on : off);
+		systemUnderTest.setA8((address & bit8) == bit8 ? on : off);
+		systemUnderTest.setA9((address & bit9) == bit9 ? on : off);
+		systemUnderTest.setAA((address & bitA) == bitA ? on : off);
+		systemUnderTest.setAB((address & bitB) == bitB ? on : off);
+		systemUnderTest.setAC((address & bitC) == bitC ? on : off);
+		systemUnderTest.setAD((address & bitD) == bitD ? on : off);
+		systemUnderTest.setAE((address & bitE) == bitE ? on : off);
+		systemUnderTest.setAF((address & bitF) == bitF ? on : off);
+	}
+
+	private void setDataIn(final int value) {
+		systemUnderTest.setDI0(((value & bit0) == bit0) ? on : off);
+		systemUnderTest.setDI1(((value & bit1) == bit1) ? on : off);
+		systemUnderTest.setDI2(((value & bit2) == bit2) ? on : off);
+		systemUnderTest.setDI3(((value & bit3) == bit3) ? on : off);
+		systemUnderTest.setDI4(((value & bit4) == bit4) ? on : off);
+		systemUnderTest.setDI5(((value & bit5) == bit5) ? on : off);
+		systemUnderTest.setDI6(((value & bit6) == bit6) ? on : off);
+		systemUnderTest.setDI7(((value & bit7) == bit7) ? on : off);
 	}
 }

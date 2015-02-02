@@ -21,12 +21,6 @@ public class TestSixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAMTest {
 	protected static final int bitF = 0x8000;
 
 	@Override
-	protected void setA(final int value) {
-		super.setA(value);
-		((ISixtyFourKilobyteRAM) systemUnderTest).setAF((value & bitF) == bitF);
-	}
-
-	@Override
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new SixtyFourKilobyteRAM();
@@ -52,6 +46,12 @@ public class TestSixtyFourKilobyteRAM extends ThirtyTwoKilobyteRAMTest {
 				assertEquals(getDO(), (a == i) ? 0xff : 0);
 			}
 		}
+	}
+
+	@Override
+	protected void setA(final int value) {
+		super.setA(value);
+		((ISixtyFourKilobyteRAM) systemUnderTest).setAF((value & bitF) == bitF);
 	}
 
 	@Override

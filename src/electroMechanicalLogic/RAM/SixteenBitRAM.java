@@ -15,8 +15,7 @@ import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixteenBitRAM;
 
-public class SixteenBitRAM implements
-		ISixteenBitRAM {
+public class SixteenBitRAM implements ISixteenBitRAM {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
 	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();

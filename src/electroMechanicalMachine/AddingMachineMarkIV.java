@@ -20,14 +20,18 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkIV extends ControlPanel implements
 		PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkIV frame = new AddingMachineMarkIV();
+		frame.setVisible(true);
+	}
+
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
-
 	private static final int aRow = 0;
 	private static final int bRow = 1;
-	private static final int lampRow = 1;
 
+	private static final int lampRow = 1;
 	private static final int columnControl = 9;
 	private static final int columnLabel = 8;
 	private static final int column0 = 7;
@@ -37,12 +41,8 @@ public class AddingMachineMarkIV extends ControlPanel implements
 	private static final int column4 = 3;
 	private static final int column5 = 2;
 	private static final int column6 = 1;
-	private static final int column7 = 0;
 
-	public static void main(final String[] args) {
-		final AddingMachineMarkIV frame = new AddingMachineMarkIV();
-		frame.setVisible(true);
-	}
+	private static final int column7 = 0;
 
 	private ToggleSwitch toggleSwitchA0;
 	private ToggleSwitch toggleSwitchA1;
@@ -80,9 +80,33 @@ public class AddingMachineMarkIV extends ControlPanel implements
 		runSimulation(model, 10);
 	}
 
-	protected void initializeModel(final IAddingMachineMarkIVModel theModel) {
-		model = theModel;
-		model.setPower(true);
+	@Override
+	public void propertyChange(final PropertyChangeEvent evt) {
+		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			final boolean powerState = PowerState.on == evt.getNewValue();
+
+			if (evt.getSource() == toggleSwitchA0) {
+				model.setA0(powerState);
+			} else if (evt.getSource() == toggleSwitchA1) {
+				model.setA1(powerState);
+			} else if (evt.getSource() == toggleSwitchA2) {
+				model.setA2(powerState);
+			} else if (evt.getSource() == toggleSwitchA3) {
+				model.setA3(powerState);
+			} else if (evt.getSource() == toggleSwitchA4) {
+				model.setA4(powerState);
+			} else if (evt.getSource() == toggleSwitchA5) {
+				model.setA5(powerState);
+			} else if (evt.getSource() == toggleSwitchA6) {
+				model.setA6(powerState);
+			} else if (evt.getSource() == toggleSwitchA7) {
+				model.setA7(powerState);
+			} else if (evt.getSource() == toggleSwitchAdd) {
+				model.setAdd(powerState);
+			} else if (evt.getSource() == toggleSwitchClear) {
+				model.setClear(powerState);
+			}
+		}
 	}
 
 	private void placeControls() {
@@ -113,40 +137,9 @@ public class AddingMachineMarkIV extends ControlPanel implements
 		lampS7 = placeLamp(column7, lampRow);
 	}
 
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
-	}
-
-	@Override
-	public void propertyChange(final PropertyChangeEvent evt) {
-		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			final boolean powerState = PowerState.on == evt.getNewValue();
-
-			if (evt.getSource() == toggleSwitchA0) {
-				model.setA0(powerState);
-			} else if (evt.getSource() == toggleSwitchA1) {
-				model.setA1(powerState);
-			} else if (evt.getSource() == toggleSwitchA2) {
-				model.setA2(powerState);
-			} else if (evt.getSource() == toggleSwitchA3) {
-				model.setA3(powerState);
-			} else if (evt.getSource() == toggleSwitchA4) {
-				model.setA4(powerState);
-			} else if (evt.getSource() == toggleSwitchA5) {
-				model.setA5(powerState);
-			} else if (evt.getSource() == toggleSwitchA6) {
-				model.setA6(powerState);
-			} else if (evt.getSource() == toggleSwitchA7) {
-				model.setA7(powerState);
-			} else if (evt.getSource() == toggleSwitchAdd) {
-				model.setAdd(powerState);
-			} else if (evt.getSource() == toggleSwitchClear) {
-				model.setClear(powerState);
-			}
-		}
+	protected void initializeModel(final IAddingMachineMarkIVModel theModel) {
+		model = theModel;
+		model.setPower(true);
 	}
 
 	@Override
@@ -159,6 +152,13 @@ public class AddingMachineMarkIV extends ControlPanel implements
 		lampS5.setOn(model.getS5());
 		lampS6.setOn(model.getS6());
 		lampS7.setOn(model.getS7());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override

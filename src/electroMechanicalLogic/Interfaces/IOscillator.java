@@ -16,7 +16,7 @@ public interface IOscillator extends ISimulatedCircuit {
 	/**
 	 * Retrieves a value indicating whether power is flowing from the
 	 * oscillator's output terminal or not.
-	 * 
+	 *
 	 * @return true indicates that power is flowing from the oscillator's output
 	 *         terminal; false indicates that it is not.
 	 */

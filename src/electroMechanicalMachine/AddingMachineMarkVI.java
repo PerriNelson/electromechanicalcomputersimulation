@@ -20,18 +20,22 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class AddingMachineMarkVI extends ControlPanel implements
 		PropertyChangeListener {
+	public static void main(final String[] args) {
+		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
+		frame.setVisible(true);
+	}
+
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
-
 	private static final int codeSwitchRow = 0;
 	private static final int codeLabelRow = 1;
 	private static final int addressSwitchRow = 2;
 	private static final int addressLabelRow = 3;
 	private static final int dataSwitchRow = 4;
 	private static final int dataLabelRow = 5;
-	private static final int dataLampRow = 6;
 
+	private static final int dataLampRow = 6;
 	private static final int column0 = 16;
 	private static final int column1 = 15;
 	private static final int column2 = 14;
@@ -47,12 +51,8 @@ public class AddingMachineMarkVI extends ControlPanel implements
 	private static final int columnC = 4;
 	private static final int columnD = 3;
 	private static final int columnE = 2;
-	private static final int columnF = 1;
 
-	public static void main(final String[] args) {
-		final AddingMachineMarkVI frame = new AddingMachineMarkVI();
-		frame.setVisible(true);
-	}
+	private static final int columnF = 1;
 
 	private ToggleSwitch useCodePanelSwitch;
 	private ToggleSwitch resetSwitch;
@@ -109,9 +109,69 @@ public class AddingMachineMarkVI extends ControlPanel implements
 		runSimulation(theModel, 10);
 	}
 
-	protected void initializeModel(final IAddingMachineMarkVIModel theModel) {
-		model = theModel;
-		model.setPower(true);
+	@Override
+	public void propertyChange(final PropertyChangeEvent evt) {
+		final Object source = evt.getSource();
+		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+			final Boolean value = PowerState.on == evt.getNewValue();
+			if (source == useCodePanelSwitch) {
+				model.setUseCodePanel(value);
+			} else if (source == resetSwitch) {
+				model.setReset(value);
+			} else if (source == addressSwitch0) {
+				model.setA0(value);
+			} else if (source == addressSwitch1) {
+				model.setA1(value);
+			} else if (source == addressSwitch2) {
+				model.setA2(value);
+			} else if (source == addressSwitch3) {
+				model.setA3(value);
+			} else if (source == addressSwitch4) {
+				model.setA4(value);
+			} else if (source == addressSwitch5) {
+				model.setA5(value);
+			} else if (source == addressSwitch6) {
+				model.setA6(value);
+			} else if (source == addressSwitch7) {
+				model.setA7(value);
+			} else if (source == addressSwitch8) {
+				model.setA8(value);
+			} else if (source == addressSwitch9) {
+				model.setA9(value);
+			} else if (source == addressSwitchA) {
+				model.setAA(value);
+			} else if (source == addressSwitchB) {
+				model.setAB(value);
+			} else if (source == addressSwitchC) {
+				model.setAC(value);
+			} else if (source == addressSwitchD) {
+				model.setAD(value);
+			} else if (source == addressSwitchE) {
+				model.setAE(value);
+			} else if (source == addressSwitchF) {
+				model.setAF(value);
+			} else if (source == dataSwitch0) {
+				model.setDI0(value);
+			} else if (source == dataSwitch1) {
+				model.setDI1(value);
+			} else if (source == dataSwitch2) {
+				model.setDI2(value);
+			} else if (source == dataSwitch3) {
+				model.setDI3(value);
+			} else if (source == dataSwitch4) {
+				model.setDI4(value);
+			} else if (source == dataSwitch5) {
+				model.setDI5(value);
+			} else if (source == dataSwitch6) {
+				model.setDI6(value);
+			} else if (source == dataSwitch7) {
+				model.setDI7(value);
+			} else if (source == write) {
+				model.setW(value);
+			} else if (source == takeOver) {
+				model.setTakeover(value);
+			}
+		}
 	}
 
 	private void placeControls() {
@@ -193,83 +253,9 @@ public class AddingMachineMarkVI extends ControlPanel implements
 		dataLamp7 = placeLamp(columnF, dataLampRow);
 	}
 
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		return placeToggleSwitch(column, row, 1);
-	}
-
-	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row,
-			final int columns) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
-				columns);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
-	}
-
-	@Override
-	public void propertyChange(final PropertyChangeEvent evt) {
-		final Object source = evt.getSource();
-		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			final Boolean value = PowerState.on == evt.getNewValue();
-			if (source == useCodePanelSwitch) {
-				model.setUseCodePanel(value);
-			} else if (source == resetSwitch) {
-				model.setReset(value);
-			} else if (source == addressSwitch0) {
-				model.setA0(value);
-			} else if (source == addressSwitch1) {
-				model.setA1(value);
-			} else if (source == addressSwitch2) {
-				model.setA2(value);
-			} else if (source == addressSwitch3) {
-				model.setA3(value);
-			} else if (source == addressSwitch4) {
-				model.setA4(value);
-			} else if (source == addressSwitch5) {
-				model.setA5(value);
-			} else if (source == addressSwitch6) {
-				model.setA6(value);
-			} else if (source == addressSwitch7) {
-				model.setA7(value);
-			} else if (source == addressSwitch8) {
-				model.setA8(value);
-			} else if (source == addressSwitch9) {
-				model.setA9(value);
-			} else if (source == addressSwitchA) {
-				model.setAA(value);
-			} else if (source == addressSwitchB) {
-				model.setAB(value);
-			} else if (source == addressSwitchC) {
-				model.setAC(value);
-			} else if (source == addressSwitchD) {
-				model.setAD(value);
-			} else if (source == addressSwitchE) {
-				model.setAE(value);
-			} else if (source == addressSwitchF) {
-				model.setAF(value);
-			} else if (source == dataSwitch0) {
-				model.setDI0(value);
-			} else if (source == dataSwitch1) {
-				model.setDI1(value);
-			} else if (source == dataSwitch2) {
-				model.setDI2(value);
-			} else if (source == dataSwitch3) {
-				model.setDI3(value);
-			} else if (source == dataSwitch4) {
-				model.setDI4(value);
-			} else if (source == dataSwitch5) {
-				model.setDI5(value);
-			} else if (source == dataSwitch6) {
-				model.setDI6(value);
-			} else if (source == dataSwitch7) {
-				model.setDI7(value);
-			} else if (source == write) {
-				model.setW(value);
-			} else if (source == takeOver) {
-				model.setTakeover(value);
-			}
-		}
+	protected void initializeModel(final IAddingMachineMarkVIModel theModel) {
+		model = theModel;
+		model.setPower(true);
 	}
 
 	@Override
@@ -282,6 +268,20 @@ public class AddingMachineMarkVI extends ControlPanel implements
 		dataLamp5.setOn(model.getDO5());
 		dataLamp6.setOn(model.getDO6());
 		dataLamp7.setOn(model.getDO7());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		return placeToggleSwitch(column, row, 1);
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row,
+			final int columns) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
+				columns);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
 	}
 
 	@Override

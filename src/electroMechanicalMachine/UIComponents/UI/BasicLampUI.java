@@ -36,18 +36,6 @@ public class BasicLampUI extends ToggleSwitchUI {
 		onImage = loadImage("images/LampOn.jpg");
 	}
 
-	private BufferedImage loadImage(final String imagePath) {
-		try {
-			final URL url = getClass().getResource(imagePath);
-			if (url == null) {
-				return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
-			}
-			return ImageIO.read(url);
-		} catch (final IOException ioException) {
-			return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
-		}
-	}
-
 	@Override
 	public void paint(final Graphics graphics, final JComponent component) {
 		final Insets insets = component.getInsets();
@@ -60,5 +48,17 @@ public class BasicLampUI extends ToggleSwitchUI {
 
 		graphics.drawImage(image, 0, 0, width, height, 0, 0, image.getWidth(),
 				image.getHeight(), null);
+	}
+
+	private BufferedImage loadImage(final String imagePath) {
+		try {
+			final URL url = getClass().getResource(imagePath);
+			if (url == null) {
+				return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
+			}
+			return ImageIO.read(url);
+		} catch (final IOException ioException) {
+			return new BufferedImage(34, 56, BufferedImage.TYPE_4BYTE_ABGR);
+		}
 	}
 }

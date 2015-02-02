@@ -74,22 +74,6 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
-	protected void fireOnPropertyChange() {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this, null,
-							null, null);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
-	}
-
 	@Override
 	public boolean getDO0() {
 		return ram.getDO0();
@@ -474,5 +458,21 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		ram.setW(writeSelector.getDO());
 
 		ram.step();
+	}
+
+	protected void fireOnPropertyChange() {
+		PropertyChangeEvent propertyChangeEvent = null;
+
+		final Object[] listeners = eventListeners.getListenerList();
+		for (int index = listeners.length - 2; index >= 0; index -= 2) {
+			if (listeners[index] == PropertyChangeListener.class) {
+				if (propertyChangeEvent == null) {
+					propertyChangeEvent = new PropertyChangeEvent(this, null,
+							null, null);
+				}
+				((PropertyChangeListener) listeners[index + 1])
+						.propertyChange(propertyChangeEvent);
+			}
+		}
 	}
 }

@@ -20,14 +20,6 @@ import electroMechanicalMachine.Model.Interfaces.ICarryControl;
 public class TestCarryControl {
 	private ICarryControl systemUnderTest;
 
-	private void performOneClockCycle() {
-		systemUnderTest.setClock(false);
-		systemUnderTest.step();
-
-		systemUnderTest.setClock(true);
-		systemUnderTest.step();
-	}
-
 	@Before
 	public void setUp() {
 		systemUnderTest = new CarryControl();
@@ -35,29 +27,32 @@ public class TestCarryControl {
 	}
 
 	@Test
-	public void testGetCarryIn_shouldReturnTrue_whenSubtractIsTrue() {
+	public void testGetCarryIn_shouldReturnFalse_whenAddIsTrueAndCarryOutIsTrue() {
+		systemUnderTest.setAdd(true);
+		systemUnderTest.setCarryOut(true);
+
+		performOneClockCycle();
+
+		assertFalse(systemUnderTest.getCarryIn());
+	}
+
+	@Test
+	public void testGetCarryIn_shouldReturnFalse_whenPreviousOperationResultedInACarryAndAddIsTrue() {
 		systemUnderTest.setSubtract(true);
+		systemUnderTest.setCarryOut(true);
+
+		performOneClockCycle();
+		systemUnderTest.setSubtract(false);
+		systemUnderTest.setCarryOut(false);
+		systemUnderTest.setAdd(true);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getCarryIn());
+		assertFalse(systemUnderTest.getCarryIn());
 	}
 
 	@Test
 	public void testGetCarryIn_shouldReturnTrue_whenAddWithCarryIsTrueAndCarryOutIsTrue() {
 		systemUnderTest.setAddWithCarry(true);
-		systemUnderTest.setCarryOut(true);
-
-		performOneClockCycle();
-
-		systemUnderTest.setCarryOut(false);
-		performOneClockCycle();
-
-		assertTrue(systemUnderTest.getCarryIn());
-	}
-
-	@Test
-	public void testGetCarryIn_shouldReturnTrue_whenSubractWithBorrowIsTrueAndCarryOutIsTrue() {
-		systemUnderTest.setSubtractWithBorrow(true);
 		systemUnderTest.setCarryOut(true);
 
 		performOneClockCycle();
@@ -97,26 +92,31 @@ public class TestCarryControl {
 	}
 
 	@Test
-	public void testGetCarryIn_shouldReturnFalse_whenPreviousOperationResultedInACarryAndAddIsTrue() {
-		systemUnderTest.setSubtract(true);
+	public void testGetCarryIn_shouldReturnTrue_whenSubractWithBorrowIsTrueAndCarryOutIsTrue() {
+		systemUnderTest.setSubtractWithBorrow(true);
 		systemUnderTest.setCarryOut(true);
 
 		performOneClockCycle();
-		systemUnderTest.setSubtract(false);
-		systemUnderTest.setCarryOut(false);
-		systemUnderTest.setAdd(true);
-		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getCarryIn());
+		systemUnderTest.setCarryOut(false);
+		performOneClockCycle();
+
+		assertTrue(systemUnderTest.getCarryIn());
 	}
 
 	@Test
-	public void testGetCarryIn_shouldReturnFalse_whenAddIsTrueAndCarryOutIsTrue() {
-		systemUnderTest.setAdd(true);
-		systemUnderTest.setCarryOut(true);
+	public void testGetCarryIn_shouldReturnTrue_whenSubtractIsTrue() {
+		systemUnderTest.setSubtract(true);
+		systemUnderTest.step();
 
-		performOneClockCycle();
+		assertTrue(systemUnderTest.getCarryIn());
+	}
 
-		assertFalse(systemUnderTest.getCarryIn());
+	private void performOneClockCycle() {
+		systemUnderTest.setClock(false);
+		systemUnderTest.step();
+
+		systemUnderTest.setClock(true);
+		systemUnderTest.step();
 	}
 }

@@ -25,6 +25,10 @@ import electroMechanicalMachine.UIComponents.ToggleSwitch;
 public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 		MouseListener {
 
+	public static ComponentUI createUI(final JComponent component) {
+		return new BasicToggleSwitchUI();
+	}
+
 	// The toggle switch image was purchased for this project from Martin
 	// Velchevski through the GraphicalRiver market place and is used by
 	// permission. The image 590preview.jpg is a stock preview that came from
@@ -32,7 +36,6 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	// I will probably re-scale this image to more cleanly fit the UI in the
 	// future.
 	private static final String imagePath = "images/590preview.jpg";
-
 	private static final int imageHeight = 590;
 	private static final int imageWidth = 590;
 	private static final int switchBottom = 388;
@@ -40,11 +43,8 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	private static final int switchClosedRight = 416;
 	private static final int switchOpenLeft = 175;
 	private static final int switchOpenRight = 284;
-	private static final int switchTop = 202;
 
-	public static ComponentUI createUI(final JComponent component) {
-		return new BasicToggleSwitchUI();
-	}
+	private static final int switchTop = 202;
 
 	private final BufferedImage toggleSwitches;
 
@@ -57,20 +57,6 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	public void installUI(final JComponent component) {
 		final ToggleSwitch toggleSwitch = (ToggleSwitch) component;
 		toggleSwitch.addMouseListener(this);
-	}
-
-	private BufferedImage loadImage(final String imagePath) {
-		try {
-			final URL url = getClass().getResource(imagePath);
-			if (url == null) {
-				return new BufferedImage(imageWidth, imageHeight,
-						BufferedImage.TYPE_4BYTE_ABGR);
-			}
-			return ImageIO.read(url);
-		} catch (final IOException ioException) {
-			return new BufferedImage(imageWidth, imageHeight,
-					BufferedImage.TYPE_4BYTE_ABGR);
-		}
 	}
 
 	@Override
@@ -125,5 +111,19 @@ public class BasicToggleSwitchUI extends ToggleSwitchUI implements
 	public void uninstallUI(final JComponent component) {
 		final ToggleSwitch toggleSwitch = (ToggleSwitch) component;
 		toggleSwitch.removeMouseListener(this);
+	}
+
+	private BufferedImage loadImage(final String imagePath) {
+		try {
+			final URL url = getClass().getResource(imagePath);
+			if (url == null) {
+				return new BufferedImage(imageWidth, imageHeight,
+						BufferedImage.TYPE_4BYTE_ABGR);
+			}
+			return ImageIO.read(url);
+		} catch (final IOException ioException) {
+			return new BufferedImage(imageWidth, imageHeight,
+					BufferedImage.TYPE_4BYTE_ABGR);
+		}
 	}
 }

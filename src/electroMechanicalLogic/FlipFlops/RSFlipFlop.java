@@ -35,14 +35,6 @@ public final class RSFlipFlop implements IRSFlipFlop {
 		return s.getOutput();
 	}
 
-	private void halfStep() {
-		r.setA(s.getOutput());
-		s.setB(r.getOutput());
-
-		r.step();
-		s.step();
-	}
-
 	@Override
 	public void setPower(final boolean value) {
 		r.setPower(value);
@@ -63,5 +55,13 @@ public final class RSFlipFlop implements IRSFlipFlop {
 	public void step() {
 		halfStep();
 		halfStep();
+	}
+
+	private void halfStep() {
+		r.setA(s.getOutput());
+		s.setB(r.getOutput());
+
+		r.step();
+		s.step();
 	}
 }

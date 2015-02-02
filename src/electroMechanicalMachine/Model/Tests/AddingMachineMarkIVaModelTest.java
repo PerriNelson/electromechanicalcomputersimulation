@@ -28,46 +28,6 @@ import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIVModel;
 public class AddingMachineMarkIVaModelTest {
 	private IAddingMachineMarkIVModel systemUnderTest;
 
-	private int getSum() {
-		int sum = 0;
-		if (systemUnderTest.getS0()) {
-			sum = sum | bit0;
-		}
-		if (systemUnderTest.getS1()) {
-			sum = sum | bit1;
-		}
-		if (systemUnderTest.getS2()) {
-			sum = sum | bit2;
-		}
-		if (systemUnderTest.getS3()) {
-			sum = sum | bit3;
-		}
-		if (systemUnderTest.getS4()) {
-			sum = sum | bit4;
-		}
-		if (systemUnderTest.getS5()) {
-			sum = sum | bit5;
-		}
-		if (systemUnderTest.getS6()) {
-			sum = sum | bit6;
-		}
-		if (systemUnderTest.getS7()) {
-			sum = sum | bit7;
-		}
-		return sum;
-	}
-
-	private void setAInputs(final int value) {
-		systemUnderTest.setA0((value & bit0) == bit0);
-		systemUnderTest.setA1((value & bit1) == bit1);
-		systemUnderTest.setA2((value & bit2) == bit2);
-		systemUnderTest.setA3((value & bit3) == bit3);
-		systemUnderTest.setA4((value & bit4) == bit4);
-		systemUnderTest.setA5((value & bit5) == bit5);
-		systemUnderTest.setA6((value & bit6) == bit6);
-		systemUnderTest.setA7((value & bit7) == bit7);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new AddingMachineMarkIVModel(
@@ -131,5 +91,45 @@ public class AddingMachineMarkIVaModelTest {
 				assertEquals(String.format("a = %d b = %d", a, b), 0, getSum());
 			}
 		}
+	}
+
+	private int getSum() {
+		int sum = 0;
+		if (systemUnderTest.getS0()) {
+			sum = sum | bit0;
+		}
+		if (systemUnderTest.getS1()) {
+			sum = sum | bit1;
+		}
+		if (systemUnderTest.getS2()) {
+			sum = sum | bit2;
+		}
+		if (systemUnderTest.getS3()) {
+			sum = sum | bit3;
+		}
+		if (systemUnderTest.getS4()) {
+			sum = sum | bit4;
+		}
+		if (systemUnderTest.getS5()) {
+			sum = sum | bit5;
+		}
+		if (systemUnderTest.getS6()) {
+			sum = sum | bit6;
+		}
+		if (systemUnderTest.getS7()) {
+			sum = sum | bit7;
+		}
+		return sum;
+	}
+
+	private void setAInputs(final int value) {
+		systemUnderTest.setA0((value & bit0) == bit0);
+		systemUnderTest.setA1((value & bit1) == bit1);
+		systemUnderTest.setA2((value & bit2) == bit2);
+		systemUnderTest.setA3((value & bit3) == bit3);
+		systemUnderTest.setA4((value & bit4) == bit4);
+		systemUnderTest.setA5((value & bit5) == bit5);
+		systemUnderTest.setA6((value & bit6) == bit6);
+		systemUnderTest.setA7((value & bit7) == bit7);
 	}
 }

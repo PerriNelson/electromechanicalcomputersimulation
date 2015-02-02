@@ -21,7 +21,7 @@ public interface IEightBitAdder extends ISimulatedCircuit, IEightBitAInput,
 
 	/**
 	 * Gets a value indicating whether the addition produced a carry bit or not.
-	 * 
+	 *
 	 * @return true indicates that the addition resulted in a carry; false
 	 *         indicates that it did not.
 	 */
@@ -29,7 +29,7 @@ public interface IEightBitAdder extends ISimulatedCircuit, IEightBitAInput,
 
 	/**
 	 * Sets a value representing the carry input to the addition.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that the carry input is a one; false to
 	 *            indicate that it is a zero.

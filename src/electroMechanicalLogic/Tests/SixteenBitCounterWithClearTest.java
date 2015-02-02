@@ -38,6 +38,32 @@ public class SixteenBitCounterWithClearTest {
 
 	private ISixteenBitCounterWithClear systemUnderTest;
 
+	@Before
+	public void Setup() {
+		systemUnderTest = new SixteenBitCounterWithClear();
+		systemUnderTest.setPower(on);
+	}
+
+	@Test
+	public void test_WithClearOff_CountsThrough65535AndRollsOver() {
+		systemUnderTest.setClear(on);
+		systemUnderTest.step();
+		systemUnderTest.setClear(off);
+		for (int i = 0; i < 65537; i++) {
+			assertEquals("i == %d ", i & 0xffff, getCount());
+			performOneClockCycle();
+		}
+	}
+
+	@Test
+	public void test_WithClearOn_CountIsAlwaysZero() {
+		systemUnderTest.setClear(on);
+		for (int i = 0; i < 65537; i++) {
+			performOneClockCycle();
+			assertEquals(0, getCount());
+		}
+	}
+
 	private int getCount() {
 		int count = 0;
 		count |= systemUnderTest.getQ0() ? bit0 : 0;
@@ -64,31 +90,5 @@ public class SixteenBitCounterWithClearTest {
 		systemUnderTest.step();
 		systemUnderTest.setClk(on);
 		systemUnderTest.step();
-	}
-
-	@Before
-	public void Setup() {
-		systemUnderTest = new SixteenBitCounterWithClear();
-		systemUnderTest.setPower(on);
-	}
-
-	@Test
-	public void test_WithClearOff_CountsThrough65535AndRollsOver() {
-		systemUnderTest.setClear(on);
-		systemUnderTest.step();
-		systemUnderTest.setClear(off);
-		for (int i = 0; i < 65537; i++) {
-			assertEquals("i == %d ", i & 0xffff, getCount());
-			performOneClockCycle();
-		}
-	}
-
-	@Test
-	public void test_WithClearOn_CountIsAlwaysZero() {
-		systemUnderTest.setClear(on);
-		for (int i = 0; i < 65537; i++) {
-			performOneClockCycle();
-			assertEquals(0, getCount());
-		}
 	}
 }

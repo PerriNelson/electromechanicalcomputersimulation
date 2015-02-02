@@ -17,7 +17,7 @@ public interface ISimulatedCircuit {
 	 * All electrical circuits require power to operate. For the purposes of our
 	 * simulation it is assumed that all circuits are connected to a common
 	 * ground to complete the circuit.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the circuit; false
 	 *            to indicate that it is not.

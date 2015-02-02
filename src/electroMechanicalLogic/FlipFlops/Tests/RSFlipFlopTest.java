@@ -22,10 +22,6 @@ public class RSFlipFlopTest {
 
 	private IRSFlipFlop systemUnderTest;
 
-	private void assertQDoesNotEqualQBar(final boolean Q, final boolean QBar) {
-		assertEquals("Q != QBar", Q, !QBar);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new RSFlipFlop();
@@ -150,5 +146,9 @@ public class RSFlipFlopTest {
 		Q = systemUnderTest.getQ();
 		QBar = systemUnderTest.getQBar();
 		assertQDoesNotEqualQBar(Q, QBar);
+	}
+
+	private void assertQDoesNotEqualQBar(final boolean Q, final boolean QBar) {
+		assertEquals("Q != QBar", Q, !QBar);
 	}
 }

@@ -18,22 +18,22 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class HalfAdderDemo extends ControlPanel implements
 		PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-
-	private static final String powerOutPropertyName = "powerOut";
-
-	private static final int labelRow = 1;
-	private static final int controlRow = 0;
-
-	private static final int columnA = 0;
-	private static final int columnB = 1;
-	private static final int columnCO = 2;
-	private static final int columnS = 3;
-
 	public static void main(final String[] args) {
 		final HalfAdderDemo frame = new HalfAdderDemo();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
+	private static final int labelRow = 1;
+
+	private static final int controlRow = 0;
+	private static final int columnA = 0;
+	private static final int columnB = 1;
+	private static final int columnCO = 2;
+
+	private static final int columnS = 3;
 
 	private final ToggleSwitch toggleSwitchA;
 	private final ToggleSwitch toggleSwitchB;
@@ -74,6 +74,12 @@ public class HalfAdderDemo extends ControlPanel implements
 	}
 
 	@Override
+	protected void onModelUpdated() {
+		lampCO.setOn(halfAdder.getCO());
+		lampS.setOn(halfAdder.getS());
+	}
+
+	@Override
 	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
 		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
 		toggleSwitch.addPropertyChangeListener(this);
@@ -83,11 +89,5 @@ public class HalfAdderDemo extends ControlPanel implements
 	@Override
 	protected void setTitle() {
 		placeTitleLabel(" Hald Adder Demo ", "Labels/HalfAdderDemoLabel.jpg");
-	}
-
-	@Override
-	protected void onModelUpdated() {
-		lampCO.setOn(halfAdder.getCO());
-		lampS.setOn(halfAdder.getS());
 	}
 }

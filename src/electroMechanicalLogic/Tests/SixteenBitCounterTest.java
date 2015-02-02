@@ -36,6 +36,28 @@ public class SixteenBitCounterTest {
 
 	private ISixteenBitCounter systemUnderTest;
 
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new SixteenBitCounter();
+		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public final void test_clockCycle_incrementsCounter_throughAllSixteenBits() {
+		for (int i = 0; i < 0x10000; i++) {
+			clockCycle();
+			assertEquals(getSixteenBitValue(), i);
+		}
+	}
+
+	@Test
+	public final void test_SixteenBitCOunter_BehavesLikeAnEightBitCounter_WhenOnlyEightBitsAreChecked() {
+		for (int i = 0; i < 0x10000; i++) {
+			clockCycle();
+			assertEquals(getEightBitValue(), i & 0xFF);
+		}
+	}
+
 	private void clockCycle() {
 		systemUnderTest.setClk(false);
 		systemUnderTest.step();
@@ -125,27 +147,5 @@ public class SixteenBitCounterTest {
 		}
 
 		return result;
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new SixteenBitCounter();
-		systemUnderTest.setPower(true);
-	}
-
-	@Test
-	public final void test_clockCycle_incrementsCounter_throughAllSixteenBits() {
-		for (int i = 0; i < 0x10000; i++) {
-			clockCycle();
-			assertEquals(getSixteenBitValue(), i);
-		}
-	}
-
-	@Test
-	public final void test_SixteenBitCOunter_BehavesLikeAnEightBitCounter_WhenOnlyEightBitsAreChecked() {
-		for (int i = 0; i < 0x10000; i++) {
-			clockCycle();
-			assertEquals(getEightBitValue(), i & 0xFF);
-		}
 	}
 }

@@ -19,7 +19,7 @@ public interface IDTypeFlipFlop extends IFlipFlopOutput, ISimulatedCircuit {
 	/**
 	 * Sets a value indicating whether power is flowing to the "Clk" terminal of
 	 * the flip-flop.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            to indicate that it is not.
@@ -29,7 +29,7 @@ public interface IDTypeFlipFlop extends IFlipFlopOutput, ISimulatedCircuit {
 	/**
 	 * Sets a value indicating whether power is flowing to the "D" terminal of
 	 * the flip-flop.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            to indicate that it is not.

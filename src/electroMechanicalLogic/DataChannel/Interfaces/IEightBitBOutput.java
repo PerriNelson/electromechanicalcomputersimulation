@@ -15,56 +15,56 @@ public interface IEightBitBOutput {
 
 	/**
 	 * Gets a value indicating if bit 0 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB0();
 
 	/**
 	 * Gets a value indicating if bit 1 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB1();
 
 	/**
 	 * Gets a value indicating if bit 2 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB2();
 
 	/**
 	 * Gets a value indicating if bit 3 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB3();
 
 	/**
 	 * Gets a value indicating if bit 4 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB4();
 
 	/**
 	 * Gets a value indicating if bit 5 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB5();
 
 	/**
 	 * Gets a value indicating if bit 6 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB6();
 
 	/**
 	 * Gets a value indicating if bit 7 of the "B" output is on or not.
-	 * 
+	 *
 	 * @return true indicates the bit is on; false indicates it is off.
 	 */
 	public abstract boolean getB7();

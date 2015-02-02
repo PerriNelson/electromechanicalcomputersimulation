@@ -29,6 +29,37 @@ public class AddingMachineMarkIModelTest {
 
 	private IAddingMachineMarkIModel systemUnderTest;
 
+	@Before
+	public void setUp() throws Exception {
+		systemUnderTest = new AddingMachineMarkIModel();
+		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public void test_ForAAndBFrom0To255_StepGivesExpectedResults() {
+		for (int a = 0; a < 256; a++) {
+			for (int b = 0; b < 256; b++) {
+				setAInputs(a);
+				setBInputs(b);
+				systemUnderTest.step();
+				assertEquals(a + b, getSum());
+			}
+		}
+	}
+
+	@Test
+	public void test_ForAAndBFrom0To255_StepTwiceGivesExpectedResults() {
+		for (int a = 0; a < 256; a++) {
+			for (int b = 0; b < 256; b++) {
+				setAInputs(a);
+				setBInputs(b);
+				systemUnderTest.step();
+				systemUnderTest.step();
+				assertEquals(a + b, getSum());
+			}
+		}
+	}
+
 	private int getSum() {
 		int sum = 0;
 		if (systemUnderTest.getS0()) {
@@ -81,36 +112,5 @@ public class AddingMachineMarkIModelTest {
 		systemUnderTest.setB5((value & bit5) == bit5);
 		systemUnderTest.setB6((value & bit6) == bit6);
 		systemUnderTest.setB7((value & bit7) == bit7);
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		systemUnderTest = new AddingMachineMarkIModel();
-		systemUnderTest.setPower(true);
-	}
-
-	@Test
-	public void test_ForAAndBFrom0To255_StepGivesExpectedResults() {
-		for (int a = 0; a < 256; a++) {
-			for (int b = 0; b < 256; b++) {
-				setAInputs(a);
-				setBInputs(b);
-				systemUnderTest.step();
-				assertEquals(a + b, getSum());
-			}
-		}
-	}
-
-	@Test
-	public void test_ForAAndBFrom0To255_StepTwiceGivesExpectedResults() {
-		for (int a = 0; a < 256; a++) {
-			for (int b = 0; b < 256; b++) {
-				setAInputs(a);
-				setBInputs(b);
-				systemUnderTest.step();
-				systemUnderTest.step();
-				assertEquals(a + b, getSum());
-			}
-		}
 	}
 }

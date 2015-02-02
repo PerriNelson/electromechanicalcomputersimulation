@@ -1,5 +1,5 @@
 /*
-ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
+  ElectroMechanicalComputerSimulation by Perri D. Nelson is licensed under the Creative Commons
   Attribution-ShareAlike 3.0 Unported License.
   To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
@@ -18,51 +18,56 @@ import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEi
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectTwoEightBitBOutputsToSixteenBitAInput;
 import electroMechanicalLogic.EightBitOneToTwoDecoder;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
+import electroMechanicalLogic.Oscillator;
 import electroMechanicalLogic.Interfaces.IEightBitOneToTwoDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
+import electroMechanicalLogic.Interfaces.IOscillator;
+import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkVIModel;
-import electroMechanicalMachine.Model.Interfaces.IMarkVIALU;
-import electroMechanicalMachine.Model.Interfaces.IMarkVIInstructionDecoder;
-import electroMechanicalMachine.Model.Interfaces.IMarkVITimingAndMemoryWriteControl;
+import electroMechanicalMachine.Model.Interfaces.IMarkIXInstructionDecoder;
+import electroMechanicalMachine.Model.Interfaces.IMarkIXTimingControl;
+import electroMechanicalMachine.Model.Interfaces.IMarkVIIIALU;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
-public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
+public class AddingMachineMarkIXModel implements IAddingMachineMarkVIModel {
 	private final ISixtyFourKilobyteRamControlPanelModel code;
 	private final ISixtyFourKilobyteRamControlPanelModel data;
+	private final IMarkIXInstructionDecoder instructionDecoder;
+	private final IMarkVIIIALU alu;
+	private final IMarkIXTimingControl timingControl;
+	private final IOscillator clock;
 	private final IEightBitOneToTwoDecoder addressLow;
 	private final IEightBitOneToTwoDecoder addressHigh;
 	private final IEightBitOneToTwoDecoder dataIn;
 	private final IOneLineToTwoLineDecoder write;
 	private final IEightBitTwoToOneSelector dataOut;
-	protected IMarkVIInstructionDecoder instructionDecoder;
-	protected IMarkVIALU alu;
-	private final IMarkVITimingAndMemoryWriteControl timingAndMemoryWriteControl;
+	private final IRelay clearBar;
+	private final IRelay clockBar;
 
-	public AddingMachineMarkVIModel() {
+	public AddingMachineMarkIXModel() {
 		this(new SixtyFourKilobyteRAM(), new SixtyFourKilobyteRAM());
 	}
 
-	public AddingMachineMarkVIModel(final ISixtyFourKilobyteRAM codeRAM,
+	public AddingMachineMarkIXModel(final ISixtyFourKilobyteRAM codeRAM,
 			final ISixtyFourKilobyteRAM dataRAM) {
-
+		code = new SixtyFourKilobyteRamControlPanelModel(codeRAM);
+		data = new SixtyFourKilobyteRamControlPanelModel(dataRAM);
+		instructionDecoder = new MarkIXInstructionDecoder();
+		alu = new MarkVIIIALU();
+		timingControl = new MarkIXTimingControl();
+		clock = new Oscillator();
 		addressLow = new EightBitOneToTwoDecoder();
 		addressHigh = new EightBitOneToTwoDecoder();
 		dataIn = new EightBitOneToTwoDecoder();
-
 		write = new OneLineToTwoLineDecoder();
-
 		dataOut = new EightBitTwoToOneSelector();
-
-		code = new SixtyFourKilobyteRamControlPanelModel(codeRAM);
-		data = new SixtyFourKilobyteRamControlPanelModel(dataRAM);
-
-		timingAndMemoryWriteControl = new MarkVITimingAndMemoryWriteControl();
-		setALU();
-		setInstructionDecoder();
+		clearBar = new Inverter();
+		clockBar = new Inverter();
 	}
 
 	@Override
@@ -229,22 +234,24 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	public void setPower(final boolean value) {
 		code.setPower(value);
 		data.setPower(value);
-
-		addressLow.setPower(value);
+		instructionDecoder.setPower(value);
+		alu.setPower(value);
+		timingControl.setPower(value);
+		clock.setPower(value);
 		addressHigh.setPower(value);
-
+		addressLow.setPower(value);
 		dataIn.setPower(value);
 		write.setPower(value);
 		dataOut.setPower(value);
-
-		instructionDecoder.setPower(value);
-		alu.setPower(value);
-		timingAndMemoryWriteControl.setPower(value);
+		clearBar.setPower(value);
+		clockBar.setPower(value);
 	}
 
 	@Override
 	public void setReset(final boolean value) {
-		timingAndMemoryWriteControl.setClear(value);
+		clearBar.setInput(value);
+		timingControl.setClear(value);
+		instructionDecoder.setClear(value);
 		alu.setClear(value);
 	}
 
@@ -272,14 +279,16 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	@Override
 	public void step() {
+
 		stepDecoders();
 
-		stepData();
 		stepCode();
 
+		stepTimingControl();
 		stepInstructionDecoder();
-		stepTimingAndMemoryWriteControl();
+
 		stepALU();
+		stepData();
 
 		stepDataOut();
 	}
@@ -287,7 +296,7 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private void stepCode() {
 		connectTwoEightBitBOutputsToSixteenBitAInput(addressLow, addressHigh,
 				code.getPanelAddressIn());
-		connectSixteenBitAOutputToSixteenBitAInput(timingAndMemoryWriteControl,
+		connectSixteenBitAOutputToSixteenBitAInput(timingControl,
 				code.getExternalAddressIn());
 		connectEightBitBOutputToEightBitDataInput(dataIn, code.getPanelDataIn());
 
@@ -298,14 +307,14 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 	private void stepData() {
 		connectTwoEightBitAOutputsToSixteenBitAInput(addressLow, addressHigh,
 				data.getPanelAddressIn());
-		connectSixteenBitAOutputToSixteenBitAInput(timingAndMemoryWriteControl,
+		connectSixteenBitAOutputToSixteenBitAInput(instructionDecoder,
 				data.getExternalAddressIn());
 		connectEightBitAOutputToEightBitDataInput(dataIn, data.getPanelDataIn());
 		connectEightBitDataOutputToEightBitDataInput(alu,
 				data.getExternalDataIn());
 
 		data.setCpW(write.getA());
-		data.setEcW(timingAndMemoryWriteControl.getWrite());
+		data.setEcW(timingControl.getWrite());
 
 		data.step();
 	}
@@ -326,28 +335,33 @@ public class AddingMachineMarkVIModel implements IAddingMachineMarkVIModel {
 
 	private void stepInstructionDecoder() {
 		connectEightBitDataOutputToEightBitDataInput(code, instructionDecoder);
+		instructionDecoder.setFetchCode(timingControl.getFetchCode());
+		instructionDecoder.setFetchHighAddress(timingControl
+				.getFetchHighAddress());
+		instructionDecoder.setFetchLowAddress(timingControl
+				.getFetchLowAddress());
 		instructionDecoder.step();
 	}
 
-	private void stepTimingAndMemoryWriteControl() {
-		timingAndMemoryWriteControl.setHalt(instructionDecoder.getHalt());
-		timingAndMemoryWriteControl.setStore(instructionDecoder.getStore());
-		timingAndMemoryWriteControl.step();
-	}
-
-	protected void setALU() {
-		alu = new MarkVIALU();
-	}
-
-	protected void setInstructionDecoder() {
-		instructionDecoder = new MarkVIInstructionDecoder();
+	private void stepTimingControl() {
+		clearBar.step();
+		clock.setPower(clearBar.getOutput());
+		clock.step();
+		timingControl.setClock(clock.getOutput());
+		timingControl.setHalt(instructionDecoder.getHalt());
+		timingControl.setStore(instructionDecoder.getStore());
+		timingControl.step();
 	}
 
 	protected void stepALU() {
 		connectEightBitDataOutputToEightBitDataInput(data, alu);
 		alu.setAdd(instructionDecoder.getAdd());
 		alu.setLoad(instructionDecoder.getLoad());
-		alu.setClock(timingAndMemoryWriteControl.getClock());
+		alu.setAddWithCarry(instructionDecoder.getAddWithCarry());
+		alu.setSubtract(instructionDecoder.getSubtract());
+		alu.setSubtractWithBorrow(instructionDecoder.getSubtractWithBorrow());
+		alu.setClock(timingControl.getExecute());
 		alu.step();
 	}
+
 }

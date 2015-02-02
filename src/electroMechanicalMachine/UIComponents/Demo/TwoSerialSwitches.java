@@ -24,14 +24,14 @@ import electroMechanicalMachine.UIComponents.ToggleSwitch;
 import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class TwoSerialSwitches extends Frame implements PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-
-	private static final String powerOutPropertyName = "powerOut";
-
 	public static void main(final String[] args) {
 		final TwoSerialSwitches frame = new TwoSerialSwitches();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
 
 	private final ToggleSwitch toggleSwitch1;
 	private final ToggleSwitch toggleSwitch2;

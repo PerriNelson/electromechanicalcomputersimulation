@@ -22,12 +22,6 @@ import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 public class TestEightBitRAM {
 	private IEightBitRAM systemUnderTest;
 
-	private void setA(final int value) {
-		systemUnderTest.setA0((value & bit0) == bit0);
-		systemUnderTest.setA1((value & bit1) == bit1);
-		systemUnderTest.setA2((value & bit2) == bit2);
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new EightBitRAM();
@@ -52,5 +46,11 @@ public class TestEightBitRAM {
 				assertEquals(systemUnderTest.getDO(), a == i);
 			}
 		}
+	}
+
+	private void setA(final int value) {
+		systemUnderTest.setA0((value & bit0) == bit0);
+		systemUnderTest.setA1((value & bit1) == bit1);
+		systemUnderTest.setA2((value & bit2) == bit2);
 	}
 }

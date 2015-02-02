@@ -26,7 +26,7 @@ abstract class TwoRelaySingleOutputGate {
 
 	/**
 	 * Constructs the gate.
-	 * 
+	 *
 	 * @param relayA
 	 *            the relay to be connected to the "A" input terminal.
 	 * @param relayB
@@ -40,7 +40,7 @@ abstract class TwoRelaySingleOutputGate {
 	/**
 	 * Sets a value indicating whether power is flowing to the "A" terminal of
 	 * the gate or not.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the "A" terminal of
 	 *            the gate; false to indicate that it is not.
@@ -52,7 +52,7 @@ abstract class TwoRelaySingleOutputGate {
 	/**
 	 * Sets a value indicating whether power is flowing to the "B" terminal of
 	 * the gate or not.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the "B" terminal of
 	 *            the gate; false to indicate that it is not.

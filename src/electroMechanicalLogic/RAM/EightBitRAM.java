@@ -16,8 +16,7 @@ import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 
-public final class EightBitRAM implements
-		IEightBitRAM {
+public final class EightBitRAM implements IEightBitRAM {
 	private final IThreeToEightDecoder decoder = new ThreeToEightDecoder();
 	private final ILatch bit0 = new Latch();
 	private final ILatch bit1 = new Latch();

@@ -9,6 +9,7 @@
 package electroMechanicalMachine.Model;
 
 import electroMechanicalLogic.FourBitRingCounter;
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.SixteenBitCounterWithClear;
 import electroMechanicalLogic.Gates.ThreeInputNOR;
 import electroMechanicalLogic.Gates.ThreeInputOR;
@@ -16,6 +17,7 @@ import electroMechanicalLogic.Gates.TwoInputAND;
 import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IFourBitRingCounter;
+import electroMechanicalLogic.Interfaces.IRelay;
 import electroMechanicalLogic.Interfaces.ISixteenBitCounterWithClear;
 import electroMechanicalMachine.Model.Interfaces.IMarkIXTimingControl;
 
@@ -25,7 +27,9 @@ public class MarkIXTimingControl implements IMarkIXTimingControl {
 	private final ITwoInputSingleOutputGate clockToCounter = new TwoInputAND();
 	private final ISixteenBitCounterWithClear counter = new SixteenBitCounterWithClear();
 	private final ITwoInputSingleOutputGate write = new TwoInputAND();
+	private final ITwoInputSingleOutputGate justBeforeExecute = new TwoInputAND();
 	private final IThreeInputSingleOutputGate clock = new ThreeInputNOR();
+	private final IRelay clockBar = new Inverter();
 
 	@Override
 	public boolean getA0() {
@@ -157,6 +161,8 @@ public class MarkIXTimingControl implements IMarkIXTimingControl {
 		counter.setPower(value);
 		write.setPower(value);
 		clock.setPower(value);
+		clockBar.setPower(value);
+		justBeforeExecute.setPower(value);
 	}
 
 	@Override
@@ -184,7 +190,14 @@ public class MarkIXTimingControl implements IMarkIXTimingControl {
 		counter.setClk(clockToCounter.getOutput());
 		counter.step();
 
-		write.setB(instructionCycle.getQ3());
+		clockBar.setInput(clock.getOutput());
+		clockBar.step();
+
+		justBeforeExecute.setA(clockBar.getOutput());
+		justBeforeExecute.setB(instructionCycle.getQ2());
+		justBeforeExecute.step();
+
+		write.setB(justBeforeExecute.getOutput());
 		write.step();
 	}
 

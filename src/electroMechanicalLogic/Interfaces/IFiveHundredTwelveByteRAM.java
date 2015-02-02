@@ -10,8 +10,7 @@ package electroMechanicalLogic.Interfaces;
 
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
-public interface IFiveHundredTwelveByteRAM extends
-		ISixtyFourByteRAM {
+public interface IFiveHundredTwelveByteRAM extends ISixtyFourByteRAM {
 	public abstract void setA6(boolean value);
 
 	public abstract void setA7(boolean value);

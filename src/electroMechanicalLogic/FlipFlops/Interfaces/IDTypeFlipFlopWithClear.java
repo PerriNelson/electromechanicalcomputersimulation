@@ -17,7 +17,7 @@ public interface IDTypeFlipFlopWithClear extends IDTypeFlipFlop {
 	/**
 	 * Sets a value indicating the state of the "Clear" input. This is done by
 	 * turning power to the "Clear" terminal on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.

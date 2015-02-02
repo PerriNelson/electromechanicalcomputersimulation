@@ -25,38 +25,6 @@ public class FourBitRingCounterTest {
 
 	private IFourBitRingCounter systemUnderTest;
 
-	private byte getCounterValue() {
-		byte value = 0;
-
-		value |= systemUnderTest.getQ0() ? bit0 : 0;
-		value |= systemUnderTest.getQ1() ? bit1 : 0;
-		value |= systemUnderTest.getQ2() ? bit2 : 0;
-		value |= systemUnderTest.getQ3() ? bit3 : 0;
-
-		return value;
-	}
-
-	private void initializeCounter() {
-		systemUnderTest.setPower(true);
-		systemUnderTest.setClear(true);
-		systemUnderTest.setClk(false);
-		systemUnderTest.step();
-
-		performOneClockCycle();
-
-		systemUnderTest.setClear(false);
-		systemUnderTest.step();
-	}
-
-	private void performOneClockCycle() {
-
-		systemUnderTest.setClk(true);
-		systemUnderTest.step();
-
-		systemUnderTest.setClk(false);
-		systemUnderTest.step();
-	}
-
 	@Before
 	public void setUp() throws Exception {
 		systemUnderTest = new FourBitRingCounter();
@@ -119,5 +87,37 @@ public class FourBitRingCounterTest {
 		final byte counterValue = getCounterValue();
 
 		assertEquals(counterValue, bit0);
+	}
+
+	private byte getCounterValue() {
+		byte value = 0;
+
+		value |= systemUnderTest.getQ0() ? bit0 : 0;
+		value |= systemUnderTest.getQ1() ? bit1 : 0;
+		value |= systemUnderTest.getQ2() ? bit2 : 0;
+		value |= systemUnderTest.getQ3() ? bit3 : 0;
+
+		return value;
+	}
+
+	private void initializeCounter() {
+		systemUnderTest.setPower(true);
+		systemUnderTest.setClear(true);
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
+
+		performOneClockCycle();
+
+		systemUnderTest.setClear(false);
+		systemUnderTest.step();
+	}
+
+	private void performOneClockCycle() {
+
+		systemUnderTest.setClk(true);
+		systemUnderTest.step();
+
+		systemUnderTest.setClk(false);
+		systemUnderTest.step();
 	}
 }

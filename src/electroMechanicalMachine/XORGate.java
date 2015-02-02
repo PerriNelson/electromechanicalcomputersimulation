@@ -11,12 +11,12 @@ package electroMechanicalMachine;
 import electroMechanicalLogic.Gates.TwoInputXOR;
 
 public class XORGate extends GateDemoPanel {
-	public static final long serialVersionUID = 1l;
-
 	public static void main(final String[] args) {
 		final XORGate frame = new XORGate();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
 
 	public XORGate() {
 		super("Two Input XOR Gate", new TwoInputXOR());

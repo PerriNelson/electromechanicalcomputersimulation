@@ -21,10 +21,6 @@ public class MarkVIIInstructionDecoderTest extends MarkVIInstructionDecoderTest 
 
 	private static final int subtractCode = 0x21;
 
-	private IMarkVIIInstructionDecoder getSystemUnderTest() {
-		return (IMarkVIIInstructionDecoder) systemUnderTest;
-	}
-
 	@Before
 	@Override
 	public void Setup() {
@@ -53,6 +49,10 @@ public class MarkVIIInstructionDecoderTest extends MarkVIInstructionDecoderTest 
 		systemUnderTest.step();
 
 		assertTrue(getSystemUnderTest().getSubtract());
+	}
+
+	private IMarkVIIInstructionDecoder getSystemUnderTest() {
+		return (IMarkVIIInstructionDecoder) systemUnderTest;
 	}
 
 }

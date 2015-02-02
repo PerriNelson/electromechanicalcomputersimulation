@@ -22,7 +22,7 @@ public interface IRSFlipFlop extends ISimulatedCircuit, IFlipFlopOutput {
 
 	/**
 	 * Sets a value that turns the "R" input to the circuit on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the input on; false to turn it off.
 	 */
@@ -30,7 +30,7 @@ public interface IRSFlipFlop extends ISimulatedCircuit, IFlipFlopOutput {
 
 	/**
 	 * Sets a value that turns the "S" input to the circuit on or off.
-	 * 
+	 *
 	 * @param value
 	 *            true to turn the input on; false to turn it off.
 	 */

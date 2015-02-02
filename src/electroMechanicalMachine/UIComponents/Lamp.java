@@ -57,11 +57,6 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 		return LampUI.UI_CLASS_ID;
 	}
 
-	private void init(final ILampModel newModel) {
-		setModel(newModel);
-		updateUI();
-	}
-
 	public boolean isOn() {
 		return model.isOn();
 	}
@@ -106,5 +101,10 @@ public class Lamp extends JComponent implements PropertyChangeListener {
 			setUI(new BasicLampUI());
 		}
 		invalidate();
+	}
+
+	private void init(final ILampModel newModel) {
+		setModel(newModel);
+		updateUI();
 	}
 }

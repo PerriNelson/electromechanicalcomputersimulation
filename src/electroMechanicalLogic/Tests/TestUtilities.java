@@ -102,18 +102,6 @@ public class TestUtilities {
 		target.setAF((address & bitF) == bitF ? on : off);
 	}
 
-	public static void setDataIn(final IEightBitDataInput target,
-			final int value) {
-		target.setDI0((value & bit0) == bit0);
-		target.setDI1((value & bit1) == bit1);
-		target.setDI2((value & bit2) == bit2);
-		target.setDI3((value & bit3) == bit3);
-		target.setDI4((value & bit4) == bit4);
-		target.setDI5((value & bit5) == bit5);
-		target.setDI6((value & bit6) == bit6);
-		target.setDI7((value & bit7) == bit7);
-	}
-
 	public static void setAIn(final IEightBitAInput target, final int value) {
 		target.setA0((value & bit0) == bit0);
 		target.setA1((value & bit1) == bit1);
@@ -134,6 +122,18 @@ public class TestUtilities {
 		target.setB5((value & bit5) == bit5);
 		target.setB6((value & bit6) == bit6);
 		target.setB7((value & bit7) == bit7);
+	}
+
+	public static void setDataIn(final IEightBitDataInput target,
+			final int value) {
+		target.setDI0((value & bit0) == bit0);
+		target.setDI1((value & bit1) == bit1);
+		target.setDI2((value & bit2) == bit2);
+		target.setDI3((value & bit3) == bit3);
+		target.setDI4((value & bit4) == bit4);
+		target.setDI5((value & bit5) == bit5);
+		target.setDI6((value & bit6) == bit6);
+		target.setDI7((value & bit7) == bit7);
 	}
 
 }

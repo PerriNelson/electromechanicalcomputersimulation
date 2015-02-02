@@ -28,6 +28,16 @@ public class MarkVIIIInstructionDecoder extends MarkVIIInstructionDecoder
 	}
 
 	@Override
+	public boolean getAddWithCarry() {
+		return addWithCarry.getOutput();
+	}
+
+	@Override
+	public boolean getSubtractWithBorrow() {
+		return subtractWithBorrow.getOutput();
+	}
+
+	@Override
 	public void setDI0(final boolean value) {
 		super.setDI0(value);
 		addWithCarry.setDI0(value);
@@ -80,16 +90,6 @@ public class MarkVIIIInstructionDecoder extends MarkVIIInstructionDecoder
 		ci1Bar.setPower(value);
 		addWithCarry.setPower(value);
 		subtractWithBorrow.setPower(value);
-	}
-
-	@Override
-	public boolean getAddWithCarry() {
-		return addWithCarry.getOutput();
-	}
-
-	@Override
-	public boolean getSubtractWithBorrow() {
-		return subtractWithBorrow.getOutput();
 	}
 
 	@Override

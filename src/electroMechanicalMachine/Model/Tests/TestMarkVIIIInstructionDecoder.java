@@ -23,15 +23,34 @@ public class TestMarkVIIIInstructionDecoder extends
 	private static final int addWithCarryCode = 0x22;
 	private static final int subtractWithBorrowCode = 0x23;
 
-	private IMarkVIIIInstructionDecoder getSystemUnderTest() {
-		return (IMarkVIIIInstructionDecoder) systemUnderTest;
-	}
-
 	@Before
 	@Override
 	public void Setup() {
 		systemUnderTest = new MarkVIIIInstructionDecoder();
 		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public void test_WhenCodeIsAddWithCarry_getAddWithCarry_ReturnsTrue() {
+		setCode(addWithCarryCode);
+		systemUnderTest.step();
+
+		assertTrue(getSystemUnderTest().getAddWithCarry());
+	}
+
+	@Test
+	public void test_WhenCodeIsNotAddWithCarry_getAddWithCarry_ReturnsFalse() {
+		for (int code = 0; code < 256; code++) {
+			if (code == addWithCarryCode) {
+				continue;
+			}
+
+			setCode(code);
+			systemUnderTest.step();
+
+			assertFalse(String.format("code == %d", code), getSystemUnderTest()
+					.getAddWithCarry());
+		}
 	}
 
 	@Test
@@ -57,27 +76,8 @@ public class TestMarkVIIIInstructionDecoder extends
 		assertTrue(getSystemUnderTest().getSubtractWithBorrow());
 	}
 
-	@Test
-	public void test_WhenCodeIsNotAddWithCarry_getAddWithCarry_ReturnsFalse() {
-		for (int code = 0; code < 256; code++) {
-			if (code == addWithCarryCode) {
-				continue;
-			}
-
-			setCode(code);
-			systemUnderTest.step();
-
-			assertFalse(String.format("code == %d", code), getSystemUnderTest()
-					.getAddWithCarry());
-		}
-	}
-
-	@Test
-	public void test_WhenCodeIsAddWithCarry_getAddWithCarry_ReturnsTrue() {
-		setCode(addWithCarryCode);
-		systemUnderTest.step();
-
-		assertTrue(getSystemUnderTest().getAddWithCarry());
+	private IMarkVIIIInstructionDecoder getSystemUnderTest() {
+		return (IMarkVIIIInstructionDecoder) systemUnderTest;
 	}
 
 }

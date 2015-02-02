@@ -18,23 +18,23 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 
 public class FullAdderDemo extends ControlPanel implements
 		PropertyChangeListener {
-	public static final long serialVersionUID = 1l;
-
-	private static final String powerOutPropertyName = "powerOut";
-
-	private static final int labelRow = 1;
-	private static final int controlRow = 0;
-
-	private static final int columnA = 1;
-	private static final int columnB = 2;
-	private static final int columnCI = 0;
-	private static final int columnCO = 3;
-	private static final int columnS = 4;
-
 	public static void main(final String[] args) {
 		final FullAdderDemo frame = new FullAdderDemo();
 		frame.setVisible(true);
 	}
+
+	public static final long serialVersionUID = 1l;
+
+	private static final String powerOutPropertyName = "powerOut";
+	private static final int labelRow = 1;
+
+	private static final int controlRow = 0;
+	private static final int columnA = 1;
+	private static final int columnB = 2;
+	private static final int columnCI = 0;
+	private static final int columnCO = 3;
+
+	private static final int columnS = 4;
 
 	private final ToggleSwitch toggleSwitchCI;
 	private final ToggleSwitch toggleSwitchA;
@@ -67,13 +67,6 @@ public class FullAdderDemo extends ControlPanel implements
 	}
 
 	@Override
-	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
-		return toggleSwitch;
-	}
-
-	@Override
 	public void propertyChange(final PropertyChangeEvent evt) {
 		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
 			if (evt.getSource() == toggleSwitchCI) {
@@ -87,14 +80,21 @@ public class FullAdderDemo extends ControlPanel implements
 	}
 
 	@Override
-	protected void setTitle() {
-		placeTitleLabel(" Full Adder Demo ", "Labels/FullAdderDemoLabel.jpg");
-
-	}
-
-	@Override
 	protected void onModelUpdated() {
 		lampCO.setOn(fullAdder.getCO());
 		lampS.setOn(fullAdder.getS());
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
+		toggleSwitch.addPropertyChangeListener(this);
+		return toggleSwitch;
+	}
+
+	@Override
+	protected void setTitle() {
+		placeTitleLabel(" Full Adder Demo ", "Labels/FullAdderDemoLabel.jpg");
+
 	}
 }

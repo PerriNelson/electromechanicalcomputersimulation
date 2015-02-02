@@ -46,23 +46,6 @@ public class SwitchModel implements ISwitchModel {
 		eventListeners.add(PropertyChangeListener.class, listener);
 	}
 
-	protected void fireOnPropertyChange(final String propertyName,
-			final Object oldValue, final Object newValue) {
-		PropertyChangeEvent propertyChangeEvent = null;
-
-		final Object[] listeners = eventListeners.getListenerList();
-		for (int index = listeners.length - 2; index >= 0; index -= 2) {
-			if (listeners[index] == PropertyChangeListener.class) {
-				if (propertyChangeEvent == null) {
-					propertyChangeEvent = new PropertyChangeEvent(this,
-							propertyName, oldValue, newValue);
-				}
-				((PropertyChangeListener) listeners[index + 1])
-						.propertyChange(propertyChangeEvent);
-			}
-		}
-	}
-
 	@Override
 	public PowerState getPowerOut() {
 		return closed ? powerState : PowerState.off;
@@ -106,6 +89,23 @@ public class SwitchModel implements ISwitchModel {
 			powerState = newValue;
 			if (closed) {
 				fireOnPropertyChange(powerOutPropertyName, oldValue, newValue);
+			}
+		}
+	}
+
+	protected void fireOnPropertyChange(final String propertyName,
+			final Object oldValue, final Object newValue) {
+		PropertyChangeEvent propertyChangeEvent = null;
+
+		final Object[] listeners = eventListeners.getListenerList();
+		for (int index = listeners.length - 2; index >= 0; index -= 2) {
+			if (listeners[index] == PropertyChangeListener.class) {
+				if (propertyChangeEvent == null) {
+					propertyChangeEvent = new PropertyChangeEvent(this,
+							propertyName, oldValue, newValue);
+				}
+				((PropertyChangeListener) listeners[index + 1])
+						.propertyChange(propertyChangeEvent);
 			}
 		}
 	}

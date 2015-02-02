@@ -19,7 +19,7 @@ public interface IHalfAdder extends ISimulatedCircuit {
 	/**
 	 * Gets a value indicating whether the addition of the two binary inputs
 	 * produced a carry bit or not.
-	 * 
+	 *
 	 * @return true indicates that the addition of the two binary digits
 	 *         resulted in a carry; false indicates that it did not.
 	 */
@@ -28,7 +28,7 @@ public interface IHalfAdder extends ISimulatedCircuit {
 	/**
 	 * Gets a value containing the sum of the two binary inputs without the
 	 * carry bit.
-	 * 
+	 *
 	 * @return true indicates that the sum is one; false indicates that it is
 	 *         zero.
 	 */
@@ -36,7 +36,7 @@ public interface IHalfAdder extends ISimulatedCircuit {
 
 	/**
 	 * Sets a value representing the first of the two binary digits to be added.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that the binary digit is a one; false to
 	 *            indicate that it is a zero.
@@ -46,7 +46,7 @@ public interface IHalfAdder extends ISimulatedCircuit {
 	/**
 	 * Sets a value representing the second of the two binary digits to be
 	 * added.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that the binary digit is a one; false to
 	 *            indicate that it is a zero.

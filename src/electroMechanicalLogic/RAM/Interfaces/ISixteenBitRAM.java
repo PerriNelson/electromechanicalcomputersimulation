@@ -8,8 +8,6 @@
 
 package electroMechanicalLogic.RAM.Interfaces;
 
-
-public interface ISixteenBitRAM extends
-		IEightBitRAM {
+public interface ISixteenBitRAM extends IEightBitRAM {
 	public abstract void setA3(boolean value);
 }

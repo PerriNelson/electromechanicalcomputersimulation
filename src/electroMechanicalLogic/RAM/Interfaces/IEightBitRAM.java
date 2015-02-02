@@ -18,7 +18,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	/**
 	 * Gets a value indicating whether power is flowing from the "DO" terminal
 	 * of the circuit or not.
-	 * 
+	 *
 	 * @return true indicates that power is flowing from the terminal; false
 	 *         indicates that it is not.
 	 */
@@ -28,7 +28,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	 * Sets a value indicating whether power is flowing to the "A0" terminal of
 	 * the circuit or not. The "A0" terminal represents bit 0 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -39,7 +39,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	 * Sets a value indicating whether power is flowing to the "A1" terminal of
 	 * the circuit or not. The "A1" terminal represents bit 1 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -50,7 +50,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	 * Sets a value indicating whether power is flowing to the "A2" terminal of
 	 * the circuit or not. The "A2" terminal represents bit 2 of the address to
 	 * the RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -61,7 +61,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	 * Sets a value indicating whether power is flowing to the "DI" terminal of
 	 * the circuit or not. The "DI" terminal represents the data input to the
 	 * RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
@@ -72,7 +72,7 @@ public interface IEightBitRAM extends ISimulatedCircuit {
 	 * Sets a value indicating whether power is flowing to the "W" terminal of
 	 * the circuit or not. The "W" terminal represents the write signal to the
 	 * RAM.
-	 * 
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
