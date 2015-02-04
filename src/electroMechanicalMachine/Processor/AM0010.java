@@ -171,6 +171,11 @@ public class AM0010 implements IProcessor {
 	}
 
 	@Override
+	public boolean getHalt() {
+		return instructionDecoder.getHalt();
+	}
+
+	@Override
 	public boolean getWrite() {
 		return write.getOutput();
 	}
@@ -267,6 +272,7 @@ public class AM0010 implements IProcessor {
 
 	@Override
 	public void step() {
+		instructionTimer.setHalt(instructionDecoder.getHalt());
 		instructionTimer.step();
 		stepInstructionLatch();
 		stepInstructionDecoder();
