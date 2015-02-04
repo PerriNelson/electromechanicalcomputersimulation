@@ -11,20 +11,21 @@ package electroMechanicalMachine.Processor.Tests;
 import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalLogic.Tests.TestUtilities.getAddress;
+import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalMachine.Processor.BasicProgramCounter;
-import electroMechanicalMachine.Processor.Interfaces.IProgramCounter;
+import electroMechanicalMachine.Processor.SetableProgramCounter;
+import electroMechanicalMachine.Processor.Interfaces.ISetableProgramCounter;
 
-public class TestBasicProgramCounter {
-	protected IProgramCounter systemUnderTest;
+public class TestSetableProgramCounter extends TestBasicProgramCounter {
 
+	@Override
 	@Before
 	public void setUp() {
-		systemUnderTest = new BasicProgramCounter();
+		systemUnderTest = new SetableProgramCounter();
 		systemUnderTest.setPower(on);
 		systemUnderTest.setReset(on);
 		systemUnderTest.step();
@@ -32,28 +33,22 @@ public class TestBasicProgramCounter {
 	}
 
 	@Test
-	public void testCounter_shouldNotAdvance_whenResetIsOn() {
-		systemUnderTest.setReset(on);
-		for (int address = 0; address < 2; address++) {
-			assertEquals(0, getAddress(systemUnderTest));
-			performOneClockCycle();
-		}
+	public void testCounter_shouldResumeCountingFromSetAddress_whenAddressHasBeenSet() {
+		setAddress((ISetableProgramCounter) systemUnderTest, 0xaaaa);
+		((ISetableProgramCounter) systemUnderTest).setSet(on);
+		performOneClockCycle();
+		((ISetableProgramCounter) systemUnderTest).setSet(off);
+		performOneClockCycle();
+		assertEquals(0xaaab, getAddress(systemUnderTest));
 	}
 
 	@Test
-	public void testCounter_countsTo65536AndRollsOver_through65537ClockCycles() {
+	public void testCounter_shouldReturnAddressSet_whenAddressIsSetForAllPossibleAddresses() {
 		for (int address = 0; address < 65536; address++) {
+			setAddress((ISetableProgramCounter) systemUnderTest, address);
+			((ISetableProgramCounter) systemUnderTest).setSet(on);
+			systemUnderTest.step();
 			assertEquals(address, getAddress(systemUnderTest));
-			performOneClockCycle();
 		}
-		assertEquals(0, getAddress(systemUnderTest));
-	}
-
-	protected void performOneClockCycle() {
-		systemUnderTest.setClock(off);
-		systemUnderTest.step();
-
-		systemUnderTest.setClock(on);
-		systemUnderTest.step();
 	}
 }
