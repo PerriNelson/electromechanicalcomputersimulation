@@ -6,19 +6,19 @@
   USA.
  */
 
-package electroMechanicalMachine.Processor.Interfaces;
+package electroMechanicalMachine.Model.Interfaces;
 
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
-import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
+import electroMechanicalMachine.Processor.Interfaces.IResetable;
 
 /**
- * A processor is a device driven by a clock that can access an external memory
- * both to read from it and to write to it.
+ * A basic processing machine.
  */
-public interface IProcessor extends ISimulatedCircuit, IEightBitDataInput,
-		IEightBitDataOutput, IResetable, ISixteenBitAOutput {
+public interface IProcessingMachineModel extends IEightBitDataInput,
+		IEightBitDataOutput, IResetable, ISimulatedCircuit, ISixteenBitAInput {
 
 	/**
 	 * Gets a value indicating whether power is flowing from the "Halt" output
@@ -31,22 +31,24 @@ public interface IProcessor extends ISimulatedCircuit, IEightBitDataInput,
 	public abstract boolean getHalt();
 
 	/**
-	 * Gets a value indicating whether power is flowing from the "Write" output
-	 * terminal of the processor.
-	 * 
-	 * @return true to indicate that power is flowing from the terminal; false
-	 *         otherwise.
-	 */
-	public abstract boolean getWrite();
-
-	/**
-	 * Sets a value indicating whether power is flowing to the "Clock" input
-	 * terminal of the processor or not.
-	 * 
+	 * sets a value indicating whether power is flowing to the "Takeover" input
+	 * terminal of the machine. When power is flowing to this terminal, the
+	 * machine should respond to its data, write, and address inputs.
+	 *
 	 * @param value
 	 *            true to indicate that power is flowing to the terminal; false
 	 *            otherwise.
 	 */
-	public abstract void setClock(boolean value);
+	public abstract void setTakeover(boolean value);
+
+	/**
+	 * sets a value indicating whether power is flowing to the "Write" input
+	 * terminal of the machine.
+	 *
+	 * @param value
+	 *            true to indicate that power is flowing to the terminal; false
+	 *            otherwise.
+	 */
+	public abstract void setWrite(boolean value);
 
 }
