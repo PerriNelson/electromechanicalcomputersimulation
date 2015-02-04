@@ -20,6 +20,7 @@ import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.SUB;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -44,7 +45,7 @@ public class TestAM0010 {
 	}
 
 	@Test
-	public void testAM0010_shouldGiveExpectedResults_forExampleProgramFromBook() {
+	public void testAM0010_shouldGiveExpectedResults_forSecondMarkIXExampleProgramFromBook() {
 		final int[] code = { LOD, 0x40, 0x01, ADD, 0x40, 0x03, STO, 0x40, 0x05,
 				LOD, 0x40, 0x00, ADC, 0x40, 0x02, STO, 0x40, 0x04, HALT };
 		final int[] data = { 0x76, 0xab, 0x23, 0x2c };
@@ -60,6 +61,28 @@ public class TestAM0010 {
 		}
 
 		readRam(0x4004, actualValues);
+		for (int i = 0; i < expectedValues.length; i++) {
+			assertEquals(expectedValues[i], actualValues[i]);
+		}
+	}
+
+	@Test
+	public void testAM0010_shouldGiveExpectedResults_forMarkXXExampleProgramFromBook() {
+		final int[] code = { LOD, 00, 0x10, ADD, 0x00, 0x11, SUB, 0x00, 0x12,
+				STO, 0x00, 0x13, HALT };
+		final int[] data = { 0x45, 0xa9, 0x8e };
+		final int[] expectedValues = new int[] { 0x60 };
+		int[] actualValues = new int[expectedValues.length];
+
+		loadRam(0, code);
+		loadRam(0x0010, data);
+
+		systemUnderTest.setReset(off);
+		for (int step = 0; step < (code.length * 4) / 3; step++) {
+			performOneClockCycle();
+		}
+
+		readRam(0x0013, actualValues);
 		for (int i = 0; i < expectedValues.length; i++) {
 			assertEquals(expectedValues[i], actualValues[i]);
 		}
