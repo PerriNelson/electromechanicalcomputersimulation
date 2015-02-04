@@ -28,6 +28,8 @@ import static electroMechanicalLogic.Tests.TestConstants.off;
 import static electroMechanicalLogic.Tests.TestConstants.on;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
@@ -54,6 +56,19 @@ public class TestUtilities {
 		address |= (source.getAE() ? bitE : 0);
 		address |= (source.getAF() ? bitF : 0);
 		return address;
+	}
+
+	public static int getCode(final IEightBitCOutput source) {
+		int code = 0;
+		code |= source.getC0() ? bit0 : 0;
+		code |= source.getC1() ? bit1 : 0;
+		code |= source.getC2() ? bit2 : 0;
+		code |= source.getC3() ? bit3 : 0;
+		code |= source.getC4() ? bit4 : 0;
+		code |= source.getC5() ? bit5 : 0;
+		code |= source.getC6() ? bit6 : 0;
+		code |= source.getC7() ? bit7 : 0;
+		return code;
 	}
 
 	public static int getDataOut(final IEightBitDataOutput source) {
@@ -122,6 +137,17 @@ public class TestUtilities {
 		target.setB5((value & bit5) == bit5);
 		target.setB6((value & bit6) == bit6);
 		target.setB7((value & bit7) == bit7);
+	}
+
+	public static void setCode(final IEightBitCInput target, final int value) {
+		target.setC0((value & bit0) == bit0);
+		target.setC1((value & bit1) == bit1);
+		target.setC2((value & bit2) == bit2);
+		target.setC3((value & bit3) == bit3);
+		target.setC4((value & bit4) == bit4);
+		target.setC5((value & bit5) == bit5);
+		target.setC6((value & bit6) == bit6);
+		target.setC7((value & bit7) == bit7);
 	}
 
 	public static void setDataIn(final IEightBitDataInput target,
