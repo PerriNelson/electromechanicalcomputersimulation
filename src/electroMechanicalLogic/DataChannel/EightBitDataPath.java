@@ -12,6 +12,8 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitAOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCInput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
@@ -165,6 +167,27 @@ public class EightBitDataPath {
 		target.setDI5(source.getS5());
 		target.setDI6(source.getS6());
 		target.setDI7(source.getS7());
+	}
+
+	/**
+	 * Connects an eight bit "C" output to an eight it "C" input.
+	 *
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitCOutputToEightBitCInput(
+			final IEightBitCOutput source, final IEightBitCInput target) {
+		target.setC0(source.getC0());
+		target.setC1(source.getC1());
+		target.setC2(source.getC2());
+		target.setC3(source.getC3());
+		target.setC4(source.getC4());
+		target.setC5(source.getC5());
+		target.setC6(source.getC6());
+		target.setC7(source.getC7());
 	}
 
 }
