@@ -23,8 +23,7 @@ import electroMechanicalMachine.UIComponents.Interfaces.PowerState;
 /**
  * A base class for processing machine control panels.
  */
-public abstract class ProcessingMachineControlPanel extends ControlPanel
-		implements PropertyChangeListener {
+public abstract class ProcessingMachineControlPanel extends ControlPanel {
 	public static final long serialVersionUID = 1l;
 
 	private static final String powerOutPropertyName = "powerOut";
@@ -93,6 +92,71 @@ public abstract class ProcessingMachineControlPanel extends ControlPanel
 	protected IProcessingMachineModel model;
 	protected ISimulationDriver automationDriver;
 
+	private final PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(final PropertyChangeEvent evt) {
+			final Object source = evt.getSource();
+			if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
+				final Boolean value = PowerState.on == evt.getNewValue();
+				if (source == resetSwitch) {
+					model.setReset(value);
+				} else if (source == addressSwitch0) {
+					model.setA0(value);
+				} else if (source == addressSwitch1) {
+					model.setA1(value);
+				} else if (source == addressSwitch2) {
+					model.setA2(value);
+				} else if (source == addressSwitch3) {
+					model.setA3(value);
+				} else if (source == addressSwitch4) {
+					model.setA4(value);
+				} else if (source == addressSwitch5) {
+					model.setA5(value);
+				} else if (source == addressSwitch6) {
+					model.setA6(value);
+				} else if (source == addressSwitch7) {
+					model.setA7(value);
+				} else if (source == addressSwitch8) {
+					model.setA8(value);
+				} else if (source == addressSwitch9) {
+					model.setA9(value);
+				} else if (source == addressSwitchA) {
+					model.setAA(value);
+				} else if (source == addressSwitchB) {
+					model.setAB(value);
+				} else if (source == addressSwitchC) {
+					model.setAC(value);
+				} else if (source == addressSwitchD) {
+					model.setAD(value);
+				} else if (source == addressSwitchE) {
+					model.setAE(value);
+				} else if (source == addressSwitchF) {
+					model.setAF(value);
+				} else if (source == dataSwitch0) {
+					model.setDI0(value);
+				} else if (source == dataSwitch1) {
+					model.setDI1(value);
+				} else if (source == dataSwitch2) {
+					model.setDI2(value);
+				} else if (source == dataSwitch3) {
+					model.setDI3(value);
+				} else if (source == dataSwitch4) {
+					model.setDI4(value);
+				} else if (source == dataSwitch5) {
+					model.setDI5(value);
+				} else if (source == dataSwitch6) {
+					model.setDI6(value);
+				} else if (source == dataSwitch7) {
+					model.setDI7(value);
+				} else if (source == write) {
+					model.setWrite(value);
+				} else if (source == takeOver) {
+					model.setTakeover(value);
+				}
+			}
+		};
+	};
+
 	protected ProcessingMachineControlPanel(final String caption,
 			final IProcessor processor, final ISixtyFourKilobyteRAM ram) {
 		super(caption);
@@ -102,69 +166,6 @@ public abstract class ProcessingMachineControlPanel extends ControlPanel
 		model.setPower(true);
 
 		runSimulation(model, 10);
-	}
-
-	@Override
-	public void propertyChange(final PropertyChangeEvent evt) {
-		final Object source = evt.getSource();
-		if (powerOutPropertyName.equalsIgnoreCase(evt.getPropertyName())) {
-			final Boolean value = PowerState.on == evt.getNewValue();
-			if (source == resetSwitch) {
-				model.setReset(value);
-			} else if (source == addressSwitch0) {
-				model.setA0(value);
-			} else if (source == addressSwitch1) {
-				model.setA1(value);
-			} else if (source == addressSwitch2) {
-				model.setA2(value);
-			} else if (source == addressSwitch3) {
-				model.setA3(value);
-			} else if (source == addressSwitch4) {
-				model.setA4(value);
-			} else if (source == addressSwitch5) {
-				model.setA5(value);
-			} else if (source == addressSwitch6) {
-				model.setA6(value);
-			} else if (source == addressSwitch7) {
-				model.setA7(value);
-			} else if (source == addressSwitch8) {
-				model.setA8(value);
-			} else if (source == addressSwitch9) {
-				model.setA9(value);
-			} else if (source == addressSwitchA) {
-				model.setAA(value);
-			} else if (source == addressSwitchB) {
-				model.setAB(value);
-			} else if (source == addressSwitchC) {
-				model.setAC(value);
-			} else if (source == addressSwitchD) {
-				model.setAD(value);
-			} else if (source == addressSwitchE) {
-				model.setAE(value);
-			} else if (source == addressSwitchF) {
-				model.setAF(value);
-			} else if (source == dataSwitch0) {
-				model.setDI0(value);
-			} else if (source == dataSwitch1) {
-				model.setDI1(value);
-			} else if (source == dataSwitch2) {
-				model.setDI2(value);
-			} else if (source == dataSwitch3) {
-				model.setDI3(value);
-			} else if (source == dataSwitch4) {
-				model.setDI4(value);
-			} else if (source == dataSwitch5) {
-				model.setDI5(value);
-			} else if (source == dataSwitch6) {
-				model.setDI6(value);
-			} else if (source == dataSwitch7) {
-				model.setDI7(value);
-			} else if (source == write) {
-				model.setWrite(value);
-			} else if (source == takeOver) {
-				model.setTakeover(value);
-			}
-		}
 	}
 
 	private void placeControls() {
@@ -259,8 +260,16 @@ public abstract class ProcessingMachineControlPanel extends ControlPanel
 
 	@Override
 	protected ToggleSwitch placeToggleSwitch(final int column, final int row) {
-		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row);
-		toggleSwitch.addPropertyChangeListener(this);
+		return placeToggleSwitch(column, row, 1);
+	}
+
+	@Override
+	protected ToggleSwitch placeToggleSwitch(final int column, final int row,
+			final int columns) {
+		final ToggleSwitch toggleSwitch = super.placeToggleSwitch(column, row,
+				columns);
+		toggleSwitch.addPropertyChangeListener(propertyChangeListener);
 		return toggleSwitch;
 	}
+
 }

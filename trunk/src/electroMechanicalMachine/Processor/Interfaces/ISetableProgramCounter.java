@@ -25,5 +25,5 @@ public interface ISetableProgramCounter extends IProgramCounter,
 	 *            ; true to indicate that power is flowing to the terminal;
 	 *            false otherwise.
 	 */
-	public abstract void setSet(boolean value);
+	public abstract void setJump(boolean value);
 }

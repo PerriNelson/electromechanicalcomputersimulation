@@ -10,30 +10,30 @@ package electroMechanicalMachine;
 
 import electroMechanicalLogic.RAM.Fast.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
-import electroMechanicalMachine.Processor.AM0010;
+import electroMechanicalMachine.Processor.AM0011;
 import electroMechanicalMachine.Processor.Interfaces.IProcessor;
 
-public class AddingMachineMarkX extends ProcessingMachineControlPanel {
+public class AddingMachineMarkXI extends ProcessingMachineControlPanel {
 	public static void main(final String[] args) {
-		final AddingMachineMarkX frame = new AddingMachineMarkX();
+		final AddingMachineMarkXI frame = new AddingMachineMarkXI();
 		frame.setVisible(true);
 	}
 
 	private static final long serialVersionUID = 1L;
 
-	public AddingMachineMarkX() {
-		this("Adding Machine Mark X", new AM0010(), new SixtyFourKilobyteRAM());
+	public AddingMachineMarkXI() {
+		this("Adding Machine Mark XI", new AM0011(), new SixtyFourKilobyteRAM());
 	}
 
-	protected AddingMachineMarkX(String caption, IProcessor processor,
+	protected AddingMachineMarkXI(String caption, IProcessor processor,
 			ISixtyFourKilobyteRAM ram) {
 		super(caption, processor, ram);
 	}
 
 	@Override
 	protected void setTitle() {
-		placeTitleLabel(" Adding Machine Mark X ",
-				"Labels/AddingMachineMarkXLabel.jpg");
+		placeTitleLabel(" Adding Machine Mark XI ",
+				"Labels/AddingMachineMarkXILabel.jpg");
 	}
 
 }
