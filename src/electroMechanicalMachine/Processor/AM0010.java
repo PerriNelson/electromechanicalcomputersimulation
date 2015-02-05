@@ -37,18 +37,28 @@ public class AM0010 implements IProcessor {
 	private final IRegister accumulator = new Register();
 	private final IArithmeticLogicUnit alu = new BasicALU();
 	private final IEightBitTwoToOneSelector loadSelect = new EightBitTwoToOneSelector();
-	private final IProgramCounter programCounter = new BasicProgramCounter();
-	private final IInstructionDecoder instructionDecoder = new BasicInstructionDecoder();
-	private final IInstructionLatch instructionLatch = new InstructionLatch();
+	protected final IProgramCounter programCounter;
+	protected final IInstructionDecoder instructionDecoder;
+	protected final IInstructionLatch instructionLatch = new InstructionLatch();
 	private final IEightBitTwoToOneSelector addressHigh = new EightBitTwoToOneSelector();
 	private final IEightBitTwoToOneSelector addressLow = new EightBitTwoToOneSelector();
-	private final IInstructionTimer instructionTimer = new BasicInstructionTimer();
+	protected final IInstructionTimer instructionTimer = new BasicInstructionTimer();
 	private final IThreeInputSingleOutputGate instructionFetch = new ThreeInputOR();
 	private final ITwoInputSingleOutputGate clockToCounter = new TwoInputAND();
 	private final IEightInputSingleOutputGate instructionWritesToAccumulator = new EightInputOR();
 	private final ITwoInputSingleOutputGate writeToAccumulator = new TwoInputAND();
-	private final ITwoInputSingleOutputGate fetchAddressLowAndClockBar = new TwoInputAND();
+	protected final ITwoInputSingleOutputGate addressHasBeenLatched = new TwoInputAND();
 	private final ITwoInputSingleOutputGate write = new TwoInputAND();
+
+	public AM0010() {
+		this(new BasicProgramCounter(), new BasicInstructionDecoder());
+	}
+
+	protected AM0010(IProgramCounter programCounter,
+			IInstructionDecoder instructionDecoder) {
+		this.programCounter = programCounter;
+		this.instructionDecoder = instructionDecoder;
+	}
 
 	@Override
 	public boolean getA0() {
@@ -256,9 +266,8 @@ public class AM0010 implements IProcessor {
 		write.setPower(value);
 		instructionWritesToAccumulator.setPower(value);
 		writeToAccumulator.setPower(value);
-		fetchAddressLowAndClockBar.setPower(value);
+		addressHasBeenLatched.setPower(value);
 		instructionFetch.setPower(value);
-		;
 	}
 
 	@Override
@@ -278,8 +287,15 @@ public class AM0010 implements IProcessor {
 		stepInstructionDecoder();
 		stepALU();
 		stepAccumulator();
+		stepAddressHasBeenLatched();
 		stepProgramCounter();
 		expressOutputs();
+	}
+
+	private void stepAddressHasBeenLatched() {
+		addressHasBeenLatched.setA(instructionTimer.getFetchAddressLow());
+		addressHasBeenLatched.setB(instructionTimer.getClockBar());
+		addressHasBeenLatched.step();
 	}
 
 	private void expressOutputs() {
@@ -288,16 +304,12 @@ public class AM0010 implements IProcessor {
 		connectSixteenBitAOutputToTwoEightBitBInputs(instructionLatch,
 				addressLow, addressHigh);
 
-		fetchAddressLowAndClockBar.setA(instructionTimer.getFetchAddressLow());
-		fetchAddressLowAndClockBar.setB(instructionTimer.getClockBar());
-		fetchAddressLowAndClockBar.step();
-
 		addressLow.setSelect(instructionTimer.getFetchAddressLow());
 		addressLow.step();
 		addressHigh.setSelect(instructionTimer.getFetchAddressLow());
 		addressHigh.step();
 
-		write.setA(fetchAddressLowAndClockBar.getOutput());
+		write.setA(addressHasBeenLatched.getOutput());
 		write.setB(instructionDecoder.getStore());
 		write.step();
 	}
@@ -348,7 +360,7 @@ public class AM0010 implements IProcessor {
 		instructionLatch.step();
 	}
 
-	private void stepProgramCounter() {
+	protected void stepProgramCounter() {
 		instructionFetch.setA(instructionTimer.getFetchCode());
 		instructionFetch.setB(instructionTimer.getFetchAddressHigh());
 		instructionFetch.setC(instructionTimer.getFetchAddressLow());

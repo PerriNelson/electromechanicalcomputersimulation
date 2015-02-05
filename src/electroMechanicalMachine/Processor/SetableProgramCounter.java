@@ -301,7 +301,7 @@ public class SetableProgramCounter implements ISetableProgramCounter {
 	}
 
 	@Override
-	public void setSet(boolean value) {
+	public void setJump(boolean value) {
 		a0.setSet(value);
 		a1.setSet(value);
 		a2.setSet(value);

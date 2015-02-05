@@ -35,9 +35,9 @@ public class TestSetableProgramCounter extends TestBasicProgramCounter {
 	@Test
 	public void testCounter_shouldResumeCountingFromSetAddress_whenAddressHasBeenSet() {
 		setAddress((ISetableProgramCounter) systemUnderTest, 0xaaaa);
-		((ISetableProgramCounter) systemUnderTest).setSet(on);
+		((ISetableProgramCounter) systemUnderTest).setJump(on);
 		performOneClockCycle();
-		((ISetableProgramCounter) systemUnderTest).setSet(off);
+		((ISetableProgramCounter) systemUnderTest).setJump(off);
 		performOneClockCycle();
 		assertEquals(0xaaab, getAddress(systemUnderTest));
 	}
@@ -46,7 +46,7 @@ public class TestSetableProgramCounter extends TestBasicProgramCounter {
 	public void testCounter_shouldReturnAddressSet_whenAddressIsSetForAllPossibleAddresses() {
 		for (int address = 0; address < 65536; address++) {
 			setAddress((ISetableProgramCounter) systemUnderTest, address);
-			((ISetableProgramCounter) systemUnderTest).setSet(on);
+			((ISetableProgramCounter) systemUnderTest).setJump(on);
 			systemUnderTest.step();
 			assertEquals(address, getAddress(systemUnderTest));
 		}

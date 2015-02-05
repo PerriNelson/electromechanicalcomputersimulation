@@ -44,6 +44,11 @@ public class InstructionSet {
 	public static final int SBB = 0x23;
 
 	/**
+	 * Jump to a new address (GO TO).
+	 */
+	public static final int JMP = 0x30;
+
+	/**
 	 * Halt the processor.
 	 */
 	public static final int HALT = 0xff;

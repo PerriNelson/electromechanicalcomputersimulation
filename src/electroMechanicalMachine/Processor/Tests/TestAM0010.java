@@ -31,17 +31,25 @@ import electroMechanicalMachine.Processor.AM0010;
 import electroMechanicalMachine.Processor.Interfaces.IProcessor;
 
 public class TestAM0010 {
-	private IProcessor systemUnderTest;
-	private SixtyFourKilobyteRAM ram;
+	protected IProcessor systemUnderTest;
+	protected SixtyFourKilobyteRAM ram;
 
 	@Before
 	public void setUp() {
-		systemUnderTest = new AM0010();
+		setProcessor();
 		systemUnderTest.setPower(on);
 		systemUnderTest.setReset(on);
 		systemUnderTest.step();
 		ram = new SixtyFourKilobyteRAM();
 		ram.setPower(on);
+	}
+
+	protected void setProcessor() {
+		setProcessor(new AM0010());
+	}
+
+	protected final void setProcessor(final IProcessor processor) {
+		systemUnderTest = processor;
 	}
 
 	@Test
@@ -55,10 +63,7 @@ public class TestAM0010 {
 		loadRam(0, code);
 		loadRam(0x4000, data);
 
-		systemUnderTest.setReset(off);
-		for (int step = 0; step < (code.length * 4) / 3; step++) {
-			performOneClockCycle();
-		}
+		runProgram();
 
 		readRam(0x4004, actualValues);
 		for (int i = 0; i < expectedValues.length; i++) {
@@ -67,7 +72,7 @@ public class TestAM0010 {
 	}
 
 	@Test
-	public void testAM0010_shouldGiveExpectedResults_forMarkXXExampleProgramFromBook() {
+	public void testAM0010_shouldGiveExpectedResults_forMarkXExampleProgramFromBook() {
 		final int[] code = { LOD, 00, 0x10, ADD, 0x00, 0x11, SUB, 0x00, 0x12,
 				STO, 0x00, 0x13, HALT };
 		final int[] data = { 0x45, 0xa9, 0x8e };
@@ -77,10 +82,7 @@ public class TestAM0010 {
 		loadRam(0, code);
 		loadRam(0x0010, data);
 
-		systemUnderTest.setReset(off);
-		for (int step = 0; step < (code.length * 4) / 3; step++) {
-			performOneClockCycle();
-		}
+		runProgram();
 
 		readRam(0x0013, actualValues);
 		for (int i = 0; i < expectedValues.length; i++) {
@@ -88,7 +90,14 @@ public class TestAM0010 {
 		}
 	}
 
-	private void performOneClockCycle() {
+	protected final void runProgram() {
+		systemUnderTest.setReset(off);
+		while (!systemUnderTest.getHalt()) {
+			performOneClockCycle();
+		}
+	}
+
+	protected final void performOneClockCycle() {
 		performOneStep(on);
 		performOneStep(off);
 	}
@@ -104,7 +113,7 @@ public class TestAM0010 {
 		systemUnderTest.step();
 	}
 
-	protected void loadRam(final int startAddress, final int[] input) {
+	protected final void loadRam(final int startAddress, final int[] input) {
 		ram.setW(on);
 		for (int index = 0; index < input.length; index++) {
 			setAddress(ram, startAddress + index);
@@ -114,7 +123,7 @@ public class TestAM0010 {
 		ram.setW(off);
 	}
 
-	protected void readRam(final int startAddress, final int[] output) {
+	protected final void readRam(final int startAddress, final int[] output) {
 		for (int index = 0; index < output.length; index++) {
 			setAddress(ram, startAddress + index);
 			ram.step();

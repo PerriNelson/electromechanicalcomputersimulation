@@ -34,7 +34,7 @@ import electroMechanicalMachine.Processor.BasicInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionDecoder;
 
 public class TestBasicInstructionDecoder {
-	private IInstructionDecoder systemUnderTest;
+	protected IInstructionDecoder systemUnderTest;
 
 	@Before
 	public void setUp() {
