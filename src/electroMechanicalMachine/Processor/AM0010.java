@@ -343,7 +343,8 @@ public class AM0010 implements IProcessor {
 		alu.setAddWithCarry(instructionDecoder.getAddWithCarry());
 		alu.setSubtract(instructionDecoder.getSubtract());
 		alu.setSubtractWithBorrow(instructionDecoder.getSubtractWithBorrow());
-		alu.setClock(instructionTimer.getExecute());
+		alu.setExecute(instructionTimer.getExecute());
+		alu.setClockBar(instructionTimer.getClockBar());
 		alu.step();
 	}
 

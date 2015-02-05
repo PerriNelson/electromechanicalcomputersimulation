@@ -22,12 +22,21 @@ import electroMechanicalMachine.Processor.BasicALU;
 import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
 
 public class TestBasicALU {
-	private IArithmeticLogicUnit systemUnderTest;
+	protected IArithmeticLogicUnit systemUnderTest;
 
 	@Before
 	public void setUp() {
-		systemUnderTest = new BasicALU();
+		setALU();
 		systemUnderTest.setPower(on);
+		systemUnderTest.setExecute(on);
+	}
+
+	protected void setALU() {
+		setALU(new BasicALU());
+	}
+
+	protected final void setALU(IArithmeticLogicUnit alu) {
+		systemUnderTest = alu;
 	}
 
 	@Test
@@ -106,11 +115,11 @@ public class TestBasicALU {
 		}
 	}
 
-	private void performOneClockCycle() {
-		systemUnderTest.setClock(on);
+	protected void performOneClockCycle() {
+		systemUnderTest.setClockBar(off);
 		systemUnderTest.step();
 
-		systemUnderTest.setClock(off);
+		systemUnderTest.setClockBar(on);
 		systemUnderTest.step();
 	}
 
