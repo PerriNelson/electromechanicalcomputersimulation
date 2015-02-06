@@ -9,15 +9,15 @@
 package electroMechanicalMachine.Processor;
 
 import electroMechanicalLogic.Gates.FourInputOR;
-import electroMechanicalLogic.Gates.ThreeInputAND;
+import electroMechanicalLogic.Gates.TwoInputAND;
 import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
-import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
+import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 import electroMechanicalMachine.Processor.Interfaces.IFlagControl;
 
 public class BasicFlagControl implements ISimulatedCircuit, IFlagControl {
 	private final IFourInputSingleOutputGate operationAffectsFlags = new FourInputOR();
-	private final IThreeInputSingleOutputGate latchFlags = new ThreeInputAND();
+	private final ITwoInputSingleOutputGate latchFlags = new TwoInputAND();
 
 	@Override
 	public boolean getLatchFlags() {
@@ -60,10 +60,5 @@ public class BasicFlagControl implements ISimulatedCircuit, IFlagControl {
 		operationAffectsFlags.step();
 		latchFlags.setA(operationAffectsFlags.getOutput());
 		latchFlags.step();
-	}
-
-	@Override
-	public void setClockBar(boolean value) {
-		latchFlags.setC(value);
 	}
 }

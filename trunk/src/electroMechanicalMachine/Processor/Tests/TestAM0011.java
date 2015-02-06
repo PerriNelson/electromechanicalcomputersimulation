@@ -9,7 +9,7 @@
 package electroMechanicalMachine.Processor.Tests;
 
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.JMP;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
@@ -32,7 +32,7 @@ public class TestAM0011 extends TestAM0010 {
 		final int[] code1 = { LOD, 00, 0x10, ADD, 0x00, 0x11, SUB, 0x00, 0x12,
 				STO, 0x00, 0x13, JMP, 0x00, 0x20 };
 		final int[] code2 = { LOD, 00, 0x13, ADD, 0x00, 0x30, ADD, 0x00, 0x31,
-				STO, 0x00, 0x32, HALT };
+				STO, 0x00, 0x32, HLT };
 		final int[] data1 = { 0x45, 0xa9, 0x8e };
 		final int[] data2 = { 0x43, 0x2f };
 		final int[] expectedValues = new int[] { 0xD2 };

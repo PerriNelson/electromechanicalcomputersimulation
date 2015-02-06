@@ -15,7 +15,7 @@ import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADC;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
 import static org.junit.Assert.assertEquals;
@@ -41,7 +41,7 @@ public class TestAddingMachineMarkIXModel {
 	@Test
 	public void testMachine_shouldProduceExpectedResults_whenRunningFirstExampleFromBook() {
 		final int[] code = { LOD, 0x00, 0x00, ADD, 0x00, 0x01, STO, 0x00, 0x02,
-				HALT };
+				HLT };
 		final int[] data = { 0x4a, 0xb5 };
 
 		loadCode(code);
@@ -54,7 +54,7 @@ public class TestAddingMachineMarkIXModel {
 	@Test
 	public void testMachine_shouldProduceExpectedResults_whenRunningSecondExampleFromBook() {
 		final int[] code = { LOD, 0x40, 0x01, ADD, 0x40, 0x03, STO, 0x40, 0x05,
-				LOD, 0x40, 0x00, ADC, 0x40, 0x02, STO, 0x40, 0x04, HALT };
+				LOD, 0x40, 0x00, ADC, 0x40, 0x02, STO, 0x40, 0x04, HLT };
 		final int[] data = { 0x76, 0xab, 0x23, 0x2c };
 
 		loadCode(code);
@@ -113,7 +113,7 @@ public class TestAddingMachineMarkIXModel {
 		systemUnderTest.setTakeover(off);
 		systemUnderTest.setUseCodePanel(on);
 		systemUnderTest.setReset(off);
-		while (HALT != getDataOut(systemUnderTest)) {
+		while (HLT != getDataOut(systemUnderTest)) {
 			performOneClockCycle();
 		}
 		systemUnderTest.setReset(on);

@@ -71,5 +71,5 @@ public class InstructionSet {
 	/**
 	 * Halt the processor.
 	 */
-	public static final int HALT = 0xff;
+	public static final int HLT = 0xff;
 }

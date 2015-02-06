@@ -13,7 +13,7 @@ import static electroMechanicalLogic.Tests.TestUtilities.getAddress;
 import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADC;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.SBB;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
@@ -113,7 +113,7 @@ public class TestMarkIXInstructionDecoder {
 	@Test
 	public void testGetHalt_shouldReturnFalse_whenDataInIsNotHALTAndfetchCodeTransitionsToOn() {
 		for (int code = 0; code < 256; code++) {
-			if (code == HALT) {
+			if (code == HLT) {
 				continue;
 			}
 			setDataIn(systemUnderTest, code);
@@ -125,7 +125,7 @@ public class TestMarkIXInstructionDecoder {
 
 	@Test
 	public void testGetHalt_shouldReturnTrue_whenDataInIsHALTAndfetchCodeTransitionsToOn() {
-		setDataIn(systemUnderTest, HALT);
+		setDataIn(systemUnderTest, HLT);
 		transitionFetchCodeOffToOn();
 
 		assertTrue(systemUnderTest.getHalt());

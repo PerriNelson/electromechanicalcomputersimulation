@@ -28,7 +28,6 @@ public class TestBasicALU {
 	public void setUp() {
 		setALU();
 		systemUnderTest.setPower(on);
-		systemUnderTest.setExecute(on);
 	}
 
 	protected void setALU() {
@@ -65,7 +64,7 @@ public class TestBasicALU {
 					setBIn(systemUnderTest, b);
 					setAIn(systemUnderTest, a);
 
-					performOneClockCycle();
+					performOneExecutionCycle();
 
 					assertEquals(
 							String.format("a = %d, b = %d, cf = %d", a, b, cf),
@@ -87,7 +86,7 @@ public class TestBasicALU {
 					setBIn(systemUnderTest, b);
 					setAIn(systemUnderTest, a);
 
-					performOneClockCycle();
+					performOneExecutionCycle();
 
 					assertEquals(
 							String.format("a = %d, b = %d, cf = %d", a, b, cf),
@@ -106,7 +105,7 @@ public class TestBasicALU {
 				setAIn(systemUnderTest, a);
 				setBIn(systemUnderTest, b);
 
-				performOneClockCycle();
+				performOneExecutionCycle();
 
 				assertEquals(String.format("a = %d, b = %d", a, b),
 						eightBitSubtract(a, b, false),
@@ -115,11 +114,11 @@ public class TestBasicALU {
 		}
 	}
 
-	protected void performOneClockCycle() {
-		systemUnderTest.setClockBar(off);
+	protected void performOneExecutionCycle() {
+		systemUnderTest.setExecute(off);
 		systemUnderTest.step();
 
-		systemUnderTest.setClockBar(on);
+		systemUnderTest.setExecute(on);
 		systemUnderTest.step();
 	}
 
@@ -131,7 +130,7 @@ public class TestBasicALU {
 		systemUnderTest.setAddWithCarry(off);
 		systemUnderTest.setSubtractWithBorrow(off);
 
-		performOneClockCycle();
+		performOneExecutionCycle();
 
 		systemUnderTest.setAdd(off);
 	}

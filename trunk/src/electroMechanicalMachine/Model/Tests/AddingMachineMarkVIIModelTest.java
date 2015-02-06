@@ -11,7 +11,7 @@ package electroMechanicalMachine.Model.Tests;
 import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.SUB;
@@ -38,7 +38,7 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 
 	@Test
 	public void test_LoadANumberSubtractItStoreResult_ResultIsZero() {
-		final int[] code = { LOD, SUB, STO, HALT };
+		final int[] code = { LOD, SUB, STO, HLT };
 		final int[] data = { 0x56, 0x56, 0xAA };
 
 		loadCode(code);
@@ -50,7 +50,7 @@ public class AddingMachineMarkVIIModelTest extends AddingMachineMarkVIModelTest 
 
 	@Test
 	public void test_MarkVII_ExampleFromBook_ProducesExpectedResults() {
-		final int[] code = { LOD, ADD, SUB, STO, HALT };
+		final int[] code = { LOD, ADD, SUB, STO, HLT };
 		final int[] data = { 0x56, 0x2A, 0x38 };
 
 		loadCode(code);

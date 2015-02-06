@@ -12,7 +12,7 @@ import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADC;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.SBB;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
@@ -44,7 +44,7 @@ public class TestAddingMachineMarkVIIIModel extends
 	 */
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forFirstExampleFromBook() {
-		final int[] code = { LOD, ADD, STO, LOD, ADC, STO, HALT };
+		final int[] code = { LOD, ADD, STO, LOD, ADC, STO, HLT };
 		final int[] data = { 0xab, 0x2c, 0x00, 0x76, 0x23 };
 
 		loadCode(code);
@@ -62,7 +62,7 @@ public class TestAddingMachineMarkVIIIModel extends
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forSecondExampleFromBook() {
 		final int[] code = { LOD, ADD, STO, LOD, ADC, STO, LOD, ADC, STO, LOD,
-				ADC, STO, HALT };
+				ADC, STO, HLT };
 		final int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8,
 				0x00, 0x7a, 0x65 };
 
@@ -83,7 +83,7 @@ public class TestAddingMachineMarkVIIIModel extends
 	@Test
 	public void testAddingMachine_shouldProvideCorrectResults_forSubtraction() {
 		final int[] code = { LOD, SUB, STO, LOD, SBB, STO, LOD, SBB, STO, LOD,
-				SBB, STO, HALT };
+				SBB, STO, HLT };
 		final int[] data = { 0xcd, 0xff, 0x00, 0x2b, 0x72, 0x00, 0x89, 0xa8,
 				0x00, 0x7a, 0x65 };
 

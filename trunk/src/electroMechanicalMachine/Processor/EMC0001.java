@@ -12,6 +12,7 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDataInput;
+import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToSixteenBitAInput;
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToTwoEightBitAInputs;
 import static electroMechanicalLogic.DataChannel.SixteenBitDataPath.connectSixteenBitAOutputToTwoEightBitBInputs;
 import electroMechanicalLogic.EightBitTwoToOneSelector;
@@ -23,41 +24,195 @@ import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
+import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionLatch;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionTimer;
+import electroMechanicalMachine.Processor.Interfaces.IJumpControl;
+import electroMechanicalMachine.Processor.Interfaces.IJumpInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IProcessor;
-import electroMechanicalMachine.Processor.Interfaces.IProgramCounter;
 import electroMechanicalMachine.Processor.Interfaces.IRegister;
+import electroMechanicalMachine.Processor.Interfaces.ISetableProgramCounter;
+import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
 
-/**
- * Processor for the Adding Machine Mark X
- */
-public class AM0010 implements IProcessor {
+public class EMC0001 implements IProcessor {
 	private final IRegister accumulator = new Register();
-	private final IArithmeticLogicUnit alu = new BasicALU();
+	private final IArithmeticLogicUnit alu = new BasicALUWithFlags();
 	private final IEightBitTwoToOneSelector loadSelect = new EightBitTwoToOneSelector();
-	protected final IProgramCounter programCounter;
-	protected final IInstructionDecoder instructionDecoder;
-	protected final IInstructionLatch instructionLatch = new InstructionLatch();
+	private final ISetableProgramCounter programCounter = new SetableProgramCounter();
+	private final IInstructionDecoder instructionDecoder = new BasicInstructionDecoder();
+	private final IJumpInstructionDecoder jumpDecoder = new JumpInstructionDecoder();
+	private final IJumpControl jumpControl = new JumpControl();
+	private final IInstructionLatch instructionLatch = new InstructionLatch();
 	private final IEightBitTwoToOneSelector addressHigh = new EightBitTwoToOneSelector();
 	private final IEightBitTwoToOneSelector addressLow = new EightBitTwoToOneSelector();
-	protected final IInstructionTimer instructionTimer = new BasicInstructionTimer();
+	private final IInstructionTimer instructionTimer = new BasicInstructionTimer();
 	private final IThreeInputSingleOutputGate instructionFetch = new ThreeInputOR();
 	private final ITwoInputSingleOutputGate clockToCounter = new TwoInputAND();
 	private final IEightInputSingleOutputGate instructionWritesToAccumulator = new EightInputOR();
 	private final ITwoInputSingleOutputGate writeToAccumulator = new TwoInputAND();
-	protected final ITwoInputSingleOutputGate addressHasBeenLatched = new TwoInputAND();
+	private final ITwoInputSingleOutputGate addressHasBeenLatched = new TwoInputAND();
 	private final ITwoInputSingleOutputGate write = new TwoInputAND();
 
-	public AM0010() {
-		this(new BasicProgramCounter(), new BasicInstructionDecoder());
+	@Override
+	public void setPower(boolean value) {
+		alu.setPower(value);
+		accumulator.setPower(value);
+		loadSelect.setPower(value);
+		programCounter.setPower(value);
+		instructionLatch.setPower(value);
+		instructionDecoder.setPower(value);
+		addressHigh.setPower(value);
+		addressLow.setPower(value);
+		instructionTimer.setPower(value);
+		clockToCounter.setPower(value);
+		write.setPower(value);
+		instructionWritesToAccumulator.setPower(value);
+		writeToAccumulator.setPower(value);
+		addressHasBeenLatched.setPower(value);
+		instructionFetch.setPower(value);
+		jumpControl.setPower(value);
+		jumpDecoder.setPower(value);
 	}
 
-	protected AM0010(IProgramCounter programCounter,
-			IInstructionDecoder instructionDecoder) {
-		this.programCounter = programCounter;
-		this.instructionDecoder = instructionDecoder;
+	@Override
+	public void step() {
+		instructionTimer.setHalt(instructionDecoder.getHalt());
+		instructionTimer.step();
+		stepInstructionLatch();
+		stepInstructionDecoder();
+		stepJumpDecoder();
+		stepALU();
+		stepAccumulator();
+		stepAddressHasBeenLatched();
+		stepJumpControl();
+		stepProgramCounter();
+		expressOutputs();
+	}
+
+	private void stepJumpControl() {
+		jumpControl.setAddressHasBeenLatched(addressHasBeenLatched.getOutput());
+
+		jumpControl.setCarryFlag(((ICarryFlag) alu).getCarryFlag());
+		jumpControl.setZeroFlag(((IZeroFlag) alu).getZeroFlag());
+
+		jumpControl.setJump(jumpDecoder.getJump());
+		jumpControl.setJumpIfCarry(jumpDecoder.getJumpIfCarry());
+		jumpControl.setJumpIfNotCarry(jumpDecoder.getJumpIfNotCarry());
+		jumpControl.setJumpIfNotZero(jumpDecoder.getJumpIfNotZero());
+		jumpControl.setJumpIfZero(jumpDecoder.getJumpIfZero());
+
+		jumpControl.step();
+	}
+
+	private void stepJumpDecoder() {
+		connectEightBitCOutputToEightBitCInput(instructionLatch, jumpDecoder);
+		jumpDecoder.step();
+	}
+
+	@Override
+	public void setDI0(final boolean value) {
+		alu.setA0(value);
+		loadSelect.setB0(value);
+		instructionLatch.setDI0(value);
+	}
+
+	@Override
+	public void setDI1(final boolean value) {
+		alu.setA1(value);
+		loadSelect.setB1(value);
+		instructionLatch.setDI1(value);
+	}
+
+	@Override
+	public void setDI2(final boolean value) {
+		alu.setA2(value);
+		loadSelect.setB2(value);
+		instructionLatch.setDI2(value);
+	}
+
+	@Override
+	public void setDI3(final boolean value) {
+		alu.setA3(value);
+		loadSelect.setB3(value);
+		instructionLatch.setDI3(value);
+	}
+
+	@Override
+	public void setDI4(final boolean value) {
+		alu.setA4(value);
+		loadSelect.setB4(value);
+		instructionLatch.setDI4(value);
+	}
+
+	@Override
+	public void setDI5(final boolean value) {
+		alu.setA5(value);
+		loadSelect.setB5(value);
+		instructionLatch.setDI5(value);
+	}
+
+	@Override
+	public void setDI6(final boolean value) {
+		alu.setA6(value);
+		loadSelect.setB6(value);
+		instructionLatch.setDI6(value);
+	}
+
+	@Override
+	public void setDI7(final boolean value) {
+		alu.setA7(value);
+		loadSelect.setB7(value);
+		instructionLatch.setDI7(value);
+	}
+
+	@Override
+	public boolean getDO0() {
+		return accumulator.getDO0();
+	}
+
+	@Override
+	public boolean getDO1() {
+		return accumulator.getDO1();
+	}
+
+	@Override
+	public boolean getDO2() {
+		return accumulator.getDO2();
+	}
+
+	@Override
+	public boolean getDO3() {
+		return accumulator.getDO3();
+	}
+
+	@Override
+	public boolean getDO4() {
+		return accumulator.getDO4();
+	}
+
+	@Override
+	public boolean getDO5() {
+		return accumulator.getDO5();
+	}
+
+	@Override
+	public boolean getDO6() {
+		return accumulator.getDO6();
+	}
+
+	@Override
+	public boolean getDO7() {
+		return accumulator.getDO7();
+	}
+
+	@Override
+	public void setReset(final boolean value) {
+		instructionTimer.setReset(value);
+		programCounter.setReset(value);
+		instructionLatch.setReset(value);
+		alu.setReset(value);
+		accumulator.setReset(value);
 	}
 
 	@Override
@@ -141,46 +296,6 @@ public class AM0010 implements IProcessor {
 	}
 
 	@Override
-	public boolean getDO0() {
-		return accumulator.getDO0();
-	}
-
-	@Override
-	public boolean getDO1() {
-		return accumulator.getDO1();
-	}
-
-	@Override
-	public boolean getDO2() {
-		return accumulator.getDO2();
-	}
-
-	@Override
-	public boolean getDO3() {
-		return accumulator.getDO3();
-	}
-
-	@Override
-	public boolean getDO4() {
-		return accumulator.getDO4();
-	}
-
-	@Override
-	public boolean getDO5() {
-		return accumulator.getDO5();
-	}
-
-	@Override
-	public boolean getDO6() {
-		return accumulator.getDO6();
-	}
-
-	@Override
-	public boolean getDO7() {
-		return accumulator.getDO7();
-	}
-
-	@Override
 	public boolean getHalt() {
 		return instructionDecoder.getHalt();
 	}
@@ -193,103 +308,6 @@ public class AM0010 implements IProcessor {
 	@Override
 	public void setClock(final boolean value) {
 		instructionTimer.setClock(value);
-	}
-
-	@Override
-	public void setDI0(final boolean value) {
-		alu.setA0(value);
-		loadSelect.setB0(value);
-		instructionLatch.setDI0(value);
-	}
-
-	@Override
-	public void setDI1(final boolean value) {
-		alu.setA1(value);
-		loadSelect.setB1(value);
-		instructionLatch.setDI1(value);
-	}
-
-	@Override
-	public void setDI2(final boolean value) {
-		alu.setA2(value);
-		loadSelect.setB2(value);
-		instructionLatch.setDI2(value);
-	}
-
-	@Override
-	public void setDI3(final boolean value) {
-		alu.setA3(value);
-		loadSelect.setB3(value);
-		instructionLatch.setDI3(value);
-	}
-
-	@Override
-	public void setDI4(final boolean value) {
-		alu.setA4(value);
-		loadSelect.setB4(value);
-		instructionLatch.setDI4(value);
-	}
-
-	@Override
-	public void setDI5(final boolean value) {
-		alu.setA5(value);
-		loadSelect.setB5(value);
-		instructionLatch.setDI5(value);
-	}
-
-	@Override
-	public void setDI6(final boolean value) {
-		alu.setA6(value);
-		loadSelect.setB6(value);
-		instructionLatch.setDI6(value);
-	}
-
-	@Override
-	public void setDI7(final boolean value) {
-		alu.setA7(value);
-		loadSelect.setB7(value);
-		instructionLatch.setDI7(value);
-	}
-
-	@Override
-	public void setPower(final boolean value) {
-		alu.setPower(value);
-		accumulator.setPower(value);
-		loadSelect.setPower(value);
-		programCounter.setPower(value);
-		instructionLatch.setPower(value);
-		instructionDecoder.setPower(value);
-		addressHigh.setPower(value);
-		addressLow.setPower(value);
-		instructionTimer.setPower(value);
-		clockToCounter.setPower(value);
-		write.setPower(value);
-		instructionWritesToAccumulator.setPower(value);
-		writeToAccumulator.setPower(value);
-		addressHasBeenLatched.setPower(value);
-		instructionFetch.setPower(value);
-	}
-
-	@Override
-	public void setReset(final boolean value) {
-		instructionTimer.setReset(value);
-		programCounter.setReset(value);
-		instructionLatch.setReset(value);
-		alu.setReset(value);
-		accumulator.setReset(value);
-	}
-
-	@Override
-	public void step() {
-		instructionTimer.setHalt(instructionDecoder.getHalt());
-		instructionTimer.step();
-		stepInstructionLatch();
-		stepInstructionDecoder();
-		stepALU();
-		stepAccumulator();
-		stepAddressHasBeenLatched();
-		stepProgramCounter();
-		expressOutputs();
 	}
 
 	private void stepAddressHasBeenLatched() {
@@ -361,6 +379,10 @@ public class AM0010 implements IProcessor {
 	}
 
 	protected void stepProgramCounter() {
+		connectSixteenBitAOutputToSixteenBitAInput(instructionLatch,
+				programCounter);
+		programCounter.setJump(jumpControl.getJump());
+
 		instructionFetch.setA(instructionTimer.getFetchCode());
 		instructionFetch.setB(instructionTimer.getFetchAddressHigh());
 		instructionFetch.setC(instructionTimer.getFetchAddressLow());
@@ -370,7 +392,11 @@ public class AM0010 implements IProcessor {
 		clockToCounter.setB(instructionTimer.getClock());
 		clockToCounter.step();
 
+		connectSixteenBitAOutputToSixteenBitAInput(instructionLatch,
+				programCounter);
+		programCounter.setJump(jumpControl.getJump());
 		programCounter.setClock(clockToCounter.getOutput());
 		programCounter.step();
 	}
+
 }
