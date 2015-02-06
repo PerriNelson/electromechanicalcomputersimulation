@@ -32,7 +32,7 @@ public class TestBasicALUWIthFlags extends TestBasicALU {
 		setAIn(systemUnderTest, 0xff);
 		setBIn(systemUnderTest, 0x01);
 		systemUnderTest.setAdd(on);
-		performOneClockCycle();
+		performOneExecutionCycle();
 
 		assertTrue(((ICarryFlag) systemUnderTest).getCarryFlag());
 	}
@@ -42,7 +42,7 @@ public class TestBasicALUWIthFlags extends TestBasicALU {
 		setAIn(systemUnderTest, 0x01);
 		setBIn(systemUnderTest, 0x01);
 		systemUnderTest.setAdd(on);
-		performOneClockCycle();
+		performOneExecutionCycle();
 
 		assertFalse(((ICarryFlag) systemUnderTest).getCarryFlag());
 	}
@@ -52,7 +52,7 @@ public class TestBasicALUWIthFlags extends TestBasicALU {
 		setAIn(systemUnderTest, 0x01);
 		setBIn(systemUnderTest, 0x01);
 		systemUnderTest.setSubtract(on);
-		performOneClockCycle();
+		performOneExecutionCycle();
 
 		assertTrue(((IZeroFlag) systemUnderTest).getZeroFlag());
 	}
@@ -62,7 +62,7 @@ public class TestBasicALUWIthFlags extends TestBasicALU {
 		setAIn(systemUnderTest, 0x01);
 		setBIn(systemUnderTest, 0x01);
 		systemUnderTest.setAdd(on);
-		performOneClockCycle();
+		performOneExecutionCycle();
 
 		assertFalse(((IZeroFlag) systemUnderTest).getZeroFlag());
 	}

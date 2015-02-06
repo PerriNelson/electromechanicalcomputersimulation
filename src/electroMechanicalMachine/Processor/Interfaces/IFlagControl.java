@@ -15,8 +15,6 @@ public interface IFlagControl extends ISimulatedCircuit {
 
 	public abstract void setAdd(boolean value);
 
-	public abstract void setClockBar(boolean value);
-
 	public abstract void setAddWithCarry(boolean value);
 
 	public abstract void setExecute(boolean value);

@@ -30,97 +30,6 @@ public class SetableProgramCounter implements ISetableProgramCounter {
 	private final ISetableFlipFlop aF = new SetableEdgeTriggeredFlipFlop();
 
 	@Override
-	public void setClock(boolean value) {
-		a0.setClk(value);
-	}
-
-	@Override
-	public void setPower(boolean value) {
-		a0.setPower(value);
-		a1.setPower(value);
-		a2.setPower(value);
-		a3.setPower(value);
-		a4.setPower(value);
-		a5.setPower(value);
-		a6.setPower(value);
-		a7.setPower(value);
-		a8.setPower(value);
-		a9.setPower(value);
-		aA.setPower(value);
-		aB.setPower(value);
-		aC.setPower(value);
-		aD.setPower(value);
-		aE.setPower(value);
-		aF.setPower(value);
-	}
-
-	@Override
-	public void step() {
-		a0.setD(a0.getQBar());
-		a0.step();
-
-		a1.setClk(a0.getQBar());
-		a1.setD(a1.getQBar());
-		a1.step();
-
-		a2.setClk(a1.getQBar());
-		a2.setD(a2.getQBar());
-		a2.step();
-
-		a3.setClk(a2.getQBar());
-		a3.setD(a3.getQBar());
-		a3.step();
-
-		a4.setClk(a3.getQBar());
-		a4.setD(a4.getQBar());
-		a4.step();
-
-		a5.setClk(a4.getQBar());
-		a5.setD(a5.getQBar());
-		a5.step();
-
-		a6.setClk(a5.getQBar());
-		a6.setD(a6.getQBar());
-		a6.step();
-
-		a7.setClk(a6.getQBar());
-		a7.setD(a7.getQBar());
-		a7.step();
-
-		a8.setClk(a7.getQBar());
-		a8.setD(a8.getQBar());
-		a8.step();
-
-		a9.setClk(a8.getQBar());
-		a9.setD(a9.getQBar());
-		a9.step();
-
-		aA.setClk(a9.getQBar());
-		aA.setD(aA.getQBar());
-		aA.step();
-
-		aB.setClk(aA.getQBar());
-		aB.setD(aB.getQBar());
-		aB.step();
-
-		aC.setClk(aB.getQBar());
-		aC.setD(aC.getQBar());
-		aC.step();
-
-		aD.setClk(aC.getQBar());
-		aD.setD(aD.getQBar());
-		aD.step();
-
-		aE.setClk(aD.getQBar());
-		aE.setD(aE.getQBar());
-		aE.step();
-
-		aF.setClk(aE.getQBar());
-		aF.setD(aF.getQBar());
-		aF.step();
-	}
-
-	@Override
 	public boolean getA0() {
 		return a0.getQ();
 	}
@@ -201,7 +110,132 @@ public class SetableProgramCounter implements ISetableProgramCounter {
 	}
 
 	@Override
-	public void setReset(boolean value) {
+	public void setA0(final boolean value) {
+		a0.setA(value);
+	}
+
+	@Override
+	public void setA1(final boolean value) {
+		a1.setA(value);
+	}
+
+	@Override
+	public void setA2(final boolean value) {
+		a2.setA(value);
+	}
+
+	@Override
+	public void setA3(final boolean value) {
+		a3.setA(value);
+	}
+
+	@Override
+	public void setA4(final boolean value) {
+		a4.setA(value);
+	}
+
+	@Override
+	public void setA5(final boolean value) {
+		a5.setA(value);
+	}
+
+	@Override
+	public void setA6(final boolean value) {
+		a6.setA(value);
+	}
+
+	@Override
+	public void setA7(final boolean value) {
+		a7.setA(value);
+	}
+
+	@Override
+	public void setA8(final boolean value) {
+		a8.setA(value);
+	}
+
+	@Override
+	public void setA9(final boolean value) {
+		a9.setA(value);
+	}
+
+	@Override
+	public void setAA(final boolean value) {
+		aA.setA(value);
+	}
+
+	@Override
+	public void setAB(final boolean value) {
+		aB.setA(value);
+	}
+
+	@Override
+	public void setAC(final boolean value) {
+		aC.setA(value);
+	}
+
+	@Override
+	public void setAD(final boolean value) {
+		aD.setA(value);
+	}
+
+	@Override
+	public void setAE(final boolean value) {
+		aE.setA(value);
+	}
+
+	@Override
+	public void setAF(final boolean value) {
+		aF.setA(value);
+	}
+
+	@Override
+	public void setClock(final boolean value) {
+		a0.setClk(value);
+	}
+
+	@Override
+	public void setJump(final boolean value) {
+		a0.setSet(value);
+		a1.setSet(value);
+		a2.setSet(value);
+		a3.setSet(value);
+		a4.setSet(value);
+		a5.setSet(value);
+		a6.setSet(value);
+		a7.setSet(value);
+		a8.setSet(value);
+		a9.setSet(value);
+		aA.setSet(value);
+		aB.setSet(value);
+		aC.setSet(value);
+		aD.setSet(value);
+		aE.setSet(value);
+		aF.setSet(value);
+	}
+
+	@Override
+	public void setPower(final boolean value) {
+		a0.setPower(value);
+		a1.setPower(value);
+		a2.setPower(value);
+		a3.setPower(value);
+		a4.setPower(value);
+		a5.setPower(value);
+		a6.setPower(value);
+		a7.setPower(value);
+		a8.setPower(value);
+		a9.setPower(value);
+		aA.setPower(value);
+		aB.setPower(value);
+		aC.setPower(value);
+		aD.setPower(value);
+		aE.setPower(value);
+		aF.setPower(value);
+	}
+
+	@Override
+	public void setReset(final boolean value) {
 		a0.setReset(value);
 		a1.setReset(value);
 		a2.setReset(value);
@@ -221,103 +255,69 @@ public class SetableProgramCounter implements ISetableProgramCounter {
 	}
 
 	@Override
-	public void setA0(boolean value) {
-		a0.setA(value);
-	}
+	public void step() {
+		a0.setD(a0.getQBar());
+		a0.step();
 
-	@Override
-	public void setA1(boolean value) {
-		a1.setA(value);
-	}
+		a1.setClk(a0.getQBar());
+		a1.setD(a1.getQBar());
+		a1.step();
 
-	@Override
-	public void setA2(boolean value) {
-		a2.setA(value);
-	}
+		a2.setClk(a1.getQBar());
+		a2.setD(a2.getQBar());
+		a2.step();
 
-	@Override
-	public void setA3(boolean value) {
-		a3.setA(value);
-	}
+		a3.setClk(a2.getQBar());
+		a3.setD(a3.getQBar());
+		a3.step();
 
-	@Override
-	public void setA4(boolean value) {
-		a4.setA(value);
-	}
+		a4.setClk(a3.getQBar());
+		a4.setD(a4.getQBar());
+		a4.step();
 
-	@Override
-	public void setA5(boolean value) {
-		a5.setA(value);
-	}
+		a5.setClk(a4.getQBar());
+		a5.setD(a5.getQBar());
+		a5.step();
 
-	@Override
-	public void setA6(boolean value) {
-		a6.setA(value);
-	}
+		a6.setClk(a5.getQBar());
+		a6.setD(a6.getQBar());
+		a6.step();
 
-	@Override
-	public void setA7(boolean value) {
-		a7.setA(value);
-	}
+		a7.setClk(a6.getQBar());
+		a7.setD(a7.getQBar());
+		a7.step();
 
-	@Override
-	public void setA8(boolean value) {
-		a8.setA(value);
-	}
+		a8.setClk(a7.getQBar());
+		a8.setD(a8.getQBar());
+		a8.step();
 
-	@Override
-	public void setA9(boolean value) {
-		a9.setA(value);
-	}
+		a9.setClk(a8.getQBar());
+		a9.setD(a9.getQBar());
+		a9.step();
 
-	@Override
-	public void setAA(boolean value) {
-		aA.setA(value);
-	}
+		aA.setClk(a9.getQBar());
+		aA.setD(aA.getQBar());
+		aA.step();
 
-	@Override
-	public void setAB(boolean value) {
-		aB.setA(value);
-	}
+		aB.setClk(aA.getQBar());
+		aB.setD(aB.getQBar());
+		aB.step();
 
-	@Override
-	public void setAC(boolean value) {
-		aC.setA(value);
-	}
+		aC.setClk(aB.getQBar());
+		aC.setD(aC.getQBar());
+		aC.step();
 
-	@Override
-	public void setAD(boolean value) {
-		aD.setA(value);
-	}
+		aD.setClk(aC.getQBar());
+		aD.setD(aD.getQBar());
+		aD.step();
 
-	@Override
-	public void setAE(boolean value) {
-		aE.setA(value);
-	}
+		aE.setClk(aD.getQBar());
+		aE.setD(aE.getQBar());
+		aE.step();
 
-	@Override
-	public void setAF(boolean value) {
-		aF.setA(value);
-	}
-
-	@Override
-	public void setJump(boolean value) {
-		a0.setSet(value);
-		a1.setSet(value);
-		a2.setSet(value);
-		a3.setSet(value);
-		a4.setSet(value);
-		a5.setSet(value);
-		a6.setSet(value);
-		a7.setSet(value);
-		a8.setSet(value);
-		a9.setSet(value);
-		aA.setSet(value);
-		aB.setSet(value);
-		aC.setSet(value);
-		aD.setSet(value);
-		aE.setSet(value);
-		aF.setSet(value);
+		aF.setClk(aE.getQBar());
+		aF.setD(aF.getQBar());
+		aF.step();
 	}
 
 }

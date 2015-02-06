@@ -19,7 +19,7 @@ import static electroMechanicalLogic.Tests.TestConstants.bit7;
 import static electroMechanicalLogic.Tests.TestConstants.on;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADC;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.SBB;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
@@ -69,7 +69,7 @@ public class TestBasicInstructionDecoder {
 	@Test
 	public void testInstructionDecoder_shouldNotSignalHalt_whenInputCodeIsNotHALT() {
 		for (int code = 0; code < 256; code++) {
-			if (code == HALT) {
+			if (code == HLT) {
 				continue;
 			}
 			setCode(code);
@@ -142,7 +142,7 @@ public class TestBasicInstructionDecoder {
 
 	@Test
 	public void testInstructionDecoder_shouldSignalHalt_whenInputCodeIsHALT() {
-		setCode(HALT);
+		setCode(HLT);
 		systemUnderTest.step();
 		assertTrue(systemUnderTest.getHalt());
 	}

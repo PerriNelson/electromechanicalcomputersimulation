@@ -215,9 +215,4 @@ public class BasicALU implements IArithmeticLogicUnit {
 		carryFlag.step();
 	}
 
-	@Override
-	public void setClockBar(boolean value) {
-		flagControl.setClockBar(value);
-	}
-
 }

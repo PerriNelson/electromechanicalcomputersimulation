@@ -78,6 +78,4 @@ public interface IArithmeticLogicUnit extends ISimulatedCircuit,
 	public abstract void setSubtractWithBorrow(boolean value);
 
 	public abstract void setExecute(boolean value);
-
-	public abstract void setClockBar(boolean value);
 }

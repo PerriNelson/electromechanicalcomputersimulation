@@ -32,7 +32,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnFalse_whenAddIsOnAndExecuteIsOff() {
 		systemUnderTest.setAdd(on);
 		systemUnderTest.setExecute(off);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getLatchFlags());
 	}
@@ -41,7 +41,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnTrue_whenAddIsOnAndExecuteIsOn() {
 		systemUnderTest.setAdd(on);
 		systemUnderTest.setExecute(on);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getLatchFlags());
 	}
@@ -50,7 +50,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnFalse_whenAddWithCarryIsOnAndExecuteIsOff() {
 		systemUnderTest.setAddWithCarry(on);
 		systemUnderTest.setExecute(off);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getLatchFlags());
 	}
@@ -59,7 +59,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnTrue_whenAddWithCarryIsOnAndExecuteIsOn() {
 		systemUnderTest.setAddWithCarry(on);
 		systemUnderTest.setExecute(on);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getLatchFlags());
 	}
@@ -68,7 +68,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnFalse_whenSubtractIsOnAndExecuteIsOff() {
 		systemUnderTest.setSubtract(on);
 		systemUnderTest.setExecute(off);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getLatchFlags());
 	}
@@ -77,7 +77,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnTrue_whenSubtractIsOnAndExecuteIsOn() {
 		systemUnderTest.setSubtract(on);
 		systemUnderTest.setExecute(on);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getLatchFlags());
 	}
@@ -86,7 +86,7 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnFalse_whenSubtractWithBorrowIsOnAndExecuteIsOff() {
 		systemUnderTest.setSubtractWithBorrow(on);
 		systemUnderTest.setExecute(off);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertFalse(systemUnderTest.getLatchFlags());
 	}
@@ -95,16 +95,8 @@ public class TestBasicFlagControl {
 	public void testGetLatchFlags_shouldReturnTrue_whenSubtractWithBorrowIsOnAndExecuteIsOn() {
 		systemUnderTest.setSubtractWithBorrow(on);
 		systemUnderTest.setExecute(on);
-		performOneClockCycle();
+		systemUnderTest.step();
 
 		assertTrue(systemUnderTest.getLatchFlags());
-	}
-
-	private void performOneClockCycle() {
-		systemUnderTest.setClockBar(off);
-		systemUnderTest.step();
-
-		systemUnderTest.setClockBar(on);
-		systemUnderTest.step();
 	}
 }

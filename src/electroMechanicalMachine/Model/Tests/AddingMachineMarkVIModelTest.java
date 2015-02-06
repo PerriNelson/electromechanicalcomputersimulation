@@ -14,7 +14,7 @@ import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAddress;
 import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.ADD;
-import static electroMechanicalMachine.Model.Tests.InstructionSet.HALT;
+import static electroMechanicalMachine.Model.Tests.InstructionSet.HLT;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.LOD;
 import static electroMechanicalMachine.Model.Tests.InstructionSet.STO;
 import static org.junit.Assert.assertEquals;
@@ -81,7 +81,7 @@ public class AddingMachineMarkVIModelTest {
 	@Test
 	public void test_MarkVI_ExampleFromBook_ProducesExpectedResults() {
 		final int[] code = { LOD, ADD, ADD, STO, LOD, ADD, STO, LOD, ADD, ADD,
-				STO, HALT };
+				STO, HLT };
 		final int[] data = { 0x27, 0xA2, 0x18, 0x00, 0x1f, 0x89, 0x00, 0x33,
 				0x2A, 0x55 };
 
@@ -4265,7 +4265,7 @@ public class AddingMachineMarkVIModelTest {
 		systemUnderTest.setTakeover(off);
 		systemUnderTest.setUseCodePanel(on);
 		systemUnderTest.setReset(off);
-		while (HALT != getDataOut(systemUnderTest)) {
+		while (HLT != getDataOut(systemUnderTest)) {
 			performOneClockCycle();
 		}
 		systemUnderTest.setReset(on);
