@@ -49,6 +49,26 @@ public class InstructionSet {
 	public static final int JMP = 0x30;
 
 	/**
+	 * Jump to a new address if the zero flag is set
+	 */
+	public static final int JZ = 0x31;
+
+	/**
+	 * Jump to a new address if the carry flag is set
+	 */
+	public static final int JC = 0x32;
+
+	/**
+	 * Jump to a new address if the zero flag is clear.
+	 */
+	public static final int JNZ = 0x33;
+
+	/**
+	 * Jump to a new address if the carry flag is clear.
+	 */
+	public static final int JNC = 0x34;
+
+	/**
 	 * Halt the processor.
 	 */
 	public static final int HALT = 0xff;
