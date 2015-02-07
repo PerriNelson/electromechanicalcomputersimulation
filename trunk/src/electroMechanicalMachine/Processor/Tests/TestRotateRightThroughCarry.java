@@ -29,7 +29,7 @@ public class TestRotateRightThroughCarry {
 	}
 
 	@Test
-	public void testRotateLeft_shouldReturnExpectedCarry_forAllInputs() {
+	public void testRotateRightThroughCarry_shouldReturnExpectedCarry_forAllInputs() {
 		for (int input = 0; input < 256; input++) {
 			final boolean expected = (input & 0x01) == 0x01;
 			setDataIn(systemUnderTest, input);
@@ -41,7 +41,7 @@ public class TestRotateRightThroughCarry {
 	}
 
 	@Test
-	public void testRotateLeft_shouldReturnRotatedInput_forAllInputs() {
+	public void testRotateRightThroughCarry_shouldReturnRotatedInput_forAllInputs() {
 		for (int carryin = 0; carryin < 2; carryin++) {
 			for (int input = 0; input < 256; input++) {
 				final int expected = ((input >> 1) | (carryin == 1 ? 0x80 : 0)) & 0xff;
