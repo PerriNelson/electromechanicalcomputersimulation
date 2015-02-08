@@ -13,11 +13,11 @@ import electroMechanicalLogic.EdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.Gates.EightInputNOR;
 import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.ILatchWithClear;
-import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
-import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetCarryFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetZeroFlag;
 
-public class EMC0001ALU extends MarkXALU implements ICarryFlag,
-		IZeroFlag {
+public class EMC0001ALU extends MarkXALU implements IGetCarryFlag,
+		IGetZeroFlag {
 	private final IEightInputSingleOutputGate zero = new EightInputNOR();
 	private final ILatchWithClear zeroFlag = new EdgeTriggeredLatchWithClear();
 

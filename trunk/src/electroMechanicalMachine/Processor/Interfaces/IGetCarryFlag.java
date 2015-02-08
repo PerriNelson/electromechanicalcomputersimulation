@@ -8,6 +8,6 @@
 
 package electroMechanicalMachine.Processor.Interfaces;
 
-public interface ICarryFlag {
+public interface IGetCarryFlag {
 	public abstract boolean getCarryFlag();
 }
