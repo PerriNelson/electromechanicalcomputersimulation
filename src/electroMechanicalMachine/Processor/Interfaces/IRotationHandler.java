@@ -15,6 +15,8 @@ import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 public interface IRotationHandler extends IEightBitDataOutput,
 		IEightBitDataInput, ISimulatedCircuit {
 
+	public abstract boolean getIsRotationOperation();
+
 	public abstract boolean getCarryOut();
 
 	public abstract void setCarryIn(boolean value);
