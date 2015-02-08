@@ -8,7 +8,7 @@
 
 package electroMechanicalMachine.Processor.Interfaces;
 
-public interface IZeroFlag {
+public interface IGetZeroFlag {
 
 	public abstract boolean getZeroFlag();
 

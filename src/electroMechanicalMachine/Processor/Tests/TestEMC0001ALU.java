@@ -17,8 +17,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import electroMechanicalMachine.Processor.EMC0001ALU;
-import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
-import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetCarryFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetZeroFlag;
 
 public class TestEMC0001ALU extends TestMarkXALU {
 
@@ -34,7 +34,7 @@ public class TestEMC0001ALU extends TestMarkXALU {
 		systemUnderTest.setAdd(on);
 		performOneExecutionCycle();
 
-		assertTrue(((ICarryFlag) systemUnderTest).getCarryFlag());
+		assertTrue(((IGetCarryFlag) systemUnderTest).getCarryFlag());
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class TestEMC0001ALU extends TestMarkXALU {
 		systemUnderTest.setAdd(on);
 		performOneExecutionCycle();
 
-		assertFalse(((ICarryFlag) systemUnderTest).getCarryFlag());
+		assertFalse(((IGetCarryFlag) systemUnderTest).getCarryFlag());
 	}
 
 	@Test
@@ -54,7 +54,7 @@ public class TestEMC0001ALU extends TestMarkXALU {
 		systemUnderTest.setSubtract(on);
 		performOneExecutionCycle();
 
-		assertTrue(((IZeroFlag) systemUnderTest).getZeroFlag());
+		assertTrue(((IGetZeroFlag) systemUnderTest).getZeroFlag());
 	}
 
 	@Test
@@ -64,6 +64,6 @@ public class TestEMC0001ALU extends TestMarkXALU {
 		systemUnderTest.setAdd(on);
 		performOneExecutionCycle();
 
-		assertFalse(((IZeroFlag) systemUnderTest).getZeroFlag());
+		assertFalse(((IGetZeroFlag) systemUnderTest).getZeroFlag());
 	}
 }

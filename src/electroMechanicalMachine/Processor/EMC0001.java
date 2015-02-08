@@ -24,7 +24,7 @@ import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalMachine.Processor.Interfaces.IMarkXALU;
-import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetCarryFlag;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionLatch;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionTimer;
@@ -33,7 +33,7 @@ import electroMechanicalMachine.Processor.Interfaces.IJumpInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IProcessor;
 import electroMechanicalMachine.Processor.Interfaces.IRegister;
 import electroMechanicalMachine.Processor.Interfaces.ISetableProgramCounter;
-import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
+import electroMechanicalMachine.Processor.Interfaces.IGetZeroFlag;
 
 public class EMC0001 implements IProcessor {
 	private final IRegister accumulator = new Register();
@@ -93,8 +93,8 @@ public class EMC0001 implements IProcessor {
 	private void stepJumpControl() {
 		jumpControl.setAddressHasBeenLatched(addressHasBeenLatched.getOutput());
 
-		jumpControl.setCarryFlag(((ICarryFlag) alu).getCarryFlag());
-		jumpControl.setZeroFlag(((IZeroFlag) alu).getZeroFlag());
+		jumpControl.setCarryFlag(((IGetCarryFlag) alu).getCarryFlag());
+		jumpControl.setZeroFlag(((IGetZeroFlag) alu).getZeroFlag());
 
 		jumpControl.setJump(jumpDecoder.getJump());
 		jumpControl.setJumpIfCarry(jumpDecoder.getJumpIfCarry());
