@@ -16,15 +16,15 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import electroMechanicalMachine.Processor.BasicALUWithFlags;
+import electroMechanicalMachine.Processor.EMC0001ALU;
 import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
 import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
 
-public class TestBasicALUWIthFlags extends TestBasicALU {
+public class TestEMC0001ALU extends TestMarkXALU {
 
 	@Override
 	protected void setALU() {
-		setALU(new BasicALUWithFlags());
+		setALU(new EMC0001ALU());
 	}
 
 	@Test

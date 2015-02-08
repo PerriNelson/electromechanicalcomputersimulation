@@ -15,10 +15,35 @@ import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 public interface IRotationHandler extends IEightBitDataOutput,
 		IEightBitDataInput, ISimulatedCircuit {
 
-	public abstract boolean getIsRotationOperation();
-
+	/**
+	 * Gets a value indicating whether power is flowing from the "CarryOut"
+	 * terminal of the circuit or not. When power is flowing from this terminal
+	 * it indicates that the operation resulted in a carry output.
+	 *
+	 * @return true indicates that power is flowing from the terminal; false
+	 *         otherwise.
+	 */
 	public abstract boolean getCarryOut();
 
+	/**
+	 * Gets a value indicating whether power is flowing from the
+	 * "IsRotationOperation" terminal of the circuit or not. When power is
+	 * flowing from this terminal it indicates that the handler was instructed
+	 * to perform a rotation operation.
+	 * 
+	 * @return true indicates that power is flowing from the terminal; false
+	 *         otherwise.
+	 */
+	public abstract boolean getIsRotationOperation();
+
+	/**
+	 * sets a value to indicate whether power is flowing to the "CarryIn" input
+	 * terminal of the circuit or not.
+	 *
+	 * @param value
+	 *            true to indicate that power is flowing to the terminal; false
+	 *            otherwise.
+	 */
 	public abstract void setCarryIn(boolean value);
 
 	public abstract void setRotateLeft(boolean value);

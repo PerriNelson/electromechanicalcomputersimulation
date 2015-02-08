@@ -22,7 +22,7 @@ import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
-import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
+import electroMechanicalMachine.Processor.Interfaces.IMarkXALU;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionLatch;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionTimer;
@@ -35,7 +35,7 @@ import electroMechanicalMachine.Processor.Interfaces.IRegister;
  */
 public class AM0010 implements IProcessor {
 	private final IRegister accumulator = new Register();
-	private final IArithmeticLogicUnit alu = new BasicALU();
+	private final IMarkXALU alu = new MarkXALU();
 	private final IEightBitTwoToOneSelector loadSelect = new EightBitTwoToOneSelector();
 	protected final IProgramCounter programCounter;
 	protected final IInstructionDecoder instructionDecoder;
