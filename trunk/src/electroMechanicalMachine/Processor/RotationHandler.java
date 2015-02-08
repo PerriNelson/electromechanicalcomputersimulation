@@ -14,7 +14,9 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDInput;
 import electroMechanicalLogic.EightBitFourToOneSelector;
 import electroMechanicalLogic.FourLineToOneLineSelector;
+import electroMechanicalLogic.Gates.FourInputOR;
 import electroMechanicalLogic.Gates.TwoInputOR;
+import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
 import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
@@ -23,6 +25,8 @@ import electroMechanicalMachine.Processor.Interfaces.IRotateThroughCarry;
 import electroMechanicalMachine.Processor.Interfaces.IRotationHandler;
 
 public class RotationHandler implements IRotationHandler {
+
+	private final IFourInputSingleOutputGate isRotationOperation = new FourInputOR();
 
 	private final IRotate rotateLeft = new RotateLeft();
 	private final IRotate rotateRight = new RotateRight();
@@ -78,6 +82,11 @@ public class RotationHandler implements IRotationHandler {
 	@Override
 	public boolean getDO7() {
 		return dataOut.getDO7();
+	}
+
+	@Override
+	public boolean getIsRotationOperation() {
+		return isRotationOperation.getOutput();
 	}
 
 	@Override
@@ -152,6 +161,8 @@ public class RotationHandler implements IRotationHandler {
 
 	@Override
 	public void setPower(final boolean value) {
+		isRotationOperation.setPower(value);
+
 		rotateLeft.setPower(value);
 		rotateRight.setPower(value);
 		rotateLeftThroughCarry.setPower(value);
@@ -166,27 +177,32 @@ public class RotationHandler implements IRotationHandler {
 
 	@Override
 	public void setRotateLeft(final boolean value) {
-		// Nothing to do here. This is the default operation.
+		isRotationOperation.setA(value);
 	}
 
 	@Override
 	public void setRotateLeftThroughCarry(final boolean value) {
+		isRotationOperation.setB(value);
 		rotatesThroughCarry.setA(value);
 	}
 
 	@Override
 	public void setRotateRight(final boolean value) {
+		isRotationOperation.setC(value);
 		rotatesRight.setA(value);
 	}
 
 	@Override
 	public void setRotateRightThroughCarry(final boolean value) {
+		isRotationOperation.setD(value);
 		rotatesThroughCarry.setB(value);
 		rotatesRight.setB(value);
 	}
 
 	@Override
 	public void step() {
+		isRotationOperation.step();
+
 		rotateLeft.step();
 		rotateRight.step();
 		rotateLeftThroughCarry.step();
