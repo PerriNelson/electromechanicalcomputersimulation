@@ -16,7 +16,7 @@ import electroMechanicalLogic.Interfaces.ILatchWithClear;
 import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
 import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
 
-public class BasicALUWithFlags extends BasicALU implements ICarryFlag,
+public class EMC0001ALU extends MarkXALU implements ICarryFlag,
 		IZeroFlag {
 	private final IEightInputSingleOutputGate zero = new EightInputNOR();
 	private final ILatchWithClear zeroFlag = new EdgeTriggeredLatchWithClear();

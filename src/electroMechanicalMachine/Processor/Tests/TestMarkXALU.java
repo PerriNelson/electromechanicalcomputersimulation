@@ -18,11 +18,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalMachine.Processor.BasicALU;
-import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
+import electroMechanicalMachine.Processor.MarkXALU;
+import electroMechanicalMachine.Processor.Interfaces.IMarkXALU;
 
-public class TestBasicALU {
-	protected IArithmeticLogicUnit systemUnderTest;
+public class TestMarkXALU {
+	protected IMarkXALU systemUnderTest;
 
 	@Before
 	public void setUp() {
@@ -30,16 +30,8 @@ public class TestBasicALU {
 		systemUnderTest.setPower(on);
 	}
 
-	protected void setALU() {
-		setALU(new BasicALU());
-	}
-
-	protected final void setALU(IArithmeticLogicUnit alu) {
-		systemUnderTest = alu;
-	}
-
 	@Test
-	public void testBasicALU_shouldReturnCorrectEightBitResults_whenAddingForAllAAndBInputs() {
+	public void testMarkXALU_shouldReturnCorrectEightBitResults_whenAddingForAllAAndBInputs() {
 		for (int b = 0; b < 256; b++) {
 			for (int a = 0; a < 256; a++) {
 				systemUnderTest.setAdd(on);
@@ -55,7 +47,7 @@ public class TestBasicALU {
 	}
 
 	@Test
-	public void testBasicALU_shouldReturnCorrectEightBitResults_whenAddWithCarryForAllABAndCarryInputs() {
+	public void testMarkXALU_shouldReturnCorrectEightBitResults_whenAddWithCarryForAllABAndCarryInputs() {
 		for (int b = 0; b < 256; b++) {
 			for (int a = 0; a < 256; a++) {
 				for (int cf = 0; cf < 2; cf++) {
@@ -76,11 +68,28 @@ public class TestBasicALU {
 	}
 
 	@Test
-	public void testBasicALU_shouldReturnCorrectEightBitResults_whenSubtractWithBorrowForAllABAndCarryInputs() {
+	public void testMarkXALU_shouldReturnCorrectEightBitResults_whenSubractingForAllAAndBInputs() {
+		for (int b = 0; b < 256; b++) {
+			for (int a = 0; a < 256; a++) {
+				systemUnderTest.setSubtract(on);
+				setAIn(systemUnderTest, a);
+				setBIn(systemUnderTest, b);
+
+				performOneExecutionCycle();
+
+				assertEquals(String.format("a = %d, b = %d", a, b),
+						eightBitSubtract(a, b, false),
+						getDataOut(systemUnderTest));
+			}
+		}
+	}
+
+	@Test
+	public void testMarkXALU_shouldReturnCorrectEightBitResults_whenSubtractWithBorrowForAllABAndCarryInputs() {
 		for (int b = 0; b < 256; b++) {
 			for (int a = 0; a < 256; a++) {
 				for (int cf = 0; cf < 2; cf++) {
-					boolean borrow = cf == 0;
+					final boolean borrow = cf == 0;
 					setCarryFlag(!borrow);
 					systemUnderTest.setSubtractWithBorrow(on);
 					setBIn(systemUnderTest, b);
@@ -97,32 +106,20 @@ public class TestBasicALU {
 		}
 	}
 
-	@Test
-	public void testBasicALU_shouldReturnCorrectEightBitResults_whenSubractingForAllAAndBInputs() {
-		for (int b = 0; b < 256; b++) {
-			for (int a = 0; a < 256; a++) {
-				systemUnderTest.setSubtract(on);
-				setAIn(systemUnderTest, a);
-				setBIn(systemUnderTest, b);
-
-				performOneExecutionCycle();
-
-				assertEquals(String.format("a = %d, b = %d", a, b),
-						eightBitSubtract(a, b, false),
-						getDataOut(systemUnderTest));
-			}
-		}
+	private int eightBitAdd(final int a, final int b, final boolean carryIn) {
+		return (((a + b) + (carryIn ? 1 : 0)) & 0xff);
 	}
 
-	protected void performOneExecutionCycle() {
-		systemUnderTest.setExecute(off);
-		systemUnderTest.step();
+	private int eightBitSubtract(final int minuend, final int subtrahend,
+			final boolean borrow) {
+		final int b = subtrahend;
+		final int a = (~minuend) & 0xff;
+		final int ci = borrow ? 0 : 1;
 
-		systemUnderTest.setExecute(on);
-		systemUnderTest.step();
+		return (((a + b) & 0xff) + ci) & 0xff;
 	}
 
-	private void setCarryFlag(boolean value) {
+	private void setCarryFlag(final boolean value) {
 		setAIn(systemUnderTest, 0xff);
 		setBIn(systemUnderTest, value ? 0x01 : 0x00);
 		systemUnderTest.setAdd(on);
@@ -135,15 +132,19 @@ public class TestBasicALU {
 		systemUnderTest.setAdd(off);
 	}
 
-	private int eightBitSubtract(int minuend, int subtrahend, boolean borrow) {
-		int b = subtrahend;
-		int a = (~minuend) & 0xff;
-		int ci = borrow ? 0 : 1;
+	protected void performOneExecutionCycle() {
+		systemUnderTest.setExecute(off);
+		systemUnderTest.step();
 
-		return (((a + b) & 0xff) + ci) & 0xff;
+		systemUnderTest.setExecute(on);
+		systemUnderTest.step();
 	}
 
-	private int eightBitAdd(int a, int b, boolean carryIn) {
-		return ((a + b) + (carryIn ? 1 : 0) & 0xff);
+	protected void setALU() {
+		setALU(new MarkXALU());
+	}
+
+	protected final void setALU(final IMarkXALU alu) {
+		systemUnderTest = alu;
 	}
 }

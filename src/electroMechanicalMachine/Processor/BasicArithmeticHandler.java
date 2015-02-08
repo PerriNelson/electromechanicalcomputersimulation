@@ -9,25 +9,28 @@
 package electroMechanicalMachine.Processor;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
-import electroMechanicalLogic.EdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitOnesComplement;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
+import electroMechanicalLogic.Gates.FourInputOR;
 import electroMechanicalLogic.Gates.TwoInputOR;
+import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
-import electroMechanicalLogic.Interfaces.ILatchWithClear;
-import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
+import electroMechanicalMachine.Processor.Interfaces.IBasicArithmeticHandler;
 import electroMechanicalMachine.Processor.Interfaces.ICarryControl;
-import electroMechanicalMachine.Processor.Interfaces.IFlagControl;
 
-public class BasicALU implements IArithmeticLogicUnit {
+public class BasicArithmeticHandler implements IBasicArithmeticHandler {
+	private final IFourInputSingleOutputGate isArithmeticOperation = new FourInputOR();
 	protected final IEightBitAdder adder = new EightBitAdder();
 	private final IEightBitOnesComplement subtract = new EightBitOnesComplement();
 	private final ICarryControl carryControl = new CarryControl();
 	private final ITwoInputSingleOutputGate subtractOrSubtractWithBorrow = new TwoInputOR();
-	protected final IFlagControl flagControl = new BasicFlagControl();
-	protected final ILatchWithClear carryFlag = new EdgeTriggeredLatchWithClear();
+
+	@Override
+	public boolean getCarryOut() {
+		return adder.getCO();
+	}
 
 	@Override
 	public boolean getDO0() {
@@ -67,6 +70,11 @@ public class BasicALU implements IArithmeticLogicUnit {
 	@Override
 	public boolean getDO7() {
 		return adder.getS7();
+	}
+
+	@Override
+	public boolean getIsArithmeticOperation() {
+		return isArithmeticOperation.getOutput();
 	}
 
 	@Override
@@ -112,13 +120,13 @@ public class BasicALU implements IArithmeticLogicUnit {
 
 	@Override
 	public void setAdd(final boolean value) {
-		flagControl.setAdd(value);
+		isArithmeticOperation.setA(value);
 	}
 
 	@Override
 	public void setAddWithCarry(final boolean value) {
 		carryControl.setAddWithCarry(value);
-		flagControl.setAddWithCarry(value);
+		isArithmeticOperation.setB(value);
 	}
 
 	@Override
@@ -162,57 +170,47 @@ public class BasicALU implements IArithmeticLogicUnit {
 	}
 
 	@Override
-	public void setExecute(final boolean value) {
-		flagControl.setExecute(value);
+	public void setCarryIn(final boolean value) {
+		carryControl.setCarryFlag(value);
 	}
 
 	@Override
 	public void setPower(final boolean value) {
+		isArithmeticOperation.setPower(value);
 		adder.setPower(value);
 		subtract.setPower(value);
 		carryControl.setPower(value);
 		subtractOrSubtractWithBorrow.setPower(value);
-		flagControl.setPower(value);
-		carryFlag.setPower(value);
-	}
-
-	@Override
-	public void setReset(final boolean value) {
-		carryFlag.setClr(value);
 	}
 
 	@Override
 	public void setSubtract(final boolean value) {
+		isArithmeticOperation.setC(value);
 		subtractOrSubtractWithBorrow.setA(value);
 		carryControl.setSubtract(value);
-		flagControl.setSubtract(value);
 	}
 
 	@Override
 	public void setSubtractWithBorrow(final boolean value) {
+		isArithmeticOperation.setD(value);
 		subtractOrSubtractWithBorrow.setB(value);
 		carryControl.setSubtractWithBorrow(value);
-		flagControl.setSubtractWithBorrow(value);
 	}
 
 	@Override
 	public void step() {
+		isArithmeticOperation.step();
+
 		subtractOrSubtractWithBorrow.step();
 
 		subtract.setInvert(subtractOrSubtractWithBorrow.getOutput());
 		subtract.step();
 
-		carryControl.setCarryFlag(carryFlag.getDO());
 		carryControl.step();
 
 		adder.setCI(carryControl.getCarryIn());
 		connectEightBitDataOutputToEightBitAInput(subtract, adder);
 		adder.step();
-
-		flagControl.step();
-		carryFlag.setDI(adder.getCO());
-		carryFlag.setW(flagControl.getLatchFlags());
-		carryFlag.step();
 	}
 
 }

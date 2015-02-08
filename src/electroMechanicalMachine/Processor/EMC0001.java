@@ -23,7 +23,7 @@ import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
-import electroMechanicalMachine.Processor.Interfaces.IArithmeticLogicUnit;
+import electroMechanicalMachine.Processor.Interfaces.IMarkXALU;
 import electroMechanicalMachine.Processor.Interfaces.ICarryFlag;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionDecoder;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionLatch;
@@ -37,7 +37,7 @@ import electroMechanicalMachine.Processor.Interfaces.IZeroFlag;
 
 public class EMC0001 implements IProcessor {
 	private final IRegister accumulator = new Register();
-	private final IArithmeticLogicUnit alu = new BasicALUWithFlags();
+	private final IMarkXALU alu = new EMC0001ALU();
 	private final IEightBitTwoToOneSelector loadSelect = new EightBitTwoToOneSelector();
 	private final ISetableProgramCounter programCounter = new SetableProgramCounter();
 	private final IInstructionDecoder instructionDecoder = new BasicInstructionDecoder();

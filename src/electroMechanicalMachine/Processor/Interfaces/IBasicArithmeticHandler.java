@@ -14,11 +14,31 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.Interfaces.ISimulatedCircuit;
 
 /**
- * An arithmetic logic unit performs arithmetic and logical operations on its
- * inputs producing its output.
+ * Performs addition and subtraction, with and without a carry input.
  */
-public interface IArithmeticLogicUnit extends ISimulatedCircuit,
-		IEightBitAInput, IEightBitBInput, IEightBitDataOutput, IResetable {
+public interface IBasicArithmeticHandler extends ISimulatedCircuit,
+		IEightBitAInput, IEightBitBInput, IEightBitDataOutput {
+
+	/**
+	 * Gets a value indicating whether power is flowing from the "CarryOut"
+	 * terminal of the circuit or not. When power is flowing from this terminal
+	 * it indicates that the operation resulted in a carry output.
+	 * 
+	 * @return true indicates that power is flowing from the terminal; false
+	 *         otherwise.
+	 */
+	public abstract boolean getCarryOut();
+
+	/**
+	 * Gets a value indicating whether power is flowing from the
+	 * "IsArithmeticOperation" terminal of the circuit or not. When power is
+	 * flowing from this terminal it indicates that the handler was instructed
+	 * to perform an arithmetic operation.
+	 * 
+	 * @return true indicates that power is flowing from the terminal; false
+	 *         otherwise.
+	 */
+	public abstract boolean getIsArithmeticOperation();
 
 	/**
 	 * sets a value to indicate whether power is flowing to the "Add" input
@@ -43,6 +63,16 @@ public interface IArithmeticLogicUnit extends ISimulatedCircuit,
 	 *            otherwise.
 	 */
 	public abstract void setAddWithCarry(boolean value);
+
+	/**
+	 * sets a value to indicate whether power is flowing to the "CarryIn" input
+	 * terminal of the circuit or not.
+	 * 
+	 * @param value
+	 *            true to indicate that power is flowing to the terminal; false
+	 *            otherwise.
+	 */
+	public abstract void setCarryIn(boolean value);
 
 	/**
 	 * sets a value to indicate whether power is flowing to the "Subtract" input
@@ -76,6 +106,4 @@ public interface IArithmeticLogicUnit extends ISimulatedCircuit,
 	 *            otherwise.
 	 */
 	public abstract void setSubtractWithBorrow(boolean value);
-
-	public abstract void setExecute(boolean value);
 }
