@@ -12,6 +12,8 @@ import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAIn;
 import static electroMechanicalLogic.Tests.TestUtilities.setBIn;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +29,33 @@ public class TestBitwiseOperationHandler {
 	public void setUp() {
 		systemUnderTest = new BitwiseOperationHandler();
 		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public void testIsBitwiseOperation_shouldReturnTrue_whenANDIsSet() {
+		systemUnderTest.setAND(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsBitwiseOperation());
+	}
+
+	@Test
+	public void testIsBitwiseOperation_shouldReturnTrue_whenORIsSet() {
+		systemUnderTest.setOR(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsBitwiseOperation());
+	}
+
+	@Test
+	public void testIsBitwiseOperation_shouldReturnTrue_whenXORsSet() {
+		systemUnderTest.setXOR(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsBitwiseOperation());
+	}
+
+	@Test
+	public void testIsBitwiseOperation_shouldReturnFalse_whenNoBitwiseOperationIsSet() {
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getIsBitwiseOperation());
 	}
 
 	@Test

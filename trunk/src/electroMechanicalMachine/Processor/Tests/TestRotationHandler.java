@@ -11,6 +11,8 @@ package electroMechanicalMachine.Processor.Tests;
 import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setDataIn;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +27,40 @@ public class TestRotationHandler {
 	public void setUp() {
 		systemUnderTest = new RotationHandler();
 		systemUnderTest.setPower(true);
+	}
+
+	@Test
+	public void testIsRotationOperation_shouldReturnFalse_whenNoRotationOperationIsOn() {
+		systemUnderTest.step();
+		assertFalse(systemUnderTest.getIsRotationOperation());
+	}
+
+	@Test
+	public void testIsRotationOperation_shouldReturnTrue_whenRotateLeftIsOn() {
+		systemUnderTest.setRotateLeft(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsRotationOperation());
+	}
+
+	@Test
+	public void testIsRotationOperation_shouldReturnTrue_whenRotateLeftThroughCarryIsOn() {
+		systemUnderTest.setRotateLeftThroughCarry(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsRotationOperation());
+	}
+
+	@Test
+	public void testIsRotationOperation_shouldReturnTrue_whenRotateRightIsOn() {
+		systemUnderTest.setRotateRight(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsRotationOperation());
+	}
+
+	@Test
+	public void testIsRotationOperation_shouldReturnTrue_whenRotateRIghtThroughCarryIsOn() {
+		systemUnderTest.setRotateRightThroughCarry(true);
+		systemUnderTest.step();
+		assertTrue(systemUnderTest.getIsRotationOperation());
 	}
 
 	@Test

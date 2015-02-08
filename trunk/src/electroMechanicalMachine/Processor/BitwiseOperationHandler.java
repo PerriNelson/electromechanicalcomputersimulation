@@ -199,7 +199,7 @@ public class BitwiseOperationHandler implements IBitwiseOperationHandler {
 
 	@Override
 	public void setPower(final boolean value) {
-		isBitwiseOperation.step();
+		isBitwiseOperation.setPower(value);
 
 		xor.setPower(value);
 		or.setPower(value);
