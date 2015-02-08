@@ -8,8 +8,7 @@
 
 package electroMechanicalLogic.Gates.Tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,195 +26,21 @@ public class TestFourInputOR {
 	}
 
 	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOffAndCIsOffAndDIsOff_ReturnsOff() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(false);
+	public void testFourInputOr_shouldReturnTrue_forAllInputsExceptZero() {
+		for (int input = 0; input < 16; input++) {
+			setInputs(input);
 
-		systemUnderTest.step();
+			systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+			assertEquals(String.format("input is %d", input), input != 0,
+					systemUnderTest.getOutput());
+		}
 	}
 
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOffAndCIsOffAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
+	private void setInputs(final int input) {
+		systemUnderTest.setA((input & 1) == 1);
+		systemUnderTest.setB((input & 2) == 2);
+		systemUnderTest.setC((input & 4) == 4);
+		systemUnderTest.setD((input & 8) == 8);
 	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOffAndCIsOnAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOffAndCIsOnAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOnAndCIsOffAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOnAndCIsOffAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOnAndCIsOnAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOffAndBIsOnAndCIsOnAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(false);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOffAndCIsOffAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOffAndCIsOffAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOffAndCIsOnAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOffAndCIsOnAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(false);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOnAndCIsOffAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOnAndCIsOffAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(false);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOnAndCIsOnAndDIsOff_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(false);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
-	@Test
-	public void test_GetOutput_WhenAIsOnAndBIsOnAndCIsOnAndDIsOn_ReturnsOn() {
-		systemUnderTest.setA(true);
-		systemUnderTest.setB(true);
-		systemUnderTest.setC(true);
-		systemUnderTest.setD(true);
-
-		systemUnderTest.step();
-
-		assertTrue(systemUnderTest.getOutput());
-	}
-
 }
