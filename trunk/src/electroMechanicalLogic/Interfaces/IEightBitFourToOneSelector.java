@@ -14,7 +14,7 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 
-public interface IEIghtBitFourToOneSelector extends IEightBitAInput,
+public interface IEightBitFourToOneSelector extends IEightBitAInput,
 		IEightBitBInput, IEightBitCInput, IEightBitDInput, IEightBitDataOutput,
 		ISimulatedCircuit {
 

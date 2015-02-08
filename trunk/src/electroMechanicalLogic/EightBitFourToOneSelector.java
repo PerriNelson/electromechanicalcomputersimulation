@@ -8,10 +8,10 @@
 
 package electroMechanicalLogic;
 
-import electroMechanicalLogic.Interfaces.IEIghtBitFourToOneSelector;
+import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
 import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
 
-public class EightBitFourToOneSelector implements IEIghtBitFourToOneSelector {
+public class EightBitFourToOneSelector implements IEightBitFourToOneSelector {
 	private final IFourLineToOneLineSelector bit0 = new FourLineToOneLineSelector();
 	private final IFourLineToOneLineSelector bit1 = new FourLineToOneLineSelector();
 	private final IFourLineToOneLineSelector bit2 = new FourLineToOneLineSelector();

@@ -14,6 +14,7 @@ import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitBOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitCOutput;
+import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataOutput;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitSumOutput;
@@ -104,6 +105,48 @@ public class EightBitDataPath {
 		target.setB5(source.getDO5());
 		target.setB6(source.getDO6());
 		target.setB7(source.getDO7());
+	}
+
+	/**
+	 * Connects an eight bit "Data" output to an eight it "C" input.
+	 *
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitDataOutputToEightBitCInput(
+			final IEightBitDataOutput source, final IEightBitCInput target) {
+		target.setC0(source.getDO0());
+		target.setC1(source.getDO1());
+		target.setC2(source.getDO2());
+		target.setC3(source.getDO3());
+		target.setC4(source.getDO4());
+		target.setC5(source.getDO5());
+		target.setC6(source.getDO6());
+		target.setC7(source.getDO7());
+	}
+
+	/**
+	 * Connects an eight bit "Data" output to an eight it "D" input.
+	 *
+	 * @param source
+	 *            the eight bit source of the data to be transferred to the
+	 *            target.
+	 * @param target
+	 *            the eight bit target to receive the data from the source
+	 */
+	public static void connectEightBitDataOutputToEightBitDInput(
+			final IEightBitDataOutput source, final IEightBitDInput target) {
+		target.setD0(source.getDO0());
+		target.setD1(source.getDO1());
+		target.setD2(source.getDO2());
+		target.setD3(source.getDO3());
+		target.setD4(source.getDO4());
+		target.setD5(source.getDO5());
+		target.setD6(source.getDO6());
+		target.setD7(source.getDO7());
 	}
 
 	/**

@@ -19,11 +19,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import electroMechanicalLogic.EightBitFourToOneSelector;
-import electroMechanicalLogic.Interfaces.IEIghtBitFourToOneSelector;
+import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
 
 public class TestEIghtBitFourToOneSelector {
 
-	private IEIghtBitFourToOneSelector systemUnderTest;
+	private IEightBitFourToOneSelector systemUnderTest;
 
 	@Before
 	public void setUp() {
