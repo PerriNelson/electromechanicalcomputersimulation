@@ -10,12 +10,14 @@ package electroMechanicalMachine.Processor;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitCInput;
+import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDInput;
+import electroMechanicalLogic.EightBitFourToOneSelector;
+import electroMechanicalLogic.FourLineToOneLineSelector;
 import electroMechanicalLogic.Gates.TwoInputOR;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
+import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
 import electroMechanicalMachine.Processor.Interfaces.IRotate;
 import electroMechanicalMachine.Processor.Interfaces.IRotateThroughCarry;
 import electroMechanicalMachine.Processor.Interfaces.IRotationHandler;
@@ -26,14 +28,12 @@ public class RotationHandler implements IRotationHandler {
 	private final IRotate rotateRight = new RotateRight();
 	private final IRotateThroughCarry rotateLeftThroughCarry = new RotateLeftThroughCarry();
 	private final IRotateThroughCarry rotateRightThroughCarry = new RotateRightThroughCarry();
-	private final ITwoInputSingleOutputGate rotateThroughCarry = new TwoInputOR();
-	private final IEightBitTwoToOneSelector leftSideData = new EightBitTwoToOneSelector();
-	private final ITwoLineToOneLineSelector leftSideCarry = new TwoLineToOneLineSelector();
-	private final IEightBitTwoToOneSelector rightSideData = new EightBitTwoToOneSelector();
-	private final ITwoLineToOneLineSelector rightSideCarry = new TwoLineToOneLineSelector();
-	private final IEightBitTwoToOneSelector dataOut = new EightBitTwoToOneSelector();
-	private final ITwoLineToOneLineSelector carryOut = new TwoLineToOneLineSelector();
-	private final ITwoInputSingleOutputGate right = new TwoInputOR();
+
+	private final ITwoInputSingleOutputGate rotatesThroughCarry = new TwoInputOR();
+	private final ITwoInputSingleOutputGate rotatesRight = new TwoInputOR();
+
+	private final IEightBitFourToOneSelector dataOut = new EightBitFourToOneSelector();
+	private final IFourLineToOneLineSelector carryOut = new FourLineToOneLineSelector();
 
 	@Override
 	public boolean getCarryOut() {
@@ -156,13 +156,11 @@ public class RotationHandler implements IRotationHandler {
 		rotateRight.setPower(value);
 		rotateLeftThroughCarry.setPower(value);
 		rotateRightThroughCarry.setPower(value);
-		leftSideData.setPower(value);
-		rightSideData.setPower(value);
-		rotateThroughCarry.setPower(value);
+
+		rotatesThroughCarry.setPower(value);
+		rotatesRight.setPower(value);
+
 		dataOut.setPower(value);
-		right.setPower(value);
-		rightSideCarry.setPower(value);
-		leftSideCarry.setPower(value);
 		carryOut.setPower(value);
 	}
 
@@ -173,69 +171,48 @@ public class RotationHandler implements IRotationHandler {
 
 	@Override
 	public void setRotateLeftThroughCarry(final boolean value) {
-		rotateThroughCarry.setA(value);
+		rotatesThroughCarry.setA(value);
 	}
 
 	@Override
 	public void setRotateRight(final boolean value) {
-		right.setA(value);
+		rotatesRight.setA(value);
 	}
 
 	@Override
 	public void setRotateRightThroughCarry(final boolean value) {
-		rotateThroughCarry.setB(value);
-		right.setB(value);
+		rotatesThroughCarry.setB(value);
+		rotatesRight.setB(value);
 	}
 
 	@Override
 	public void step() {
-		rotateThroughCarry.step();
-		right.step();
-
-		stepLeft();
-		stepRight();
-
-		connectEightBitDataOutputToEightBitAInput(leftSideData, dataOut);
-		connectEightBitDataOutputToEightBitBInput(rightSideData, dataOut);
-		dataOut.setSelect(right.getOutput());
-		dataOut.step();
-
-		carryOut.setA(leftSideCarry.getDO());
-		carryOut.setB(rightSideCarry.getDO());
-		carryOut.setSelect(right.getOutput());
-		carryOut.step();
-	}
-
-	private void stepLeft() {
 		rotateLeft.step();
-		rotateLeftThroughCarry.step();
-
-		connectEightBitDataOutputToEightBitAInput(rotateLeft, leftSideData);
-		connectEightBitDataOutputToEightBitBInput(rotateLeftThroughCarry,
-				leftSideData);
-		leftSideData.setSelect(rotateThroughCarry.getOutput());
-		leftSideData.step();
-
-		leftSideCarry.setA(rotateLeft.getCO());
-		leftSideCarry.setB(rotateLeftThroughCarry.getCO());
-		leftSideCarry.setSelect(rotateThroughCarry.getOutput());
-		leftSideCarry.step();
-	}
-
-	private void stepRight() {
 		rotateRight.step();
+		rotateLeftThroughCarry.step();
 		rotateRightThroughCarry.step();
 
-		connectEightBitDataOutputToEightBitAInput(rotateRight, rightSideData);
-		connectEightBitDataOutputToEightBitBInput(rotateRightThroughCarry,
-				rightSideData);
-		rightSideData.setSelect(rotateThroughCarry.getOutput());
-		rightSideData.step();
+		rotatesThroughCarry.step();
+		rotatesRight.step();
 
-		rightSideCarry.setA(rotateRight.getCO());
-		rightSideCarry.setB(rotateRightThroughCarry.getCO());
-		rightSideCarry.setSelect(rotateThroughCarry.getOutput());
-		rightSideCarry.step();
+		connectEightBitDataOutputToEightBitAInput(rotateLeft, dataOut);
+		connectEightBitDataOutputToEightBitBInput(rotateRight, dataOut);
+		connectEightBitDataOutputToEightBitCInput(rotateLeftThroughCarry,
+				dataOut);
+		connectEightBitDataOutputToEightBitDInput(rotateRightThroughCarry,
+				dataOut);
+
+		dataOut.setS0(rotatesRight.getOutput());
+		dataOut.setS1(rotatesThroughCarry.getOutput());
+		dataOut.step();
+
+		carryOut.setA(rotateLeft.getCO());
+		carryOut.setB(rotateRight.getCO());
+		carryOut.setC(rotateLeftThroughCarry.getCO());
+		carryOut.setD(rotateRightThroughCarry.getCO());
+
+		carryOut.setS0(rotatesRight.getOutput());
+		carryOut.setS1(rotatesThroughCarry.getOutput());
+		carryOut.step();
 	}
-
 }
