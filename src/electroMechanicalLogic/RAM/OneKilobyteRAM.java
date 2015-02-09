@@ -9,23 +9,23 @@
 package electroMechanicalLogic.RAM;
 
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.RAM.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.RAM.Interfaces.IOneKilobyteRAM;
+import electroMechanicalLogic.Selectors.TwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 
 public class OneKilobyteRAM implements IOneKilobyteRAM {
 
 	protected IOneLineToTwoLineDecoder w = new OneLineToTwoLineDecoder();
-	protected ITwoLineToOneLineSelector dO0 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO1 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO2 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO3 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO4 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO5 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO6 = new TwoLineToOneLineSelector();
-	protected ITwoLineToOneLineSelector dO7 = new TwoLineToOneLineSelector();
+	protected ITwoToOneSelector dO0 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO1 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO2 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO3 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO4 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO5 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO6 = new TwoToOneSelector();
+	protected ITwoToOneSelector dO7 = new TwoToOneSelector();
 
 	protected IFiveHundredTwelveByteRAM bank0;
 	protected IFiveHundredTwelveByteRAM bank1;

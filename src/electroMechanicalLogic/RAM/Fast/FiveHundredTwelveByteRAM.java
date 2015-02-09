@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.RAM.Fast;
 
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IFiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAM extends SixtyFourByteRAM implements
 		IFiveHundredTwelveByteRAM {

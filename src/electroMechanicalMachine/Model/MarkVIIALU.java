@@ -14,7 +14,6 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitBInput;
 import electroMechanicalLogic.EightBitEdgeTriggeredLatchWithClear;
 import electroMechanicalLogic.EightBitOnesComplement;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
@@ -24,8 +23,9 @@ import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IEightBitLatchWithClear;
 import electroMechanicalLogic.Interfaces.IEightBitOnesComplement;
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.IRelay;
+import electroMechanicalLogic.Selectors.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalMachine.Model.Interfaces.IMarkVIIALU;
 
 public class MarkVIIALU implements IMarkVIIALU {

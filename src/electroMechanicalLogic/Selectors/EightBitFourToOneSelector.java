@@ -6,20 +6,24 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Selectors;
 
-import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
-import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IFourToOneSelector;
 
+/**
+ * A circuit that "selects" between four eight bit wide inputs to produce one
+ * eight bit wide output.
+ */
 public class EightBitFourToOneSelector implements IEightBitFourToOneSelector {
-	private final IFourLineToOneLineSelector bit0 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit1 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit2 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit3 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit4 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit5 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit6 = new FourLineToOneLineSelector();
-	private final IFourLineToOneLineSelector bit7 = new FourLineToOneLineSelector();
+	private final IFourToOneSelector bit0 = new FourToOneSelector();
+	private final IFourToOneSelector bit1 = new FourToOneSelector();
+	private final IFourToOneSelector bit2 = new FourToOneSelector();
+	private final IFourToOneSelector bit3 = new FourToOneSelector();
+	private final IFourToOneSelector bit4 = new FourToOneSelector();
+	private final IFourToOneSelector bit5 = new FourToOneSelector();
+	private final IFourToOneSelector bit6 = new FourToOneSelector();
+	private final IFourToOneSelector bit7 = new FourToOneSelector();
 
 	@Override
 	public boolean getDO0() {

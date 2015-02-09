@@ -6,9 +6,8 @@
   USA.
  */
 
-package electroMechanicalLogic.Interfaces;
+package electroMechanicalLogic.RAM.Interfaces;
 
-import electroMechanicalLogic.RAM.Interfaces.ISixtyFourByteRAM;
 
 public interface IFiveHundredTwelveByteRAM extends ISixtyFourByteRAM {
 	public abstract void setA6(boolean value);

@@ -6,16 +6,20 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Selectors;
 
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Gates.FourInputOR;
 import electroMechanicalLogic.Gates.ThreeInputAND;
 import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.IThreeInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IRelay;
+import electroMechanicalLogic.Selectors.Interfaces.IFourToOneSelector;
 
-public class FourLineToOneLineSelector implements IFourLineToOneLineSelector {
+/**
+ * A circuit that "selects" between four inputs to produce one output.
+ */
+public class FourToOneSelector implements IFourToOneSelector {
 	private final IFourInputSingleOutputGate output = new FourInputOR();
 
 	private final IThreeInputSingleOutputGate a = new ThreeInputAND();

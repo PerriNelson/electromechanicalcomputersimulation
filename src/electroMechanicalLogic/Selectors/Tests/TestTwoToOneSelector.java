@@ -5,7 +5,7 @@
   a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
   USA.
  */
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Selectors.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -13,16 +13,16 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.TwoLineToOneLineSelector;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.TwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 
-public class TwoLineToOneLineSelectorTest {
+public class TestTwoToOneSelector {
 
-	private ITwoLineToOneLineSelector systemUnderTest;
+	private ITwoToOneSelector systemUnderTest;
 
 	@Before
 	public void setUp() throws Exception {
-		systemUnderTest = new TwoLineToOneLineSelector();
+		systemUnderTest = new TwoToOneSelector();
 		systemUnderTest.setPower(true);
 	}
 

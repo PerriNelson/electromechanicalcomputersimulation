@@ -9,16 +9,16 @@
 package electroMechanicalLogic.RAM;
 
 import electroMechanicalLogic.OneLineToTwoLineDecoder;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.Interfaces.IOneLineToTwoLineDecoder;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixteenBitRAM;
+import electroMechanicalLogic.Selectors.TwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 
 public class SixteenBitRAM implements ISixteenBitRAM {
 
 	private final IOneLineToTwoLineDecoder decoder = new OneLineToTwoLineDecoder();
-	private final ITwoLineToOneLineSelector selector = new TwoLineToOneLineSelector();
+	private final ITwoToOneSelector selector = new TwoToOneSelector();
 	private final IEightBitRAM bank0 = new EightBitRAM();
 	private final IEightBitRAM bank1 = new EightBitRAM();
 

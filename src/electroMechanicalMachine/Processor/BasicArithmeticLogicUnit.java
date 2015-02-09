@@ -11,10 +11,10 @@ package electroMechanicalMachine.Processor;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitAInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitCInput;
-import electroMechanicalLogic.EightBitFourToOneSelector;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
-import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.EightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.TwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 import electroMechanicalMachine.Processor.Interfaces.IBasicArithmeticHandler;
 import electroMechanicalMachine.Processor.Interfaces.IBasicArithmeticLogicUnit;
 import electroMechanicalMachine.Processor.Interfaces.IBitwiseOperationHandler;
@@ -25,7 +25,7 @@ public class BasicArithmeticLogicUnit implements IBasicArithmeticLogicUnit {
 	private final IBitwiseOperationHandler bitwiseHandler = new BitwiseOperationHandler();
 	private final IRotationHandler rotationHandler = new RotationHandler();
 	private final IEightBitFourToOneSelector dataOut = new EightBitFourToOneSelector();
-	private final ITwoLineToOneLineSelector carryOut = new TwoLineToOneLineSelector();
+	private final ITwoToOneSelector carryOut = new TwoToOneSelector();
 
 	@Override
 	public boolean getCarryOut() {

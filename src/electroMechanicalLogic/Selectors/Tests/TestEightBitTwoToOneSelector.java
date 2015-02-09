@@ -6,17 +6,17 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Selectors.Tests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightBitTwoToOneSelector;
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitTwoToOneSelector;
 
-public class EightBitTwoToOneSelectorTest {
+public class TestEightBitTwoToOneSelector {
 
 	private static final byte bit0 = 0x01;
 	private static final byte bit1 = 0x02;

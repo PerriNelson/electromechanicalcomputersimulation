@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Selectors.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,10 +14,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightToOneSelector;
-import electroMechanicalLogic.Interfaces.IEightToOneSelector;
+import electroMechanicalLogic.Selectors.EightToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightToOneSelector;
 
-public class EightToOneSelectorTests {
+public class TestEightToOneSelector {
 
 	private IEightToOneSelector systemUnderTest;
 	private static final int bit0 = 0x01;
@@ -47,12 +47,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[0]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[0]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -64,12 +64,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[4]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[4]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -81,12 +81,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[2]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[2]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -98,12 +98,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[6]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[6]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -115,12 +115,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[1]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[1]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -132,12 +132,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[5]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[5]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -149,12 +149,12 @@ public class EightToOneSelectorTests {
 		setD(OnValues[3]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[3]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	@Test
@@ -166,22 +166,22 @@ public class EightToOneSelectorTests {
 		setD(OnValues[7]);
 		systemUnderTest.step();
 
-		assertTrue(systemUnderTest.getOutput());
+		assertTrue(systemUnderTest.getDO());
 
 		setD(~OnValues[7]);
 		systemUnderTest.step();
 
-		assertFalse(systemUnderTest.getOutput());
+		assertFalse(systemUnderTest.getDO());
 	}
 
 	private void setD(final int value) {
-		systemUnderTest.setDI0((value & bit0) == bit0);
-		systemUnderTest.setDI1((value & bit1) == bit1);
-		systemUnderTest.setDI2((value & bit2) == bit2);
-		systemUnderTest.setDI3((value & bit3) == bit3);
-		systemUnderTest.setDI4((value & bit4) == bit4);
-		systemUnderTest.setDI5((value & bit5) == bit5);
-		systemUnderTest.setDI6((value & bit6) == bit6);
-		systemUnderTest.setDI7((value & bit7) == bit7);
+		systemUnderTest.setA((value & bit0) == bit0);
+		systemUnderTest.setB((value & bit1) == bit1);
+		systemUnderTest.setC((value & bit2) == bit2);
+		systemUnderTest.setD((value & bit3) == bit3);
+		systemUnderTest.setE((value & bit4) == bit4);
+		systemUnderTest.setF((value & bit5) == bit5);
+		systemUnderTest.setG((value & bit6) == bit6);
+		systemUnderTest.setH((value & bit7) == bit7);
 	}
 }

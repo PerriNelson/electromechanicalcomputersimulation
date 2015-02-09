@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Selectors.Tests;
 
 import static electroMechanicalLogic.Tests.TestUtilities.getDataOut;
 import static electroMechanicalLogic.Tests.TestUtilities.setAIn;
@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.EightBitFourToOneSelector;
-import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.EightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitFourToOneSelector;
 
 public class TestEIghtBitFourToOneSelector {
 

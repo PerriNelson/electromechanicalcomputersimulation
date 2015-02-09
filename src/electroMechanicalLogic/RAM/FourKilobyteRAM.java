@@ -8,7 +8,7 @@
 
 package electroMechanicalLogic.RAM;
 
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.RAM.Interfaces.IFourKilobyteRAM;
 
 public class FourKilobyteRAM extends FiveHundredTwelveByteRAM implements
