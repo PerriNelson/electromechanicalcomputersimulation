@@ -6,13 +6,12 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.RAM.Tests;
 
 import org.junit.Before;
 
 import electroMechanicalLogic.RAM.ThirtyTwoKilobyteRAM;
 import electroMechanicalLogic.RAM.Interfaces.IThirtyTwoKilobyteRAM;
-import electroMechanicalLogic.RAM.Tests.FourKilobyteRAMTest;
 
 public class ThirtyTwoKilobyteRAMTest extends FourKilobyteRAMTest {
 	protected static final int bitC = 0x1000;

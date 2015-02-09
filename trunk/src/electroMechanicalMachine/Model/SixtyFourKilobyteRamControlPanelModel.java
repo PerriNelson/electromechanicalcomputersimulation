@@ -21,17 +21,17 @@ import java.beans.PropertyChangeListener;
 import javax.swing.event.EventListenerList;
 
 import electroMechanicalLogic.EightBitBuffer;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.SixteenBitAddressBuffer;
-import electroMechanicalLogic.TwoLineToOneLineSelector;
 import electroMechanicalLogic.DataChannel.Interfaces.IEightBitDataInput;
 import electroMechanicalLogic.DataChannel.Interfaces.ISixteenBitAInput;
 import electroMechanicalLogic.Interfaces.IEightBitBuffer;
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalLogic.Interfaces.ISixteenBitAddressBuffer;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
 import electroMechanicalLogic.RAM.SixtyFourKilobyteRAM;
 import electroMechanicalLogic.RAM.Interfaces.ISixtyFourKilobyteRAM;
+import electroMechanicalLogic.Selectors.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.TwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 import electroMechanicalMachine.Model.Interfaces.ISixtyFourKilobyteRamControlPanelModel;
 
 public class SixtyFourKilobyteRamControlPanelModel implements
@@ -47,7 +47,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 	private final IEightBitTwoToOneSelector addressInHigh;
 	private final IEightBitTwoToOneSelector addressInLow;
 	private final IEightBitTwoToOneSelector dataIn;
-	private final ITwoLineToOneLineSelector writeSelector;
+	private final ITwoToOneSelector writeSelector;
 
 	private final EventListenerList eventListeners = new EventListenerList();
 
@@ -66,7 +66,7 @@ public class SixtyFourKilobyteRamControlPanelModel implements
 		addressInHigh = new EightBitTwoToOneSelector();
 		addressInLow = new EightBitTwoToOneSelector();
 		dataIn = new EightBitTwoToOneSelector();
-		writeSelector = new TwoLineToOneLineSelector();
+		writeSelector = new TwoToOneSelector();
 	}
 
 	@Override

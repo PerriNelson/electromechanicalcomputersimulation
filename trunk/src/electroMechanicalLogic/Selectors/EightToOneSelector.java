@@ -6,15 +6,83 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Selectors;
 
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Gates.EightInputOR;
 import electroMechanicalLogic.Gates.FourInputAND;
 import electroMechanicalLogic.Gates.Interfaces.IEightInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IRelay;
+import electroMechanicalLogic.Selectors.Interfaces.IEightToOneSelector;
 
+/**
+ * A circuit that "selects" between eight inputs to produce one output.
+ * <p>
+ * The "S0", "S1', and "S2" inputs are used to select the output as follows:
+ * </p>
+ * 
+ * <table border="1">
+ * <col width="12pt"/> <col width="12pt"/> <col width="12pt"/> <col
+ * width="12pt"/> <thead>
+ * <tr>
+ * <th>S0</th>
+ * <th>S1</th>
+ * <th>S2</th>
+ * <th>DO</th>
+ * </tr>
+ * <thead> <tbody>
+ * <tr>
+ * <td>off</td>
+ * <td>off</td>
+ * <td>off</td>
+ * <td>A</td>
+ * </tr>
+ * <tr>
+ * <td>off</td>
+ * <td>off</td>
+ * <td>on</td>
+ * <td>B</td>
+ * </tr>
+ * <tr>
+ * <td>off</td>
+ * <td>on</td>
+ * <td>off</td>
+ * <td>C</td>
+ * </tr>
+ * <tr>
+ * <td>off</td>
+ * <td>on</td>
+ * <td>on</td>
+ * <td>D</td>
+ * </tr>
+ * <tr>
+ * <td>on</td>
+ * <td>off</td>
+ * <td>off</td>
+ * <td>E</td>
+ * </tr>
+ * <tr>
+ * <td>on</td>
+ * <td>off</td>
+ * <td>on</td>
+ * <td>F</td>
+ * </tr>
+ * <tr>
+ * <td>on</td>
+ * <td>on</td>
+ * <td>off</td>
+ * <td>G</td>
+ * </tr>
+ * <tr>
+ * <td>on</td>
+ * <td>on</td>
+ * <td>on</td>
+ * <td>H</td>
+ * </tr>
+ * </tbody>
+ * </table>
+ */
 public final class EightToOneSelector implements IEightToOneSelector {
 
 	private final IEightInputSingleOutputGate or = new EightInputOR();
@@ -31,47 +99,47 @@ public final class EightToOneSelector implements IEightToOneSelector {
 	private final IRelay inverter2 = new Inverter();
 
 	@Override
-	public boolean getOutput() {
+	public boolean getDO() {
 		return or.getOutput();
 	}
 
 	@Override
-	public void setDI0(final boolean value) {
+	public void setA(final boolean value) {
 		and0.setD(value);
 	}
 
 	@Override
-	public void setDI1(final boolean value) {
+	public void setB(final boolean value) {
 		and1.setD(value);
 	}
 
 	@Override
-	public void setDI2(final boolean value) {
+	public void setC(final boolean value) {
 		and2.setD(value);
 	}
 
 	@Override
-	public void setDI3(final boolean value) {
+	public void setD(final boolean value) {
 		and3.setD(value);
 	}
 
 	@Override
-	public void setDI4(final boolean value) {
+	public void setE(final boolean value) {
 		and4.setD(value);
 	}
 
 	@Override
-	public void setDI5(final boolean value) {
+	public void setF(final boolean value) {
 		and5.setD(value);
 	}
 
 	@Override
-	public void setDI6(final boolean value) {
+	public void setG(final boolean value) {
 		and6.setD(value);
 	}
 
 	@Override
-	public void setDI7(final boolean value) {
+	public void setH(final boolean value) {
 		and7.setD(value);
 	}
 

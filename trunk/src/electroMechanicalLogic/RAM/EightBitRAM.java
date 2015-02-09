@@ -8,13 +8,13 @@
 
 package electroMechanicalLogic.RAM;
 
-import electroMechanicalLogic.EightToOneSelector;
 import electroMechanicalLogic.Latch;
 import electroMechanicalLogic.ThreeToEightDecoder;
-import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.ILatch;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 import electroMechanicalLogic.RAM.Interfaces.IEightBitRAM;
+import electroMechanicalLogic.Selectors.EightToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightToOneSelector;
 
 public final class EightBitRAM implements IEightBitRAM {
 	private final IThreeToEightDecoder decoder = new ThreeToEightDecoder();
@@ -30,7 +30,7 @@ public final class EightBitRAM implements IEightBitRAM {
 
 	@Override
 	public boolean getDO() {
-		return selector.getOutput();
+		return selector.getDO();
 	}
 
 	@Override
@@ -104,14 +104,14 @@ public final class EightBitRAM implements IEightBitRAM {
 		bit6.step();
 		bit7.step();
 
-		selector.setDI0(bit0.getDO());
-		selector.setDI1(bit1.getDO());
-		selector.setDI2(bit2.getDO());
-		selector.setDI3(bit3.getDO());
-		selector.setDI4(bit4.getDO());
-		selector.setDI5(bit5.getDO());
-		selector.setDI6(bit6.getDO());
-		selector.setDI7(bit7.getDO());
+		selector.setA(bit0.getDO());
+		selector.setB(bit1.getDO());
+		selector.setC(bit2.getDO());
+		selector.setD(bit3.getDO());
+		selector.setE(bit4.getDO());
+		selector.setF(bit5.getDO());
+		selector.setG(bit6.getDO());
+		selector.setH(bit7.getDO());
 
 		selector.step();
 	}

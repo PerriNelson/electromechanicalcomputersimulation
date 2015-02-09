@@ -9,12 +9,12 @@
 package electroMechanicalLogic.RAM;
 
 import electroMechanicalLogic.EightBitLatch;
-import electroMechanicalLogic.EightToOneSelector;
 import electroMechanicalLogic.ThreeToEightDecoder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
-import electroMechanicalLogic.Interfaces.IEightToOneSelector;
 import electroMechanicalLogic.Interfaces.IThreeToEightDecoder;
 import electroMechanicalLogic.RAM.Interfaces.IEightByteRAM;
+import electroMechanicalLogic.Selectors.EightToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightToOneSelector;
 
 /**
  * An eight byte Random Access Memory.
@@ -46,43 +46,43 @@ public class EightByteRAM implements IEightByteRAM {
 
 	@Override
 	public boolean getDO0() {
-		return dO0.getOutput();
+		return dO0.getDO();
 	}
 
 	@Override
 	public boolean getDO1() {
-		return dO1.getOutput();
+		return dO1.getDO();
 	}
 
 	@Override
 	public boolean getDO2() {
-		return dO2.getOutput();
+		return dO2.getDO();
 	}
 
 	@Override
 	public boolean getDO3() {
-		return dO3.getOutput();
+		return dO3.getDO();
 	}
 
 	@Override
 	public boolean getDO4() {
-		return dO4.getOutput();
+		return dO4.getDO();
 	}
 
 	@Override
 	public boolean getDO5() {
-		return dO5.getOutput();
+		return dO5.getDO();
 	}
 
 	@Override
 	public boolean getDO6() {
-		return dO6.getOutput();
+		return dO6.getDO();
 
 	}
 
 	@Override
 	public boolean getDO7() {
-		return dO7.getOutput();
+		return dO7.getDO();
 	}
 
 	@Override
@@ -274,84 +274,84 @@ public class EightByteRAM implements IEightByteRAM {
 		bank7.setW(w.getO7());
 		bank7.step();
 
-		dO0.setDI0(bank0.getDO0());
-		dO0.setDI1(bank1.getDO0());
-		dO0.setDI2(bank2.getDO0());
-		dO0.setDI3(bank3.getDO0());
-		dO0.setDI4(bank4.getDO0());
-		dO0.setDI5(bank5.getDO0());
-		dO0.setDI6(bank6.getDO0());
-		dO0.setDI7(bank7.getDO0());
+		dO0.setA(bank0.getDO0());
+		dO0.setB(bank1.getDO0());
+		dO0.setC(bank2.getDO0());
+		dO0.setD(bank3.getDO0());
+		dO0.setE(bank4.getDO0());
+		dO0.setF(bank5.getDO0());
+		dO0.setG(bank6.getDO0());
+		dO0.setH(bank7.getDO0());
 		dO0.step();
 
-		dO1.setDI0(bank0.getDO1());
-		dO1.setDI1(bank1.getDO1());
-		dO1.setDI2(bank2.getDO1());
-		dO1.setDI3(bank3.getDO1());
-		dO1.setDI4(bank4.getDO1());
-		dO1.setDI5(bank5.getDO1());
-		dO1.setDI6(bank6.getDO1());
-		dO1.setDI7(bank7.getDO1());
+		dO1.setA(bank0.getDO1());
+		dO1.setB(bank1.getDO1());
+		dO1.setC(bank2.getDO1());
+		dO1.setD(bank3.getDO1());
+		dO1.setE(bank4.getDO1());
+		dO1.setF(bank5.getDO1());
+		dO1.setG(bank6.getDO1());
+		dO1.setH(bank7.getDO1());
 		dO1.step();
 
-		dO2.setDI0(bank0.getDO2());
-		dO2.setDI1(bank1.getDO2());
-		dO2.setDI2(bank2.getDO2());
-		dO2.setDI3(bank3.getDO2());
-		dO2.setDI4(bank4.getDO2());
-		dO2.setDI5(bank5.getDO2());
-		dO2.setDI6(bank6.getDO2());
-		dO2.setDI7(bank7.getDO2());
+		dO2.setA(bank0.getDO2());
+		dO2.setB(bank1.getDO2());
+		dO2.setC(bank2.getDO2());
+		dO2.setD(bank3.getDO2());
+		dO2.setE(bank4.getDO2());
+		dO2.setF(bank5.getDO2());
+		dO2.setG(bank6.getDO2());
+		dO2.setH(bank7.getDO2());
 		dO2.step();
 
-		dO3.setDI0(bank0.getDO3());
-		dO3.setDI1(bank1.getDO3());
-		dO3.setDI2(bank2.getDO3());
-		dO3.setDI3(bank3.getDO3());
-		dO3.setDI4(bank4.getDO3());
-		dO3.setDI5(bank5.getDO3());
-		dO3.setDI6(bank6.getDO3());
-		dO3.setDI7(bank7.getDO3());
+		dO3.setA(bank0.getDO3());
+		dO3.setB(bank1.getDO3());
+		dO3.setC(bank2.getDO3());
+		dO3.setD(bank3.getDO3());
+		dO3.setE(bank4.getDO3());
+		dO3.setF(bank5.getDO3());
+		dO3.setG(bank6.getDO3());
+		dO3.setH(bank7.getDO3());
 		dO3.step();
 
-		dO4.setDI0(bank0.getDO4());
-		dO4.setDI1(bank1.getDO4());
-		dO4.setDI2(bank2.getDO4());
-		dO4.setDI3(bank3.getDO4());
-		dO4.setDI4(bank4.getDO4());
-		dO4.setDI5(bank5.getDO4());
-		dO4.setDI6(bank6.getDO4());
-		dO4.setDI7(bank7.getDO4());
+		dO4.setA(bank0.getDO4());
+		dO4.setB(bank1.getDO4());
+		dO4.setC(bank2.getDO4());
+		dO4.setD(bank3.getDO4());
+		dO4.setE(bank4.getDO4());
+		dO4.setF(bank5.getDO4());
+		dO4.setG(bank6.getDO4());
+		dO4.setH(bank7.getDO4());
 		dO4.step();
 
-		dO5.setDI0(bank0.getDO5());
-		dO5.setDI1(bank1.getDO5());
-		dO5.setDI2(bank2.getDO5());
-		dO5.setDI3(bank3.getDO5());
-		dO5.setDI4(bank4.getDO5());
-		dO5.setDI5(bank5.getDO5());
-		dO5.setDI6(bank6.getDO5());
-		dO5.setDI7(bank7.getDO5());
+		dO5.setA(bank0.getDO5());
+		dO5.setB(bank1.getDO5());
+		dO5.setC(bank2.getDO5());
+		dO5.setD(bank3.getDO5());
+		dO5.setE(bank4.getDO5());
+		dO5.setF(bank5.getDO5());
+		dO5.setG(bank6.getDO5());
+		dO5.setH(bank7.getDO5());
 		dO5.step();
 
-		dO6.setDI0(bank0.getDO6());
-		dO6.setDI1(bank1.getDO6());
-		dO6.setDI2(bank2.getDO6());
-		dO6.setDI3(bank3.getDO6());
-		dO6.setDI4(bank4.getDO6());
-		dO6.setDI5(bank5.getDO6());
-		dO6.setDI6(bank6.getDO6());
-		dO6.setDI7(bank7.getDO6());
+		dO6.setA(bank0.getDO6());
+		dO6.setB(bank1.getDO6());
+		dO6.setC(bank2.getDO6());
+		dO6.setD(bank3.getDO6());
+		dO6.setE(bank4.getDO6());
+		dO6.setF(bank5.getDO6());
+		dO6.setG(bank6.getDO6());
+		dO6.setH(bank7.getDO6());
 		dO6.step();
 
-		dO7.setDI0(bank0.getDO7());
-		dO7.setDI1(bank1.getDO7());
-		dO7.setDI2(bank2.getDO7());
-		dO7.setDI3(bank3.getDO7());
-		dO7.setDI4(bank4.getDO7());
-		dO7.setDI5(bank5.getDO7());
-		dO7.setDI6(bank6.getDO7());
-		dO7.setDI7(bank7.getDO7());
+		dO7.setA(bank0.getDO7());
+		dO7.setB(bank1.getDO7());
+		dO7.setC(bank2.getDO7());
+		dO7.setD(bank3.getDO7());
+		dO7.setE(bank4.getDO7());
+		dO7.setF(bank5.getDO7());
+		dO7.setG(bank6.getDO7());
+		dO7.setH(bank7.getDO7());
 		dO7.step();
 	}
 

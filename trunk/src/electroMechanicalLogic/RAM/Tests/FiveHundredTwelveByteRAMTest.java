@@ -14,8 +14,8 @@ import static electroMechanicalLogic.Tests.TestConstants.bit8;
 
 import org.junit.Before;
 
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 import electroMechanicalLogic.RAM.FiveHundredTwelveByteRAM;
+import electroMechanicalLogic.RAM.Interfaces.IFiveHundredTwelveByteRAM;
 
 public class FiveHundredTwelveByteRAMTest extends TestSixtyFourByteRAM {
 

@@ -6,21 +6,25 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Selectors;
 
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 
+/**
+ * A circuit that selects between two eight bit wide inputs to produce one eight
+ * bit wide output.
+ */
 public class EightBitTwoToOneSelector implements IEightBitTwoToOneSelector {
 
-	private final ITwoLineToOneLineSelector bit0 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit1 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit2 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit3 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit4 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit5 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit6 = new TwoLineToOneLineSelector();
-	private final ITwoLineToOneLineSelector bit7 = new TwoLineToOneLineSelector();
+	private final ITwoToOneSelector bit0 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit1 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit2 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit3 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit4 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit5 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit6 = new TwoToOneSelector();
+	private final ITwoToOneSelector bit7 = new TwoToOneSelector();
 
 	@Override
 	public boolean getDO0() {

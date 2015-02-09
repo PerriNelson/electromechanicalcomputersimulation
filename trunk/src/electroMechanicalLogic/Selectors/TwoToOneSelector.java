@@ -6,16 +6,19 @@
   USA.
  */
 
-package electroMechanicalLogic;
+package electroMechanicalLogic.Selectors;
 
+import electroMechanicalLogic.Inverter;
 import electroMechanicalLogic.Gates.TwoInputAND;
 import electroMechanicalLogic.Gates.TwoInputOR;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
 import electroMechanicalLogic.Interfaces.IRelay;
-import electroMechanicalLogic.Interfaces.ITwoLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.Interfaces.ITwoToOneSelector;
 
-public final class TwoLineToOneLineSelector implements
-		ITwoLineToOneLineSelector {
+/**
+ * A circuit that "selects" between two inputs to produce one output.
+ */
+public final class TwoToOneSelector implements ITwoToOneSelector {
 
 	private final IRelay selectInverter = new Inverter();
 	private final ITwoInputSingleOutputGate andA = new TwoInputAND();

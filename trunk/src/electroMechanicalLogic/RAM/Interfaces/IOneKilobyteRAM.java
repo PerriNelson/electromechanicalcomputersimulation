@@ -8,7 +8,6 @@
 
 package electroMechanicalLogic.RAM.Interfaces;
 
-import electroMechanicalLogic.Interfaces.IFiveHundredTwelveByteRAM;
 
 public interface IOneKilobyteRAM extends IFiveHundredTwelveByteRAM {
 	public abstract void setA9(boolean value);

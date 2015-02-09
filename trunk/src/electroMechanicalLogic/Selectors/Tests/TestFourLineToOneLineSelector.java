@@ -6,7 +6,7 @@
   USA.
  */
 
-package electroMechanicalLogic.Tests;
+package electroMechanicalLogic.Selectors.Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,15 +14,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import electroMechanicalLogic.FourLineToOneLineSelector;
-import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.FourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IFourToOneSelector;
 
 public class TestFourLineToOneLineSelector {
 	private enum WhichInput {
 		A, B, C, D
 	}
 
-	private IFourLineToOneLineSelector systemUnderTest;
+	private IFourToOneSelector systemUnderTest;
 
 	private static final int A = 0;;
 
@@ -32,7 +32,7 @@ public class TestFourLineToOneLineSelector {
 
 	@Before
 	public void setUp() {
-		systemUnderTest = new FourLineToOneLineSelector();
+		systemUnderTest = new FourToOneSelector();
 		systemUnderTest.setPower(true);
 	}
 

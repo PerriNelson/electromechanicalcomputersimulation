@@ -10,11 +10,11 @@ package electroMechanicalMachine.Model;
 
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitSumToEightBitDataInput;
-import electroMechanicalLogic.EightBitTwoToOneSelector;
 import electroMechanicalLogic.Adders.EightBitAdder;
 import electroMechanicalLogic.Adders.Interfaces.IEightBitAdder;
 import electroMechanicalLogic.Interfaces.IEightBitLatch;
-import electroMechanicalLogic.Interfaces.IEightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.EightBitTwoToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitTwoToOneSelector;
 import electroMechanicalMachine.Model.Interfaces.IAddingMachineMarkIIIModel;
 
 public class AddingMachineMarkIIIModel implements IAddingMachineMarkIIIModel {

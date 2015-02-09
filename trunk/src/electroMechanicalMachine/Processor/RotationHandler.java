@@ -12,14 +12,14 @@ import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBi
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitBInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitCInput;
 import static electroMechanicalLogic.DataChannel.EightBitDataPath.connectEightBitDataOutputToEightBitDInput;
-import electroMechanicalLogic.EightBitFourToOneSelector;
-import electroMechanicalLogic.FourLineToOneLineSelector;
 import electroMechanicalLogic.Gates.FourInputOR;
 import electroMechanicalLogic.Gates.TwoInputOR;
 import electroMechanicalLogic.Gates.Interfaces.IFourInputSingleOutputGate;
 import electroMechanicalLogic.Gates.Interfaces.ITwoInputSingleOutputGate;
-import electroMechanicalLogic.Interfaces.IEightBitFourToOneSelector;
-import electroMechanicalLogic.Interfaces.IFourLineToOneLineSelector;
+import electroMechanicalLogic.Selectors.EightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.FourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IEightBitFourToOneSelector;
+import electroMechanicalLogic.Selectors.Interfaces.IFourToOneSelector;
 import electroMechanicalMachine.Processor.Interfaces.IRotate;
 import electroMechanicalMachine.Processor.Interfaces.IRotateThroughCarry;
 import electroMechanicalMachine.Processor.Interfaces.IRotationHandler;
@@ -37,7 +37,7 @@ public class RotationHandler implements IRotationHandler {
 	private final ITwoInputSingleOutputGate rotatesRight = new TwoInputOR();
 
 	private final IEightBitFourToOneSelector dataOut = new EightBitFourToOneSelector();
-	private final IFourLineToOneLineSelector carryOut = new FourLineToOneLineSelector();
+	private final IFourToOneSelector carryOut = new FourToOneSelector();
 
 	@Override
 	public boolean getCarryOut() {
