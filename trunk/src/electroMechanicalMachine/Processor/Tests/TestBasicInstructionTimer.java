@@ -20,11 +20,19 @@ import electroMechanicalMachine.Processor.BasicInstructionTimer;
 import electroMechanicalMachine.Processor.Interfaces.IInstructionTimer;
 
 public class TestBasicInstructionTimer {
-	private IInstructionTimer systemUnderTest;
+	protected IInstructionTimer systemUnderTest;
+
+	protected void setInstructionTimer() {
+		setInstructionTimer(new BasicInstructionTimer());
+	}
+
+	protected final void setInstructionTimer(IInstructionTimer timer) {
+		systemUnderTest = timer;
+	}
 
 	@Before
 	public void setUp() {
-		systemUnderTest = new BasicInstructionTimer();
+		setInstructionTimer();
 		systemUnderTest.setPower(on);
 		systemUnderTest.setReset(on);
 		systemUnderTest.step();
